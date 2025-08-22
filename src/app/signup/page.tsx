@@ -35,7 +35,7 @@ export default function SignupPage() {
           </Link>
           <CardTitle className="text-2xl font-headline">Create an Account</CardTitle>
           <CardDescription>
-            Join ArtisanAI to start selling or buying unique crafts.
+            Join Artisan to start selling or buying unique crafts.
           </CardDescription>
         </CardHeader>
         <CardContent>

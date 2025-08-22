@@ -34,7 +34,7 @@ export default function LoginPage() {
           </Link>
           <CardTitle className="text-2xl font-headline">Welcome Back</CardTitle>
           <CardDescription>
-            Log in to your ArtisanAI account to continue
+            Log in to your Artisan account to continue
           </CardDescription>
         </CardHeader>
         <CardContent>

@@ -10,7 +10,7 @@ export default function Home() {
       <header className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 font-bold text-xl">
           <Logo className="h-8 w-8 text-primary" />
-          <span className="font-headline">ArtisanAI</span>
+          <span className="font-headline">Artisan</span>
         </Link>
         <nav>
           <Button asChild variant="ghost">
@@ -29,7 +29,7 @@ export default function Home() {
               Empower Your Craft with <span className="text-primary">AI</span>
             </h1>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground">
-              ArtisanAI provides intelligent tools to help you describe, narrate, and sell your unique creations. Focus on your art, we'll handle the words.
+              Artisan provides intelligent tools to help you describe, narrate, and sell your unique creations. Focus on your art, we'll handle the words.
             </p>
             <div className="mt-8 flex justify-center gap-4">
               <Button asChild size="lg">
@@ -92,7 +92,7 @@ export default function Home() {
       </main>
 
       <footer className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} ArtisanAI. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Artisan. All rights reserved.</p>
       </footer>
     </div>
   );
