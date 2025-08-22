@@ -1,0 +1,49 @@
+'use server';
+
+import { z } from 'zod';
+import { generateProductDescription } from '@/ai/flows/generate-product-description';
+import { refineProductStory } from '@/ai/flows/refine-product-story';
+
+const generateDescriptionSchema = z.object({
+  photoDataUri: z.string().min(1, 'Image data is required.'),
+});
+
+const refineStorySchema = z.object({
+    story: z.string().min(1, 'Story cannot be empty.'),
+});
+
+export async function handleGenerateDescription(prevState: any, formData: FormData) {
+  try {
+    const validatedFields = generateDescriptionSchema.safeParse({
+      photoDataUri: formData.get('photoDataUri'),
+    });
+
+    if (!validatedFields.success) {
+      return { status: 'error', message: 'Invalid input.', errors: validatedFields.error.flatten().fieldErrors };
+    }
+
+    const result = await generateProductDescription(validatedFields.data);
+    return { status: 'success', data: result };
+  } catch (error) {
+    console.error(error);
+    return { status: 'error', message: 'Failed to generate description. Please try again.' };
+  }
+}
+
+export async function handleRefineStory(prevState: any, formData: FormData) {
+  try {
+    const validatedFields = refineStorySchema.safeParse({
+      story: formData.get('story'),
+    });
+
+     if (!validatedFields.success) {
+      return { status: 'error', message: 'Invalid input.', errors: validatedFields.error.flatten().fieldErrors };
+    }
+
+    const result = await refineProductStory({ voiceInput: validatedFields.data.story });
+    return { status: 'success', data: result };
+  } catch (error) {
+    console.error(error);
+    return { status: 'error', message: 'Failed to refine story. Please try again.' };
+  }
+}

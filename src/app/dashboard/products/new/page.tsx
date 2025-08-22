@@ -1,0 +1,200 @@
+"use client";
+
+import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
+import { useFormState } from 'react-dom';
+import { handleGenerateDescription, handleRefineStory } from './actions';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Loader2, Wand2, Mic, Sparkles, UploadCloud } from 'lucide-react';
+import { useToast } from "@/hooks/use-toast";
+
+const initialState = { status: 'idle', message: '', data: null };
+
+export default function NewProductPage() {
+  const { toast } = useToast();
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [imageDataUri, setImageDataUri] = useState<string | null>(null);
+
+  const [descriptionState, descriptionAction] = useFormState(handleGenerateDescription, initialState);
+  const [storyState, storyAction] = useFormState(handleRefineStory, initialState);
+
+  const [isGeneratingDesc, setIsGeneratingDesc] = useState(false);
+  const [isRefiningStory, setIsRefiningStory] = useState(false);
+
+  const [description, setDescription] = useState('');
+  const [tags, setTags] = useState('');
+  const [story, setStory] = useState('');
+  const [refinedStory, setRefinedStory] = useState('');
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setImagePreview(URL.createObjectURL(file));
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImageDataUri(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const onGenerateDescription = () => {
+    if (!imageDataUri) {
+      toast({
+        variant: "destructive",
+        title: "No Image Selected",
+        description: "Please upload an image first.",
+      });
+      return;
+    }
+    const formData = new FormData();
+    formData.append('photoDataUri', imageDataUri);
+    setIsGeneratingDesc(true);
+    descriptionAction(formData);
+  };
+
+  const onRefineStory = () => {
+    if (!story) {
+       toast({
+        variant: "destructive",
+        title: "No Story Provided",
+        description: "Please write your product story first.",
+      });
+      return;
+    }
+    const formData = new FormData();
+    formData.append('story', story);
+    setIsRefiningStory(true);
+    storyAction(formData);
+  };
+  
+  useEffect(() => {
+    if (descriptionState.status === 'success') {
+      setDescription(descriptionState.data?.description || '');
+      setTags(descriptionState.data?.tags?.join(', ') || '');
+      toast({
+        title: "Content Generated!",
+        description: "Your product description and tags are ready.",
+      });
+    } else if (descriptionState.status === 'error') {
+      toast({
+        variant: "destructive",
+        title: "Generation Failed",
+        description: descriptionState.message,
+      });
+    }
+    setIsGeneratingDesc(false);
+  }, [descriptionState]);
+
+  useEffect(() => {
+    if (storyState.status === 'success') {
+      setRefinedStory(storyState.data?.refinedStory || '');
+       toast({
+        title: "Story Refined!",
+        description: "Your polished story is ready.",
+      });
+    } else if (storyState.status === 'error') {
+       toast({
+        variant: "destructive",
+        title: "Refinement Failed",
+        description: storyState.message,
+      });
+    }
+    setIsRefiningStory(false);
+  }, [storyState]);
+
+  return (
+    <form className="grid gap-8 md:grid-cols-3">
+      <div className="md:col-span-1">
+        <Card>
+          <CardHeader>
+            <CardTitle className="font-headline">Product Image</CardTitle>
+            <CardDescription>Upload a clear photo of your creation.</CardDescription>
+          </CardHeader>
+          <CardContent className="grid gap-4">
+             <div className="grid gap-2">
+              <Label htmlFor="product-image" className="sr-only">Product Image</Label>
+              <div className="w-full aspect-square rounded-lg border-2 border-dashed border-muted-foreground/30 flex items-center justify-center relative overflow-hidden bg-secondary/50">
+                {imagePreview ? (
+                  <Image src={imagePreview} alt="Product preview" layout="fill" objectFit="cover" />
+                ) : (
+                  <div className="text-center text-muted-foreground p-4">
+                    <UploadCloud className="mx-auto h-12 w-12 mb-2" />
+                    <p>Click to upload or drag & drop</p>
+                  </div>
+                )}
+                 <Input id="product-image" type="file" accept="image/*" onChange={handleImageChange} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+              </div>
+            </div>
+            <Button type="button" className="w-full" onClick={onGenerateDescription} disabled={!imagePreview || isGeneratingDesc}>
+              {isGeneratingDesc ? <Loader2 className="mr-2 animate-spin" /> : <Wand2 className="mr-2" />}
+              Generate with AI
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="grid gap-8 md:col-span-2">
+        <Card>
+          <CardHeader>
+            <CardTitle className="font-headline">Product Details</CardTitle>
+            <CardDescription>AI-generated content will appear here. You can edit it before saving.</CardDescription>
+          </CardHeader>
+          <CardContent className="grid gap-4">
+            <div className="grid gap-2">
+              <Label htmlFor="name">Product Name</Label>
+              <Input id="name" placeholder="e.g., Hand-carved Wooden Elephant" />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="description">Description</Label>
+              <Textarea id="description" placeholder="A detailed description of your product..." value={description} onChange={(e) => setDescription(e.target.value)} rows={5} />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="tags">Tags</Label>
+              <Input id="tags" placeholder="e.g., handmade, woodcraft, eco-friendly" value={tags} onChange={(e) => setTags(e.target.value)} />
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+           <CardHeader>
+            <div className="flex items-center justify-between">
+                <div>
+                    <CardTitle className="font-headline">Product Story</CardTitle>
+                    <CardDescription>Tell us the story behind your product.</CardDescription>
+                </div>
+                <Button type="button" size="sm" onClick={onRefineStory} disabled={!story || isRefiningStory}>
+                    {isRefiningStory ? <Loader2 className="mr-2 animate-spin" /> : <Sparkles className="mr-2" />}
+                    Refine Story
+                </Button>
+            </div>
+        </CardHeader>
+          <CardContent className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-2">
+              <Label htmlFor="story" className="flex items-center">
+                <Mic className="mr-2 h-4 w-4" />
+                Your Story (Dictate or Type)
+              </Label>
+              <Textarea id="story" placeholder="e.g., This elephant was carved from a fallen mango tree in my village..." value={story} onChange={(e) => setStory(e.target.value)} rows={8} />
+            </div>
+             <div className="grid gap-2">
+              <Label htmlFor="refined-story" className="flex items-center">
+                <Wand2 className="mr-2 h-4 w-4 text-primary" />
+                AI-Refined Story
+              </Label>
+              <Textarea id="refined-story" placeholder="AI-polished version will appear here..." value={refinedStory} onChange={(e) => setRefinedStory(e.target.value)} rows={8} className="bg-primary/5 focus:bg-background"/>
+            </div>
+          </CardContent>
+        </Card>
+        
+        <div className="flex justify-end">
+            <Button size="lg" type="submit">Save Product</Button>
+        </div>
+      </div>
+    </form>
+  );
+}
