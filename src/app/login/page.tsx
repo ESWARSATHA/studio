@@ -2,6 +2,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -12,13 +13,21 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Logo } from '@/components/icons';
 
 export default function LoginPage() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-secondary">
-      <Card className="mx-auto max-w-sm w-full">
+    <div className="relative flex items-center justify-center min-h-screen">
+      <Image
+        src="https://placehold.co/1920x1080.png"
+        alt="Artisan background"
+        layout="fill"
+        objectFit="cover"
+        className="absolute inset-0 w-full h-full z-0"
+        data-ai-hint="artisan hands crafting"
+      />
+      <div className="absolute inset-0 bg-black/50 z-10" />
+      <Card className="mx-auto max-w-sm w-full z-20 bg-card/80 backdrop-blur-sm">
         <CardHeader className="text-center">
           <Link href="/" className="inline-block mb-4">
             <Logo className="h-12 w-12 text-primary" />
