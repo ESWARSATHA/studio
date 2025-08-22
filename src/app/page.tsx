@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ArrowRight, Bot, Image as ImageIcon, Mic } from 'lucide-react';
 import { Logo } from '@/components/icons';
 
@@ -89,6 +90,47 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <section className="py-20 md:py-24">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center max-w-3xl mx-auto">
+                    <h2 className="text-3xl font-headline font-bold">Celebrating Indian Art & Culture</h2>
+                    <p className="mt-4 text-muted-foreground">
+                        India has a rich and diverse cultural heritage, and its art is a vibrant expression of this history. From intricate paintings to detailed sculptures and beautiful textiles, Indian art tells stories of mythology, spirituality, and daily life. This platform is dedicated to supporting the talented artisans who keep these traditions alive.
+                    </p>
+                </div>
+                <div className="mt-12 grid gap-8 md:grid-cols-3">
+                    <Card className="overflow-hidden">
+                        <Image src="https://placehold.co/600x400.png" alt="Madhubani painting" width={600} height={400} className="w-full h-48 object-cover" data-ai-hint="madhubani painting" />
+                        <CardHeader>
+                            <CardTitle className="font-headline">Madhubani Painting</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <p className="text-muted-foreground">Originating from the Mithila region, these paintings are known for their complex geometrical patterns and symbolic imagery.</p>
+                        </CardContent>
+                    </Card>
+                    <Card className="overflow-hidden">
+                        <Image src="https://placehold.co/600x400.png" alt="Warli art" width={600} height={400} className="w-full h-48 object-cover" data-ai-hint="warli art" />
+                        <CardHeader>
+                            <CardTitle className="font-headline">Warli Art</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <p className="text-muted-foreground">A tribal art form from Maharashtra, characterized by its simple, monosyllabic vocabulary depicting scenes of human life.</p>
+                        </CardContent>
+                    </Card>
+                    <Card className="overflow-hidden">
+                         <Image src="https://placehold.co/600x400.png" alt="Pattachitra art" width={600} height={400} className="w-full h-48 object-cover" data-ai-hint="pattachitra art" />
+                        <CardHeader>
+                            <CardTitle className="font-headline">Pattachitra</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <p className="text-muted-foreground">A traditional cloth-based scroll painting from Odisha, known for its intricate details and mythological narratives.</p>
+                        </CardContent>
+                    </Card>
+                </div>
+            </div>
+        </section>
+
       </main>
 
       <footer className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-muted-foreground">
