@@ -14,7 +14,10 @@ export default function Home() {
         </Link>
         <nav>
           <Button asChild variant="ghost">
-            <Link href="/dashboard">Dashboard</Link>
+            <Link href="/login">Login</Link>
+          </Button>
+          <Button asChild>
+            <Link href="/signup">Sign Up</Link>
           </Button>
         </nav>
       </header>
@@ -34,8 +37,8 @@ export default function Home() {
                   For Artisans <ArrowRight className="ml-2" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" disabled>
-                <Link href="#">For Buyers</Link>
+              <Button asChild size="lg" variant="outline">
+                <Link href="/login">For Buyers</Link>
               </Button>
             </div>
           </div>

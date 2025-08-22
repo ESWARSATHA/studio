@@ -19,6 +19,7 @@ import {
   BarChart2,
   Settings,
   User,
+  LogOut,
 } from "lucide-react";
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
@@ -103,7 +104,12 @@ export default function DashboardLayout({
                   Settings
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Log out</DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="/login" className="flex items-center">
+                    <LogOut className="mr-2" />
+                    Log out
+                  </Link>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </header>
