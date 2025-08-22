@@ -88,7 +88,7 @@ export default function NewProductPage() {
       });
     }
     setIsGeneratingDesc(false);
-  }, [descriptionState]);
+  }, [descriptionState, toast]);
 
   useEffect(() => {
     if (storyState.status === 'success') {
@@ -105,7 +105,7 @@ export default function NewProductPage() {
       });
     }
     setIsRefiningStory(false);
-  }, [storyState]);
+  }, [storyState, toast]);
 
   return (
     <form className="grid gap-8 md:grid-cols-3">

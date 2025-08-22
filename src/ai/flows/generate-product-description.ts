@@ -42,7 +42,7 @@ const prompt = ai.definePrompt({
 
   Image: {{media url=photoDataUri}}
   Description:
-  Tags:`, // Added description and tags keys so they are populated
+  Tags:`,
 });
 
 const generateProductDescriptionFlow = ai.defineFlow(

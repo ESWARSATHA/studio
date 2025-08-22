@@ -3,7 +3,7 @@
  * @fileOverview Refines an artisan's dictated story about a product into a polished narrative.
  *
  * - refineProductStory - A function that handles the story refinement process.
- * - RefineProductStoryInput - The input type for the refineProductStory function.
+ * - RefineProductStoryInput - The input type for the refineProductory function.
  * - RefineProductStoryOutput - The return type for the refineProductStory function.
  */
 
@@ -11,7 +11,7 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const RefineProductStoryInputSchema = z.object({
-  voiceInput: z.string().describe('The artisan\'s dictated story about the product.'),
+  voiceInput: z.string().describe("The artisan's dictated story about the product."),
 });
 export type RefineProductStoryInput = z.infer<typeof RefineProductStoryInputSchema>;
 
