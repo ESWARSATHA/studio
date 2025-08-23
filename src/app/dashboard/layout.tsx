@@ -23,6 +23,7 @@ import {
   LogOut,
   MailQuestion,
   Globe,
+  LifeBuoy,
 } from "lucide-react";
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
@@ -52,6 +53,7 @@ export default function DashboardLayout({
     { href: "/dashboard/products/new", label: "Add Product", icon: PlusCircle },
     { href: "/dashboard/analytics", label: "Analytics", icon: BarChart2 },
     { href: "/dashboard/requests", label: "Requests", icon: MailQuestion },
+    { href: "/dashboard/support", label: "Support", icon: LifeBuoy },
   ];
 
   const languages = [
