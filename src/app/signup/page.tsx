@@ -19,6 +19,7 @@ import { Eye, EyeOff } from 'lucide-react';
 
 export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
     <div className="relative flex items-center justify-center min-h-screen py-8">
@@ -44,6 +45,15 @@ export default function SignupPage() {
         <CardContent>
           <div className="grid gap-4">
             <div className="grid gap-2">
+              <Label htmlFor="username">Username</Label>
+              <Input
+                id="username"
+                type="text"
+                placeholder="e.g., ArtisanPriya"
+                required
+              />
+            </div>
+            <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
@@ -53,7 +63,7 @@ export default function SignupPage() {
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Create Password</Label>
                <div className="relative">
                 <Input
                   id="password"
@@ -66,6 +76,23 @@ export default function SignupPage() {
                   className="absolute inset-y-0 right-0 flex items-center pr-3 text-muted-foreground"
                 >
                   {showPassword ? <EyeOff /> : <Eye />}
+                </button>
+              </div>
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="confirm-password">Confirm Password</Label>
+               <div className="relative">
+                <Input
+                  id="confirm-password"
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword((prev) => !prev)}
+                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-muted-foreground"
+                >
+                  {showConfirmPassword ? <EyeOff /> : <Eye />}
                 </button>
               </div>
             </div>
