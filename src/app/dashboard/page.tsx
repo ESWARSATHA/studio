@@ -49,7 +49,7 @@ export default function DashboardPage() {
   return (
     <div className="grid gap-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight font-headline">Your Creations</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Your Creations</h1>
         <p className="text-muted-foreground">An overview of your listed products.</p>
       </div>
 
@@ -71,7 +71,7 @@ export default function DashboardPage() {
               </div>
             </div>
             <CardHeader>
-              <CardTitle className="font-headline text-lg">{product.name}</CardTitle>
+              <CardTitle className="text-lg">{product.name}</CardTitle>
             </CardHeader>
             <CardContent className="flex-1 flex flex-col">
               <p className="text-muted-foreground text-sm flex-1">{product.description}</p>

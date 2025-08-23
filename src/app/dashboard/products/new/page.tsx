@@ -113,7 +113,7 @@ export default function NewProductPage() {
       <div className="md:col-span-1">
         <Card>
           <CardHeader>
-            <CardTitle className="font-headline">Product Image</CardTitle>
+            <CardTitle>Product Image</CardTitle>
             <CardDescription>Upload a clear photo of your creation.</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
@@ -142,7 +142,7 @@ export default function NewProductPage() {
       <div className="grid gap-8 md:col-span-2">
         <Card>
           <CardHeader>
-            <CardTitle className="font-headline">Product Details</CardTitle>
+            <CardTitle>Product Details</CardTitle>
             <CardDescription>AI-generated content will appear here. You can edit it before saving.</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
@@ -165,7 +165,7 @@ export default function NewProductPage() {
            <CardHeader>
             <div className="flex items-center justify-between">
                 <div>
-                    <CardTitle className="font-headline">Product Story</CardTitle>
+                    <CardTitle>Product Story</CardTitle>
                     <CardDescription>Tell us the story behind your product.</CardDescription>
                 </div>
                 <Button type="button" size="sm" onClick={onRefineStory} disabled={!story || isRefiningStory}>

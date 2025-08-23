@@ -69,7 +69,7 @@ export default function Home() {
       <main className="flex-1">
         <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 text-center">
           <div className="max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-headline font-bold tracking-tight text-foreground">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground">
               Empower Your Craft with{' '}
               <span className="text-primary">AI</span>
             </h1>
@@ -95,7 +95,7 @@ export default function Home() {
         <section className="bg-secondary py-20 md:py-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto">
-              <h2 className="text-3xl font-headline font-bold">
+              <h2 className="text-3xl font-bold">
                 Features for the Modern Artisan
               </h2>
               <p className="mt-4 text-muted-foreground">
@@ -109,7 +109,7 @@ export default function Home() {
                   <div className="p-4 bg-primary/10 rounded-full">
                     <ImageIcon className="h-8 w-8 text-primary" />
                   </div>
-                  <CardTitle className="font-headline mt-4">
+                  <CardTitle className="mt-4">
                     AI Image Analysis
                   </CardTitle>
                 </CardHeader>
@@ -125,7 +125,7 @@ export default function Home() {
                   <div className="p-4 bg-primary/10 rounded-full">
                     <Mic className="h-8 w-8 text-primary" />
                   </div>
-                  <CardTitle className="font-headline mt-4">
+                  <CardTitle className="mt-4">
                     Voice-to-Story
                   </CardTitle>
                 </CardHeader>
@@ -141,7 +141,7 @@ export default function Home() {
                   <div className="p-4 bg-primary/10 rounded-full">
                     <Bot className="h-8 w-8 text-primary" />
                   </div>
-                  <CardTitle className="font-headline mt-4">
+                  <CardTitle className="mt-4">
                     Smart Analytics
                   </CardTitle>
                 </CardHeader>
@@ -157,7 +157,7 @@ export default function Home() {
                   <div className="p-4 bg-primary/10 rounded-full">
                     <Sparkles className="h-8 w-8 text-primary" />
                   </div>
-                  <CardTitle className="font-headline mt-4">
+                  <CardTitle className="mt-4">
                     Custom Requests
                   </CardTitle>
                 </CardHeader>
@@ -174,7 +174,7 @@ export default function Home() {
         <section className="py-20 md:py-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto">
-              <h2 className="text-3xl font-headline font-bold">
+              <h2 className="text-3xl font-bold">
                 Contemporary Indian Art for the Next Generation
               </h2>
               <p className="mt-4 text-muted-foreground">
@@ -193,7 +193,7 @@ export default function Home() {
                   data-ai-hint="digital art mythology"
                 />
                 <CardHeader>
-                  <CardTitle className="font-headline">
+                  <CardTitle>
                     Digital Mythology
                   </CardTitle>
                 </CardHeader>
@@ -214,7 +214,7 @@ export default function Home() {
                   data-ai-hint="indian street art"
                 />
                 <CardHeader>
-                  <CardTitle className="font-headline">
+                  <CardTitle>
                     Indian Street Art Fusion
                   </CardTitle>
                 </CardHeader>
@@ -235,7 +235,7 @@ export default function Home() {
                   data-ai-hint="minimalist folk art"
                 />
                 <CardHeader>
-                  <CardTitle className="font-headline">
+                  <CardTitle>
                     Minimalist Folk
                   </CardTitle>
                 </CardHeader>
@@ -254,7 +254,7 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="text-center md:text-left">
-                <h2 className="text-3xl font-headline font-bold">
+                <h2 className="text-3xl font-bold">
                   Flexible &amp; Secure Payments
                 </h2>
                 <p className="mt-4 text-muted-foreground">

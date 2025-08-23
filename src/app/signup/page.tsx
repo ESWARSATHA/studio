@@ -70,7 +70,7 @@ export default function SignupPage() {
            <div className="inline-block mb-4">
             <Logo className="h-12 w-12 text-primary" />
           </div>
-          <CardTitle className="text-2xl font-headline">Create an Account</CardTitle>
+          <CardTitle className="text-2xl">Create an Account</CardTitle>
           <CardDescription>
             Join Artisan to start selling or buying unique crafts.
           </CardDescription>

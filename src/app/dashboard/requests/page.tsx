@@ -52,7 +52,7 @@ export default function RequestsPage() {
   return (
     <div className="grid gap-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight font-headline">Customer Requests</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Customer Requests</h1>
         <p className="text-muted-foreground">View and respond to custom art commissions from buyers.</p>
       </div>
 
@@ -66,7 +66,7 @@ export default function RequestsPage() {
                 </Avatar>
                 <div className="flex-1">
                     <div className="flex items-center justify-between">
-                        <CardTitle className="font-headline text-lg">{request.title}</CardTitle>
+                        <CardTitle className="text-lg">{request.title}</CardTitle>
                         <Badge variant={request.status === 'New' ? 'default' : 'secondary'}>{request.status}</Badge>
                     </div>
                    <CardDescription>

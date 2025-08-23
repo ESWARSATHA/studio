@@ -64,7 +64,7 @@ export default function AnalyticsPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="font-headline">Views & Feedback Overview</CardTitle>
+          <CardTitle>Views & Feedback Overview</CardTitle>
           <CardDescription>Monthly performance of your products</CardDescription>
         </CardHeader>
         <CardContent>

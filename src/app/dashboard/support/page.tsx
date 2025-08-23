@@ -58,13 +58,13 @@ export default function SupportPage() {
     <div className="grid gap-8 max-w-3xl mx-auto">
       <div className="text-center">
         <HelpCircle className="mx-auto h-12 w-12 text-primary" />
-        <h1 className="mt-4 text-3xl font-bold tracking-tight font-headline">Support Center</h1>
+        <h1 className="mt-4 text-3xl font-bold tracking-tight">Support Center</h1>
         <p className="mt-2 text-muted-foreground">Have a question? Ask our AI assistant.</p>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle className="font-headline">Ask a Question</CardTitle>
+          <CardTitle>Ask a Question</CardTitle>
           <CardDescription>Enter your query below and our AI will do its best to help you.</CardDescription>
         </CardHeader>
         <CardContent>
@@ -102,7 +102,7 @@ export default function SupportPage() {
                   <AvatarFallback><Bot /></AvatarFallback>
                 </Avatar>
               <div>
-                <CardTitle className="font-headline">AI Assistant</CardTitle>
+                <CardTitle>AI Assistant</CardTitle>
                 <CardDescription>Here is the response to your query.</CardDescription>
               </div>
             </div>
@@ -122,4 +122,3 @@ export default function SupportPage() {
     </div>
   );
 }
-`

@@ -70,7 +70,7 @@ export default function LoginPage() {
            <div className="inline-block mb-4">
             <Logo className="h-12 w-12 text-primary" />
           </div>
-          <CardTitle className="text-2xl font-headline">Welcome Back</CardTitle>
+          <CardTitle className="text-2xl">Welcome Back</CardTitle>
           <CardDescription>
             Log in to your Artisan account to continue
           </CardDescription>
