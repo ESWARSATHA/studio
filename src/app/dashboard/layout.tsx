@@ -20,6 +20,8 @@ import {
   Settings,
   User,
   LogOut,
+  MailQuestion,
+  Globe,
 } from "lucide-react";
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
@@ -30,6 +32,10 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuPortal,
+  DropdownMenuSubContent
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -44,6 +50,16 @@ export default function DashboardLayout({
     { href: "/dashboard", label: "Dashboard", icon: LayoutGrid },
     { href: "/dashboard/products/new", label: "Add Product", icon: PlusCircle },
     { href: "/dashboard/analytics", label: "Analytics", icon: BarChart2 },
+    { href: "/dashboard/requests", label: "Requests", icon: MailQuestion },
+  ];
+
+  const languages = [
+    { code: 'en', name: 'English' },
+    { code: 'hi', name: 'हिन्दी' },
+    { code: 'bn', name: 'বাংলা' },
+    { code: 'te', name: 'తెలుగు' },
+    { code: 'mr', name: 'मराठी' },
+    { code: 'ta', name: 'தமிழ்' },
   ];
 
   return (
@@ -83,6 +99,19 @@ export default function DashboardLayout({
                 {menuItems.find(item => pathname.startsWith(item.href))?.label || "Dashboard"}
               </h1>
             </div>
+            <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="gap-2">
+                    <Globe className="h-4 w-4"/>
+                    lang
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  {languages.map(lang => (
+                    <DropdownMenuItem key={lang.code}>{lang.name}</DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="rounded-full">

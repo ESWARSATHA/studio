@@ -1,80 +1,92 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { PlusCircle, BarChart2, Package, MessageSquare, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ArrowRight, Star, Tag } from "lucide-react";
+
+const products = [
+  {
+    name: "Hand-carved Wooden Elephant",
+    price: "₹2,499",
+    description: "A magnificent elephant, hand-carved from a single block of sustainable mango wood, showcasing intricate details.",
+    image: "https://placehold.co/600x400.png",
+    imageHint: "wooden elephant carving",
+    rating: 4.8,
+    reviews: 24,
+  },
+  {
+    name: "Blue Pottery Vase",
+    price: "₹1,899",
+    description: "A vibrant blue pottery vase from Jaipur, featuring traditional floral motifs hand-painted by skilled artisans.",
+    image: "https://placehold.co/600x400.png",
+    imageHint: "blue pottery vase",
+    rating: 4.9,
+    reviews: 18,
+  },
+    {
+    name: "Pattachitra Scroll Painting",
+    price: "₹3,999",
+    description: "A stunning Pattachitra scroll from Odisha, depicting a tale from the Ramayana with natural pigments on cloth.",
+    image: "https://placehold.co/600x400.png",
+    imageHint: "pattachitra scroll",
+    rating: 5.0,
+    reviews: 12,
+  },
+   {
+    name: "Terracotta Horse",
+    price: "₹1,299",
+    description: "A rustic terracotta horse from Panchmura, Bengal, representing a timeless tradition of village pottery.",
+    image: "https://placehold.co/600x400.png",
+    imageHint: "terracotta horse",
+    rating: 4.7,
+    reviews: 31,
+  },
+];
+
 
 export default function DashboardPage() {
   return (
     <div className="grid gap-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight font-headline">Welcome back, Artisan!</h1>
-        <p className="text-muted-foreground">Here's a quick overview of your shop.</p>
+        <h1 className="text-3xl font-bold tracking-tight font-headline">Your Creations</h1>
+        <p className="text-muted-foreground">An overview of your listed products.</p>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Products</CardTitle>
-            <Package className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">12</div>
-            <p className="text-xs text-muted-foreground">+2 from last month</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Views</CardTitle>
-            <BarChart2 className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">1,204</div>
-            <p className="text-xs text-muted-foreground">+15% from last month</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">New Messages</CardTitle>
-            <MessageSquare className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">3</div>
-            <p className="text-xs text-muted-foreground">From interested buyers</p>
-          </CardContent>
-        </Card>
-      </div>
-
-      <div className="grid gap-6 md:grid-cols-2">
-        <Card className="flex flex-col">
-          <CardHeader>
-            <CardTitle className="font-headline">Create a New Product</CardTitle>
-            <CardDescription>Let's get your next masterpiece online. We'll help with the details.</CardDescription>
-          </CardHeader>
-          <CardContent className="flex-1 flex flex-col justify-center items-center text-center">
-            <PlusCircle className="h-16 w-16 text-primary mb-4" />
-            <p className="text-muted-foreground mb-4">Upload an image and let AI craft the perfect listing for you.</p>
-          </CardContent>
-          <div className="p-6 pt-0">
-             <Button asChild className="w-full">
-              <Link href="/dashboard/products/new">Add New Product <ArrowRight className="ml-2"/></Link>
-            </Button>
-          </div>
-        </Card>
-        <Card className="flex flex-col">
-          <CardHeader>
-            <CardTitle className="font-headline">View Your Analytics</CardTitle>
-            <CardDescription>See how your products are performing and get insights.</CardDescription>
-          </CardHeader>
-          <CardContent className="flex-1 flex flex-col justify-center items-center text-center">
-            <BarChart2 className="h-16 w-16 text-primary mb-4" />
-            <p className="text-muted-foreground mb-4">Track views, see customer feedback, and understand your audience.</p>
-          </CardContent>
-          <div className="p-6 pt-0">
-            <Button asChild className="w-full">
-              <Link href="/dashboard/analytics">View Analytics <ArrowRight className="ml-2"/></Link>
-            </Button>
-          </div>
-        </Card>
+       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {products.map((product) => (
+          <Card key={product.name} className="flex flex-col overflow-hidden">
+            <div className="relative">
+              <Image 
+                src={product.image} 
+                alt={product.name} 
+                width={600} 
+                height={400} 
+                className="w-full h-48 object-cover"
+                data-ai-hint={product.imageHint} 
+              />
+               <div className="absolute top-2 right-2 flex items-center gap-1 bg-background/80 backdrop-blur-sm text-foreground font-semibold px-2 py-1 rounded-full text-xs">
+                <Star className="w-3 h-3 text-primary fill-primary" />
+                <span>{product.rating} ({product.reviews})</span>
+              </div>
+            </div>
+            <CardHeader>
+              <CardTitle className="font-headline text-lg">{product.name}</CardTitle>
+            </CardHeader>
+            <CardContent className="flex-1 flex flex-col">
+              <p className="text-muted-foreground text-sm flex-1">{product.description}</p>
+              <div className="flex items-center justify-between mt-4">
+                 <div className="flex items-center gap-2 text-lg font-bold text-primary">
+                    <Tag className="w-4 h-4" />
+                    <span>{product.price}</span>
+                </div>
+                <Button variant="outline" size="sm">
+                  View Details
+                  <ArrowRight className="ml-2" />
+                </Button>
+              </div>
+            </CardContent>
+          </Card>>
+        ))}
       </div>
     </div>
   );
