@@ -12,16 +12,50 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/icons';
-import { Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff, Globe } from 'lucide-react';
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const languages = [
+    { code: 'en', name: 'English' },
+    { code: 'hi', name: 'हिन्दी' },
+    { code: 'bn', name: 'বাংলা' },
+    { code: 'te', name: 'తెలుగు' },
+    { code: 'mr', name: 'मराठी' },
+    { code: 'ta', name: 'தமிழ்' },
+  ];
 
   return (
-    <div className="relative flex items-center justify-center min-h-screen">
+    <div className="relative flex flex-col items-center justify-center min-h-screen">
+       <header className="absolute top-0 left-0 right-0 z-30 flex items-center justify-between p-4 container mx-auto px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex items-center gap-2 font-bold text-xl text-white">
+          <Logo className="h-8 w-8 text-primary" />
+          <span className="font-headline">Artisan</span>
+        </Link>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="gap-2 text-white hover:bg-white/10 hover:text-white">
+              <Globe className="h-4 w-4" />
+              <span className="hidden sm:inline">Language</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            {languages.map((lang) => (
+              <DropdownMenuItem key={lang.code}>{lang.name}</DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </header>
+
       <Image
         src="https://placehold.co/1920x1080.png"
         alt="Artisan background"
@@ -33,9 +67,9 @@ export default function LoginPage() {
       <div className="absolute inset-0 bg-black/50 z-10" />
       <Card className="mx-auto max-w-sm w-full z-20 bg-card/80 backdrop-blur-sm">
         <CardHeader className="text-center">
-          <Link href="/" className="inline-block mb-4">
+           <div className="inline-block mb-4">
             <Logo className="h-12 w-12 text-primary" />
-          </Link>
+          </div>
           <CardTitle className="text-2xl font-headline">Welcome Back</CardTitle>
           <CardDescription>
             Log in to your Artisan account to continue
