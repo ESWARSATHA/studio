@@ -1,4 +1,6 @@
 
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -7,7 +9,6 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-  CardDescription,
 } from '@/components/ui/card';
 import {
   DropdownMenu,
@@ -21,39 +22,34 @@ import {
   Image as ImageIcon,
   Mic,
   Sparkles,
-  Palette,
   Globe,
 } from 'lucide-react';
 import { Logo } from '@/components/icons';
+import { languages, useLanguage } from '@/lib/locales/language-context';
 
 export default function Home() {
-  const languages = [
-    { code: 'en', name: 'English' },
-    { code: 'hi', name: 'हिन्दी' },
-    { code: 'bn', name: 'বাংলা' },
-    { code: 'te', name: 'తెలుగు' },
-    { code: 'mr', name: 'मराठी' },
-    { code: 'ta', name: 'தமிழ்' },
-  ];
+  const { language, setLanguage, translations } = useLanguage();
 
   return (
     <div className="flex flex-col min-h-screen">
       <header className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 font-bold text-xl">
           <Logo className="h-8 w-8 text-primary" />
-          <span className="font-headline">Artisan</span>
+          <span>Artisan</span>
         </Link>
         <nav className="flex items-center gap-2">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="gap-2">
                 <Globe className="h-4 w-4" />
-                <span className="hidden sm:inline">Language</span>
+                <span className="hidden sm:inline">{languages.find(lang => lang.code === language)?.name}</span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               {languages.map((lang) => (
-                <DropdownMenuItem key={lang.code}>{lang.name}</DropdownMenuItem>
+                <DropdownMenuItem key={lang.code} onSelect={() => setLanguage(lang.code)}>
+                  {lang.name}
+                </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
           </DropdownMenu>

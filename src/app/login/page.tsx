@@ -22,35 +22,31 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/icons';
 import { Eye, EyeOff, Globe } from 'lucide-react';
+import { languages, useLanguage } from '@/lib/locales/language-context';
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
-  const languages = [
-    { code: 'en', name: 'English' },
-    { code: 'hi', name: 'हिन्दी' },
-    { code: 'bn', name: 'বাংলা' },
-    { code: 'te', name: 'తెలుగు' },
-    { code: 'mr', name: 'मराठी' },
-    { code: 'ta', name: 'தமிழ்' },
-  ];
+  const { language, setLanguage, translations } = useLanguage();
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen">
        <header className="absolute top-0 left-0 right-0 z-30 flex items-center justify-between p-4 container mx-auto px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2 font-bold text-xl text-white">
           <Logo className="h-8 w-8 text-primary" />
-          <span className="font-headline">Artisan</span>
+          <span>Artisan</span>
         </Link>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="gap-2 text-white hover:bg-white/10 hover:text-white">
               <Globe className="h-4 w-4" />
-              <span className="hidden sm:inline">Language</span>
+              <span className="hidden sm:inline">{languages.find(lang => lang.code === language)?.name}</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             {languages.map((lang) => (
-              <DropdownMenuItem key={lang.code}>{lang.name}</DropdownMenuItem>
+              <DropdownMenuItem key={lang.code} onSelect={() => setLanguage(lang.code)}>
+                {lang.name}
+              </DropdownMenuItem>
             ))}
           </DropdownMenuContent>
         </DropdownMenu>

@@ -40,6 +40,7 @@ import {
   DropdownMenuSubContent
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { languages, useLanguage } from "@/lib/locales/language-context";
 
 export default function DashboardLayout({
   children,
@@ -47,6 +48,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const { language, setLanguage, translations } = useLanguage();
 
   const menuItems = [
     { href: "/dashboard", label: "Dashboard", icon: LayoutGrid },
@@ -54,15 +56,6 @@ export default function DashboardLayout({
     { href: "/dashboard/analytics", label: "Analytics", icon: BarChart2 },
     { href: "/dashboard/requests", label: "Requests", icon: MailQuestion },
     { href: "/dashboard/support", label: "Support", icon: LifeBuoy },
-  ];
-
-  const languages = [
-    { code: 'en', name: 'English' },
-    { code: 'hi', name: 'हिन्दी' },
-    { code: 'bn', name: 'বাংলা' },
-    { code: 'te', name: 'తెలుగు' },
-    { code: 'mr', name: 'मराठी' },
-    { code: 'ta', name: 'தமிழ்' },
   ];
 
   return (
@@ -106,12 +99,14 @@ export default function DashboardLayout({
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="gap-2">
                     <Globe className="h-4 w-4"/>
-                    <span>Language</span>
+                    <span>{languages.find(lang => lang.code === language)?.name}</span>
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   {languages.map(lang => (
-                    <DropdownMenuItem key={lang.code}>{lang.name}</DropdownMenuItem>
+                    <DropdownMenuItem key={lang.code} onSelect={() => setLanguage(lang.code)}>
+                      {lang.name}
+                    </DropdownMenuItem>
                   ))}
                 </DropdownMenuContent>
               </DropdownMenu>
