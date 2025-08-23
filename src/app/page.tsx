@@ -92,6 +92,26 @@ export default function Home() {
         </section>
 
         <section className="py-20 md:py-24">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto">
+              <h2 className="text-3xl font-headline font-bold">Flexible &amp; Secure Payments</h2>
+              <p className="mt-4 text-muted-foreground">
+                We support a wide range of payment methods to make transactions seamless for everyone. All transactions are secure and compliant with Indian regulations.
+              </p>
+            </div>
+            <div className="mt-12 flex flex-col items-center">
+              <div className="flex flex-wrap justify-center items-center gap-8">
+                <Image src="https://placehold.co/100x40.png" alt="UPI Logo" width={100} height={40} data-ai-hint="upi logo" />
+                <Image src="https://placehold.co/100x40.png" alt="Visa Logo" width={100} height={40} data-ai-hint="visa logo" />
+                <Image src="https://placehold.co/100x40.png" alt="Mastercard Logo" width={100} height={40} data-ai-hint="mastercard logo" />
+                <Image src="https://placehold.co/100x40.png" alt="Rupay Logo" width={100} height={40} data-ai-hint="rupay logo" />
+              </div>
+               <p className="mt-4 text-muted-foreground text-sm">...and many more UPI, credit, and debit card options.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-secondary py-20 md:py-24">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center max-w-3xl mx-auto">
                     <h2 className="text-3xl font-headline font-bold">Celebrating Indian Art & Culture</h2>
