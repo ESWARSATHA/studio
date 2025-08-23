@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
@@ -120,7 +121,7 @@ export default function NewProductPage() {
               <Label htmlFor="product-image" className="sr-only">Product Image</Label>
               <div className="w-full aspect-square rounded-lg border-2 border-dashed border-muted-foreground/30 flex items-center justify-center relative overflow-hidden bg-secondary/50">
                 {imagePreview ? (
-                  <Image src={imagePreview} alt="Product preview" layout="fill" objectFit="cover" />
+                  <Image src={imagePreview} alt="Product preview" fill style={{objectFit: "cover"}} />
                 ) : (
                   <div className="text-center text-muted-foreground p-4">
                     <UploadCloud className="mx-auto h-12 w-12 mb-2" />

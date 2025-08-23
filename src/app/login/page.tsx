@@ -21,8 +21,8 @@ export default function LoginPage() {
       <Image
         src="https://placehold.co/1920x1080.png"
         alt="Artisan background"
-        layout="fill"
-        objectFit="cover"
+        fill
+        style={{objectFit: "cover"}}
         className="absolute inset-0 w-full h-full z-0"
         data-ai-hint="artisan hands crafting"
       />
