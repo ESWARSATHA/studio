@@ -66,30 +66,30 @@ export default function LoginPage() {
            <div className="inline-block mb-4">
             <Logo className="h-12 w-12 text-primary" />
           </div>
-          <CardTitle className="text-2xl">Welcome Back</CardTitle>
+          <CardTitle className="text-2xl">{translations.login_page.title}</CardTitle>
           <CardDescription>
-            Log in to your Artisan account to continue
+            {translations.login_page.description}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="loginId">Username, Email, or Phone</Label>
+              <Label htmlFor="loginId">{translations.login_page.form_label}</Label>
               <Input
                 id="loginId"
                 type="text"
-                placeholder="artisan_priya / m@example.com / 9876543210"
+                placeholder={translations.login_page.form_placeholder}
                 required
               />
             </div>
             <div className="grid gap-2">
               <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">{translations.login_page.password_label}</Label>
                 <Link
                   href="#"
                   className="ml-auto inline-block text-sm underline"
                 >
-                  Forgot your password?
+                  {translations.login_page.forgot_password}
                 </Link>
               </div>
               <div className="relative">
@@ -108,13 +108,13 @@ export default function LoginPage() {
               </div>
             </div>
             <Button type="submit" className="w-full">
-              Login
+              {translations.login_page.login_button}
             </Button>
           </div>
           <div className="mt-4 text-center text-sm">
-            Don&apos;t have an account?{' '}
+            {translations.login_page.signup_link.split('?')[0]}?{' '}
             <Link href="/signup" className="underline">
-              Sign up
+              {translations.login_page.signup_link.split('?')[1]}
             </Link>
           </div>
         </CardContent>

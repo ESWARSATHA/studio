@@ -54,10 +54,10 @@ export default function Home() {
             </DropdownMenuContent>
           </DropdownMenu>
           <Button asChild variant="ghost">
-            <Link href="/login">Login</Link>
+            <Link href="/login">{translations.homepage.login}</Link>
           </Button>
           <Button asChild>
-            <Link href="/signup">Sign Up</Link>
+            <Link href="/signup">{translations.homepage.signup}</Link>
           </Button>
         </nav>
       </header>
@@ -66,23 +66,19 @@ export default function Home() {
         <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 text-center">
           <div className="max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground">
-              Empower Your Craft with{' '}
-              <span className="text-primary">AI</span>
+              {translations.homepage.title}
             </h1>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground">
-              Artisan provides intelligent tools to help you describe, narrate,
-              and sell your unique creations. Focus on your art, we'll handle
-              the words. We charge a minimal 1% fee to ensure you get the
-              maximum value for your work.
+              {translations.homepage.subtitle}
             </p>
             <div className="mt-8 flex justify-center gap-4">
               <Button asChild size="lg">
                 <Link href="/dashboard">
-                  For Artisans <ArrowRight className="ml-2" />
+                  {translations.homepage.artisans_button} <ArrowRight className="ml-2" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="/login">For Buyers</Link>
+                <Link href="/login">{translations.homepage.buyers_button}</Link>
               </Button>
             </div>
           </div>
@@ -92,11 +88,10 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto">
               <h2 className="text-3xl font-bold">
-                Features for the Modern Artisan
+                {translations.homepage.features_title}
               </h2>
               <p className="mt-4 text-muted-foreground">
-                From image to story, our AI is trained to showcase the soul of
-                your work.
+                {translations.homepage.features_subtitle}
               </p>
             </div>
             <div className="mt-12 grid gap-8 md:grid-cols-4">
@@ -106,13 +101,12 @@ export default function Home() {
                     <ImageIcon className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="mt-4">
-                    AI Image Analysis
+                    {translations.homepage.feature_1_title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-muted-foreground">
-                    Upload a photo and get a compelling description and tags
-                    instantly.
+                    {translations.homepage.feature_1_desc}
                   </p>
                 </CardContent>
               </Card>
@@ -122,13 +116,12 @@ export default function Home() {
                     <Mic className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="mt-4">
-                    Voice-to-Story
+                    {translations.homepage.feature_2_title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-muted-foreground">
-                    Tell your story, and our AI will refine it into a
-                    captivating narrative.
+                    {translations.homepage.feature_2_desc}
                   </p>
                 </CardContent>
               </Card>
@@ -138,13 +131,12 @@ export default function Home() {
                     <Bot className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="mt-4">
-                    Smart Analytics
+                    {translations.homepage.feature_3_title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-muted-foreground">
-                    Get insights on how customers are interacting with your
-                    products.
+                    {translations.homepage.feature_3_desc}
                   </p>
                 </CardContent>
               </Card>
@@ -154,12 +146,12 @@ export default function Home() {
                     <Sparkles className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="mt-4">
-                    Custom Requests
+                    {translations.homepage.feature_4_title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-muted-foreground">
-                    Receive and manage commission requests directly from buyers.
+                    {translations.homepage.feature_4_desc}
                   </p>
                 </CardContent>
               </Card>
@@ -171,11 +163,10 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto">
               <h2 className="text-3xl font-bold">
-                Contemporary Indian Art for the Next Generation
+                {translations.homepage.art_title}
               </h2>
               <p className="mt-4 text-muted-foreground">
-                Discover modern Indian artists who are redefining tradition with
-                a fresh, vibrant perspective.
+                {translations.homepage.art_subtitle}
               </p>
             </div>
             <div className="mt-12 grid gap-8 md:grid-cols-3">
@@ -190,13 +181,12 @@ export default function Home() {
                 />
                 <CardHeader>
                   <CardTitle>
-                    Digital Mythology
+                    {translations.homepage.art_1_title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Ancient tales retold through digital illustration, blending
-                    epic narratives with modern aesthetics.
+                    {translations.homepage.art_1_desc}
                   </p>
                 </CardContent>
               </Card>
@@ -211,13 +201,12 @@ export default function Home() {
                 />
                 <CardHeader>
                   <CardTitle>
-                    Indian Street Art Fusion
+                    {translations.homepage.art_2_title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Graffiti and stencil art infused with Indian motifs,
-                    creating bold statements on urban canvases.
+                    {translations.homepage.art_2_desc}
                   </p>
                 </CardContent>
               </Card>
@@ -232,13 +221,12 @@ export default function Home() {
                 />
                 <CardHeader>
                   <CardTitle>
-                    Minimalist Folk
+                    {translations.homepage.art_3_title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Traditional folk forms like Warli and Gond, reimagined with
-                    clean lines and a contemporary color palette.
+                    {translations.homepage.art_3_desc}
                   </p>
                 </CardContent>
               </Card>
@@ -251,15 +239,13 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="text-center md:text-left">
                 <h2 className="text-3xl font-bold">
-                  Flexible &amp; Secure Payments
+                  {translations.homepage.payments_title}
                 </h2>
                 <p className="mt-4 text-muted-foreground">
-                  We support a wide range of payment methods to make
-                  transactions seamless for everyone. All transactions are
-                  secure and compliant with Indian regulations.
+                  {translations.homepage.payments_subtitle}
                 </p>
                 <p className="mt-4 text-muted-foreground text-sm">
-                  ...and many more UPI, credit, and debit card options.
+                  {translations.homepage.payments_extra}
                 </p>
               </div>
               <div className="flex flex-wrap justify-center items-center gap-6">
@@ -312,7 +298,7 @@ export default function Home() {
       </main>
 
       <footer className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} Artisan. All rights reserved.</p>
+        <p>{translations.homepage.footer.replace('{year}', new Date().getFullYear().toString())}</p>
       </footer>
     </div>
   );

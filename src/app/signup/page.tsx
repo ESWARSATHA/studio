@@ -66,42 +66,42 @@ export default function SignupPage() {
            <div className="inline-block mb-4">
             <Logo className="h-12 w-12 text-primary" />
           </div>
-          <CardTitle className="text-2xl">Create an Account</CardTitle>
+          <CardTitle className="text-2xl">{translations.signup_page.title}</CardTitle>
           <CardDescription>
-            Join Artisan to start selling or buying unique crafts.
+            {translations.signup_page.description}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="username">Username</Label>
+              <Label htmlFor="username">{translations.signup_page.username_label}</Label>
               <Input
                 id="username"
                 type="text"
-                placeholder="e.g., ArtisanPriya"
+                placeholder={translations.signup_page.username_placeholder}
                 required
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{translations.signup_page.email_label}</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="m@example.com"
+                placeholder={translations.signup_page.email_placeholder}
                 required
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="phone">Phone Number</Label>
+              <Label htmlFor="phone">{translations.signup_page.phone_label}</Label>
               <Input
                 id="phone"
                 type="tel"
-                placeholder="e.g., 9876543210"
+                placeholder={translations.signup_page.phone_placeholder}
                 required
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="password">Create Password</Label>
+              <Label htmlFor="password">{translations.signup_page.create_password_label}</Label>
                <div className="relative">
                 <Input
                   id="password"
@@ -118,7 +118,7 @@ export default function SignupPage() {
               </div>
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="confirm-password">Confirm Password</Label>
+              <Label htmlFor="confirm-password">{translations.signup_page.confirm_password_label}</Label>
                <div className="relative">
                 <Input
                   id="confirm-password"
@@ -135,13 +135,13 @@ export default function SignupPage() {
               </div>
             </div>
             <Button type="submit" className="w-full">
-              Create Account
+              {translations.signup_page.create_account_button}
             </Button>
           </div>
           <div className="mt-4 text-center text-sm">
-            Already have an account?{' '}
+            {translations.signup_page.login_link.split('?')[0]}?{' '}
             <Link href="/login" className="underline">
-              Login
+              {translations.signup_page.login_link.split('?')[1]}
             </Link>
           </div>
         </CardContent>

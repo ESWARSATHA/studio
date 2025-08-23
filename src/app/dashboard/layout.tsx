@@ -51,11 +51,11 @@ export default function DashboardLayout({
   const { language, setLanguage, translations } = useLanguage();
 
   const menuItems = [
-    { href: "/dashboard", label: "Dashboard", icon: LayoutGrid },
-    { href: "/dashboard/products/new", label: "Add Product", icon: PlusCircle },
-    { href: "/dashboard/analytics", label: "Analytics", icon: BarChart2 },
-    { href: "/dashboard/requests", label: "Requests", icon: MailQuestion },
-    { href: "/dashboard/support", label: "Support", icon: LifeBuoy },
+    { href: "/dashboard", label: translations.dashboard_layout.menu_dashboard, icon: LayoutGrid },
+    { href: "/dashboard/products/new", label: translations.dashboard_layout.menu_add_product, icon: PlusCircle },
+    { href: "/dashboard/analytics", label: translations.dashboard_layout.menu_analytics, icon: BarChart2 },
+    { href: "/dashboard/requests", label: translations.dashboard_layout.menu_requests, icon: MailQuestion },
+    { href: "/dashboard/support", label: translations.dashboard_layout.menu_support, icon: LifeBuoy },
   ];
 
   return (
@@ -120,21 +120,21 @@ export default function DashboardLayout({
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuLabel>{translations.dashboard_layout.account_menu_label}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                   <User className="mr-2" />
-                  Profile
+                  {translations.dashboard_layout.account_menu_profile}
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Settings className="mr-2" />
-                  Settings
+                  {translations.dashboard_layout.account_menu_settings}
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                   <Link href="/login" className="flex items-center">
                     <LogOut className="mr-2" />
-                    Log out
+                    {translations.dashboard_layout.account_menu_logout}
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
