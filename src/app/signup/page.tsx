@@ -63,6 +63,15 @@ export default function SignupPage() {
               />
             </div>
             <div className="grid gap-2">
+              <Label htmlFor="phone">Phone Number</Label>
+              <Input
+                id="phone"
+                type="tel"
+                placeholder="e.g., 9876543210"
+                required
+              />
+            </div>
+            <div className="grid gap-2">
               <Label htmlFor="password">Create Password</Label>
                <div className="relative">
                 <Input
