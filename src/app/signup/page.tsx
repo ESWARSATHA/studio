@@ -14,7 +14,6 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Logo } from '@/components/icons';
 import { Eye, EyeOff } from 'lucide-react';
 
@@ -69,19 +68,6 @@ export default function SignupPage() {
                   {showPassword ? <EyeOff /> : <Eye />}
                 </button>
               </div>
-            </div>
-            <div className="grid gap-2">
-              <Label>I am a...</Label>
-              <RadioGroup defaultValue="artisan" className="flex gap-4">
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="artisan" id="r1" />
-                  <Label htmlFor="r1">Artisan</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="buyer" id="r2" />
-                  <Label htmlFor="r2">Buyer</Label>
-                </div>
-              </RadioGroup>
             </div>
             <Button type="submit" className="w-full">
               Create Account
