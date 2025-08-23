@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -99,11 +100,11 @@ export default function DashboardLayout({
                 {menuItems.find(item => pathname.startsWith(item.href))?.label || "Dashboard"}
               </h1>
             </div>
-            <DropdownMenu>
+             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="gap-2">
                     <Globe className="h-4 w-4"/>
-                    lang
+                    <span>Language</span>
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
