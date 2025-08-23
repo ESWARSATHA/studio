@@ -44,11 +44,11 @@ export default function LoginPage() {
         <CardContent>
           <div className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="emailOrPhone">Email or Phone Number</Label>
               <Input
-                id="email"
-                type="email"
-                placeholder="m@example.com"
+                id="emailOrPhone"
+                type="text"
+                placeholder="m@example.com or 9876543210"
                 required
               />
             </div>
