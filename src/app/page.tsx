@@ -174,11 +174,11 @@ export default function Home() {
             <div className="mt-12 grid gap-8 md:grid-cols-3">
               <Card className="overflow-hidden">
                 <Image
-                  src="https://placehold.co/600x400.png"
+                  src="https://placehold.co/800x600.png"
                   alt="Digital mythology art"
-                  width={600}
-                  height={400}
-                  className="w-full h-48 object-cover"
+                  width={800}
+                  height={600}
+                  className="w-full h-64 object-cover"
                   data-ai-hint="digital art mythology"
                 />
                 <CardHeader>
@@ -194,11 +194,11 @@ export default function Home() {
               </Card>
               <Card className="overflow-hidden">
                 <Image
-                  src="https://placehold.co/600x400.png"
+                  src="https://placehold.co/800x600.png"
                   alt="Urban street art"
-                  width={600}
-                  height={400}
-                  className="w-full h-48 object-cover"
+                  width={800}
+                  height={600}
+                  className="w-full h-64 object-cover"
                   data-ai-hint="indian street art"
                 />
                 <CardHeader>
@@ -214,11 +214,11 @@ export default function Home() {
               </Card>
               <Card className="overflow-hidden">
                 <Image
-                  src="https://placehold.co/600x400.png"
+                  src="https://placehold.co/800x600.png"
                   alt="Minimalist folk art"
-                  width={600}
-                  height={400}
-                  className="w-full h-48 object-cover"
+                  width={800}
+                  height={600}
+                  className="w-full h-64 object-cover"
                   data-ai-hint="minimalist folk art"
                 />
                 <CardHeader>
@@ -272,17 +272,17 @@ export default function Home() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <Image
-                    src="https://placehold.co/600x400.png"
+                    src="https://placehold.co/400x400.png"
                     alt="Customer making a payment"
-                    width={600}
+                    width={400}
                     height={400}
                     className="w-full h-auto rounded-lg shadow-md object-cover aspect-square"
                     data-ai-hint="customer paying online"
                 />
                  <Image
-                    src="https://placehold.co/600x400.png"
+                    src="https://placehold.co/400x400.png"
                     alt="Artisan receiving payment notification"
-                    width={600}
+                    width={400}
                     height={400}
                     className="w-full h-auto rounded-lg shadow-md object-cover aspect-square"
                     data-ai-hint="artisan receiving money"
