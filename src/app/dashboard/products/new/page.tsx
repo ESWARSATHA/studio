@@ -1,9 +1,8 @@
 
 "use client";
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useActionState } from 'react';
 import Image from 'next/image';
-import { useFormState } from 'react-dom';
 import { handleGenerateDescription, handleRefineStory } from './actions';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -20,8 +19,8 @@ export default function NewProductPage() {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [imageDataUri, setImageDataUri] = useState<string | null>(null);
 
-  const [descriptionState, descriptionAction] = useFormState(handleGenerateDescription, initialState);
-  const [storyState, storyAction] = useFormState(handleRefineStory, initialState);
+  const [descriptionState, descriptionAction] = useActionState(handleGenerateDescription, initialState);
+  const [storyState, storyAction] = useActionState(handleRefineStory, initialState);
 
   const [isGeneratingDesc, setIsGeneratingDesc] = useState(false);
   const [isRefiningStory, setIsRefiningStory] = useState(false);

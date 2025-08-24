@@ -1,8 +1,7 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
-import { useFormState } from "react-dom";
+import { useEffect, useState, useActionState } from "react";
 import { Bot, HelpCircle, Loader2, Send, Wand2 } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -15,7 +14,7 @@ const initialState = { status: 'idle', message: '', data: null };
 
 export default function SupportPage() {
   const { toast } = useToast();
-  const [state, formAction] = useFormState(handleAnswerQuery, initialState);
+  const [state, formAction] = useActionState(handleAnswerQuery, initialState);
   const [query, setQuery] = useState('');
   const [answer, setAnswer] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
