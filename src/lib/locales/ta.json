@@ -63,7 +63,7 @@
         "account_menu_label": "என் கணக்கு",
         "account_menu_verify": "கணக்கைச் சரிபார்க்கவும்",
         "account_menu_profile": "சுயவிவரம்",
-        "account_menu_settings": "அமைப்புகள்",
+        "account_menu_settings": "கட்டண அமைப்புகள்",
         "account_menu_logout": "வெளியேறு"
     },
     "verification_page": {
@@ -75,7 +75,21 @@
         "gov_id_description": "பாதுகாப்பை உறுதி செய்வதற்கும் மோசடியைத் தடுப்பதற்கும், தயவுசெய்து அரசு வழங்கிய அடையாள அட்டையை (எ.கா. ஆதார், பான்) பதிவேற்றவும்.",
         "upload_prompt": "பதிவேற்ற கோப்பைக் கிளிக் செய்யவும் அல்லது இழுக்கவும்",
         "submit_button": "சரிபார்ப்புக்குச் சமர்ப்பிக்கவும்"
+    },
+    "payment_settings_page": {
+        "title": "கட்டண அமைப்புகள்",
+        "description": "உங்கள் விற்பனைக்கான கட்டணங்களை எவ்வாறு பெறுவது என்பதை உள்ளமைக்கவும்.",
+        "card_title": "செலுத்தும் முறை",
+        "card_description": "நிதியைப் பெறுவதற்கு நீங்கள் விரும்பும் முறையைத் தேர்ந்தெடுக்கவும். உங்கள் தகவல் குறியாக்கம் செய்யப்பட்டு பாதுகாப்பாக சேமிக்கப்படுகிறது.",
+        "upi_label": "UPI ஐடி (VPA)",
+        "upi_placeholder": "yourname@bank",
+        "bank_account_label": "வங்கி கணக்கு",
+        "account_holder_name_label": "கணக்கு வைத்திருப்பவரின் பெயர்",
+        "account_holder_name_placeholder": "எ.கா., பிரியா குமார்",
+        "account_number_label": "கணக்கு எண்",
+        "account_number_placeholder": "உங்கள் கணக்கு எண்ணை உள்ளிடவும்",
+        "ifsc_code_label": "IFSC குறியீடு",
+        "ifsc_code_placeholder": "உங்கள் வங்கியின் IFSC குறியீட்டை உள்ளிடவும்",
+        "save_button": "கட்டண அமைப்புகளைச் சேமிக்கவும்"
     }
 }
-
-    

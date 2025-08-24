@@ -130,8 +130,10 @@ export default function DashboardLayout({
                   {translations.dashboard_layout.account_menu_profile}
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Settings className="mr-2" />
-                  {translations.dashboard_layout.account_menu_settings}
+                   <Link href="/dashboard/settings/payment" className="flex items-center">
+                    <Settings className="mr-2" />
+                    {translations.dashboard_layout.account_menu_settings}
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
@@ -149,5 +151,3 @@ export default function DashboardLayout({
     </SidebarProvider>
   );
 }
-
-    

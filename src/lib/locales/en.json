@@ -63,7 +63,7 @@
         "account_menu_label": "My Account",
         "account_menu_verify": "Verify Account",
         "account_menu_profile": "Profile",
-        "account_menu_settings": "Settings",
+        "account_menu_settings": "Payment Settings",
         "account_menu_logout": "Log out"
     },
     "verification_page": {
@@ -75,7 +75,21 @@
         "gov_id_description": "To ensure security and prevent fraud, please upload a government-issued ID (e.g., Aadhar, PAN).",
         "upload_prompt": "Click or drag file to upload",
         "submit_button": "Submit for Verification"
+    },
+    "payment_settings_page": {
+        "title": "Payment Settings",
+        "description": "Configure how you receive payments for your sales.",
+        "card_title": "Payout Method",
+        "card_description": "Select your preferred method for receiving funds. Your information is encrypted and stored securely.",
+        "upi_label": "UPI ID (VPA)",
+        "upi_placeholder": "yourname@bank",
+        "bank_account_label": "Bank Account",
+        "account_holder_name_label": "Account Holder Name",
+        "account_holder_name_placeholder": "e.g., Priya Kumar",
+        "account_number_label": "Account Number",
+        "account_number_placeholder": "Enter your account number",
+        "ifsc_code_label": "IFSC Code",
+        "ifsc_code_placeholder": "Enter your bank's IFSC code",
+        "save_button": "Save Payment Settings"
     }
 }
-
-    

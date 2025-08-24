@@ -63,7 +63,7 @@
         "account_menu_label": "माझे खाते",
         "account_menu_verify": "खाते सत्यापित करा",
         "account_menu_profile": "प्रोफाइल",
-        "account_menu_settings": "सेटिंग्ज",
+        "account_menu_settings": "पेमेंट सेटिंग्ज",
         "account_menu_logout": "लॉग आउट"
     },
     "verification_page": {
@@ -75,7 +75,21 @@
         "gov_id_description": "सुरक्षितता सुनिश्चित करण्यासाठी आणि फसवणूक टाळण्यासाठी, कृपया सरकारी ओळखपत्र (उदा. आधार, पॅन) अपलोड करा.",
         "upload_prompt": "अपलोड करण्यासाठी फाइलवर क्लिक करा किंवा ड्रॅग करा",
         "submit_button": "पडताळणीसाठी सबमिट करा"
+    },
+    "payment_settings_page": {
+        "title": "पेमेंट सेटिंग्ज",
+        "description": "तुम्ही तुमच्या विक्रीसाठी पेमेंट कसे प्राप्त करता ते कॉन्फिगर करा.",
+        "card_title": "पेआउट पद्धत",
+        "card_description": "निधी प्राप्त करण्यासाठी तुमची पसंतीची पद्धत निवडा. तुमची माहिती कूटबद्ध आणि सुरक्षितपणे संग्रहित केली जाते.",
+        "upi_label": "UPI आयडी (VPA)",
+        "upi_placeholder": "yourname@bank",
+        "bank_account_label": "बँक खाते",
+        "account_holder_name_label": "खातेधारकाचे नाव",
+        "account_holder_name_placeholder": "उदा. प्रिया कुमार",
+        "account_number_label": "खाते क्रमांक",
+        "account_number_placeholder": "तुमचा खाते क्रमांक प्रविष्ट करा",
+        "ifsc_code_label": "IFSC कोड",
+        "ifsc_code_placeholder": "तुमच्या बँकेचा IFSC कोड प्रविष्ट करा",
+        "save_button": "पेमेंट सेटिंग्ज जतन करा"
     }
 }
-
-    

@@ -63,7 +63,7 @@
         "account_menu_label": "मेरा खाता",
         "account_menu_verify": "खाता सत्यापित करें",
         "account_menu_profile": "प्रोफ़ाइल",
-        "account_menu_settings": "सेटिंग्स",
+        "account_menu_settings": "भुगतान सेटिंग्स",
         "account_menu_logout": "लॉग आउट"
     },
     "verification_page": {
@@ -75,7 +75,21 @@
         "gov_id_description": "सुरक्षा सुनिश्चित करने और धोखाधड़ी को रोकने के लिए, कृपया एक सरकारी आईडी (जैसे, आधार, पैन) अपलोड करें।",
         "upload_prompt": "अपलोड करने के लिए फ़ाइल पर क्लिक करें या खींचें",
         "submit_button": "सत्यापन के लिए सबमिट करें"
+    },
+    "payment_settings_page": {
+        "title": "भुगतान सेटिंग्स",
+        "description": "आप अपनी बिक्री के लिए भुगतान कैसे प्राप्त करते हैं, इसे कॉन्फ़िगर करें।",
+        "card_title": "भुगतान विधि",
+        "card_description": "धनराशि प्राप्त करने के लिए अपनी पसंदीदा विधि चुनें। आपकी जानकारी एन्क्रिप्टेड और सुरक्षित रूप से संग्रहीत है।",
+        "upi_label": "UPI आईडी (VPA)",
+        "upi_placeholder": "yourname@bank",
+        "bank_account_label": "बैंक खाता",
+        "account_holder_name_label": "खाता धारक का नाम",
+        "account_holder_name_placeholder": "उदा., प्रिया कुमार",
+        "account_number_label": "खाता संख्या",
+        "account_number_placeholder": "अपना खाता संख्या दर्ज करें",
+        "ifsc_code_label": "IFSC कोड",
+        "ifsc_code_placeholder": "अपने बैंक का IFSC कोड दर्ज करें",
+        "save_button": "भुगतान सेटिंग्स सहेजें"
     }
 }
-
-    
