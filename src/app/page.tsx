@@ -23,6 +23,8 @@ import {
   Mic,
   Sparkles,
   Globe,
+  Wallet,
+  IndianRupee,
 } from 'lucide-react';
 import { Logo } from '@/components/icons';
 import { languages, useLanguage } from '@/lib/locales/language-context';
@@ -244,52 +246,46 @@ export default function Home() {
                 <p className="mt-4 text-muted-foreground">
                   {translations.homepage.payments_subtitle}
                 </p>
-                <p className="mt-4 text-muted-foreground text-sm">
+                 <p className="mt-4 text-muted-foreground text-sm">
                   {translations.homepage.payments_extra}
                 </p>
+                <div className="mt-6 flex flex-col gap-4">
+                    <div className="flex items-center gap-4">
+                        <div className="p-3 bg-primary/10 rounded-full">
+                            <Wallet className="h-6 w-6 text-primary" />
+                        </div>
+                        <div>
+                            <h4 className="font-semibold">AI-Powered Example: Simplified Payments</h4>
+                            <p className="text-sm text-muted-foreground">A customer from Mumbai buys a painting. They pay easily with UPI. You get the payment instantly, minus our 1% fee. Simple, fast, and fair.</p>
+                        </div>
+                    </div>
+                     <div className="flex items-center gap-4">
+                        <div className="p-3 bg-primary/10 rounded-full">
+                            <IndianRupee className="h-6 w-6 text-primary" />
+                        </div>
+                        <div>
+                            <h4 className="font-semibold">Direct & Transparent</h4>
+                            <p className="text-sm text-muted-foreground">No hidden charges. No delays. Your hard-earned money reaches you directly, empowering you to grow your business.</p>
+                        </div>
+                    </div>
+                </div>
               </div>
-              <div className="flex flex-wrap justify-center items-center gap-6">
+              <div className="grid grid-cols-2 gap-4">
                 <Image
-                  src="https://placehold.co/100x40.png"
-                  alt="UPI Logo"
-                  width={100}
-                  height={40}
-                  data-ai-hint="upi logo"
+                    src="https://placehold.co/600x400.png"
+                    alt="Customer making a payment"
+                    width={600}
+                    height={400}
+                    className="w-full h-auto rounded-lg shadow-md object-cover aspect-square"
+                    data-ai-hint="customer paying online"
                 />
-                <Image
-                  src="https://placehold.co/100x40.png"
-                  alt="Visa Logo"
-                  width={100}
-                  height={40}
-                  data-ai-hint="visa logo"
-                />
-                <Image
-                  src="https://placehold.co/100x40.png"
-                  alt="Mastercard Logo"
-                  width={100}
-                  height={40}
-                  data-ai-hint="mastercard logo"
-                />
-                <Image
-                  src="https://placehold.co/100x40.png"
-                  alt="Rupay Logo"
-                  width={100}
-                  height={40}
-                  data-ai-hint="rupay logo"
-                />
-                <Image
-                  src="https://placehold.co/100x40.png"
-                  alt="PhonePe Logo"
-                  width={100}
-                  height={40}
-                  data-ai-hint="phonepe logo"
-                />
-                <Image
-                  src="https://placehold.co/100x40.png"
-                  alt="Google Pay Logo"
-                  width={100}
-                  height={40}
-                  data-ai-hint="google pay logo"
+                 <Image
+                    src="https://placehold.co/600x400.png"
+                    alt="Artisan receiving payment notification"
+                    width={600}
+                    height={400}
+                    className="w-full h-auto rounded-lg shadow-md object-cover aspect-square"
+                    data-ai-hint="artisan receiving money"
                 />
               </div>
             </div>
