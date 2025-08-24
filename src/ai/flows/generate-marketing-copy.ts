@@ -1,0 +1,59 @@
+
+'use server';
+/**
+ * @fileOverview Generates marketing copy for a product.
+ *
+ * - generateMarketingCopy - A function that handles the marketing copy generation process.
+ * - GenerateMarketingCopyInput - The input type for the generateMarketingCopy function.
+ * - GenerateMarketingCopyOutput - The return type for the generateMarketingCopy function.
+ */
+
+import {ai} from '@/ai/genkit';
+import {z} from 'genkit';
+
+const GenerateMarketingCopyInputSchema = z.object({
+  productName: z.string().describe("The name of the product."),
+  productDescription: z.string().describe("A brief description of the product."),
+});
+export type GenerateMarketingCopyInput = z.infer<typeof GenerateMarketingCopyInputSchema>;
+
+const GenerateMarketingCopyOutputSchema = z.object({
+  targetAudience: z.string().describe("A description of the ideal target audience for this product."),
+  socialMediaPost: z.string().describe("A short, engaging social media post to promote the product."),
+  emailCopy: z.string().describe("A draft for a promotional email to send to a mailing list."),
+});
+export type GenerateMarketingCopyOutput = z.infer<typeof GenerateMarketingCopyOutputSchema>;
+
+export async function generateMarketingCopy(input: GenerateMarketingCopyInput): Promise<GenerateMarketingCopyOutput> {
+  return generateMarketingCopyFlow(input);
+}
+
+const prompt = ai.definePrompt({
+  name: 'generateMarketingCopyPrompt',
+  input: {schema: GenerateMarketingCopyInputSchema},
+  output: {schema: GenerateMarketingCopyOutputSchema},
+  prompt: `You are a marketing expert for a platform called "Artisan" that helps Indian artists sell their work.
+
+Your task is to generate marketing copy for the following product:
+- Product Name: {{{productName}}}
+- Description: {{{productDescription}}}
+
+Based on this, please generate the following:
+1.  **Target Audience:** Who is the ideal customer for this product? Be specific.
+2.  **Social Media Post:** Write a short, exciting post for platforms like Instagram or Facebook. Include relevant hashtags.
+3.  **Email Copy:** Draft a promotional email. It should have a catchy subject line and a compelling body that encourages clicks.
+
+Keep the tone enthusiastic, authentic, and focused on the art and the artisan.`,
+});
+
+const generateMarketingCopyFlow = ai.defineFlow(
+  {
+    name: 'generateMarketingCopyFlow',
+    inputSchema: GenerateMarketingCopyInputSchema,
+    outputSchema: GenerateMarketingCopyOutputSchema,
+  },
+  async input => {
+    const {output} = await prompt(input);
+    return output!;
+  }
+);
