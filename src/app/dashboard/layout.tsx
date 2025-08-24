@@ -21,7 +21,6 @@ import {
   Settings,
   User,
   LogOut,
-  MailQuestion,
   Globe,
   LifeBuoy,
   Megaphone,
@@ -52,7 +51,6 @@ export default function DashboardLayout({
     { href: "/dashboard", label: translations.dashboard_layout.menu_dashboard, icon: LayoutGrid },
     { href: "/dashboard/products/new", label: translations.dashboard_layout.menu_add_product, icon: PlusCircle },
     { href: "/dashboard/analytics", label: translations.dashboard_layout.menu_analytics, icon: BarChart2 },
-    { href: "/dashboard/requests", label: translations.dashboard_layout.menu_requests, icon: MailQuestion },
     { href: "/dashboard/marketing", label: translations.dashboard_layout.menu_marketing, icon: Megaphone },
     { href: "/dashboard/support", label: translations.dashboard_layout.menu_support, icon: LifeBuoy },
   ];
@@ -151,3 +149,5 @@ export default function DashboardLayout({
     </SidebarProvider>
   );
 }
+
+    

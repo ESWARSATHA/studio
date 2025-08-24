@@ -40,7 +40,7 @@ When answering, please consider the following information about the Artisan plat
     - **AI Image Analysis:** Upload a photo to get an instant product description and tags.
     - **Voice-to-Story:** Dictate a story about a product, and our AI refines it into a captivating narrative.
     - **Smart Analytics:** View insights on product views, ratings, and customer interactions.
-    - **Custom Requests:** Receive and manage commission requests directly from buyers.
+    - **Marketing Hub:** Generate marketing copy, including social media posts and emails.
     - **Payments:** Secure and flexible payments via all major UPI methods and credit/debit cards.
 - **Support:** For complex issues, users can always reach out to our human support team via email at help@artisan.com.
 
@@ -60,3 +60,5 @@ const customerSupportFlow = ai.defineFlow(
     return output!;
   }
 );
+
+    

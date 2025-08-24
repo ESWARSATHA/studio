@@ -3,8 +3,7 @@
     "homepage": {
         "title": "Empower Your Craft with AI",
         "subtitle": "Artisan provides intelligent tools to help you describe, narrate, and sell your unique creations. Focus on your art, we'll handle the words. The platform is completely free for artisans.",
-        "artisans_button": "For Artisans",
-        "buyers_button": "For Buyers",
+        "artisans_button": "Start Creating",
         "login": "Login",
         "signup": "Sign Up",
         "features_title": "Features for the Modern Artisan",
@@ -15,8 +14,8 @@
         "feature_2_desc": "Tell your story, and our AI will refine it into a captivating narrative.",
         "feature_3_title": "Smart Analytics",
         "feature_3_desc": "Get insights on how customers are interacting with your products.",
-        "feature_4_title": "Custom Requests",
-        "feature_4_desc": "Receive and manage commission requests directly from buyers.",
+        "feature_4_title": "Marketing Hub",
+        "feature_4_desc": "Generate promotional materials and understand market demand for your art.",
         "art_title": "Contemporary Indian Art for the Next Generation",
         "art_subtitle": "Discover modern Indian artists who are redefining tradition with a fresh, vibrant perspective.",
         "art_1_title": "Digital Mythology",
@@ -25,8 +24,8 @@
         "art_2_desc": "Graffiti and stencil art infused with Indian motifs, creating bold statements on urban canvases.",
         "art_3_title": "Minimalist Folk",
         "art_3_desc": "Traditional folk forms like Warli and Gond, reimagined with clean lines and a contemporary color palette.",
-        "payments_title": "Flexible & Secure Payments",
-        "payments_subtitle": "We support a wide range of payment methods to make transactions seamless for everyone. All transactions are secure and compliant with Indian regulations.",
+        "payments_title": "Flexible & Secure Payments For You",
+        "payments_subtitle": "We support a wide range of payment methods to make receiving payments for your art seamless. All transactions are secure and compliant with Indian regulations.",
         "payments_extra": "...and many more UPI, credit, and debit card options.",
         "footer": "© {year} Artisan. All rights reserved."
     },
@@ -59,7 +58,6 @@
         "menu_dashboard": "Dashboard",
         "menu_add_product": "Add Product",
         "menu_analytics": "Analytics",
-        "menu_requests": "Requests",
         "menu_marketing": "Marketing Hub",
         "menu_support": "Support",
         "account_menu_label": "My Account",
@@ -79,3 +77,5 @@
         "submit_button": "Submit for Verification"
     }
 }
+
+    

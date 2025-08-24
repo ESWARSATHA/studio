@@ -79,9 +79,6 @@ export default function Home() {
                   {translations.homepage.artisans_button} <ArrowRight className="ml-2" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link href="/login">{translations.homepage.buyers_button}</Link>
-              </Button>
             </div>
           </div>
         </section>
@@ -255,8 +252,8 @@ export default function Home() {
                             <Wallet className="h-6 w-6 text-primary" />
                         </div>
                         <div>
-                            <h4 className="font-semibold">Simplified Payments</h4>
-                            <p className="text-sm text-muted-foreground">A customer from Mumbai buys a painting. They pay easily with UPI. You get the payment instantly. Simple, fast, and fair.</p>
+                            <h4 className="font-semibold">Simplified Payments For You</h4>
+                            <p className="text-sm text-muted-foreground">When a customer buys your art, they can pay easily with UPI. You get the payment instantly. Simple, fast, and fair.</p>
                         </div>
                     </div>
                      <div className="flex items-center gap-4">
@@ -299,3 +296,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
