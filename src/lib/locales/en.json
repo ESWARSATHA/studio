@@ -62,6 +62,7 @@
         "menu_marketing": "Marketing Hub",
         "menu_community": "Community Hub",
         "menu_support": "Support",
+        "menu_live_studio": "Live Studio",
         "account_menu_label": "My Account",
         "account_menu_verify": "Verify Account",
         "account_menu_profile": "Profile",
@@ -98,5 +99,25 @@
         "title": "Community Hub",
         "description": "Connect with fellow artisans, share ideas, and collaborate.",
         "send_message": "Send Message"
+    },
+    "live_studio_page": {
+        "video_preview_title": "Live Studio",
+        "video_preview_description": "Your camera feed for the live stream. What you see here is what your audience will see.",
+        "camera_access_denied": "Camera Access Denied",
+        "enable_camera_prompt": "Please enable camera permissions in your browser settings to use this feature.",
+        "camera_access_required": "Camera Access Required",
+        "allow_camera_access_prompt": "Please allow camera access in your browser to use the Live Studio.",
+        "stream_controls_title": "Stream Controls",
+        "stream_controls_description": "Manage your live session from here.",
+        "stream_title_label": "Stream Title",
+        "stream_title_placeholder": "e.g., Live Pottery Session",
+        "go_live_button": "Go Live",
+        "end_stream_button": "End Stream",
+        "live_chat_title": "Live Chat",
+        "live_chat_description": "Engage with your audience.",
+        "chat_message_1": "This is amazing! Can't wait to see the final piece.",
+        "chat_message_2": "What kind of clay are you using?",
+        "chat_message_3": "Great technique! I'm learning so much.",
+        "chat_placeholder": "Send a message..."
     }
 }

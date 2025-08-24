@@ -26,6 +26,7 @@ import {
   Megaphone,
   ShieldCheck,
   Users,
+  Radio,
 } from "lucide-react";
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
@@ -54,6 +55,7 @@ export default function DashboardLayout({
     { href: "/dashboard/analytics", label: translations.dashboard_layout.menu_analytics, icon: BarChart2 },
     { href: "/dashboard/marketing", label: translations.dashboard_layout.menu_marketing, icon: Megaphone },
     { href: "/dashboard/community", label: translations.dashboard_layout.menu_community, icon: Users },
+    { href: "/dashboard/livestudio", label: translations.dashboard_layout.menu_live_studio, icon: Radio },
     { href: "/dashboard/support", label: translations.dashboard_layout.menu_support, icon: LifeBuoy },
   ];
 
