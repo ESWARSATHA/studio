@@ -21,7 +21,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/icons';
-import { Eye, EyeOff, Globe, KeyRound } from 'lucide-react';
+import { Eye, EyeOff, Globe, KeyRound, UploadCloud, FileCheck } from 'lucide-react';
 import { languages, useLanguage } from '@/lib/locales/language-context';
 
 export default function SignupPage() {
@@ -30,6 +30,7 @@ export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { language, setLanguage, translations } = useLanguage();
+  const [documentFile, setDocumentFile] = useState<File | null>(null);
 
   const generateStrongPassword = () => {
     const lower = 'abcdefghijklmnopqrstuvwxyz';
@@ -48,6 +49,13 @@ export default function SignupPage() {
     newPassword = newPassword.split('').sort(() => 0.5 - Math.random()).join('');
     setPassword(newPassword);
     setConfirmPassword(newPassword);
+  };
+  
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setDocumentFile(file);
+    }
   };
 
   return (
@@ -120,6 +128,24 @@ export default function SignupPage() {
                 placeholder={translations.signup_page.phone_placeholder}
                 required
               />
+            </div>
+             <div className="grid gap-2">
+                <Label htmlFor="document-upload">{translations.signup_page.gov_id_label}</Label>
+                <CardDescription className="text-xs">{translations.signup_page.gov_id_description}</CardDescription>
+                <div className="w-full rounded-lg border-2 border-dashed border-muted-foreground/30 flex items-center justify-center relative overflow-hidden bg-secondary/50 p-4 h-28">
+                  {documentFile ? (
+                    <div className="text-center text-muted-foreground">
+                      <FileCheck className="mx-auto h-8 w-8 mb-2 text-primary" />
+                      <p className="text-sm font-semibold">{documentFile.name}</p>
+                    </div>
+                  ) : (
+                    <div className="text-center text-muted-foreground">
+                      <UploadCloud className="mx-auto h-8 w-8 mb-2" />
+                      <p className="text-sm">{translations.signup_page.upload_prompt}</p>
+                    </div>
+                  )}
+                  <Input id="document-upload" type="file" accept=".pdf,.jpg,.jpeg,.png" onChange={handleFileChange} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+                </div>
             </div>
             <div className="grid gap-2">
               <div className="flex justify-between items-center">
