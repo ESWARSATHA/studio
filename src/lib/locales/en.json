@@ -118,6 +118,9 @@
         "chat_message_1": "This is amazing! Can't wait to see the final piece.",
         "chat_message_2": "What kind of clay are you using?",
         "chat_message_3": "Great technique! I'm learning so much.",
-        "chat_placeholder": "Send a message..."
+        "chat_placeholder": "Send a message...",
+        "verification_required_title": "Verification Required",
+        "verification_required_description": "You must be a verified artist to go live.",
+        "verify_now_link": "Verify Now"
     }
 }

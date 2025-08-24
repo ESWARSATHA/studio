@@ -2,13 +2,14 @@
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from '@/components/ui/button';
 import { useToast } from "@/hooks/use-toast";
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Send, Video, VideoOff } from 'lucide-react';
+import { Send, Video, VideoOff, ShieldCheck } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useLanguage } from '@/lib/locales/language-context';
 
@@ -18,6 +19,7 @@ export default function LiveStudioPage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isStreaming, setIsStreaming] = useState(false);
   const [hasCameraPermission, setHasCameraPermission] = useState<boolean | null>(null);
+  const [isVerified, setIsVerified] = useState(false); // Simulated verification status
 
   useEffect(() => {
     const getCameraPermission = async () => {
@@ -51,6 +53,15 @@ export default function LiveStudioPage() {
   }, [toast]);
 
   const handleStreamToggle = () => {
+    if (!isVerified) {
+        toast({
+            variant: 'destructive',
+            title: 'Verification Required',
+            description: 'You must be a verified artist to start a live stream.',
+        });
+        return;
+    }
+
     if (isStreaming) {
       // Logic to stop the stream
       setIsStreaming(false);
@@ -117,11 +128,23 @@ export default function LiveStudioPage() {
                     <CardDescription>{translations.live_studio_page.stream_controls_description}</CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-4">
+                     {!isVerified && (
+                        <Alert>
+                            <ShieldCheck className="h-4 w-4" />
+                            <AlertTitle>{translations.live_studio_page.verification_required_title}</AlertTitle>
+                            <AlertDescription>
+                                {translations.live_studio_page.verification_required_description}
+                                <Button variant="link" className="p-0 h-auto ml-1" asChild>
+                                    <Link href="/dashboard/verification">{translations.live_studio_page.verify_now_link}</Link>
+                                </Button>
+                            </AlertDescription>
+                        </Alert>
+                     )}
                      <div className="grid gap-2">
                         <Label htmlFor="stream-title">{translations.live_studio_page.stream_title_label}</Label>
                         <Input id="stream-title" placeholder={translations.live_studio_page.stream_title_placeholder} />
                     </div>
-                    <Button size="lg" onClick={handleStreamToggle} disabled={hasCameraPermission === null}>
+                    <Button size="lg" onClick={handleStreamToggle} disabled={hasCameraPermission === null || !isVerified}>
                     {isStreaming ? (
                         <>
                         <VideoOff className="mr-2" /> {translations.live_studio_page.end_stream_button}

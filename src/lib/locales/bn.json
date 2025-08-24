@@ -118,6 +118,9 @@
         "chat_message_1": "এটা অসাধারণ! চূড়ান্ত অংশটি দেখার জন্য অপেক্ষা করতে পারছি না।",
         "chat_message_2": "আপনি কোন ধরণের কাদামাটি ব্যবহার করছেন?",
         "chat_message_3": "দারুণ কৌশল! আমি অনেক কিছু শিখছি।",
-        "chat_placeholder": "একটি বার্তা পাঠান..."
+        "chat_placeholder": "একটি বার্তা পাঠান...",
+        "verification_required_title": "যাচাইকরণ প্রয়োজন",
+        "verification_required_description": "লাইভ যেতে আপনাকে একজন যাচাইকৃত শিল্পী হতে হবে।",
+        "verify_now_link": "এখন যাচাই করুন"
     }
 }
