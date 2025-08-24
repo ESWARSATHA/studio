@@ -43,6 +43,7 @@
     "signup_page": {
         "title": "একটি অ্যাকাউন্ট তৈরি করুন",
         "description": "অনন্য কারুশিল্প বিক্রি বা কেনা শুরু করতে Artisan-এ যোগ দিন।",
+        "avatar_label": "একটি প্রোফাইল ছবি আপলোড করুন",
         "username_label": "ব্যবহারকারীর নাম",
         "username_placeholder": "যেমন, ArtisanPriya",
         "email_label": "ইমেল",

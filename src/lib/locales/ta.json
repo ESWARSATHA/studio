@@ -43,6 +43,7 @@
     "signup_page": {
         "title": "ஒரு கணக்கை உருவாக்கவும்",
         "description": "தனித்துவமான கைவினைப்பொருட்களை விற்க அல்லது வாங்க Artisan இல் சேரவும்.",
+        "avatar_label": "சுயவிவரப் படத்தைப் பதிவேற்றவும்",
         "username_label": "பயனர்பெயர்",
         "username_placeholder": "எ.கா., ArtisanPriya",
         "email_label": "மின்னஞ்சல்",

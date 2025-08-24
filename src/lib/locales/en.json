@@ -43,6 +43,7 @@
     "signup_page": {
         "title": "Create an Account",
         "description": "Join Artisan to start selling or buying unique crafts.",
+        "avatar_label": "Upload a Profile Picture",
         "username_label": "Username",
         "username_placeholder": "e.g., ArtisanPriya",
         "email_label": "Email",

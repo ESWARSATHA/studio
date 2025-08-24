@@ -43,6 +43,7 @@
     "signup_page": {
         "title": "एक खाते तयार करा",
         "description": "अद्वितीय हस्तकला विकणे किंवा खरेदी करणे सुरू करण्यासाठी आर्टिसनमध्ये सामील व्हा.",
+        "avatar_label": "एक प्रोफाइल चित्र अपलोड करा",
         "username_label": "वापरकर्तानाव",
         "username_placeholder": "उदा. ArtisanPriya",
         "email_label": "ईमेल",

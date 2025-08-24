@@ -43,6 +43,7 @@
     "signup_page": {
         "title": "खाता बनाएं",
         "description": "अद्वितीय शिल्प बेचना या खरीदना शुरू करने के लिए आर्टिसन से जुड़ें।",
+        "avatar_label": "एक प्रोफ़ाइल चित्र अपलोड करें",
         "username_label": "उपयोगकर्ता नाम",
         "username_placeholder": "उदा., ArtisanPriya",
         "email_label": "ईमेल",

@@ -21,7 +21,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/icons';
-import { Eye, EyeOff, Globe, KeyRound } from 'lucide-react';
+import { Eye, EyeOff, Globe, KeyRound, User } from 'lucide-react';
 import { languages, useLanguage } from '@/lib/locales/language-context';
 
 export default function SignupPage() {
@@ -30,6 +30,14 @@ export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { language, setLanguage, translations } = useLanguage();
+  const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
+
+  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setAvatarPreview(URL.createObjectURL(file));
+    }
+  };
 
   const generateStrongPassword = () => {
     const lower = 'abcdefghijklmnopqrstuvwxyz';
@@ -94,6 +102,21 @@ export default function SignupPage() {
         </CardHeader>
         <CardContent>
           <div className="grid gap-4">
+             <div className="grid gap-2 items-center text-center">
+                <Label htmlFor="avatar-upload" className="cursor-pointer">
+                    <div className="mx-auto h-24 w-24 rounded-full border-2 border-dashed flex items-center justify-center bg-secondary/50 hover:bg-secondary/80 transition-colors relative">
+                        {avatarPreview ? (
+                        <Image src={avatarPreview} alt="Avatar preview" fill className="rounded-full object-cover" />
+                        ) : (
+                        <User className="h-10 w-10 text-muted-foreground" />
+                        )}
+                    </div>
+                </Label>
+                <Input id="avatar-upload" type="file" accept="image/*" className="hidden" onChange={handleAvatarChange} />
+                <Label htmlFor="avatar-upload" className="cursor-pointer text-sm font-medium text-muted-foreground hover:text-primary">
+                    {translations.signup_page.avatar_label}
+                </Label>
+            </div>
             <div className="grid gap-2">
               <Label htmlFor="username">{translations.signup_page.username_label}</Label>
               <Input
