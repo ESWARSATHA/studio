@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { handleAnswerQuery } from "./actions";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useLanguage } from "@/lib/locales/language-context";
 
 const initialState = { status: 'idle', message: '', data: null };
 
@@ -18,14 +20,15 @@ export default function SupportPage() {
   const [query, setQuery] = useState('');
   const [answer, setAnswer] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { translations } = useLanguage();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!query) {
       toast({
         variant: "destructive",
-        title: "No Query Provided",
-        description: "Please enter your question before submitting.",
+        title: translations.support_page.no_query_title,
+        description: translations.support_page.no_query_desc,
       });
       return;
     }
@@ -39,39 +42,41 @@ export default function SupportPage() {
     if (state.status === 'success') {
       setAnswer(state.data?.answer || '');
       toast({
-        title: "Answer Ready!",
-        description: "The AI has responded to your query.",
+        title: translations.support_page.answer_ready_title,
+        description: translations.support_page.answer_ready_desc,
       });
     } else if (state.status === 'error') {
       toast({
         variant: "destructive",
-        title: "Request Failed",
+        title: translations.support_page.request_failed_title,
         description: state.message,
       });
       setAnswer('');
     }
     setIsSubmitting(false);
-  }, [state, toast]);
+  }, [state, toast, translations]);
+  
+  const faqItems = translations.support_page.faq.items;
 
   return (
     <div className="grid gap-8 max-w-3xl mx-auto">
       <div className="text-center">
         <HelpCircle className="mx-auto h-12 w-12 text-primary" />
-        <h1 className="mt-4 text-3xl font-bold tracking-tight">Support Center</h1>
-        <p className="mt-2 text-muted-foreground">Have a question? Ask our AI assistant.</p>
+        <h1 className="mt-4 text-3xl font-bold tracking-tight">{translations.support_page.title}</h1>
+        <p className="mt-2 text-muted-foreground">{translations.support_page.description}</p>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Ask a Question</CardTitle>
-          <CardDescription>Enter your query below and our AI will do its best to help you.</CardDescription>
+          <CardTitle>{translations.support_page.ask_ai_title}</CardTitle>
+          <CardDescription>{translations.support_page.ask_ai_desc}</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="flex gap-2">
             <Input
               id="query"
               name="query"
-              placeholder="e.g., How do I change my product's price?"
+              placeholder={translations.support_page.ask_ai_placeholder}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               disabled={isSubmitting}
@@ -80,12 +85,12 @@ export default function SupportPage() {
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 animate-spin" />
-                  <span>Asking...</span>
+                  <span>{translations.support_page.asking_button}</span>
                 </>
               ) : (
                 <>
                   <Send className="mr-2" />
-                  <span>Ask AI</span>
+                  <span>{translations.support_page.ask_ai_button}</span>
                 </>
               )}
             </Button>
@@ -101,8 +106,8 @@ export default function SupportPage() {
                   <AvatarFallback><Bot /></AvatarFallback>
                 </Avatar>
               <div>
-                <CardTitle>AI Assistant</CardTitle>
-                <CardDescription>Here is the response to your query.</CardDescription>
+                <CardTitle>{translations.support_page.ai_assistant_title}</CardTitle>
+                <CardDescription>{translations.support_page.ai_assistant_desc}</CardDescription>
               </div>
             </div>
           </CardHeader>
@@ -110,7 +115,7 @@ export default function SupportPage() {
             {isSubmitting && !answer ? (
                 <div className="flex items-center gap-2 text-muted-foreground">
                     <Loader2 className="animate-spin" />
-                    <p>Thinking...</p>
+                    <p>{translations.support_page.thinking}</p>
                 </div>
             ) : (
               <p>{answer}</p>
@@ -118,6 +123,26 @@ export default function SupportPage() {
           </CardContent>
         </Card>
       )}
+
+      <Card>
+        <CardHeader>
+          <CardTitle>{translations.support_page.faq.title}</CardTitle>
+          <CardDescription>{translations.support_page.faq.description}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Accordion type="single" collapsible className="w-full">
+            {faqItems.map((item: any, index: number) => (
+              <AccordionItem value={`item-${index + 1}`} key={index}>
+                <AccordionTrigger>{item.question}</AccordionTrigger>
+                <AccordionContent>
+                  {item.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </CardContent>
+      </Card>
+
     </div>
   );
 }

@@ -122,5 +122,48 @@
         "verification_required_title": "Verification Required",
         "verification_required_description": "You must be a verified artist to go live.",
         "verify_now_link": "Verify Now"
+    },
+    "support_page": {
+        "title": "Support Center",
+        "description": "Have a question? Ask our AI assistant or check the FAQs below.",
+        "ask_ai_title": "Ask a Question",
+        "ask_ai_desc": "Enter your query below and our AI will do its best to help you.",
+        "ask_ai_placeholder": "e.g., How do I change my product's price?",
+        "ask_ai_button": "Ask AI",
+        "asking_button": "Asking...",
+        "ai_assistant_title": "AI Assistant",
+        "ai_assistant_desc": "Here is the response to your query.",
+        "thinking": "Thinking...",
+        "no_query_title": "No Query Provided",
+        "no_query_desc": "Please enter your question before submitting.",
+        "answer_ready_title": "Answer Ready!",
+        "answer_ready_desc": "The AI has responded to your query.",
+        "request_failed_title": "Request Failed",
+        "faq": {
+            "title": "Frequently Asked Questions",
+            "description": "Find quick answers to common questions.",
+            "items": [
+                {
+                    "question": "Is the Artisan platform free to use?",
+                    "answer": "Yes, the platform is completely free for artisans. We do not charge any commission or fees on your sales."
+                },
+                {
+                    "question": "How do I get paid for my sales?",
+                    "answer": "You can set up your payment preferences in the 'Payment Settings' section of your dashboard. We support payouts via UPI and direct bank transfer."
+                },
+                {
+                    "question": "How do the AI tools work?",
+                    "answer": "Our AI tools are designed to be simple. For example, to generate a description, just upload a product image and click 'Generate'. The AI analyzes the image and creates a description and tags for you. You can then edit the text as you wish."
+                },
+                {
+                    "question": "Can I interact with other artists?",
+                    "answer": "Yes! The 'Community Hub' is a place for you to connect with other artisans on the platform, share ideas, and collaborate."
+                },
+                {
+                    "question": "Why do I need to verify my account to go live?",
+                    "answer": "We require verification for live streaming to ensure a safe and trusted environment for all users, including artists and learners. It helps prevent misuse and maintains the integrity of the platform."
+                }
+            ]
+        }
     }
 }
