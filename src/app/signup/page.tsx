@@ -198,6 +198,9 @@ export default function SignupPage() {
               {translations.signup_page.login_link.split('?')[1]}
             </Link>
           </div>
+           <div className="mt-4 text-center text-xs text-muted-foreground px-2">
+            {translations.signup_page.legal_disclaimer}
+          </div>
         </CardContent>
       </Card>
     </div>

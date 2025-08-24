@@ -52,13 +52,15 @@
         "create_password_label": "கடவுச்சொல்லை உருவாக்கவும்",
         "confirm_password_label": "கடவுச்சொல்லை உறுதிப்படுத்தவும்",
         "create_account_button": "கணக்கை உருவாக்கவும்",
-        "login_link": "ஏற்கனவே கணக்கு உள்ளதா? உள்நுழைக"
+        "login_link": "ஏற்கனவே கணக்கு உள்ளதா? உள்நுழைக",
+        "legal_disclaimer": "கணக்கை உருவாக்குவதன் மூலம், எங்கள் விதிமுறைகளை ஏற்கிறீர்கள். சட்டவிரோத செயல்பாடு சட்ட நடவடிக்கைக்கு வழிவகுக்கும்."
     },
     "dashboard_layout": {
         "menu_dashboard": "டாஷ்போர்டு",
         "menu_add_product": "தயாரிப்பைச் சேர்",
         "menu_analytics": "பகுப்பாய்வு",
         "menu_marketing": "சந்தைப்படுத்தல் மையம்",
+        "menu_community": "சமூக மையம்",
         "menu_support": "ஆதரவு",
         "account_menu_label": "என் கணக்கு",
         "account_menu_verify": "கணக்கைச் சரிபார்க்கவும்",
@@ -91,5 +93,10 @@
         "ifsc_code_label": "IFSC குறியீடு",
         "ifsc_code_placeholder": "உங்கள் வங்கியின் IFSC குறியீட்டை உள்ளிடவும்",
         "save_button": "கட்டண அமைப்புகளைச் சேமிக்கவும்"
+    },
+    "community_page": {
+        "title": "சமூக மையம்",
+        "description": "சக கைவினைஞர்களுடன் இணையுங்கள், யோசனைகளைப் பகிர்ந்து கொள்ளுங்கள், ஒத்துழைக்கவும்.",
+        "send_message": "செய்தி அனுப்பு"
     }
 }

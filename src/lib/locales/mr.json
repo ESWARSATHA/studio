@@ -52,13 +52,15 @@
         "create_password_label": "पासवर्ड तयार करा",
         "confirm_password_label": "पासवर्डची पुष्टी करा",
         "create_account_button": "खाते तयार करा",
-        "login_link": "आधीपासूनच खाते आहे? लॉगिन करा"
+        "login_link": "आधीपासूनच खाते आहे? लॉगिन करा",
+        "legal_disclaimer": "खाते तयार करून, तुम्ही आमच्या अटींना सहमती देता. बेकायदेशीर কার্যকলাপामुळे कायदेशीर कारवाई होऊ शकते."
     },
     "dashboard_layout": {
         "menu_dashboard": "डॅशबोर्ड",
         "menu_add_product": "उत्पादन जोडा",
         "menu_analytics": "विश्लेषण",
         "menu_marketing": "विपणन केंद्र",
+        "menu_community": "कम्युनिटी हब",
         "menu_support": "समर्थन",
         "account_menu_label": "माझे खाते",
         "account_menu_verify": "खाते सत्यापित करा",
@@ -91,5 +93,10 @@
         "ifsc_code_label": "IFSC कोड",
         "ifsc_code_placeholder": "तुमच्या बँकेचा IFSC कोड प्रविष्ट करा",
         "save_button": "पेमेंट सेटिंग्ज जतन करा"
+    },
+    "community_page": {
+        "title": "कम्युनिटी हब",
+        "description": "सहकारी कलाकारांशी संपर्क साधा, कल्पना सामायिक करा आणि सहयोग करा.",
+        "send_message": "संदेश पाठवा"
     }
 }

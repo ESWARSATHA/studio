@@ -52,13 +52,15 @@
         "create_password_label": "পাসওয়ার্ড তৈরি করুন",
         "confirm_password_label": "পাসওয়ার্ড নিশ্চিত করুন",
         "create_account_button": "অ্যাকাউন্ট তৈরি করুন",
-        "login_link": "ইতিমধ্যে একটি অ্যাকাউন্ট আছে? লগইন করুন"
+        "login_link": "ইতিমধ্যে একটি অ্যাকাউন্ট আছে? লগইন করুন",
+        "legal_disclaimer": "একটি অ্যাকাউন্ট তৈরি করে, আপনি আমাদের শর্তাবলীতে সম্মত হন। অবৈধ কার্যকলাপ আইনি পদক্ষেপের কারণ হতে পারে।"
     },
     "dashboard_layout": {
         "menu_dashboard": "ড্যাশবোর্ড",
         "menu_add_product": "পণ্য যোগ করুন",
         "menu_analytics": "বিশ্লেষণ",
         "menu_marketing": "বিপণন হাব",
+        "menu_community": "কমিউনিটি হাব",
         "menu_support": "সমর্থন",
         "account_menu_label": "আমার অ্যাকাউন্ট",
         "account_menu_verify": "অ্যাকাউন্ট যাচাই করুন",
@@ -91,5 +93,10 @@
         "ifsc_code_label": "IFSC কোড",
         "ifsc_code_placeholder": "আপনার ব্যাংকের IFSC কোড লিখুন",
         "save_button": "পেমেন্ট সেটিংস সংরক্ষণ করুন"
+    },
+    "community_page": {
+        "title": "কমিউনিটি হাব",
+        "description": "সহকর্মী কারিগরদের সাথে সংযোগ স্থাপন করুন, ধারণা শেয়ার করুন এবং সহযোগিতা করুন।",
+        "send_message": "বার্তা পাঠান"
     }
 }

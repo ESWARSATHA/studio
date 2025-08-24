@@ -52,13 +52,15 @@
         "create_password_label": "Create Password",
         "confirm_password_label": "Confirm Password",
         "create_account_button": "Create Account",
-        "login_link": "Already have an account? Login"
+        "login_link": "Already have an account? Login",
+        "legal_disclaimer": "By creating an account, you agree to our terms. Illegal activity may lead to legal action."
     },
     "dashboard_layout": {
         "menu_dashboard": "Dashboard",
         "menu_add_product": "Add Product",
         "menu_analytics": "Analytics",
         "menu_marketing": "Marketing Hub",
+        "menu_community": "Community Hub",
         "menu_support": "Support",
         "account_menu_label": "My Account",
         "account_menu_verify": "Verify Account",
@@ -91,5 +93,10 @@
         "ifsc_code_label": "IFSC Code",
         "ifsc_code_placeholder": "Enter your bank's IFSC code",
         "save_button": "Save Payment Settings"
+    },
+    "community_page": {
+        "title": "Community Hub",
+        "description": "Connect with fellow artisans, share ideas, and collaborate.",
+        "send_message": "Send Message"
     }
 }

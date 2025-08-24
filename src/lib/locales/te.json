@@ -52,13 +52,15 @@
         "create_password_label": "పాస్‌వర్డ్‌ను సృష్టించండి",
         "confirm_password_label": "పాస్‌వర్డ్‌ను నిర్ధారించండి",
         "create_account_button": "ఖాతాను సృష్టించండి",
-        "login_link": "ఇప్పటికే ఖాతా ఉందా? లాగిన్"
+        "login_link": "ఇప్పటికే ఖాతా ఉందా? లాగిన్",
+        "legal_disclaimer": "ఖాతాను సృష్టించడం ద్వారా, మీరు మా నిబంధనలను అంగీకరిస్తున్నారు. చట్టవిరుద్ధమైన కార్యకలాపాలు చట్టపరమైన చర్యలకు దారితీయవచ్చు."
     },
     "dashboard_layout": {
         "menu_dashboard": "డాష్‌బోర్డ్",
         "menu_add_product": "ఉత్పత్తిని జోడించండి",
         "menu_analytics": "విశ్లేషణలు",
         "menu_marketing": "మార్కెటింగ్ హబ్",
+        "menu_community": "కమ్యూనిటీ హబ్",
         "menu_support": "మద్దతు",
         "account_menu_label": "నా ఖాతా",
         "account_menu_verify": "ఖాతాను ధృవీకరించండి",
@@ -91,5 +93,10 @@
         "ifsc_code_label": "IFSC కోడ్",
         "ifsc_code_placeholder": "మీ బ్యాంక్ యొక్క IFSC కోడ్‌ను నమోదు చేయండి",
         "save_button": "చెల్లింపు సెట్టింగ్‌లను సేవ్ చేయండి"
+    },
+    "community_page": {
+        "title": "కమ్యూనిటీ హబ్",
+        "description": "సహ కళాకారులతో కనెక్ట్ అవ్వండి, ఆలోచనలను పంచుకోండి మరియు సహకరించండి.",
+        "send_message": "సందేశం పంపండి"
     }
 }
