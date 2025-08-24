@@ -255,8 +255,8 @@ export default function Home() {
                             <Wallet className="h-6 w-6 text-primary" />
                         </div>
                         <div>
-                            <h4 className="font-semibold">AI-Powered Example: Simplified Payments</h4>
-                            <p className="text-sm text-muted-foreground">A customer from Mumbai buys a painting. They pay easily with UPI. You get the payment instantly, minus our 1% fee. Simple, fast, and fair.</p>
+                            <h4 className="font-semibold">Simplified Payments</h4>
+                            <p className="text-sm text-muted-foreground">A customer from Mumbai buys a painting. They pay easily with UPI. You get the payment instantly. Simple, fast, and fair.</p>
                         </div>
                     </div>
                      <div className="flex items-center gap-4">
