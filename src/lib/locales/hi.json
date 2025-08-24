@@ -63,6 +63,7 @@
         "menu_community": "कम्युनिटी हब",
         "menu_support": "समर्थन",
         "menu_live_studio": "लाइव स्टूडियो",
+        "menu_requests": "फॉलो अनुरोध",
         "account_menu_label": "मेरा खाता",
         "account_menu_verify": "खाता सत्यापित करें",
         "account_menu_profile": "प्रोफ़ाइल",
@@ -98,7 +99,16 @@
     "community_page": {
         "title": "कम्युनिटी हब",
         "description": "साथी कारीगरों से जुड़ें, विचार साझा करें और सहयोग करें।",
-        "send_message": "संदेश भेजें"
+        "follow_button": "फॉलो करें"
+    },
+    "requests_page": {
+        "title": "फॉलो अनुरोध",
+        "description": "अन्य कारीगरों से अपने आने वाले फॉलो अनुरोधों का प्रबंधन करें।",
+        "card_title": "आने वाले अनुरोध",
+        "card_description": "जुड़ने के अनुरोधों को स्वीकृत या अस्वीकार करें।",
+        "no_requests": "आपके पास कोई लंबित फॉलो अनुरोध नहीं है।",
+        "accept_button": "स्वीकार करें",
+        "decline_button": "अस्वीकार करें"
     },
     "live_studio_page": {
         "video_preview_title": "लाइव स्टूडियो",

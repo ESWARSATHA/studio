@@ -63,6 +63,7 @@
         "menu_community": "కమ్యూనిటీ హబ్",
         "menu_support": "మద్దతు",
         "menu_live_studio": "లైవ్ స్టూడియో",
+        "menu_requests": "ఫాలో అభ్యర్థనలు",
         "account_menu_label": "నా ఖాతా",
         "account_menu_verify": "ఖాతాను ధృవీకరించండి",
         "account_menu_profile": "ప్రొఫైల్",
@@ -98,7 +99,16 @@
     "community_page": {
         "title": "కమ్యూనిటీ హబ్",
         "description": "సహ కళాకారులతో కనెక్ట్ అవ్వండి, ఆలోచనలను పంచుకోండి మరియు సహకరించండి.",
-        "send_message": "సందేశం పంపండి"
+        "follow_button": "ఫాలో అవ్వండి"
+    },
+    "requests_page": {
+        "title": "ఫాలో అభ్యర్థనలు",
+        "description": "ఇతర కళాకారుల నుండి మీ ఇన్‌కమింగ్ ఫాలో అభ్యర్థనలను నిర్వహించండి.",
+        "card_title": "ఇన్‌కమింగ్ అభ్యర్థనలు",
+        "card_description": "కనెక్ట్ చేయడానికి అభ్యర్థనలను ఆమోదించండి లేదా తిరస్కరించండి.",
+        "no_requests": "మీకు పెండింగ్‌లో ఉన్న ఫాలో అభ్యర్థనలు ఏవీ లేవు.",
+        "accept_button": "అంగీకరించండి",
+        "decline_button": "తిరస్కరించండి"
     },
     "live_studio_page": {
         "video_preview_title": "లైవ్ స్టూడియో",

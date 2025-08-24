@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useLanguage } from '@/lib/locales/language-context';
-import { Users, MessageSquare } from 'lucide-react';
+import { Users, UserPlus } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const artisans = [
@@ -68,8 +68,8 @@ export default function CommunityPage() {
                         </div>
                     </div>
                     <Button className="w-full mt-4">
-                        <MessageSquare className="mr-2"/>
-                        {translations.community_page.send_message}
+                        <UserPlus className="mr-2"/>
+                        {translations.community_page.follow_button}
                     </Button>
                 </CardContent>
             </Card>

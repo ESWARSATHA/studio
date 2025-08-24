@@ -63,6 +63,7 @@
         "menu_community": "কমিউনিটি হাব",
         "menu_support": "সমর্থন",
         "menu_live_studio": "লাইভ স্টুডিও",
+        "menu_requests": "অনুসরণ অনুরোধ",
         "account_menu_label": "আমার অ্যাকাউন্ট",
         "account_menu_verify": "অ্যাকাউন্ট যাচাই করুন",
         "account_menu_profile": "প্রোফাইল",
@@ -98,7 +99,16 @@
     "community_page": {
         "title": "কমিউনিটি হাব",
         "description": "সহকর্মী কারিগরদের সাথে সংযোগ স্থাপন করুন, ধারণা শেয়ার করুন এবং সহযোগিতা করুন।",
-        "send_message": "বার্তা পাঠান"
+        "follow_button": "অনুসরণ করুন"
+    },
+    "requests_page": {
+        "title": "অনুসরণ অনুরোধ",
+        "description": "অন্যান্য কারিগরদের থেকে আপনার আগত অনুসরণ অনুরোধগুলি পরিচালনা করুন।",
+        "card_title": "আগত অনুরোধ",
+        "card_description": "সংযোগ করার জন্য অনুরোধগুলি অনুমোদন বা প্রত্যাখ্যান করুন।",
+        "no_requests": "আপনার কোনো মুলতুবি অনুসরণ অনুরোধ নেই।",
+        "accept_button": "গ্রহণ করুন",
+        "decline_button": "প্রত্যাখ্যান করুন"
     },
     "live_studio_page": {
         "video_preview_title": "লাইভ স্টুডিও",

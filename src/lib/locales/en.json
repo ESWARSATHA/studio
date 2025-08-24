@@ -63,6 +63,7 @@
         "menu_community": "Community Hub",
         "menu_support": "Support",
         "menu_live_studio": "Live Studio",
+        "menu_requests": "Follow Requests",
         "account_menu_label": "My Account",
         "account_menu_verify": "Verify Account",
         "account_menu_profile": "Profile",
@@ -98,7 +99,16 @@
     "community_page": {
         "title": "Community Hub",
         "description": "Connect with fellow artisans, share ideas, and collaborate.",
-        "send_message": "Send Message"
+        "follow_button": "Follow"
+    },
+    "requests_page": {
+        "title": "Follow Requests",
+        "description": "Manage your incoming follow requests from other artisans.",
+        "card_title": "Incoming Requests",
+        "card_description": "Approve or decline requests to connect.",
+        "no_requests": "You have no pending follow requests.",
+        "accept_button": "Accept",
+        "decline_button": "Decline"
     },
     "live_studio_page": {
         "video_preview_title": "Live Studio",
