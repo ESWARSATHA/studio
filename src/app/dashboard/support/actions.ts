@@ -25,4 +25,3 @@ export async function handleAnswerQuery(prevState: any, formData: FormData) {
     return { status: 'error', message: 'Failed to get an answer. Please try again.' };
   }
 }
-`
