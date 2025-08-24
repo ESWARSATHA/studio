@@ -49,9 +49,6 @@
         "email_placeholder": "m@example.com",
         "phone_label": "फोन नंबर",
         "phone_placeholder": "उदा. 9876543210",
-        "gov_id_label": "सरकारी ओळखपत्र पडताळणी",
-        "gov_id_description": "सुरक्षितता सुनिश्चित करण्यासाठी आणि फसवणूक टाळण्यासाठी, कृपया सरकारी ओळखपत्र (उदा. आधार, पॅन) अपलोड करा.",
-        "upload_prompt": "अपलोड करण्यासाठी फाइलवर क्लिक करा किंवा ड्रॅग करा",
         "create_password_label": "पासवर्ड तयार करा",
         "confirm_password_label": "पासवर्डची पुष्टी करा",
         "create_account_button": "खाते तयार करा",
@@ -65,8 +62,19 @@
         "menu_marketing": "विपणन केंद्र",
         "menu_support": "समर्थन",
         "account_menu_label": "माझे खाते",
+        "account_menu_verify": "खाते सत्यापित करा",
         "account_menu_profile": "प्रोफाइल",
         "account_menu_settings": "सेटिंग्ज",
         "account_menu_logout": "लॉग आउट"
+    },
+    "verification_page": {
+        "title": "खाते पडताळणी",
+        "description": "तुमची उत्पादने विकण्यासाठी आणि पेमेंट मिळवण्यासाठी, कृपया तुमची ओळख सत्यापित करा.",
+        "card_title": "दस्तऐवज अपलोड करा",
+        "card_description": "हे आम्हाला प्रत्येकासाठी सुरक्षित बाजारपेठ राखण्यास मदत करते.",
+        "gov_id_label": "सरकारी ओळखपत्र पडताळणी",
+        "gov_id_description": "सुरक्षितता सुनिश्चित करण्यासाठी आणि फसवणूक टाळण्यासाठी, कृपया सरकारी ओळखपत्र (उदा. आधार, पॅन) अपलोड करा.",
+        "upload_prompt": "अपलोड करण्यासाठी फाइलवर क्लिक करा किंवा ड्रॅग करा",
+        "submit_button": "पडताळणीसाठी सबमिट करा"
     }
 }

@@ -25,6 +25,7 @@ import {
   Globe,
   LifeBuoy,
   Megaphone,
+  ShieldCheck,
 } from "lucide-react";
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
@@ -120,6 +121,12 @@ export default function DashboardLayout({
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>{translations.dashboard_layout.account_menu_label}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <Link href="/dashboard/verification" className="flex items-center">
+                    <ShieldCheck className="mr-2" />
+                    {translations.dashboard_layout.account_menu_verify}
+                  </Link>
+                </DropdownMenuItem>
                 <DropdownMenuItem>
                   <User className="mr-2" />
                   {translations.dashboard_layout.account_menu_profile}

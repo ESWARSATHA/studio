@@ -49,9 +49,6 @@
         "email_placeholder": "m@example.com",
         "phone_label": "फ़ोन नंबर",
         "phone_placeholder": "उदा., 9876543210",
-        "gov_id_label": "सरकारी आईडी सत्यापन",
-        "gov_id_description": "सुरक्षा सुनिश्चित करने और धोखाधड़ी को रोकने के लिए, कृपया एक सरकारी आईडी (जैसे, आधार, पैन) अपलोड करें।",
-        "upload_prompt": "अपलोड करने के लिए फ़ाइल पर क्लिक करें या खींचें",
         "create_password_label": "पासवर्ड बनाएं",
         "confirm_password_label": "पासवर्ड की पुष्टि करें",
         "create_account_button": "खाता बनाएं",
@@ -65,8 +62,19 @@
         "menu_marketing": "मार्केटिंग हब",
         "menu_support": "समर्थन",
         "account_menu_label": "मेरा खाता",
+        "account_menu_verify": "खाता सत्यापित करें",
         "account_menu_profile": "प्रोफ़ाइल",
         "account_menu_settings": "सेटिंग्स",
         "account_menu_logout": "लॉग आउट"
+    },
+    "verification_page": {
+        "title": "खाता सत्यापन",
+        "description": "अपने उत्पादों को बेचने और भुगतान प्राप्त करने के लिए, कृपया अपनी पहचान सत्यापित करें।",
+        "card_title": "दस्तावेज़ अपलोड करें",
+        "card_description": "यह हमें सभी के लिए एक सुरक्षित बाज़ार बनाए रखने में मदद करता है।",
+        "gov_id_label": "सरकारी आईडी सत्यापन",
+        "gov_id_description": "सुरक्षा सुनिश्चित करने और धोखाधड़ी को रोकने के लिए, कृपया एक सरकारी आईडी (जैसे, आधार, पैन) अपलोड करें।",
+        "upload_prompt": "अपलोड करने के लिए फ़ाइल पर क्लिक करें या खींचें",
+        "submit_button": "सत्यापन के लिए सबमिट करें"
     }
 }

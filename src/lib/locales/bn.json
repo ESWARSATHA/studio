@@ -49,9 +49,6 @@
         "email_placeholder": "m@example.com",
         "phone_label": "ফোন নম্বর",
         "phone_placeholder": "যেমন, 9876543210",
-        "gov_id_label": "সরকারি আইডি যাচাইকরণ",
-        "gov_id_description": "নিরাপত্তা নিশ্চিত করতে এবং জালিয়াতি রোধ করতে, অনুগ্রহ করে একটি সরকারি আইডি (যেমন, আধার, প্যান) আপলোড করুন।",
-        "upload_prompt": "আপলোড করতে ফাইলে ক্লিক করুন বা টেনে আনুন",
         "create_password_label": "পাসওয়ার্ড তৈরি করুন",
         "confirm_password_label": "পাসওয়ার্ড নিশ্চিত করুন",
         "create_account_button": "অ্যাকাউন্ট তৈরি করুন",
@@ -65,8 +62,19 @@
         "menu_marketing": "বিপণন হাব",
         "menu_support": "সমর্থন",
         "account_menu_label": "আমার অ্যাকাউন্ট",
+        "account_menu_verify": "অ্যাকাউন্ট যাচাই করুন",
         "account_menu_profile": "প্রোফাইল",
         "account_menu_settings": "সেটিংস",
         "account_menu_logout": "লগ আউট"
+    },
+    "verification_page": {
+        "title": "অ্যাকাউন্ট যাচাইকরণ",
+        "description": "আপনার পণ্য বিক্রি করতে এবং অর্থপ্রদান পেতে, দয়া করে আপনার পরিচয় যাচাই করুন।",
+        "card_title": "নথি আপলোড করুন",
+        "card_description": "এটি আমাদের সকলের জন্য একটি নিরাপদ বাজার বজায় রাখতে সাহায্য করে।",
+        "gov_id_label": "সরকারি আইডি যাচাইকরণ",
+        "gov_id_description": "নিরাপত্তা নিশ্চিত করতে এবং জালিয়াতি রোধ করতে, অনুগ্রহ করে একটি সরকারি আইডি (যেমন, আধার, প্যান) আপলোড করুন।",
+        "upload_prompt": "আপলোড করতে ফাইলে ক্লিক করুন বা টেনে আনুন",
+        "submit_button": "যাচাইয়ের জন্য জমা দিন"
     }
 }
