@@ -1,8 +1,10 @@
+
 'use server';
 
 import { z } from 'zod';
 import { generateProductDescription } from '@/ai/flows/generate-product-description';
 import { refineProductStory } from '@/ai/flows/refine-product-story';
+import { suggestPrice } from '@/ai/flows/suggest-price';
 
 const generateDescriptionSchema = z.object({
   photoDataUri: z.string().min(1, 'Image data is required.'),
@@ -10,6 +12,11 @@ const generateDescriptionSchema = z.object({
 
 const refineStorySchema = z.object({
     story: z.string().min(1, 'Story cannot be empty.'),
+});
+
+const suggestPriceSchema = z.object({
+  productName: z.string().min(1, 'Product name is required.'),
+  productDescription: z.string().min(1, 'Product description is required.'),
 });
 
 export async function handleGenerateDescription(prevState: any, formData: FormData) {
@@ -45,5 +52,24 @@ export async function handleRefineStory(prevState: any, formData: FormData) {
   } catch (error) {
     console.error(error);
     return { status: 'error', message: 'Failed to refine story. Please try again.' };
+  }
+}
+
+export async function handleSuggestPrice(prevState: any, formData: FormData) {
+  try {
+    const validatedFields = suggestPriceSchema.safeParse({
+      productName: formData.get('productName'),
+      productDescription: formData.get('productDescription'),
+    });
+
+    if (!validatedFields.success) {
+      return { status: 'error', message: 'Invalid input.', errors: validatedFields.error.flatten().fieldErrors };
+    }
+
+    const result = await suggestPrice(validatedFields.data);
+    return { status: 'success', data: result };
+  } catch (error) {
+    console.error(error);
+    return { status: 'error', message: 'Failed to suggest price. Please try again.' };
   }
 }

@@ -1,15 +1,15 @@
 
 "use client";
 
-import { useState, useRef, useEffect, useActionState } from 'react';
+import { useState, useEffect, useActionState } from 'react';
 import Image from 'next/image';
-import { handleGenerateDescription, handleRefineStory } from './actions';
+import { handleGenerateDescription, handleRefineStory, handleSuggestPrice } from './actions';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Loader2, Wand2, Mic, Sparkles, UploadCloud } from 'lucide-react';
+import { Loader2, Wand2, Mic, Sparkles, UploadCloud, IndianRupee } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 
 const initialState = { status: 'idle', message: '', data: null };
@@ -21,10 +21,13 @@ export default function NewProductPage() {
 
   const [descriptionState, descriptionAction] = useActionState(handleGenerateDescription, initialState);
   const [storyState, storyAction] = useActionState(handleRefineStory, initialState);
+  const [priceState, priceAction] = useActionState(handleSuggestPrice, initialState);
 
   const [isGeneratingDesc, setIsGeneratingDesc] = useState(false);
   const [isRefiningStory, setIsRefiningStory] = useState(false);
+  const [isSuggestingPrice, setIsSuggestingPrice] = useState(false);
 
+  const [productName, setProductName] = useState('');
   const [description, setDescription] = useState('');
   const [tags, setTags] = useState('');
   const [story, setStory] = useState('');
@@ -71,6 +74,22 @@ export default function NewProductPage() {
     setIsRefiningStory(true);
     storyAction(formData);
   };
+
+  const onSuggestPrice = () => {
+    if (!productName || !description) {
+      toast({
+        variant: 'destructive',
+        title: 'Missing Details',
+        description: 'Please provide a product name and description first.',
+      });
+      return;
+    }
+    const formData = new FormData();
+    formData.append('productName', productName);
+    formData.append('productDescription', description);
+    setIsSuggestingPrice(true);
+    priceAction(formData);
+  };
   
   useEffect(() => {
     if (descriptionState.status === 'success') {
@@ -106,6 +125,22 @@ export default function NewProductPage() {
     }
     setIsRefiningStory(false);
   }, [storyState, toast]);
+
+  useEffect(() => {
+    if (priceState.status === 'success') {
+      toast({
+        title: 'Price Suggestion Ready!',
+        description: 'We have a suggestion for your product price.',
+      });
+    } else if (priceState.status === 'error') {
+      toast({
+        variant: 'destructive',
+        title: 'Suggestion Failed',
+        description: priceState.message,
+      });
+    }
+    setIsSuggestingPrice(false);
+  }, [priceState, toast]);
 
   return (
     <form className="grid gap-8 md:grid-cols-3">
@@ -147,7 +182,7 @@ export default function NewProductPage() {
           <CardContent className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="name">Product Name</Label>
-              <Input id="name" placeholder="e.g., Hand-carved Wooden Elephant" />
+              <Input id="name" placeholder="e.g., Hand-carved Wooden Elephant" value={productName} onChange={(e) => setProductName(e.target.value)} />
             </div>
             <div className="grid gap-2">
               <Label htmlFor="description">Description</Label>
@@ -157,6 +192,44 @@ export default function NewProductPage() {
               <Label htmlFor="tags">Tags</Label>
               <Input id="tags" placeholder="e.g., handmade, woodcraft, eco-friendly" value={tags} onChange={(e) => setTags(e.target.value)} />
             </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Pricing</CardTitle>
+            <CardDescription>Set a price for your product. Get an AI suggestion based on market data.</CardDescription>
+          </CardHeader>
+          <CardContent className="grid gap-6">
+             <div className="grid gap-2 sm:grid-cols-3 sm:items-end">
+                <div className="grid gap-2 sm:col-span-2">
+                    <Label htmlFor="price">Your Price (₹)</Label>
+                    <Input id="price" type="number" placeholder="e.g., 2499" />
+                </div>
+                <Button type="button" variant="outline" onClick={onSuggestPrice} disabled={isSuggestingPrice}>
+                    {isSuggestingPrice ? <Loader2 className="mr-2 animate-spin" /> : <IndianRupee className="mr-2" />}
+                    Suggest Price
+                </Button>
+             </div>
+             {(isSuggestingPrice || priceState.data) && (
+                <Card className="bg-primary/5 border-primary/20">
+                    <CardContent className="pt-6">
+                        {isSuggestingPrice && !priceState.data ? (
+                             <div className="flex items-center gap-2 text-muted-foreground">
+                                <Loader2 className="animate-spin" />
+                                <p>Analyzing market data...</p>
+                            </div>
+                        ) : priceState.data && (
+                            <div>
+                                <p className="font-semibold text-primary-foreground">
+                                    Suggested Price: ₹{priceState.data.suggestedPriceRange.min} - ₹{priceState.data.suggestedPriceRange.max}
+                                </p>
+                                <p className="text-sm text-muted-foreground mt-1">{priceState.data.reasoning}</p>
+                            </div>
+                        )}
+                    </CardContent>
+                </Card>
+             )}
           </CardContent>
         </Card>
 
