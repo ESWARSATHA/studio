@@ -21,13 +21,34 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/icons';
-import { Eye, EyeOff, Globe } from 'lucide-react';
+import { Eye, EyeOff, Globe, KeyRound } from 'lucide-react';
 import { languages, useLanguage } from '@/lib/locales/language-context';
 
 export default function SignupPage() {
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { language, setLanguage, translations } = useLanguage();
+
+  const generateStrongPassword = () => {
+    const lower = 'abcdefghijklmnopqrstuvwxyz';
+    const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const numbers = '0123456789';
+    const symbols = '!@#$%^&*()_+~`|}{[]:;?><,./-=';
+    const all = lower + upper + numbers + symbols;
+    let newPassword = '';
+    newPassword += lower[Math.floor(Math.random() * lower.length)];
+    newPassword += upper[Math.floor(Math.random() * upper.length)];
+    newPassword += numbers[Math.floor(Math.random() * numbers.length)];
+    newPassword += symbols[Math.floor(Math.random() * symbols.length)];
+    for (let i = 4; i < 12; i++) {
+      newPassword += all[Math.floor(Math.random() * all.length)];
+    }
+    newPassword = newPassword.split('').sort(() => 0.5 - Math.random()).join('');
+    setPassword(newPassword);
+    setConfirmPassword(newPassword);
+  };
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen py-8">
@@ -101,12 +122,20 @@ export default function SignupPage() {
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="password">{translations.signup_page.create_password_label}</Label>
+              <div className="flex justify-between items-center">
+                 <Label htmlFor="password">{translations.signup_page.create_password_label}</Label>
+                 <Button type="button" variant="link" size="sm" className="p-0 h-auto" onClick={generateStrongPassword}>
+                    <KeyRound className="mr-1" />
+                    Suggest
+                 </Button>
+              </div>
                <div className="relative">
                 <Input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
                   required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <button
                   type="button"
@@ -124,6 +153,8 @@ export default function SignupPage() {
                   id="confirm-password"
                   type={showConfirmPassword ? 'text' : 'password'}
                   required
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                 />
                 <button
                   type="button"
