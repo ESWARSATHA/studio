@@ -35,7 +35,6 @@ export default function SignupPage() {
   const [state, formAction, isPending] = useActionState(handleCreateAccount, initialState);
   
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { language, setLanguage, translations } = useLanguage();
@@ -67,22 +66,11 @@ export default function SignupPage() {
     }
     newPassword = newPassword.split('').sort(() => 0.5 - Math.random()).join('');
     setPassword(newPassword);
-    setConfirmPassword(newPassword);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (password !== confirmPassword) {
-      toast({
-        variant: 'destructive',
-        title: 'Passwords do not match',
-        description: 'Please ensure your passwords match before submitting.',
-      });
-      return;
-    }
-    const formData = new FormData(event.currentTarget);
+  const handleSubmit = (formData: FormData) => {
     if (avatarFile) {
-        formData.set('avatar', avatarFile);
+      formData.set('avatar', avatarFile);
     }
     formAction(formData);
   };
@@ -146,7 +134,7 @@ export default function SignupPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit}>
+          <form action={handleSubmit}>
             <div className="grid gap-4">
               <div className="grid gap-2 items-center text-center">
                   <Label htmlFor="avatar-upload" className="cursor-pointer">
@@ -224,10 +212,9 @@ export default function SignupPage() {
                 <div className="relative">
                   <Input
                     id="confirm-password"
+                    name="confirmPassword"
                     type={showConfirmPassword ? 'text' : 'password'}
                     required
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
                   />
                   <button
                     type="button"

@@ -12,7 +12,11 @@ const signupSchema = z.object({
   email: z.string().email('Invalid email address.'),
   phone: z.string().min(10, 'Please enter a valid phone number.'),
   password: z.string().min(8, 'Password must be at least 8 characters.'),
+  confirmPassword: z.string().min(8, 'Password must be at least 8 characters.'),
   avatar: z.any().optional(),
+}).refine(data => data.password === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ["confirmPassword"],
 });
 
 export async function handleCreateAccount(prevState: any, formData: FormData) {
@@ -22,6 +26,7 @@ export async function handleCreateAccount(prevState: any, formData: FormData) {
       email: formData.get('email'),
       phone: formData.get('phone'),
       password: formData.get('password'),
+      confirmPassword: formData.get('confirmPassword'),
       avatar: formData.get('avatar'),
     });
 
