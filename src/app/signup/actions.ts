@@ -32,24 +32,6 @@ export async function handleCreateAccount(prevState: any, formData: FormData) {
     
     const { username, email, phone, password, avatar } = validatedFields.data;
 
-    // This is where Firebase Auth would be used on the client-side
-    // For server actions, we'd typically use the Firebase Admin SDK, but we are using client SDK here
-    // as an example of how one might structure this. A proper implementation would need a secure
-    // server-side environment to handle authentication.
-    // The code below simulates the flow but will not execute auth functions on the server.
-    // It's a placeholder for client-side logic that would call these Firebase services.
-
-    // A real server action would need to handle authentication differently, likely via the Admin SDK
-    // For this example, we'll return an error indicating this limitation.
-    // In a real app, the signup logic would be handled client-side with `useEffect` and state,
-    // or by calling a dedicated API route.
-
-    return { 
-        status: 'error', 
-        message: 'This is a mock-up. On the client, you would use Firebase SDK to create a user, upload the file, and save data.' 
-    };
-
-    /*
     // --- The following is pseudo-code for what would run on the client ---
 
     // 1. Create user in Firebase Auth
@@ -75,7 +57,7 @@ export async function handleCreateAccount(prevState: any, formData: FormData) {
     });
 
     return { status: 'success', message: 'Account created successfully!' };
-    */
+    
 
   } catch (error: any) {
     console.error(error);
