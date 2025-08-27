@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useActionState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -21,20 +21,32 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/icons';
-import { Eye, EyeOff, Globe, KeyRound, User } from 'lucide-react';
+import { Eye, EyeOff, Globe, KeyRound, User, Loader2 } from 'lucide-react';
 import { languages, useLanguage } from '@/lib/locales/language-context';
+import { handleCreateAccount } from './actions';
+import { useToast } from '@/hooks/use-toast';
+import { useRouter } from 'next/navigation';
+
+const initialState = { status: 'idle', message: '' };
 
 export default function SignupPage() {
+  const { toast } = useToast();
+  const router = useRouter();
+  const [state, formAction, isPending] = useActionState(handleCreateAccount, initialState);
+  
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { language, setLanguage, translations } = useLanguage();
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
+  const [avatarFile, setAvatarFile] = useState<File | null>(null);
+
 
   const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      setAvatarFile(file);
       setAvatarPreview(URL.createObjectURL(file));
     }
   };
@@ -57,6 +69,22 @@ export default function SignupPage() {
     setPassword(newPassword);
     setConfirmPassword(newPassword);
   };
+
+  useEffect(() => {
+    if (state.status === 'success') {
+      toast({
+        title: "Account Created!",
+        description: "Welcome to Artisan! You can now log in.",
+      });
+      router.push('/login');
+    } else if (state.status === 'error') {
+      toast({
+        variant: 'destructive',
+        title: 'Signup Failed',
+        description: state.message,
+      });
+    }
+  }, [state, toast, router]);
   
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen py-8">
@@ -101,97 +129,103 @@ export default function SignupPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid gap-4">
-             <div className="grid gap-2 items-center text-center">
-                <Label htmlFor="avatar-upload" className="cursor-pointer">
-                    <div className="mx-auto h-24 w-24 rounded-full border-2 border-dashed flex items-center justify-center bg-secondary/50 hover:bg-secondary/80 transition-colors relative">
-                        {avatarPreview ? (
-                        <Image src={avatarPreview} alt="Avatar preview" fill className="rounded-full object-cover" />
-                        ) : (
-                        <User className="h-10 w-10 text-muted-foreground" />
-                        )}
-                    </div>
-                </Label>
-                <Input id="avatar-upload" type="file" accept="image/*" className="hidden" onChange={handleAvatarChange} />
-                <Label htmlFor="avatar-upload" className="cursor-pointer text-sm font-medium text-muted-foreground hover:text-primary">
-                    {translations.signup_page.avatar_label}
-                </Label>
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="username">{translations.signup_page.username_label}</Label>
-              <Input
-                id="username"
-                type="text"
-                placeholder={translations.signup_page.username_placeholder}
-                required
-              />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="email">{translations.signup_page.email_label}</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder={translations.signup_page.email_placeholder}
-                required
-              />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="phone">{translations.signup_page.phone_label}</Label>
-              <Input
-                id="phone"
-                type="tel"
-                placeholder={translations.signup_page.phone_placeholder}
-                required
-              />
-            </div>
-            <div className="grid gap-2">
-              <div className="flex justify-between items-center">
-                 <Label htmlFor="password">{translations.signup_page.create_password_label}</Label>
-                 <Button type="button" variant="link" size="sm" className="p-0 h-auto" onClick={generateStrongPassword}>
-                    <KeyRound className="mr-1" />
-                    Suggest
-                 </Button>
+          <form action={formAction}>
+            <div className="grid gap-4">
+              <div className="grid gap-2 items-center text-center">
+                  <Label htmlFor="avatar-upload" className="cursor-pointer">
+                      <div className="mx-auto h-24 w-24 rounded-full border-2 border-dashed flex items-center justify-center bg-secondary/50 hover:bg-secondary/80 transition-colors relative">
+                          {avatarPreview ? (
+                          <Image src={avatarPreview} alt="Avatar preview" fill className="rounded-full object-cover" />
+                          ) : (
+                          <User className="h-10 w-10 text-muted-foreground" />
+                          )}
+                      </div>
+                  </Label>
+                  <Input id="avatar-upload" name="avatar" type="file" accept="image/*" className="hidden" onChange={handleAvatarChange} />
+                  <Label htmlFor="avatar-upload" className="cursor-pointer text-sm font-medium text-muted-foreground hover:text-primary">
+                      {translations.signup_page.avatar_label}
+                  </Label>
               </div>
-               <div className="relative">
+              <div className="grid gap-2">
+                <Label htmlFor="username">{translations.signup_page.username_label}</Label>
                 <Input
-                  id="password"
-                  type={showPassword ? 'text' : 'password'}
+                  id="username"
+                  name="username"
+                  type="text"
+                  placeholder={translations.signup_page.username_placeholder}
                   required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
                 />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword((prev) => !prev)}
-                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-muted-foreground"
-                >
-                  {showPassword ? <EyeOff /> : <Eye />}
-                </button>
               </div>
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="confirm-password">{translations.signup_page.confirm_password_label}</Label>
-               <div className="relative">
+              <div className="grid gap-2">
+                <Label htmlFor="email">{translations.signup_page.email_label}</Label>
                 <Input
-                  id="confirm-password"
-                  type={showConfirmPassword ? 'text' : 'password'}
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder={translations.signup_page.email_placeholder}
                   required
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
                 />
-                <button
-                  type="button"
-                  onClick={() => setShowConfirmPassword((prev) => !prev)}
-                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-muted-foreground"
-                >
-                  {showConfirmPassword ? <EyeOff /> : <Eye />}
-                </button>
               </div>
+              <div className="grid gap-2">
+                <Label htmlFor="phone">{translations.signup_page.phone_label}</Label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder={translations.signup_page.phone_placeholder}
+                  required
+                />
+              </div>
+              <div className="grid gap-2">
+                <div className="flex justify-between items-center">
+                  <Label htmlFor="password">{translations.signup_page.create_password_label}</Label>
+                  <Button type="button" variant="link" size="sm" className="p-0 h-auto" onClick={generateStrongPassword}>
+                      <KeyRound className="mr-1" />
+                      Suggest
+                  </Button>
+                </div>
+                <div className="relative">
+                  <Input
+                    id="password"
+                    name="password"
+                    type={showPassword ? 'text' : 'password'}
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                    className="absolute inset-y-0 right-0 flex items-center pr-3 text-muted-foreground"
+                  >
+                    {showPassword ? <EyeOff /> : <Eye />}
+                  </button>
+                </div>
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="confirm-password">{translations.signup_page.confirm_password_label}</Label>
+                <div className="relative">
+                  <Input
+                    id="confirm-password"
+                    type={showConfirmPassword ? 'text' : 'password'}
+                    required
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPassword((prev) => !prev)}
+                    className="absolute inset-y-0 right-0 flex items-center pr-3 text-muted-foreground"
+                  >
+                    {showConfirmPassword ? <EyeOff /> : <Eye />}
+                  </button>
+                </div>
+              </div>
+              <Button type="submit" className="w-full" disabled={isPending}>
+                 {isPending ? <Loader2 className="animate-spin" /> : translations.signup_page.create_account_button}
+              </Button>
             </div>
-            <Button type="submit" className="w-full">
-              {translations.signup_page.create_account_button}
-            </Button>
-          </div>
+          </form>
           <div className="mt-4 text-center text-sm">
             {translations.signup_page.login_link.split('?')[0]}?{' '}
             <Link href="/login" className="underline">
