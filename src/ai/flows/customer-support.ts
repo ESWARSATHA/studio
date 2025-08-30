@@ -29,6 +29,26 @@ const prompt = ai.definePrompt({
   name: 'customerSupportPrompt',
   input: {schema: CustomerSupportInputSchema},
   output: {schema: CustomerSupportOutputSchema},
+  config: {
+    safetySettings: [
+      {
+        category: 'HARM_CATEGORY_HATE_SPEECH',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+      },
+      {
+        category: 'HARM_CATEGORY_DANGEROUS_CONTENT',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+      },
+      {
+        category: 'HARM_CATEGORY_HARASSMENT',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+      },
+      {
+        category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+      },
+    ],
+  },
   prompt: `You are a friendly and knowledgeable customer support agent for "Artisan", a platform that empowers local artists in India.
 
 Your role is to provide clear, concise, and helpful answers to questions from our users (artisans).

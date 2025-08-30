@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview Refines an artisan's dictated story about a product into a polished narrative.
@@ -28,6 +29,26 @@ const prompt = ai.definePrompt({
   name: 'refineProductStoryPrompt',
   input: {schema: RefineProductStoryInputSchema},
   output: {schema: RefineProductStoryOutputSchema},
+  config: {
+    safetySettings: [
+      {
+        category: 'HARM_CATEGORY_HATE_SPEECH',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+      },
+      {
+        category: 'HARM_CATEGORY_DANGEROUS_CONTENT',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+      },
+      {
+        category: 'HARM_CATEGORY_HARASSMENT',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+      },
+      {
+        category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+      },
+    ],
+  },
   prompt: `You are an expert story teller specializing in crafting compelling product narratives for artisans.
 
   Refine the artisan's dictated story into a polished and engaging narrative that will captivate buyers.

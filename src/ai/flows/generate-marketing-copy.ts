@@ -32,6 +32,26 @@ const prompt = ai.definePrompt({
   name: 'generateMarketingCopyPrompt',
   input: {schema: GenerateMarketingCopyInputSchema},
   output: {schema: GenerateMarketingCopyOutputSchema},
+  config: {
+    safetySettings: [
+      {
+        category: 'HARM_CATEGORY_HATE_SPEECH',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+      },
+      {
+        category: 'HARM_CATEGORY_DANGEROUS_CONTENT',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+      },
+      {
+        category: 'HARM_CATEGORY_HARASSMENT',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+      },
+      {
+        category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+      },
+    ],
+  },
   prompt: `You are a marketing expert for a platform called "Artisan" that helps Indian artists sell their work.
 
 Your task is to generate marketing copy for the following product:

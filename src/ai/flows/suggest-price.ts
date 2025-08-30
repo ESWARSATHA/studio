@@ -34,6 +34,26 @@ const prompt = ai.definePrompt({
   name: 'suggestPricePrompt',
   input: {schema: SuggestPriceInputSchema},
   output: {schema: SuggestPriceOutputSchema},
+  config: {
+    safetySettings: [
+      {
+        category: 'HARM_CATEGORY_HATE_SPEECH',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+      },
+      {
+        category: 'HARM_CATEGORY_DANGEROUS_CONTENT',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+      },
+      {
+        category: 'HARM_CATEGORY_HARASSMENT',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+      },
+      {
+        category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+      },
+    ],
+  },
   prompt: `You are an art market expert specializing in contemporary and traditional Indian crafts. Your task is to suggest a fair market price range in Indian Rupees (₹) for a product.
 
 Consider the following factors:
