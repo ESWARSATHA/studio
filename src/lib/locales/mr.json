@@ -88,12 +88,19 @@
         "upi_label": "UPI आयडी (VPA)",
         "upi_placeholder": "yourname@bank",
         "bank_account_label": "बँक खाते",
+        "credit_card_label": "क्रेडिट कार्ड",
         "account_holder_name_label": "खातेधारकाचे नाव",
         "account_holder_name_placeholder": "उदा. प्रिया कुमार",
         "account_number_label": "खाते क्रमांक",
         "account_number_placeholder": "तुमचा खाते क्रमांक प्रविष्ट करा",
         "ifsc_code_label": "IFSC कोड",
         "ifsc_code_placeholder": "तुमच्या बँकेचा IFSC कोड प्रविष्ट करा",
+        "card_number_label": "कार्ड क्रमांक",
+        "card_number_placeholder": "तुमचा कार्ड क्रमांक प्रविष्ट करा",
+        "card_expiry_label": "समाप्तीची तारीख",
+        "card_expiry_placeholder": "MM/YY",
+        "card_cvv_label": "CVV",
+        "card_cvv_placeholder": "CVV",
         "save_button": "पेमेंट सेटिंग्ज जतन करा"
     },
     "community_page": {
@@ -171,7 +178,7 @@
                 },
                 {
                     "question": "लाइव्ह जाण्यासाठी मला माझे खाते का सत्यापित करावे लागेल?",
-                    "answer": "कलाकार आणि शिकाऊंसह सर्व वापरकर्त्यांसाठी सुरक्षित आणि विश्वसनीय वातावरण सुनिश्चित करण्यासाठी आम्हाला थेट प्रवाहासाठी सत्यापनाची आवश्यकता आहे. हे गैरवापर टाळण्यास आणि प्लॅטफॉर्मची अखंडता राखण्यास मदत करते."
+                    "answer": "कलाकार आणि शिकाऊंसह सर्व वापरकर्त्यांसाठी सुरक्षित आणि विश्वसनीय वातावरण सुनिश्चित करण्यासाठी आम्हाला थेट प्रवाहासाठी सत्यापनाची आवश्यकता आहे. हे गैरवापर टाळण्यास आणि प्लॅटफॉर्मची अखंडता राखण्यास मदत करते."
                 }
             ]
         }
