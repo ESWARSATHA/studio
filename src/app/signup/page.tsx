@@ -68,13 +68,6 @@ export default function SignupPage() {
     setPassword(newPassword);
   };
 
-  const handleSubmit = (formData: FormData) => {
-    if (avatarFile) {
-      formData.set('avatar', avatarFile);
-    }
-    formAction(formData);
-  };
-
   useEffect(() => {
     if (state.status === 'success') {
       toast({
@@ -134,7 +127,7 @@ export default function SignupPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form action={handleSubmit}>
+          <form action={formAction}>
             <div className="grid gap-4">
               <div className="grid gap-2 items-center text-center">
                   <Label htmlFor="avatar-upload" className="cursor-pointer">
@@ -146,7 +139,7 @@ export default function SignupPage() {
                           )}
                       </div>
                   </Label>
-                  <Input id="avatar-upload" name="avatar-input-field" type="file" accept="image/*" className="hidden" onChange={handleAvatarChange} />
+                  <Input id="avatar-upload" name="avatar" type="file" accept="image/*" className="hidden" onChange={handleAvatarChange} />
                   <Label htmlFor="avatar-upload" className="cursor-pointer text-sm font-medium text-muted-foreground hover:text-primary">
                       {translations.signup_page.avatar_label}
                   </Label>

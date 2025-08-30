@@ -2,10 +2,6 @@
 'use server';
 
 import { z } from 'zod';
-import { auth, db, storage } from '@/lib/firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const signupSchema = z.object({
   username: z.string().min(3, 'Username must be at least 3 characters.'),
@@ -13,7 +9,6 @@ const signupSchema = z.object({
   phone: z.string().min(10, 'Please enter a valid phone number.'),
   password: z.string().min(8, 'Password must be at least 8 characters.'),
   confirmPassword: z.string().min(8, 'Password must be at least 8 characters.'),
-  avatar: z.any().optional(),
 }).refine(data => data.password === data.confirmPassword, {
     message: "Passwords don't match",
     path: ["confirmPassword"],
@@ -27,7 +22,6 @@ export async function handleCreateAccount(prevState: any, formData: FormData) {
       phone: formData.get('phone'),
       password: formData.get('password'),
       confirmPassword: formData.get('confirmPassword'),
-      avatar: formData.get('avatar'),
     });
 
     if (!validatedFields.success) {
@@ -35,49 +29,12 @@ export async function handleCreateAccount(prevState: any, formData: FormData) {
       return { status: 'error', message: errorMessages };
     }
     
-    const { username, email, phone, password, avatar } = validatedFields.data;
+    // In a real application, this is where you would use the Firebase Admin SDK
+    // to create a user from the server-side.
+    // For this prototype, we'll simulate a successful account creation.
+    console.log('Simulating account creation for:', validatedFields.data.email);
 
-    // This is pseudo-code for what would run on the client, adapted for a server action.
-    // In a real app, you would use Firebase Admin SDK for server-side auth management,
-    // or handle this flow on the client-side. For this environment, we will simulate the flow.
-
-    try {
-      // 1. Create user in Firebase Auth
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-
-      // 2. Upload avatar to Firebase Storage
-      let avatarUrl = '';
-      if (avatar && avatar.size > 0) {
-        const storageRef = ref(storage, `avatars/${user.uid}/${avatar.name}`);
-        // The `avatar` object from FormData is a File-like object, we need its buffer
-        const avatarBuffer = Buffer.from(await (avatar as File).arrayBuffer());
-        const snapshot = await uploadBytes(storageRef, avatarBuffer, { contentType: avatar.type });
-        avatarUrl = await getDownloadURL(snapshot.ref);
-      }
-      
-      // 3. Save user data to Firestore
-      await setDoc(doc(db, 'users', user.uid), {
-        uid: user.uid,
-        username,
-        email,
-        phone,
-        avatarUrl,
-        createdAt: new Date(),
-      });
-
-      return { status: 'success', message: 'Account created successfully!' };
-
-    } catch (error: any) {
-        console.error("Firebase operation failed:", error);
-        if (error.code === 'auth/email-already-in-use') {
-            return { status: 'error', message: 'This email is already registered.' };
-        }
-        if (error.code === 'auth/weak-password') {
-            return { status: 'error', message: 'The password is too weak. Please use a stronger password.' };
-        }
-        return { status: 'error', message: error.message || 'An unknown error occurred during account creation.' };
-    }
+    return { status: 'success', message: 'Account created successfully!' };
 
   } catch (error: any) {
     console.error("Overall action error:", error);
