@@ -8,7 +8,8 @@ import { Label } from "@/components/ui/label";
 import { Button } from '@/components/ui/button';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useLanguage } from '@/lib/locales/language-context';
-import { DollarSign } from 'lucide-react';
+import { DollarSign, Info } from 'lucide-react';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 export default function PaymentSettingsPage() {
   const { translations } = useLanguage();
@@ -87,6 +88,14 @@ export default function PaymentSettingsPage() {
                 </div>
             )}
             
+            <Alert>
+                <Info className="h-4 w-4" />
+                <AlertTitle>{translations.payment_settings_page.payout_notice_title}</AlertTitle>
+                <AlertDescription>
+                    {translations.payment_settings_page.payout_notice_description}
+                </AlertDescription>
+            </Alert>
+
             <Button type="submit" className="w-full">
               {translations.payment_settings_page.save_button}
             </Button>

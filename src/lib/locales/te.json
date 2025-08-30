@@ -101,7 +101,9 @@
         "card_expiry_placeholder": "MM/YY",
         "card_cvv_label": "CVV",
         "card_cvv_placeholder": "CVV",
-        "save_button": "చెల్లింపు సెట్టింగ్‌లను సేవ్ చేయండి"
+        "save_button": "చెల్లింపు సెట్టింగ్‌లను సేవ్ చేయండి",
+        "payout_notice_title": "చెల్లింపు షెడ్యూల్",
+        "payout_notice_description": "దయచేసి గమనించండి: మీ అమ్మకాల నుండి నిధులు 8 రోజుల హోల్డింగ్ వ్యవధి తర్వాత మీ ఎంచుకున్న ఖాతాకు బదిలీ చేయబడతాయి. ఇది లావాదేవీ భద్రతను నిర్ధారించడానికి."
     },
     "community_page": {
         "title": "కమ్యూనిటీ హబ్",

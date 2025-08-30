@@ -101,7 +101,9 @@
         "card_expiry_placeholder": "MM/YY",
         "card_cvv_label": "CVV",
         "card_cvv_placeholder": "CVV",
-        "save_button": "Save Payment Settings"
+        "save_button": "Save Payment Settings",
+        "payout_notice_title": "Payout Schedule",
+        "payout_notice_description": "Please note: Funds from your sales will be transferred to your selected account after a holding period of 8 days. This is to ensure transaction security."
     },
     "community_page": {
         "title": "Community Hub",

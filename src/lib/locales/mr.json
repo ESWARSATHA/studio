@@ -101,7 +101,9 @@
         "card_expiry_placeholder": "MM/YY",
         "card_cvv_label": "CVV",
         "card_cvv_placeholder": "CVV",
-        "save_button": "पेमेंट सेटिंग्ज जतन करा"
+        "save_button": "पेमेंट सेटिंग्ज जतन करा",
+        "payout_notice_title": "पेआउट वेळापत्रक",
+        "payout_notice_description": "कृपया लक्षात घ्या: तुमच्या विक्रीतून मिळणारे निधी 8 दिवसांच्या होल्डिंग कालावधीनंतर तुमच्या निवडलेल्या खात्यात हस्तांतरित केले जातील. हे व्यवहार सुरक्षितता सुनिश्चित करण्यासाठी आहे."
     },
     "community_page": {
         "title": "कम्युनिटी हब",

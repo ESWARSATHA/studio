@@ -101,7 +101,9 @@
         "card_expiry_placeholder": "MM/YY",
         "card_cvv_label": "CVV",
         "card_cvv_placeholder": "CVV",
-        "save_button": "পেমেন্ট সেটিংস সংরক্ষণ করুন"
+        "save_button": "পেমেন্ট সেটিংস সংরক্ষণ করুন",
+        "payout_notice_title": "পেআউট সময়সূচী",
+        "payout_notice_description": "দয়া করে মনে রাখবেন: আপনার বিক্রয় থেকে প্রাপ্ত অর্থ 8 দিনের হোল্ডিং পিরিয়ডের পরে আপনার নির্বাচিত অ্যাকাউন্টে স্থানান্তরিত হবে। এটি লেনদেনের নিরাপত্তা নিশ্চিত করার জন্য।"
     },
     "community_page": {
         "title": "কমিউনিটি হাব",
