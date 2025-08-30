@@ -10,12 +10,12 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 const requests = [
   {
     name: "Rohan Das",
-    avatar: "https://placehold.co/100x100.png",
+    avatar: "https://picsum.photos/100/100?random=1",
     specialty: "Terracotta Pottery"
   },
   {
     name: "Meera Iyer",
-    avatar: "https://placehold.co/100x100.png",
+    avatar: "https://picsum.photos/100/100?random=2",
     specialty: "Kalamkari Textiles"
   },
 ];

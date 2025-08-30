@@ -11,32 +11,32 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 const artisans = [
   {
     name: "Priya Kumar",
-    avatar: "https://placehold.co/100x100.png",
+    avatar: "https://picsum.photos/100/100",
     specialty: "Madhubani Painting"
   },
   {
     name: "Rohan Das",
-    avatar: "https://placehold.co/100x100.png",
+    avatar: "https://picsum.photos/100/100",
     specialty: "Terracotta Pottery"
   },
   {
     name: "Ananya Sharma",
-    avatar: "https://placehold.co/100x100.png",
+    avatar: "https://picsum.photos/100/100",
     specialty: "Pattachitra Scrolls"
   },
   {
     name: "Vikram Singh",
-    avatar: "https://placehold.co/100x100.png",
+    avatar: "https://picsum.photos/100/100",
     specialty: "Wooden Toys"
   },
     {
     name: "Meera Iyer",
-    avatar: "https://placehold.co/100x100.png",
+    avatar: "https://picsum.photos/100/100",
     specialty: "Kalamkari Textiles"
   },
   {
     name: "Arjun Mehta",
-    avatar: "https://placehold.co/100x100.png",
+    avatar: "https://picsum.photos/100/100",
     specialty: "Blue Pottery"
   }
 ];
@@ -54,12 +54,12 @@ export default function CommunityPage() {
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {artisans.map((artisan) => (
+        {artisans.map((artisan, index) => (
             <Card key={artisan.name}>
                 <CardContent className="pt-6">
                     <div className="flex items-center gap-4">
                         <Avatar className="h-16 w-16">
-                            <AvatarImage src={artisan.avatar} alt={artisan.name} data-ai-hint="artisan portrait" />
+                            <AvatarImage src={`${artisan.avatar}?random=${index}`} alt={artisan.name} data-ai-hint="artisan portrait" />
                             <AvatarFallback>{artisan.name.charAt(0)}</AvatarFallback>
                         </Avatar>
                         <div className="flex-1">

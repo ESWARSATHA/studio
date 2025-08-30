@@ -117,7 +117,7 @@ export default function DashboardLayout({
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="rounded-full">
                   <Avatar>
-                    <AvatarImage src="https://placehold.co/40x40.png" alt="Artisan" data-ai-hint="artisan portrait" />
+                    <AvatarImage src="https://picsum.photos/40/40" alt="Artisan" data-ai-hint="artisan portrait" />
                     <AvatarFallback>A</AvatarFallback>
                   </Avatar>
                 </Button>

@@ -171,7 +171,7 @@ export default function Home() {
             <div className="mt-12 grid gap-8 md:grid-cols-3">
               <Card className="overflow-hidden">
                 <Image
-                  src="https://placehold.co/800x600.png"
+                  src="https://picsum.photos/800/600?random=1"
                   alt="Digital mythology art"
                   width={800}
                   height={600}
@@ -191,7 +191,7 @@ export default function Home() {
               </Card>
               <Card className="overflow-hidden">
                 <Image
-                  src="https://placehold.co/800x600.png"
+                  src="https://picsum.photos/800/600?random=2"
                   alt="Urban street art"
                   width={800}
                   height={600}
@@ -211,7 +211,7 @@ export default function Home() {
               </Card>
               <Card className="overflow-hidden">
                 <Image
-                  src="https://placehold.co/800x600.png"
+                  src="https://picsum.photos/800/600?random=3"
                   alt="Minimalist folk art"
                   width={800}
                   height={600}
@@ -269,7 +269,7 @@ export default function Home() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <Image
-                    src="https://placehold.co/400x400.png"
+                    src="https://picsum.photos/400/400?random=1"
                     alt="Customer making a payment"
                     width={400}
                     height={400}
@@ -277,7 +277,7 @@ export default function Home() {
                     data-ai-hint="customer paying online"
                 />
                  <Image
-                    src="https://placehold.co/400x400.png"
+                    src="https://picsum.photos/400/400?random=2"
                     alt="Artisan receiving payment notification"
                     width={400}
                     height={400}

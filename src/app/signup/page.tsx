@@ -115,7 +115,7 @@ export default function SignupPage() {
         </DropdownMenu>
       </header>
        <Image
-        src="https://placehold.co/1920x1080.png"
+        src="https://picsum.photos/1920/1080"
         alt="Artisan background"
         fill
         style={{objectFit: "cover"}}

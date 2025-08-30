@@ -165,7 +165,7 @@ export default function LiveStudioPage() {
                 <CardContent className="flex-1 flex flex-col gap-4 overflow-y-auto px-4">
                     <div className="flex items-start gap-3">
                         <Avatar className="h-8 w-8">
-                            <AvatarImage src="https://placehold.co/40x40.png" alt="User" data-ai-hint="person avatar" />
+                            <AvatarImage src="https://picsum.photos/40/40?random=1" alt="User" data-ai-hint="person avatar" />
                             <AvatarFallback>A</AvatarFallback>
                         </Avatar>
                         <div className="flex-1 bg-secondary rounded-lg px-3 py-2 text-sm">
@@ -175,7 +175,7 @@ export default function LiveStudioPage() {
                     </div>
                      <div className="flex items-start gap-3">
                         <Avatar className="h-8 w-8">
-                             <AvatarImage src="https://placehold.co/40x40.png" alt="User" data-ai-hint="person avatar" />
+                             <AvatarImage src="https://picsum.photos/40/40?random=2" alt="User" data-ai-hint="person avatar" />
                             <AvatarFallback>R</AvatarFallback>
                         </Avatar>
                         <div className="flex-1 bg-secondary rounded-lg px-3 py-2 text-sm">
@@ -185,7 +185,7 @@ export default function LiveStudioPage() {
                     </div>
                      <div className="flex items-start gap-3">
                         <Avatar className="h-8 w-8">
-                             <AvatarImage src="https://placehold.co/40x40.png" alt="User" data-ai-hint="person avatar" />
+                             <AvatarImage src="https://picsum.photos/40/40?random=3" alt="User" data-ai-hint="person avatar" />
                             <AvatarFallback>V</AvatarFallback>
                         </Avatar>
                         <div className="flex-1 bg-secondary rounded-lg px-3 py-2 text-sm">
