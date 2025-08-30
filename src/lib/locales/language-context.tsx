@@ -8,6 +8,7 @@ import bn from './bn.json';
 import te from './te.json';
 import mr from './mr.json';
 import ta from './ta.json';
+import ur from './ur.json';
 
 export const languages = [
   { code: 'en', name: 'English' },
@@ -16,6 +17,7 @@ export const languages = [
   { code: 'te', name: 'తెలుగు' },
   { code: 'mr', name: 'मराठी' },
   { code: 'ta', name: 'தமிழ்' },
+  { code: 'ur', name: 'اردو' },
 ];
 
 const translations: Record<string, any> = {
@@ -25,6 +27,7 @@ const translations: Record<string, any> = {
   te,
   mr,
   ta,
+  ur,
 };
 
 interface LanguageContextType {
