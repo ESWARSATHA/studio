@@ -12,32 +12,44 @@ const artisans = [
   {
     name: "Priya Kumar",
     avatar: "https://picsum.photos/100/100",
-    specialty: "Madhubani Painting"
+    specialty: "Madhubani Painting",
+    followers: 1500,
+    following: 200,
   },
   {
     name: "Rohan Das",
     avatar: "https://picsum.photos/100/100",
-    specialty: "Terracotta Pottery"
+    specialty: "Terracotta Pottery",
+    followers: 120,
+    following: 75,
   },
   {
     name: "Ananya Sharma",
     avatar: "https://picsum.photos/100/100",
-    specialty: "Pattachitra Scrolls"
+    specialty: "Pattachitra Scrolls",
+    followers: 850,
+    following: 150,
   },
   {
     name: "Vikram Singh",
     avatar: "https://picsum.photos/100/100",
-    specialty: "Wooden Toys"
+    specialty: "Wooden Toys",
+    followers: 450,
+    following: 90,
   },
     {
     name: "Meera Iyer",
     avatar: "https://picsum.photos/100/100",
-    specialty: "Kalamkari Textiles"
+    specialty: "Kalamkari Textiles",
+    followers: 250,
+    following: 110,
   },
   {
     name: "Arjun Mehta",
     avatar: "https://picsum.photos/100/100",
-    specialty: "Blue Pottery"
+    specialty: "Blue Pottery",
+    followers: 600,
+    following: 180,
   }
 ];
 
@@ -65,6 +77,10 @@ export default function CommunityPage() {
                         <div className="flex-1">
                             <h3 className="font-semibold text-lg">{artisan.name}</h3>
                             <p className="text-sm text-muted-foreground">{artisan.specialty}</p>
+                             <div className="flex gap-4 text-xs text-muted-foreground mt-1">
+                                <span>{artisan.followers} Followers</span>
+                                <span>{artisan.following} Following</span>
+                            </div>
                         </div>
                     </div>
                     <Button className="w-full mt-4">
