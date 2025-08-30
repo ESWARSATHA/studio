@@ -172,60 +172,60 @@ export default function Home() {
               <Card className="overflow-hidden">
                 <Image
                   src="https://picsum.photos/800/600?random=1"
-                  alt="Digital mythology art"
+                  alt="A screenshot of the Artisan dashboard showing listed products."
                   width={800}
                   height={600}
-                  className="w-full h-64 object-cover"
-                  data-ai-hint="digital art mythology"
+                  className="w-full h-64 object-cover object-top"
+                  data-ai-hint="artisan dashboard products"
                 />
                 <CardHeader>
                   <CardTitle>
-                    {translations.homepage.art_1_title}
+                    Manage Your Creations
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    {translations.homepage.art_1_desc}
+                    Easily upload, categorize, and manage all your artwork from a single, intuitive dashboard.
                   </p>
                 </CardContent>
               </Card>
               <Card className="overflow-hidden">
                 <Image
                   src="https://picsum.photos/800/600?random=2"
-                  alt="Urban street art"
+                  alt="A screenshot of the analytics page showing charts and insights."
                   width={800}
                   height={600}
-                  className="w-full h-64 object-cover"
-                  data-ai-hint="indian street art"
+                  className="w-full h-64 object-cover object-top"
+                  data-ai-hint="artisan analytics charts"
                 />
                 <CardHeader>
                   <CardTitle>
-                    {translations.homepage.art_2_title}
+                    Gain Valuable Insights
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    {translations.homepage.art_2_desc}
+                    Understand how customers interact with your art with our smart analytics and AI-powered feedback.
                   </p>
                 </CardContent>
               </Card>
               <Card className="overflow-hidden">
                 <Image
                   src="https://picsum.photos/800/600?random=3"
-                  alt="Minimalist folk art"
+                  alt="A screenshot of the community hub where artisans can connect."
                   width={800}
                   height={600}
-                  className="w-full h-64 object-cover"
-                  data-ai-hint="minimalist folk art"
+                  className="w-full h-64 object-cover object-top"
+                  data-ai-hint="artisan community hub"
                 />
                 <CardHeader>
                   <CardTitle>
-                    {translations.homepage.art_3_title}
+                    Connect with Peers
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    {translations.homepage.art_3_desc}
+                    Join a vibrant community of fellow artisans to share ideas, collaborate, and grow together.
                   </p>
                 </CardContent>
               </Card>
@@ -270,7 +270,7 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-4">
                 <Image
                     src="https://picsum.photos/400/400?random=1"
-                    alt="Customer making a payment"
+                    alt="A person using a smartphone to make an online payment for an art piece."
                     width={400}
                     height={400}
                     className="w-full h-auto rounded-lg shadow-md object-cover aspect-square"
@@ -278,7 +278,7 @@ export default function Home() {
                 />
                  <Image
                     src="https://picsum.photos/400/400?random=2"
-                    alt="Artisan receiving payment notification"
+                    alt="An artisan looking at a notification on their phone confirming a payment received."
                     width={400}
                     height={400}
                     className="w-full h-auto rounded-lg shadow-md object-cover aspect-square"
