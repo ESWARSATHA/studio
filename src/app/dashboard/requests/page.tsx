@@ -11,12 +11,16 @@ const requests = [
   {
     name: "Rohan Das",
     avatar: "https://picsum.photos/100/100?random=1",
-    specialty: "Terracotta Pottery"
+    specialty: "Terracotta Pottery",
+    followers: 120,
+    following: 75,
   },
   {
     name: "Meera Iyer",
     avatar: "https://picsum.photos/100/100?random=2",
-    specialty: "Kalamkari Textiles"
+    specialty: "Kalamkari Textiles",
+    followers: 250,
+    following: 110,
   },
 ];
 
@@ -49,6 +53,10 @@ export default function RequestsPage() {
                         <div>
                             <h3 className="font-semibold">{request.name}</h3>
                             <p className="text-sm text-muted-foreground">{request.specialty}</p>
+                             <div className="flex gap-4 text-xs text-muted-foreground mt-1">
+                                <span>{request.followers} Followers</span>
+                                <span>{request.following} Following</span>
+                            </div>
                         </div>
                     </div>
                     <div className="flex gap-2">
@@ -71,3 +79,4 @@ export default function RequestsPage() {
     </div>
   );
 }
+
