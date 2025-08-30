@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Star, Tag, Flame } from "lucide-react";
+import { ArrowRight, Star, Tag, Flame, ShoppingCart } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const trendingProducts = [
@@ -146,10 +146,16 @@ export default function DashboardPage() {
                     <Tag className="w-4 h-4" />
                     <span>{product.price}</span>
                 </div>
-                <Button variant="outline" size="sm">
-                  View Details
-                  <ArrowRight className="ml-2" />
-                </Button>
+                 <div className="flex gap-2">
+                   <Button variant="outline" size="sm">
+                    View Details
+                    <ArrowRight className="ml-2" />
+                  </Button>
+                  <Button variant="default" size="sm">
+                    <ShoppingCart className="mr-2" />
+                    Add to Cart
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>

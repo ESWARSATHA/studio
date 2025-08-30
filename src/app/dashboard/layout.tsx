@@ -29,6 +29,7 @@ import {
   Radio,
   Bell,
   Lightbulb,
+  ShoppingCart,
 } from "lucide-react";
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
@@ -60,6 +61,7 @@ export default function DashboardLayout({
     { href: "/dashboard/requests", label: translations.dashboard_layout.menu_requests, icon: Bell },
     { href: "/dashboard/livestudio", label: translations.dashboard_layout.menu_live_studio, icon: Radio },
     { href: "/dashboard/suggestions", label: "Suggestions", icon: Lightbulb },
+    { href: "/dashboard/cart", label: translations.dashboard_layout.menu_cart, icon: ShoppingCart },
     { href: "/dashboard/support", label: translations.dashboard_layout.menu_support, icon: LifeBuoy },
   ];
 

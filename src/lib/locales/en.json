@@ -64,6 +64,7 @@
         "menu_support": "Support",
         "menu_live_studio": "Live Studio",
         "menu_requests": "Follow Requests",
+        "menu_cart": "Shopping Cart",
         "account_menu_label": "My Account",
         "account_menu_verify": "Verify Account",
         "account_menu_profile": "Profile",
@@ -184,5 +185,16 @@
                 }
             ]
         }
+    },
+     "cart_page": {
+        "title": "Your Shopping Cart",
+        "empty_title": "Your cart is empty",
+        "empty_description": "Looks like you haven't added any items yet. Start exploring to find something you love!",
+        "summary_title": "Order Summary",
+        "summary_description": "Review your order before checking out.",
+        "subtotal": "Subtotal",
+        "shipping": "Shipping",
+        "total": "Total",
+        "checkout_button": "Proceed to Checkout"
     }
 }

@@ -64,6 +64,7 @@
         "menu_support": "समर्थन",
         "menu_live_studio": "लाइव स्टूडियो",
         "menu_requests": "फॉलो अनुरोध",
+        "menu_cart": "शॉपिंग कार्ट",
         "account_menu_label": "मेरा खाता",
         "account_menu_verify": "खाता सत्यापित करें",
         "account_menu_profile": "प्रोफ़ाइल",
@@ -184,5 +185,16 @@
                 }
             ]
         }
+    },
+    "cart_page": {
+        "title": "आपकी शॉपिंग कार्ट",
+        "empty_title": "आपकी कार्ट खाली है",
+        "empty_description": "लगता है आपने अभी तक कोई आइटम नहीं जोड़ा है। कुछ ऐसा खोजने के लिए अन्वेषण शुरू करें जिसे आप पसंद करते हैं!",
+        "summary_title": "आदेश सारांश",
+        "summary_description": "चेक आउट करने से पहले अपने आदेश की समीक्षा करें।",
+        "subtotal": "उप-योग",
+        "shipping": "शिपिंग",
+        "total": "कुल",
+        "checkout_button": "चेकआउट के लिए आगे बढ़ें"
     }
 }

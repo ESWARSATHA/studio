@@ -64,6 +64,7 @@
         "menu_support": "সমর্থন",
         "menu_live_studio": "লাইভ স্টুডিও",
         "menu_requests": "অনুসরণ অনুরোধ",
+        "menu_cart": "শপিং কার্ট",
         "account_menu_label": "আমার অ্যাকাউন্ট",
         "account_menu_verify": "অ্যাকাউন্ট যাচাই করুন",
         "account_menu_profile": "প্রোফাইল",
@@ -184,5 +185,16 @@
                 }
             ]
         }
+    },
+    "cart_page": {
+        "title": "আপনার শপিং কার্ট",
+        "empty_title": "আপনার কার্ট খালি",
+        "empty_description": "মনে হচ্ছে আপনি এখনও কোনো আইটেম যোগ করেননি। আপনি যা পছন্দ করেন তা খুঁজে পেতে অন্বেষণ শুরু করুন!",
+        "summary_title": "অর্ডার সারসংক্ষেপ",
+        "summary_description": "চেক আউট করার আগে আপনার অর্ডার পর্যালোচনা করুন।",
+        "subtotal": "উপমোট",
+        "shipping": "শিপিং",
+        "total": "মোট",
+        "checkout_button": "চেকআউটে এগিয়ে যান"
     }
 }
