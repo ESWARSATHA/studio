@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { generateProductDescription } from '@/ai/flows/generate-product-description';
 import { refineProductStory } from '@/ai/flows/refine-product-story';
 import { suggestPrice } from '@/ai/flows/suggest-price';
+import { generateProductImage } from '@/ai/flows/generate-product-image';
 
 const generateDescriptionSchema = z.object({
   photoDataUri: z.string().min(1, 'Image data is required.'),
@@ -19,6 +20,10 @@ const refineStorySchema = z.object({
 const suggestPriceSchema = z.object({
   productName: z.string().min(1, 'Product name is required.'),
   productDescription: z.string().min(1, 'Product description is required.'),
+});
+
+const generateImageSchema = z.object({
+  description: z.string().min(1, 'Description is required.'),
 });
 
 export async function handleGenerateDescription(prevState: any, formData: FormData) {
@@ -77,4 +82,22 @@ export async function handleSuggestPrice(prevState: any, formData: FormData) {
     console.error(error);
     return { status: 'error', message: 'Failed to suggest price. Please try again.' };
   }
+}
+
+export async function handleGenerateImage(prevState: any, formData: FormData) {
+    try {
+        const validatedFields = generateImageSchema.safeParse({
+            description: formData.get('description'),
+        });
+
+        if (!validatedFields.success) {
+            return { status: 'error', message: 'Invalid input.', errors: validatedFields.error.flatten().fieldErrors };
+        }
+        
+        const result = await generateProductImage(validatedFields.data);
+        return { status: 'success', data: result };
+    } catch (error) {
+        console.error(error);
+        return { status: 'error', message: 'Failed to generate image. Please try again.' };
+    }
 }

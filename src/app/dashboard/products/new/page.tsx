@@ -3,16 +3,17 @@
 
 import { useState, useEffect, useActionState } from 'react';
 import Image from 'next/image';
-import { handleGenerateDescription, handleRefineStory, handleSuggestPrice } from './actions';
+import { handleGenerateDescription, handleRefineStory, handleSuggestPrice, handleGenerateImage } from './actions';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Loader2, Wand2, Mic, Sparkles, UploadCloud, IndianRupee } from 'lucide-react';
+import { Loader2, Wand2, Mic, Sparkles, UploadCloud, IndianRupee, Image as ImageIcon } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 
 const initialState = { status: 'idle', message: '', data: null };
+const initialImageState = { status: 'idle', message: '', data: null, errors: null };
 
 export default function NewProductPage() {
   const { toast } = useToast();
@@ -22,24 +23,28 @@ export default function NewProductPage() {
   const [descriptionState, descriptionAction] = useActionState(handleGenerateDescription, initialState);
   const [storyState, storyAction] = useActionState(handleRefineStory, initialState);
   const [priceState, priceAction] = useActionState(handleSuggestPrice, initialState);
+  const [imageState, imageAction] = useActionState(handleGenerateImage, initialImageState);
 
   const [isGeneratingDesc, setIsGeneratingDesc] = useState(false);
   const [isRefiningStory, setIsRefiningStory] = useState(false);
   const [isSuggestingPrice, setIsSuggestingPrice] = useState(false);
-
+  const [isGeneratingImage, setIsGeneratingImage] = useState(false);
+  
   const [productName, setProductName] = useState('');
   const [description, setDescription] = useState('');
   const [tags, setTags] = useState('');
   const [story, setStory] = useState('');
   const [refinedStory, setRefinedStory] = useState('');
+  const [imageGenDescription, setImageGenDescription] = useState('');
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      setImagePreview(URL.createObjectURL(file));
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImageDataUri(reader.result as string);
+        const dataUri = reader.result as string;
+        setImageDataUri(dataUri);
+        setImagePreview(dataUri);
       };
       reader.readAsDataURL(file);
     }
@@ -100,6 +105,21 @@ export default function NewProductPage() {
     setIsSuggestingPrice(true);
     priceAction(formData);
   };
+
+  const onGenerateImage = () => {
+    if (!imageGenDescription) {
+      toast({
+        variant: "destructive",
+        title: "No Description",
+        description: "Please enter a description for the image.",
+      });
+      return;
+    }
+    const formData = new FormData();
+    formData.append('description', imageGenDescription);
+    setIsGeneratingImage(true);
+    imageAction(formData);
+  };
   
   useEffect(() => {
     if (descriptionState.status === 'success') {
@@ -151,20 +171,43 @@ export default function NewProductPage() {
     }
     setIsSuggestingPrice(false);
   }, [priceState, toast]);
+  
+  useEffect(() => {
+    if (imageState.status === 'success' && imageState.data?.imageDataUri) {
+      setImagePreview(imageState.data.imageDataUri);
+      setImageDataUri(imageState.data.imageDataUri);
+      toast({
+        title: "Image Generated!",
+        description: "Your new product image is ready.",
+      });
+    } else if (imageState.status === 'error') {
+      toast({
+        variant: "destructive",
+        title: "Image Generation Failed",
+        description: imageState.message,
+      });
+    }
+    setIsGeneratingImage(false);
+  }, [imageState, toast]);
 
   return (
     <form className="grid gap-8 md:grid-cols-3">
-      <div className="md:col-span-1">
+      <div className="md:col-span-1 grid gap-8">
         <Card>
           <CardHeader>
             <CardTitle>Product Image</CardTitle>
-            <CardDescription>Upload a clear photo of your creation.</CardDescription>
+            <CardDescription>Upload a clear photo of your creation or generate one with AI.</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
              <div className="grid gap-2">
               <Label htmlFor="product-image" className="sr-only">Product Image</Label>
               <div className="w-full aspect-square rounded-lg border-2 border-dashed border-muted-foreground/30 flex items-center justify-center relative overflow-hidden bg-secondary/50">
-                {imagePreview ? (
+                {isGeneratingImage ? (
+                  <div className="flex flex-col items-center gap-2 text-muted-foreground">
+                    <Loader2 className="h-12 w-12 animate-spin" />
+                    <p>Generating Image...</p>
+                  </div>
+                ) : imagePreview ? (
                   <Image src={imagePreview} alt="Product preview" fill style={{objectFit: "cover"}} />
                 ) : (
                   <div className="text-center text-muted-foreground p-4">
@@ -180,6 +223,24 @@ export default function NewProductPage() {
               Generate Description & Tags
             </Button>
           </CardContent>
+        </Card>
+        <Card>
+            <CardHeader>
+                <CardTitle>AI Image Generator</CardTitle>
+                <CardDescription>Describe the image you want to create.</CardDescription>
+            </CardHeader>
+            <CardContent className="grid gap-4">
+                <Textarea 
+                    placeholder="e.g., 'A vibrant blue pottery vase from Jaipur, with traditional floral motifs...'"
+                    value={imageGenDescription}
+                    onChange={(e) => setImageGenDescription(e.target.value)}
+                    rows={4}
+                />
+                <Button type="button" className="w-full" onClick={onGenerateImage} disabled={isGeneratingImage}>
+                    {isGeneratingImage ? <Loader2 className="mr-2 animate-spin" /> : <ImageIcon className="mr-2" />}
+                    Generate Image
+                </Button>
+            </CardContent>
         </Card>
       </div>
 
