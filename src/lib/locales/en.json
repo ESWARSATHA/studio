@@ -16,17 +16,29 @@
         "feature_3_desc": "Get insights on how customers are interacting with your products.",
         "feature_4_title": "Marketing Hub",
         "feature_4_desc": "Generate promotional materials and understand market demand for your art.",
-        "art_title": "Contemporary Indian Art for the Next Generation",
-        "art_subtitle": "Discover modern Indian artists who are redefining tradition with a fresh, vibrant perspective.",
-        "art_1_title": "Digital Mythology",
-        "art_1_desc": "Ancient tales retold through digital illustration, blending epic narratives with modern aesthetics.",
-        "art_2_title": "Indian Street Art Fusion",
-        "art_2_desc": "Graffiti and stencil art infused with Indian motifs, creating bold statements on urban canvases.",
-        "art_3_title": "Minimalist Folk",
-        "art_3_desc": "Traditional folk forms like Warli and Gond, reimagined with clean lines and a contemporary color palette.",
+        "art_title": "For Sellers: A Platform to Grow",
+        "art_subtitle": "Everything you need to manage your art business and reach a wider audience.",
+        "overview_seller_1_title": "Manage Your Creations",
+        "overview_seller_1_desc": "Easily upload, categorize, and manage all your artwork from a single, intuitive dashboard.",
+        "overview_seller_2_title": "Gain Valuable Insights",
+        "overview_seller_2_desc": "Understand how customers interact with your art with our smart analytics and AI-powered feedback.",
+        "overview_seller_3_title": "Connect with Peers",
+        "overview_seller_3_desc": "Join a vibrant community of fellow artisans to share ideas, collaborate, and grow together.",
         "payments_title": "Flexible & Secure Payments For You",
         "payments_subtitle": "We support a wide range of payment methods to make receiving payments for your art seamless. All transactions are secure and compliant with Indian regulations.",
         "payments_extra": "...and many more UPI, credit, and debit card options.",
+        "payments_feature_1_title": "Simplified Payments For You",
+        "payments_feature_1_desc": "When a customer buys your art, they can pay easily with UPI. You get the payment instantly. Simple, fast, and fair.",
+        "payments_feature_2_title": "Direct & Transparent",
+        "payments_feature_2_desc": "No hidden charges. No delays. Your hard-earned money reaches you directly, empowering you to grow your business.",
+        "overview_buyer_title": "For Buyers: Discover Unique Indian Art",
+        "overview_buyer_subtitle": "Explore a curated marketplace of authentic crafts and connect directly with the artists.",
+        "overview_buyer_1_title": "Discover Authentic Crafts",
+        "overview_buyer_1_desc": "Browse thousands of unique, handcrafted items from talented artists across India.",
+        "overview_buyer_2_title": "Connect with Artists",
+        "overview_buyer_2_desc": "Learn the stories behind the art and communicate directly with the creators.",
+        "overview_buyer_3_title": "Secure & Easy Shopping",
+        "overview_buyer_3_desc": "Enjoy a seamless and secure shopping experience with multiple payment options.",
         "footer": "© {year} Artisan. All rights reserved."
     },
     "login_page": {
@@ -221,3 +233,5 @@
         "checkout_button": "Proceed to Checkout"
     }
 }
+
+    

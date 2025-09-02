@@ -182,12 +182,12 @@ export default function Home() {
                 />
                 <CardHeader>
                   <CardTitle>
-                    Manage Your Creations
+                    {translations.homepage.overview_seller_1_title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Easily upload, categorize, and manage all your artwork from a single, intuitive dashboard.
+                    {translations.homepage.overview_seller_1_desc}
                   </p>
                 </CardContent>
               </Card>
@@ -202,12 +202,12 @@ export default function Home() {
                 />
                 <CardHeader>
                   <CardTitle>
-                    Gain Valuable Insights
+                    {translations.homepage.overview_seller_2_title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Understand how customers interact with your art with our smart analytics and AI-powered feedback.
+                    {translations.homepage.overview_seller_2_desc}
                   </p>
                 </CardContent>
               </Card>
@@ -222,12 +222,12 @@ export default function Home() {
                 />
                 <CardHeader>
                   <CardTitle>
-                    Connect with Peers
+                    {translations.homepage.overview_seller_3_title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Join a vibrant community of fellow artisans to share ideas, collaborate, and grow together.
+                    {translations.homepage.overview_seller_3_desc}
                   </p>
                 </CardContent>
               </Card>
@@ -254,8 +254,8 @@ export default function Home() {
                             <Wallet className="h-6 w-6 text-primary" />
                         </div>
                         <div>
-                            <h4 className="font-semibold">Simplified Payments For You</h4>
-                            <p className="text-sm text-muted-foreground">When a customer buys your art, they can pay easily with UPI. You get the payment instantly. Simple, fast, and fair.</p>
+                            <h4 className="font-semibold">{translations.homepage.payments_feature_1_title}</h4>
+                            <p className="text-sm text-muted-foreground">{translations.homepage.payments_feature_1_desc}</p>
                         </div>
                     </div>
                      <div className="flex items-center gap-4">
@@ -263,8 +263,8 @@ export default function Home() {
                             <IndianRupee className="h-6 w-6 text-primary" />
                         </div>
                         <div>
-                            <h4 className="font-semibold">Direct & Transparent</h4>
-                            <p className="text-sm text-muted-foreground">No hidden charges. No delays. Your hard-earned money reaches you directly, empowering you to grow your business.</p>
+                            <h4 className="font-semibold">{translations.homepage.payments_feature_2_title}</h4>
+                            <p className="text-sm text-muted-foreground">{translations.homepage.payments_feature_2_desc}</p>
                         </div>
                     </div>
                 </div>
@@ -290,6 +290,45 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <section className="py-20 md:py-24">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center max-w-2xl mx-auto">
+                    <h2 className="text-3xl font-bold">{translations.homepage.overview_buyer_title}</h2>
+                    <p className="mt-4 text-muted-foreground">{translations.homepage.overview_buyer_subtitle}</p>
+                </div>
+                <div className="mt-12 grid gap-8 md:grid-cols-3">
+                    <Card>
+                        <CardHeader className="items-center">
+                            <div className="p-4 bg-primary/10 rounded-full"><ShoppingBag className="h-8 w-8 text-primary" /></div>
+                            <CardTitle className="mt-4">{translations.homepage.overview_buyer_1_title}</CardTitle>
+                        </CardHeader>
+                        <CardContent className="text-center">
+                            <p className="text-muted-foreground">{translations.homepage.overview_buyer_1_desc}</p>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader className="items-center">
+                            <div className="p-4 bg-primary/10 rounded-full"><Users className="h-8 w-8 text-primary" /></div>
+                            <CardTitle className="mt-4">{translations.homepage.overview_buyer_2_title}</CardTitle>
+                        </CardHeader>
+                        <CardContent className="text-center">
+                            <p className="text-muted-foreground">{translations.homepage.overview_buyer_2_desc}</p>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader className="items-center">
+                            <div className="p-4 bg-primary/10 rounded-full"><Wallet className="h-8 w-8 text-primary" /></div>
+                            <CardTitle className="mt-4">{translations.homepage.overview_buyer_3_title}</CardTitle>
+                        </CardHeader>
+                        <CardContent className="text-center">
+                            <p className="text-muted-foreground">{translations.homepage.overview_buyer_3_desc}</p>
+                        </CardContent>
+                    </Card>
+                </div>
+            </div>
+        </section>
+
       </main>
 
       <footer className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-muted-foreground">
@@ -298,3 +337,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
