@@ -12,6 +12,8 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const RefineProductStoryInputSchema = z.object({
+  productName: z.string().describe("The name of the product."),
+  productDescription: z.string().describe("A brief description of the product."),
   voiceInput: z.string().describe("The artisan's dictated story about the product."),
 });
 export type RefineProductStoryInput = z.infer<typeof RefineProductStoryInputSchema>;
@@ -51,8 +53,10 @@ const prompt = ai.definePrompt({
   },
   prompt: `You are an expert story teller specializing in crafting compelling product narratives for artisans.
 
-  Refine the artisan's dictated story into a polished and engaging narrative that will captivate buyers.
+  Your task is to refine the artisan's dictated story into a polished and engaging narrative that will captivate buyers. Use the product name and description for context.
 
+  Product Name: {{{productName}}}
+  Product Description: {{{productDescription}}}
   Artisan's Story: {{{voiceInput}}}`,
 });
 

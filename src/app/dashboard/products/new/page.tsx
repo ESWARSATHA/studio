@@ -69,7 +69,17 @@ export default function NewProductPage() {
       });
       return;
     }
+     if (!productName || !description) {
+      toast({
+        variant: 'destructive',
+        title: 'Missing Details',
+        description: 'Please provide a product name and description before refining the story.',
+      });
+      return;
+    }
     const formData = new FormData();
+    formData.append('productName', productName);
+    formData.append('productDescription', description);
     formData.append('story', story);
     setIsRefiningStory(true);
     storyAction(formData);
@@ -167,7 +177,7 @@ export default function NewProductPage() {
             </div>
             <Button type="button" className="w-full" onClick={onGenerateDescription} disabled={!imagePreview || isGeneratingDesc}>
               {isGeneratingDesc ? <Loader2 className="mr-2 animate-spin" /> : <Wand2 className="mr-2" />}
-              Generate with AI
+              Generate Description & Tags
             </Button>
           </CardContent>
         </Card>
@@ -235,18 +245,10 @@ export default function NewProductPage() {
 
         <Card>
            <CardHeader>
-            <div className="flex items-center justify-between">
-                <div>
-                    <CardTitle>Product Story</CardTitle>
-                    <CardDescription>Tell us the story behind your product.</CardDescription>
-                </div>
-                <Button type="button" size="sm" onClick={onRefineStory} disabled={!story || isRefiningStory}>
-                    {isRefiningStory ? <Loader2 className="mr-2 animate-spin" /> : <Sparkles className="mr-2" />}
-                    Refine Story
-                </Button>
-            </div>
-        </CardHeader>
-          <CardContent className="grid gap-4 md:grid-cols-2">
+              <CardTitle>AI Storyteller</CardTitle>
+              <CardDescription>Tell us the story behind your product, and our AI will polish it into a captivating narrative.</CardDescription>
+          </CardHeader>
+          <CardContent className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="story" className="flex items-center">
                 <Mic className="mr-2 h-4 w-4" />
@@ -261,6 +263,10 @@ export default function NewProductPage() {
               </Label>
               <Textarea id="refined-story" placeholder="AI-polished version will appear here..." value={refinedStory} onChange={(e) => setRefinedStory(e.target.value)} rows={8} className="bg-primary/5 focus:bg-background"/>
             </div>
+             <Button type="button" size="sm" onClick={onRefineStory} disabled={!story || isRefiningStory} className="justify-self-end">
+                {isRefiningStory ? <Loader2 className="mr-2 animate-spin" /> : <Sparkles className="mr-2" />}
+                Refine with AI
+            </Button>
           </CardContent>
         </Card>
         

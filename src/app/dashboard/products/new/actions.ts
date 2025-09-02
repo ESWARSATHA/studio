@@ -11,6 +11,8 @@ const generateDescriptionSchema = z.object({
 });
 
 const refineStorySchema = z.object({
+    productName: z.string().min(1, 'Product name is required.'),
+    productDescription: z.string().min(1, 'Product description is required.'),
     story: z.string().min(1, 'Story cannot be empty.'),
 });
 
@@ -40,6 +42,8 @@ export async function handleGenerateDescription(prevState: any, formData: FormDa
 export async function handleRefineStory(prevState: any, formData: FormData) {
   try {
     const validatedFields = refineStorySchema.safeParse({
+      productName: formData.get('productName'),
+      productDescription: formData.get('productDescription'),
       story: formData.get('story'),
     });
 
@@ -47,7 +51,8 @@ export async function handleRefineStory(prevState: any, formData: FormData) {
       return { status: 'error', message: 'Invalid input.', errors: validatedFields.error.flatten().fieldErrors };
     }
 
-    const result = await refineProductStory({ voiceInput: validatedFields.data.story });
+    const { productName, productDescription, story } = validatedFields.data;
+    const result = await refineProductStory({ productName, productDescription, voiceInput: story });
     return { status: 'success', data: result };
   } catch (error) {
     console.error(error);
