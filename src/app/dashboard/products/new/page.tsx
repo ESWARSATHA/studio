@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Loader2, Wand2, Mic, Sparkles, UploadCloud, IndianRupee, Image as ImageIcon, Video } from 'lucide-react';
+import { Loader2, Wand2, Mic, Sparkles, UploadCloud, IndianRupee, Image as ImageIcon, Video, Box, Paintbrush, Scissors } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 
 const initialState = { status: 'idle', message: '', data: null };
@@ -283,15 +283,15 @@ export default function NewProductPage() {
             </CardHeader>
             <CardContent className="grid gap-4">
                  <div className="grid gap-2">
-                    <Label htmlFor="material">Material</Label>
+                    <Label htmlFor="material" className="flex items-center gap-2"><Scissors/>Material</Label>
                     <Input id="material" placeholder="e.g., Sustainable Mango Wood, Jaipur Blue Pottery"/>
                 </div>
                  <div className="grid gap-2">
-                    <Label htmlFor="dimensions">Dimensions</Label>
+                    <Label htmlFor="dimensions" className="flex items-center gap-2"><Box/>Dimensions</Label>
                     <Input id="dimensions" placeholder="e.g., 12\" x 8\" x 5\""/>
                 </div>
                  <div className="grid gap-2">
-                    <Label htmlFor="process">Process</Label>
+                    <Label htmlFor="process" className="flex items-center gap-2"><Paintbrush/>Process</Label>
                     <Textarea id="process" placeholder="Describe how you made this product..." rows={3}/>
                 </div>
             </CardContent>

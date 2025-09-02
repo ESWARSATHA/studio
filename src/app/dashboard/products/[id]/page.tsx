@@ -4,7 +4,7 @@
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { IndianRupee, ShoppingCart, Star, Video, Scissors, Paintbrush, Heart } from "lucide-react";
+import { IndianRupee, ShoppingCart, Star, Video, Scissors, Paintbrush, Heart, Box } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const products = [
@@ -148,6 +148,13 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                     <div>
                         <h4 className="font-semibold">Material</h4>
                         <p className="text-muted-foreground">{product.material}</p>
+                    </div>
+                </div>
+                <div className="flex items-start gap-3">
+                    <Box className="h-5 w-5 text-primary mt-1"/>
+                    <div>
+                        <h4 className="font-semibold">Dimensions</h4>
+                        <p className="text-muted-foreground">{product.dimensions}</p>
                     </div>
                 </div>
                  <div className="flex items-start gap-3">
