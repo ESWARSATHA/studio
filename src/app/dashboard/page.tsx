@@ -36,6 +36,7 @@ const trendingProducts = [
 
 const products = [
   {
+    id: 1,
     name: "Hand-carved Wooden Elephant",
     price: 2499,
     description: "A magnificent elephant, hand-carved from a single block of sustainable mango wood, showcasing intricate details.",
@@ -45,6 +46,7 @@ const products = [
     reviews: 24,
   },
   {
+    id: 2,
     name: "Blue Pottery Vase",
     price: 1899,
     description: "A vibrant blue pottery vase from Jaipur, featuring traditional floral motifs hand-painted by skilled artisans.",
@@ -54,6 +56,7 @@ const products = [
     reviews: 18,
   },
     {
+    id: 3,
     name: "Pattachitra Scroll Painting",
     price: 3999,
     description: "A stunning Pattachitra scroll from Odisha, depicting a tale from the Ramayana with natural pigments on cloth.",
@@ -63,6 +66,7 @@ const products = [
     reviews: 12,
   },
    {
+    id: 4,
     name: "Terracotta Horse",
     price: 1299,
     description: "A rustic terracotta horse from Panchmura, Bengal, representing a timeless tradition of village pottery.",
@@ -121,7 +125,7 @@ export default function DashboardPage() {
 
        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 -mt-6">
         {products.map((product) => (
-          <Card key={product.name} className="flex flex-col overflow-hidden">
+          <Card key={product.id} className="flex flex-col overflow-hidden">
             <div className="relative">
               <Image 
                 src={product.image} 
@@ -147,9 +151,11 @@ export default function DashboardPage() {
                     <span>{product.price.toLocaleString()}</span>
                 </div>
                  <div className="flex gap-2">
-                   <Button variant="outline" size="sm">
-                    View Details
-                    <ArrowRight className="ml-2" />
+                   <Button variant="outline" size="sm" asChild>
+                    <Link href={`/dashboard/products/${product.id}`}>
+                      View Details
+                      <ArrowRight className="ml-2" />
+                    </Link>
                   </Button>
                   <Button variant="default" size="sm">
                     <ShoppingCart className="mr-2" />
