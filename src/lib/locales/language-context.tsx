@@ -57,13 +57,43 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState('en');
   const [currentTranslations, setCurrentTranslations] = useState(translations.en);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setCurrentTranslations(translations[language] || translations.en);
-  }, [language]);
+    setIsMounted(true);
+    const savedLanguage = localStorage.getItem('language');
+    if (savedLanguage && translations[savedLanguage]) {
+      setLanguage(savedLanguage);
+      setCurrentTranslations(translations[savedLanguage]);
+    }
+  }, []);
+
+  const handleSetLanguage = (lang: string) => {
+    if (translations[lang]) {
+      setLanguage(lang);
+      setCurrentTranslations(translations[lang]);
+      localStorage.setItem('language', lang);
+    } else {
+        // Fallback to English if the selected language is not fully supported
+        setLanguage('en');
+        setCurrentTranslations(translations.en);
+        localStorage.setItem('language', 'en');
+    }
+  };
+  
+  useEffect(() => {
+    if(isMounted) {
+        setCurrentTranslations(translations[language] || translations.en);
+    }
+  }, [language, isMounted]);
+
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, translations: currentTranslations }}>
+    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, translations: currentTranslations }}>
       {children}
     </LanguageContext.Provider>
   );
