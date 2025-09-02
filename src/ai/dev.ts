@@ -2,85 +2,14 @@
 'use server';
 
 /**
- * @fileOverview A plant problem diagnosis AI agent.
+ * @fileOverview This file is used to run the Genkit developer UI.
  *
- * - diagnosePlant - A function that handles the plant diagnosis process.
- * - DiagnosePlantInput - The input type for the diagnosePlant function.
- * - DiagnosePlantOutput - The return type for the diagnosePlant function.
+ * It imports all the production flows so that they can be tested from the UI.
  */
 
-import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
-
-const DiagnosePlantInputSchema = z.object({
-  photoDataUri: z
-    .string()
-    .describe(
-      "A photo of a plant, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'."
-    ),
-  description: z.string().describe('The description of the plant.'),
-});
-export type DiagnosePlantInput = z.infer<typeof DiagnosePlantInputSchema>;
-
-const DiagnosePlantOutputSchema = z.object({
-  identification: z.object({
-    isPlant: z.boolean().describe('Whether or not the input is a plant.'),
-    commonName: z.string().describe('The name of the identified plant.'),
-    latinName: z.string().describe('The Latin name of the identified plant.'),
-  }),
-  diagnosis: z.object({
-    isHealthy: z.boolean().describe('Whether or not the plant is healthy.'),
-    diagnosis: z.string().describe("The diagnosis of the plant's health."),
-  }),
-});
-export type DiagnosePlantOutput = z.infer<typeof DiagnosePlantOutputSchema>;
-
-export async function diagnosePlant(input: DiagnosePlantInput): Promise<DiagnosePlantOutput> {
-  return diagnosePlantFlow(input);
-}
-
-const prompt = ai.definePrompt({
-  name: 'diagnosePlantPrompt',
-  input: {schema: DiagnosePlantInputSchema},
-  output: {schema: DiagnosePlantOutputSchema},
-  config: {
-    safetySettings: [
-      {
-        category: 'HARM_CATEGORY_HATE_SPEECH',
-        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
-      },
-      {
-        category: 'HARM_CATEGORY_DANGEROUS_CONTENT',
-        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
-      },
-      {
-        category: 'HARM_CATEGORY_HARASSMENT',
-        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
-      },
-      {
-        category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT',
-        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
-      },
-    ],
-  },
-  prompt: `You are an expert botanist specializing diagnosing plant illnesses.
-
-You will use this information to diagnose the plant, and any issues it has. You will make a determination as to whether the plant is healthy or not, and what is wrong with it, and set the isHealthy output field appropriately.
-
-Use the following as the primary source of information about the plant.
-
-Description: {{{description}}}
-Photo: {{media url=photoDataUri}}`,
-});
-
-const diagnosePlantFlow = ai.defineFlow(
-  {
-    name: 'diagnosePlantFlow',
-    inputSchema: DiagnosePlantInputSchema,
-    outputSchema: DiagnosePlantOutputSchema,
-  },
-  async input => {
-    const {output} = await prompt(input);
-    return output!;
-  }
-);
+import './flows/analyze-feedback';
+import './flows/customer-support';
+import './flows/generate-marketing-copy';
+import './flows/generate-product-description';
+import './flows/refine-product-story';
+import './flows/suggest-price';
