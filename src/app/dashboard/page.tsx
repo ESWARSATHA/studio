@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Star, IndianRupee, Flame, ShoppingCart, Tag } from "lucide-react";
+import { ArrowRight, Star, IndianRupee, Flame, ShoppingCart, Tag, Zap } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const trendingProducts = [
@@ -113,10 +113,16 @@ const ProductCard = ({ product, userType }: { product: typeof products[0], userT
                         </Link>
                     </Button>
                     {userType === 'buyer' && (
-                        <Button variant="default" size="icon">
-                            <ShoppingCart />
-                            <span className="sr-only">Add to Cart</span>
-                        </Button>
+                        <>
+                            <Button variant="outline" size="icon">
+                                <ShoppingCart />
+                                <span className="sr-only">Add to Cart</span>
+                            </Button>
+                             <Button variant="default" size="icon">
+                                <Zap />
+                                <span className="sr-only">Buy Now</span>
+                            </Button>
+                        </>
                     )}
                 </div>
             </div>

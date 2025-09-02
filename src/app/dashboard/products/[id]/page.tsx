@@ -4,7 +4,7 @@
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { IndianRupee, ShoppingCart, Star, Video, Scissors, Paintbrush, Heart, Box } from "lucide-react";
+import { IndianRupee, ShoppingCart, Star, Video, Scissors, Paintbrush, Heart, Box, Zap } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const products = [
@@ -130,10 +130,16 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                     <span>{product.price.toLocaleString()}</span>
                 </div>
                 {userType === 'buyer' && (
-                    <Button size="lg" className="w-full">
-                        <ShoppingCart className="mr-2" />
-                        Add to Cart
-                    </Button>
+                    <div className="flex flex-col sm:flex-row gap-2">
+                        <Button size="lg" className="flex-1">
+                            <ShoppingCart className="mr-2" />
+                            Add to Cart
+                        </Button>
+                        <Button size="lg" variant="default" className="flex-1">
+                            <Zap className="mr-2" />
+                            Buy Now
+                        </Button>
+                    </div>
                 )}
             </CardContent>
         </Card>
