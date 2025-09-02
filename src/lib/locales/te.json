@@ -36,7 +36,7 @@
         "form_placeholder": "artisan_priya / m@example.com / 9876543210",
         "password_label": "పాస్‌వర్డ్",
         "forgot_password": "మీ పాస్‌వర్డ్‌ను మర్చిపోయారా?",
-        "login_artisan_button": "కళాకారుడిగా లాగిన్ చేయండి",
+        "login_seller_button": "విక్రేతగా లాగిన్ చేయండి",
         "login_buyer_button": "కొనుగోలుదారుగా లాగిన్ చేయండి",
         "signup_link": "ఖాతా లేదా? సైన్ అప్ చేయండి"
     },

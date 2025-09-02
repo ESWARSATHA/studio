@@ -36,7 +36,7 @@
         "form_placeholder": "कारीगर_प्रिया / m@example.com / 9876543210",
         "password_label": "पासवर्ड",
         "forgot_password": "अपना पासवर्ड भूल गए?",
-        "login_artisan_button": "कारीगर के रूप में लॉग इन करें",
+        "login_seller_button": "विक्रेता के रूप में लॉग इन करें",
         "login_buyer_button": "खरीदार के रूप में लॉग इन करें",
         "signup_link": "खाता नहीं है? साइन अप करें"
     },

@@ -111,7 +111,7 @@ export default function LoginPage() {
                 <Button asChild>
                     <Link href="/dashboard?userType=artisan">
                         <Users className="mr-2"/>
-                        {translations.login_page.login_artisan_button}
+                        {translations.login_page.login_seller_button}
                     </Link>
                 </Button>
                  <Button asChild variant="secondary">

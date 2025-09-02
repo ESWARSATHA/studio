@@ -36,7 +36,7 @@
         "form_placeholder": "artisan_priya / m@example.com / 9876543210",
         "password_label": "Password",
         "forgot_password": "Forgot your password?",
-        "login_artisan_button": "Login as Artisan",
+        "login_seller_button": "Login as Seller",
         "login_buyer_button": "Login as Buyer",
         "signup_link": "Don't have an account? Sign up"
     },
