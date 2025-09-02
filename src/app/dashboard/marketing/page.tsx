@@ -8,7 +8,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Megaphone, Wand2, Users, Mail, MessageSquare } from "lucide-react";
+import { Loader2, Megaphone, Wand2, Users, Mail, MessageSquare, ShoppingBag, Lightbulb } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 
 const products = [
   {
@@ -74,14 +75,14 @@ export default function MarketingPage() {
     <div className="grid gap-8">
        <div className="text-center">
         <Megaphone className="mx-auto h-12 w-12 text-primary" />
-        <h1 className="mt-4 text-3xl font-bold tracking-tight">Marketing Hub</h1>
-        <p className="mt-2 text-muted-foreground">Generate marketing materials for your products with AI.</p>
+        <h1 className="mt-4 text-3xl font-bold tracking-tight">AI Marketing Hub</h1>
+        <p className="mt-2 text-muted-foreground">Generate marketing materials and get a sales strategy for your products.</p>
       </div>
 
       <Card>
         <CardHeader>
           <CardTitle>Select a Product</CardTitle>
-          <CardDescription>Choose one of your products to create marketing copy for.</CardDescription>
+          <CardDescription>Choose one of your products to create a marketing plan for.</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
@@ -97,47 +98,72 @@ export default function MarketingPage() {
             </Select>
             <Button type="submit" disabled={!selectedProduct || isGenerating} className="w-full sm:w-auto">
               {isGenerating ? <Loader2 className="mr-2 animate-spin" /> : <Wand2 className="mr-2" />}
-              Generate Copy
+              Generate Marketing Plan
             </Button>
           </form>
         </CardContent>
       </Card>
       
       {(isGenerating || state.data) && (
-        <div className="grid gap-8 md:grid-cols-3">
-          <Card>
-            <CardHeader>
-               <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-full"><Users className="h-6 w-6 text-primary" /></div>
-                <CardTitle>Target Audience</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent>
-                {isGenerating && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> : <p className="text-sm text-muted-foreground">{state.data?.targetAudience}</p>}
-            </CardContent>
-          </Card>
-           <Card>
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-full"><MessageSquare className="h-6 w-6 text-primary" /></div>
-                <CardTitle>Social Media Post</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent>
-                {isGenerating && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> : <Textarea readOnly value={state.data?.socialMediaPost} rows={6} className="bg-secondary/50"/>}
-            </CardContent>
-          </Card>
-           <Card>
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-full"><Mail className="h-6 w-6 text-primary" /></div>
-                <CardTitle>Promotional Email</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent>
-               {isGenerating && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> : <Textarea readOnly value={state.data?.emailCopy} rows={6} className="bg-secondary/50"/>}
-            </CardContent>
-          </Card>
+        <div className="grid gap-8">
+            <div className="grid md:grid-cols-2 gap-8">
+                <Card>
+                    <CardHeader>
+                    <div className="flex items-center gap-3">
+                        <div className="p-3 bg-primary/10 rounded-full"><Users className="h-6 w-6 text-primary" /></div>
+                        <CardTitle>Target Audience</CardTitle>
+                    </div>
+                    </CardHeader>
+                    <CardContent>
+                        {isGenerating && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> : <p className="text-sm text-muted-foreground">{state.data?.targetAudience}</p>}
+                    </CardContent>
+                </Card>
+                 <Card>
+                    <CardHeader>
+                    <div className="flex items-center gap-3">
+                        <div className="p-3 bg-primary/10 rounded-full"><MessageSquare className="h-6 w-6 text-primary" /></div>
+                        <CardTitle>Social Media Post</CardTitle>
+                    </div>
+                    </CardHeader>
+                    <CardContent>
+                        {isGenerating && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> : <Textarea readOnly value={state.data?.socialMediaPost} rows={6} className="bg-secondary/50"/>}
+                    </CardContent>
+                </Card>
+            </div>
+             <Card>
+                <CardHeader>
+                <div className="flex items-center gap-3">
+                    <div className="p-3 bg-primary/10 rounded-full"><Mail className="h-6 w-6 text-primary" /></div>
+                    <CardTitle>Promotional Email</CardTitle>
+                </div>
+                </CardHeader>
+                <CardContent>
+                {isGenerating && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> : <Textarea readOnly value={state.data?.emailCopy} rows={8} className="bg-secondary/50"/>}
+                </CardContent>
+            </Card>
+             <Card>
+                <CardHeader>
+                <div className="flex items-center gap-3">
+                    <div className="p-3 bg-primary/10 rounded-full"><ShoppingBag className="h-6 w-6 text-primary" /></div>
+                    <CardTitle>Platform Recommendations</CardTitle>
+                    <CardDescription>Where to sell your product online in India.</CardDescription>
+                </div>
+                </CardHeader>
+                <CardContent className="grid gap-6">
+                {isGenerating && !state.data ? (
+                     <Loader2 className="animate-spin text-muted-foreground" />
+                ) : state.data?.platformRecommendations?.map((rec: any, index: number) => (
+                    <div key={index}>
+                        <div className="flex items-center gap-3">
+                            <Lightbulb className="h-5 w-5 text-primary" />
+                            <h4 className="font-semibold">{rec.platformName}</h4>
+                        </div>
+                        <p className="text-sm text-muted-foreground mt-1 ml-8">{rec.marketingTip}</p>
+                        {index < state.data.platformRecommendations.length - 1 && <Separator className="mt-4" />}
+                    </div>
+                ))}
+                </CardContent>
+            </Card>
         </div>
       )}
 

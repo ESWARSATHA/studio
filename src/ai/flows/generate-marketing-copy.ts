@@ -21,6 +21,10 @@ const GenerateMarketingCopyOutputSchema = z.object({
   targetAudience: z.string().describe("A description of the ideal target audience for this product."),
   socialMediaPost: z.string().describe("A short, engaging social media post to promote the product."),
   emailCopy: z.string().describe("A draft for a promotional email to send to a mailing list."),
+  platformRecommendations: z.array(z.object({
+    platformName: z.string().describe("The name of the recommended online platform (e.g., Amazon Karigar, Etsy India)."),
+    marketingTip: z.string().describe("A specific marketing tip for selling this product on the recommended platform."),
+  })).describe("A list of recommended Indian online platforms for selling the product, along with marketing tips."),
 });
 export type GenerateMarketingCopyOutput = z.infer<typeof GenerateMarketingCopyOutputSchema>;
 
@@ -54,7 +58,7 @@ const prompt = ai.definePrompt({
   },
   prompt: `You are a marketing expert for a platform called "Artisan" that helps Indian artists sell their work.
 
-Your task is to generate marketing copy for the following product:
+Your task is to generate marketing materials and a strategy for the following product:
 - Product Name: {{{productName}}}
 - Description: {{{productDescription}}}
 
@@ -62,6 +66,7 @@ Based on this, please generate the following:
 1.  **Target Audience:** Who is the ideal customer for this product? Be specific.
 2.  **Social Media Post:** Write a short, exciting post for platforms like Instagram or Facebook. Include relevant hashtags.
 3.  **Email Copy:** Draft a promotional email. It should have a catchy subject line and a compelling body that encourages clicks.
+4.  **Platform Recommendations:** Suggest 2-3 specific Indian online marketplaces or platforms (e.g., Amazon Karigar, Flipkart Samarth, Etsy India, Okhai, Jaypore) where this product would sell well. For each platform, provide one concrete marketing tip tailored to that platform (e.g., 'On Amazon Karigar, use high-quality lifestyle photos to stand out.').
 
 Keep the tone enthusiastic, authentic, and focused on the art and the artisan.`,
 });
