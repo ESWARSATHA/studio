@@ -274,7 +274,7 @@ export default function Home() {
                     width={400}
                     height={400}
                     className="w-full h-auto rounded-lg shadow-md object-cover aspect-square"
-                    data-ai-hint="customer paying online"
+                    data-ai-hint="online payment"
                 />
                  <Image
                     src="https://picsum.photos/400/400?random=2"
@@ -282,7 +282,7 @@ export default function Home() {
                     width={400}
                     height={400}
                     className="w-full h-auto rounded-lg shadow-md object-cover aspect-square"
-                    data-ai-hint="artisan receiving money"
+                    data-ai-hint="payment confirmation"
                 />
               </div>
             </div>

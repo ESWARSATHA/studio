@@ -10,7 +10,7 @@ const trendingProducts = [
   {
     name: "Jaipuri Block-Print Quilt",
     image: "https://picsum.photos/400/300?random=11",
-    imageHint: "block print quilt",
+    imageHint: "jaipuri quilt",
   },
   {
     name: "Hand-Painted Pattachitra Saree",
@@ -20,7 +20,7 @@ const trendingProducts = [
   {
     name: "Kutch Embroidered Jacket",
     image: "https://picsum.photos/400/300?random=13",
-    imageHint: "embroidered jacket",
+    imageHint: "kutch jacket",
   },
   {
     name: "Chikankari Kurta Set",
