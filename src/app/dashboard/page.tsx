@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Star, Tag, Flame, ShoppingCart } from "lucide-react";
+import { ArrowRight, Star, IndianRupee, Flame, ShoppingCart } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const trendingProducts = [
@@ -37,7 +37,7 @@ const trendingProducts = [
 const products = [
   {
     name: "Hand-carved Wooden Elephant",
-    price: "₹2,499",
+    price: 2499,
     description: "A magnificent elephant, hand-carved from a single block of sustainable mango wood, showcasing intricate details.",
     image: "https://picsum.photos/400/500?random=1",
     imageHint: "wooden elephant carving",
@@ -46,7 +46,7 @@ const products = [
   },
   {
     name: "Blue Pottery Vase",
-    price: "₹1,899",
+    price: 1899,
     description: "A vibrant blue pottery vase from Jaipur, featuring traditional floral motifs hand-painted by skilled artisans.",
     image: "https://picsum.photos/400/500?random=2",
     imageHint: "blue pottery vase",
@@ -55,7 +55,7 @@ const products = [
   },
     {
     name: "Pattachitra Scroll Painting",
-    price: "₹3,999",
+    price: 3999,
     description: "A stunning Pattachitra scroll from Odisha, depicting a tale from the Ramayana with natural pigments on cloth.",
     image: "https://picsum.photos/400/500?random=3",
     imageHint: "pattachitra scroll",
@@ -64,7 +64,7 @@ const products = [
   },
    {
     name: "Terracotta Horse",
-    price: "₹1,299",
+    price: 1299,
     description: "A rustic terracotta horse from Panchmura, Bengal, representing a timeless tradition of village pottery.",
     image: "https://picsum.photos/400/500?random=4",
     imageHint: "terracotta horse",
@@ -143,8 +143,8 @@ export default function DashboardPage() {
               <p className="text-muted-foreground text-sm flex-1">{product.description}</p>
               <div className="flex items-center justify-between mt-4">
                  <div className="flex items-center gap-2 text-lg font-bold text-primary">
-                    <Tag className="w-4 h-4" />
-                    <span>{product.price}</span>
+                    <IndianRupee className="w-4 h-4" />
+                    <span>{product.price.toLocaleString()}</span>
                 </div>
                  <div className="flex gap-2">
                    <Button variant="outline" size="sm">

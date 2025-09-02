@@ -222,7 +222,7 @@ export default function NewProductPage() {
                         ) : priceState.data && (
                             <div>
                                 <p className="font-semibold text-primary-foreground">
-                                    Suggested Price: ₹{priceState.data.suggestedPriceRange.min} - ₹{priceState.data.suggestedPriceRange.max}
+                                    Suggested Price: ₹{priceState.data.suggestedPriceRange.min.toLocaleString()} - ₹{priceState.data.suggestedPriceRange.max.toLocaleString()}
                                 </p>
                                 <p className="text-sm text-muted-foreground mt-1">{priceState.data.reasoning}</p>
                             </div>

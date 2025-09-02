@@ -65,7 +65,7 @@ Product Details:
 - Name: {{{productName}}}
 - Description: {{{productDescription}}}
 
-Based on this, provide a suggested price range (min and max) and a short, clear reasoning for your suggestion. The price should be in whole numbers.`,
+Based on this, provide a suggested price range (min and max) and a short, clear reasoning for your suggestion. The price should be in whole numbers and denominated in Indian Rupees (₹).`,
 });
 
 const suggestPriceFlow = ai.defineFlow(
