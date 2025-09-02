@@ -81,7 +81,11 @@ export default function DashboardLayout({
 
 
   const getMenuItemHref = (href: string) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams();
+    const userTypeParam = searchParams.get('userType');
+    if (userTypeParam) {
+      params.set('userType', userTypeParam);
+    }
     return `${href}?${params.toString()}`;
   }
 
