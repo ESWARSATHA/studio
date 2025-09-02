@@ -54,11 +54,11 @@ export default function LoginPage() {
 
       <Image
         src="https://picsum.photos/1920/1080"
-        alt="Artisan background"
+        alt="A vibrant and intricate background pattern inspired by Indian art and textiles."
         fill
         style={{objectFit: "cover"}}
         className="absolute inset-0 w-full h-full z-0"
-        data-ai-hint="artisan hands crafting"
+        data-ai-hint="indian art pattern"
       />
       <div className="absolute inset-0 bg-black/50 z-10" />
       <Card className="mx-auto max-w-sm w-full z-20 bg-card/80 backdrop-blur-sm">
@@ -109,7 +109,7 @@ export default function LoginPage() {
             </div>
             <div className="grid grid-cols-2 gap-4">
                 <Button asChild>
-                    <Link href="/dashboard?userType=artisan">
+                    <Link href="/dashboard?userType=seller">
                         <Users className="mr-2"/>
                         {translations.login_page.login_seller_button}
                     </Link>

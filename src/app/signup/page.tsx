@@ -113,11 +113,11 @@ export default function SignupPage() {
       </header>
        <Image
         src="https://picsum.photos/1920/1080"
-        alt="Artisan background"
+        alt="A vibrant and intricate background pattern inspired by Indian art and textiles."
         fill
         style={{objectFit: "cover"}}
         className="absolute inset-0 w-full h-full z-0"
-        data-ai-hint="artisan workshop"
+        data-ai-hint="indian art pattern"
       />
       <div className="absolute inset-0 bg-black/50 z-10" />
       <Card className="mx-auto max-w-sm w-full z-20 bg-card/80 backdrop-blur-sm">
@@ -152,8 +152,8 @@ export default function SignupPage() {
                 <Label>{translations.signup_page.role_label}</Label>
                 <RadioGroup name="role" required className="flex gap-4" onValueChange={setRole}>
                     <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="artisan" id="artisan" />
-                        <Label htmlFor="artisan">{translations.signup_page.role_seller}</Label>
+                        <RadioGroupItem value="seller" id="seller" />
+                        <Label htmlFor="seller">{translations.signup_page.role_seller}</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                         <RadioGroupItem value="buyer" id="buyer" />
@@ -162,7 +162,7 @@ export default function SignupPage() {
                 </RadioGroup>
               </div>
 
-              {role === 'artisan' && (
+              {role === 'seller' && (
                 <>
                    <div className="grid gap-2">
                     <Label htmlFor="productCategory">{translations.signup_page.product_category_label}</Label>
@@ -224,7 +224,7 @@ export default function SignupPage() {
                 />
               </div>
 
-               {role === 'artisan' && (
+               {role === 'seller' && (
                 <div className="grid gap-2">
                   <Label htmlFor="phone2">{translations.signup_page.phone2_label}</Label>
                   <Input
