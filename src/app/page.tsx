@@ -25,6 +25,8 @@ import {
   Globe,
   Wallet,
   IndianRupee,
+  Users,
+  ShoppingBag,
 } from 'lucide-react';
 import { Logo } from '@/components/icons';
 import { languages, useLanguage } from '@/lib/locales/language-context';
@@ -73,10 +75,15 @@ export default function Home() {
             <p className="mt-6 text-lg md:text-xl text-muted-foreground">
               {translations.homepage.subtitle}
             </p>
-            <div className="mt-8 flex justify-center gap-4">
+            <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
               <Button asChild size="lg">
-                <Link href="/dashboard">
-                  {translations.homepage.artisans_button} <ArrowRight className="ml-2" />
+                <Link href="/dashboard?userType=artisan">
+                  <Users className="mr-2" /> For Artisans
+                </Link>
+              </Button>
+               <Button asChild size="lg" variant="secondary">
+                <Link href="/dashboard?userType=buyer">
+                   <ShoppingBag className="mr-2" /> For Buyers
                 </Link>
               </Button>
             </div>
@@ -296,5 +303,3 @@ export default function Home() {
     </div>
   );
 }
-
-    

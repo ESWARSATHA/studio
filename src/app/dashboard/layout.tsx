@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import {
   SidebarProvider,
   Sidebar,
@@ -52,20 +52,36 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const userType = searchParams.get('userType') || 'artisan';
   const { language, setLanguage, translations } = useLanguage();
 
-  const menuItems = [
-    { href: "/dashboard", label: translations.dashboard_layout.menu_dashboard, icon: LayoutGrid },
-    { href: "/dashboard/products/new", label: translations.dashboard_layout.menu_add_product, icon: PlusCircle },
-    { href: "/dashboard/analytics", label: translations.dashboard_layout.menu_analytics, icon: BarChart2 },
-    { href: "/dashboard/marketing", label: translations.dashboard_layout.menu_marketing, icon: Megaphone },
-    { href: "/dashboard/community", label: translations.dashboard_layout.menu_community, icon: Users },
-    { href: "/dashboard/requests", label: translations.dashboard_layout.menu_requests, icon: Bell },
-    { href: "/dashboard/livestudio", label: translations.dashboard_layout.menu_live_studio, icon: Radio },
-    { href: "/dashboard/suggestions", label: "Suggestions", icon: Lightbulb },
-    { href: "/dashboard/cart", label: translations.dashboard_layout.menu_cart, icon: ShoppingCart },
-    { href: "/dashboard/support", label: translations.dashboard_layout.menu_support, icon: LifeBuoy },
-  ];
+  const allMenuItems = {
+    artisan: [
+      { href: "/dashboard", label: translations.dashboard_layout.menu_dashboard, icon: LayoutGrid },
+      { href: "/dashboard/products/new", label: translations.dashboard_layout.menu_add_product, icon: PlusCircle },
+      { href: "/dashboard/analytics", label: translations.dashboard_layout.menu_analytics, icon: BarChart2 },
+      { href: "/dashboard/marketing", label: translations.dashboard_layout.menu_marketing, icon: Megaphone },
+      { href: "/dashboard/community", label: translations.dashboard_layout.menu_community, icon: Users },
+      { href: "/dashboard/requests", label: translations.dashboard_layout.menu_requests, icon: Bell },
+      { href: "/dashboard/livestudio", label: translations.dashboard_layout.menu_live_studio, icon: Radio },
+      { href: "/dashboard/suggestions", label: "Suggestions", icon: Lightbulb },
+      { href: "/dashboard/support", label: translations.dashboard_layout.menu_support, icon: LifeBuoy },
+    ],
+    buyer: [
+        { href: "/dashboard", label: translations.dashboard_layout.menu_dashboard, icon: LayoutGrid },
+        { href: "/dashboard/cart", label: translations.dashboard_layout.menu_cart, icon: ShoppingCart },
+        { href: "/dashboard/community", label: translations.dashboard_layout.menu_community, icon: Users },
+        { href: "/dashboard/support", label: translations.dashboard_layout.menu_support, icon: LifeBuoy },
+    ]
+  };
+
+  const menuItems = userType === 'buyer' ? allMenuItems.buyer : allMenuItems.artisan;
+
+  const getMenuItemHref = (href: string) => {
+    const params = new URLSearchParams(searchParams);
+    return `${href}?${params.toString()}`;
+  }
 
   return (
     <SidebarProvider>
@@ -85,7 +101,7 @@ export default function DashboardLayout({
                   isActive={pathname === item.href}
                   tooltip={{ children: item.label }}
                 >
-                  <Link href={item.href}>
+                  <Link href={getMenuItemHref(item.href)}>
                     <item.icon />
                     <span>{item.label}</span>
                   </Link>
@@ -140,7 +156,7 @@ export default function DashboardLayout({
                 <DropdownMenuLabel>{translations.dashboard_layout.account_menu_label}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <Link href="/dashboard/verification" className="flex items-center">
+                  <Link href={getMenuItemHref("/dashboard/verification")} className="flex items-center">
                     <ShieldCheck className="mr-2" />
                     {translations.dashboard_layout.account_menu_verify}
                   </Link>
@@ -150,7 +166,7 @@ export default function DashboardLayout({
                   {translations.dashboard_layout.account_menu_profile}
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                   <Link href="/dashboard/settings/payment" className="flex items-center">
+                   <Link href={getMenuItemHref("/dashboard/settings/payment")} className="flex items-center">
                     <Settings className="mr-2" />
                     {translations.dashboard_layout.account_menu_settings}
                   </Link>

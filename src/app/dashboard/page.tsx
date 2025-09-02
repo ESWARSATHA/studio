@@ -1,9 +1,12 @@
 
+'use client';
+
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Star, IndianRupee, Flame, ShoppingCart } from "lucide-react";
+import { ArrowRight, Star, IndianRupee, Flame, ShoppingCart, Tag } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const trendingProducts = [
@@ -77,9 +80,53 @@ const products = [
   },
 ];
 
+const ProductCard = ({ product, userType }: { product: typeof products[0], userType: string }) => (
+    <Card className="flex flex-col overflow-hidden">
+        <div className="relative">
+            <Image
+                src={product.image}
+                alt={product.name}
+                width={400}
+                height={500}
+                className="w-full h-64 object-cover"
+                data-ai-hint={product.imageHint}
+            />
+            <div className="absolute top-2 right-2 flex items-center gap-1 bg-background/80 backdrop-blur-sm text-foreground font-semibold px-2 py-1 rounded-full text-xs">
+                <Star className="w-3 h-3 text-primary fill-primary" />
+                <span>{product.rating} ({product.reviews})</span>
+            </div>
+        </div>
+        <CardHeader>
+            <CardTitle className="text-lg">{product.name}</CardTitle>
+        </CardHeader>
+        <CardContent className="flex-1 flex flex-col">
+            <p className="text-muted-foreground text-sm flex-1">{product.description}</p>
+            <div className="flex items-center justify-between mt-4">
+                <div className="flex items-center gap-2 text-lg font-bold text-primary">
+                    <IndianRupee className="w-4 h-4" />
+                    <span>{product.price.toLocaleString()}</span>
+                </div>
+                <div className="flex gap-2">
+                    <Button variant="outline" size="sm" asChild>
+                        <Link href={`/dashboard/products/${product.id}?userType=${userType}`}>
+                            View Details
+                            <ArrowRight className="ml-2" />
+                        </Link>
+                    </Button>
+                    {userType === 'buyer' && (
+                        <Button variant="default" size="sm">
+                            <ShoppingCart className="mr-2" />
+                            Add to Cart
+                        </Button>
+                    )}
+                </div>
+            </div>
+        </CardContent>
+    </Card>
+);
 
-export default function DashboardPage() {
-  return (
+
+const ArtisanDashboard = () => (
     <div className="grid gap-12">
        <div>
         <div className="flex items-center gap-2">
@@ -125,48 +172,49 @@ export default function DashboardPage() {
 
        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 -mt-6">
         {products.map((product) => (
-          <Card key={product.id} className="flex flex-col overflow-hidden">
-            <div className="relative">
-              <Image 
-                src={product.image} 
-                alt={product.name} 
-                width={400} 
-                height={500} 
-                className="w-full h-64 object-cover"
-                data-ai-hint={product.imageHint} 
-              />
-               <div className="absolute top-2 right-2 flex items-center gap-1 bg-background/80 backdrop-blur-sm text-foreground font-semibold px-2 py-1 rounded-full text-xs">
-                <Star className="w-3 h-3 text-primary fill-primary" />
-                <span>{product.rating} ({product.reviews})</span>
-              </div>
-            </div>
-            <CardHeader>
-              <CardTitle className="text-lg">{product.name}</CardTitle>
-            </CardHeader>
-            <CardContent className="flex-1 flex flex-col">
-              <p className="text-muted-foreground text-sm flex-1">{product.description}</p>
-              <div className="flex items-center justify-between mt-4">
-                 <div className="flex items-center gap-2 text-lg font-bold text-primary">
-                    <IndianRupee className="w-4 h-4" />
-                    <span>{product.price.toLocaleString()}</span>
-                </div>
-                 <div className="flex gap-2">
-                   <Button variant="outline" size="sm" asChild>
-                    <Link href={`/dashboard/products/${product.id}`}>
-                      View Details
-                      <ArrowRight className="ml-2" />
-                    </Link>
-                  </Button>
-                  <Button variant="default" size="sm">
-                    <ShoppingCart className="mr-2" />
-                    Add to Cart
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <ProductCard key={product.id} product={product} userType="artisan" />
         ))}
       </div>
     </div>
-  );
+);
+
+const BuyerDashboard = () => (
+    <div className="grid gap-12">
+        <div>
+            <div className="flex items-center gap-2">
+                <Star className="h-7 w-7 text-primary" />
+                <h1 className="text-3xl font-bold tracking-tight">Featured Products</h1>
+            </div>
+            <p className="text-muted-foreground">Handpicked selections from our best artisans.</p>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
+                {products.slice(0, 4).map((product) => (
+                    <ProductCard key={product.id} product={product} userType="buyer" />
+                ))}
+            </div>
+        </div>
+        <div>
+            <div className="flex items-center gap-2">
+                <Tag className="h-7 w-7 text-primary" />
+                <h1 className="text-3xl font-bold tracking-tight">New Arrivals</h1>
+            </div>
+            <p className="text-muted-foreground">Discover the latest creations from our talented community.</p>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
+                {products.slice().reverse().map((product) => (
+                     <ProductCard key={product.id} product={product} userType="buyer" />
+                ))}
+            </div>
+        </div>
+    </div>
+);
+
+
+export default function DashboardPage() {
+    const searchParams = useSearchParams();
+    const userType = searchParams.get('userType') || 'artisan';
+
+    if (userType === 'buyer') {
+        return <BuyerDashboard />;
+    }
+
+    return <ArtisanDashboard />;
 }
