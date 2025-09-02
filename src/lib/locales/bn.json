@@ -45,7 +45,7 @@
         "description": "অনন্য কারুশিল্প বিক্রি বা কেনা শুরু করতে Artisan-এ যোগ দিন।",
         "avatar_label": "একটি প্রোফাইল ছবি আপলোড করুন",
         "username_label": "ব্যবহারকারীর নাম",
-        "username_placeholder": "যেমন, ArtisanPriya",
+        "username_placeholder": "যেমন, SellerPriya",
         "email_label": "ইমেল",
         "email_placeholder": "m@example.com",
         "phone_label": "ফোন নম্বর",
@@ -56,7 +56,7 @@
         "login_link": "ইতিমধ্যে একটি অ্যাকাউন্ট আছে? লগইন করুন",
         "legal_disclaimer": "একটি অ্যাকাউন্ট তৈরি করে, আপনি আমাদের শর্তাবলীতে সম্মত হন। অবৈধ কার্যকলাপ আইনি পদক্ষেপের কারণ হতে পারে।",
         "role_label": "আপনার ভূমিকা চয়ন করুন",
-        "role_artisan": "কারিগর",
+        "role_seller": "বিক্রেতা",
         "role_buyer": "ক্রেতা"
     },
     "dashboard_layout": {

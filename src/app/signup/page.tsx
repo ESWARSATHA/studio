@@ -150,7 +150,7 @@ export default function SignupPage() {
                 <RadioGroup name="role" required className="flex gap-4">
                     <div className="flex items-center space-x-2">
                         <RadioGroupItem value="artisan" id="artisan" />
-                        <Label htmlFor="artisan">{translations.signup_page.role_artisan}</Label>
+                        <Label htmlFor="artisan">{translations.signup_page.role_seller}</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                         <RadioGroupItem value="buyer" id="buyer" />

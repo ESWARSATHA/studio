@@ -45,7 +45,7 @@
         "description": "Join Artisan to start selling or buying unique crafts.",
         "avatar_label": "Upload a Profile Picture",
         "username_label": "Username",
-        "username_placeholder": "e.g., ArtisanPriya",
+        "username_placeholder": "e.g., SellerPriya",
         "email_label": "Email",
         "email_placeholder": "m@example.com",
         "phone_label": "Phone Number",
@@ -56,7 +56,7 @@
         "login_link": "Already have an account? Login",
         "legal_disclaimer": "By creating an account, you agree to our terms. Illegal activity may lead to legal action.",
         "role_label": "Choose your role",
-        "role_artisan": "Artisan",
+        "role_seller": "Seller",
         "role_buyer": "Buyer"
     },
     "dashboard_layout": {

@@ -45,7 +45,7 @@
         "description": "ప్రత్యేకమైన చేతిపనులను విక్రయించడం లేదా కొనడం ప్రారంభించడానికి ఆర్టిసాన్‌లో చేరండి.",
         "avatar_label": "ఒక ప్రొఫైల్ చిత్రాన్ని అప్‌లోడ్ చేయండి",
         "username_label": "వినియోగదారు పేరు",
-        "username_placeholder": "ఉదా., ArtisanPriya",
+        "username_placeholder": "ఉదా., SellerPriya",
         "email_label": "ఇమెయిల్",
         "email_placeholder": "m@example.com",
         "phone_label": "ఫోను నంబరు",
@@ -56,7 +56,7 @@
         "login_link": "ఇప్పటికే ఖాతా ఉందా? లాగిన్",
         "legal_disclaimer": "ఖాతాను సృష్టించడం ద్వారా, మీరు మా నిబంధనలను అంగీకరిస్తున్నారు. చట్టవిరుద్ధమైన కార్యకలాపాలు చట్టపరమైన చర్యలకు దారితీయవచ్చు.",
         "role_label": "మీ పాత్రను ఎంచుకోండి",
-        "role_artisan": "కళాకారుడు",
+        "role_seller": "విక్రేత",
         "role_buyer": "కొనుగోలుదారు"
     },
     "dashboard_layout": {

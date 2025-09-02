@@ -45,7 +45,7 @@
         "description": "தனித்துவமான கைவினைப்பொருட்களை விற்க அல்லது வாங்க Artisan இல் சேரவும்.",
         "avatar_label": "சுயவிவரப் படத்தைப் பதிவேற்றவும்",
         "username_label": "பயனர்பெயர்",
-        "username_placeholder": "எ.கா., ArtisanPriya",
+        "username_placeholder": "எ.கா., SellerPriya",
         "email_label": "மின்னஞ்சல்",
         "email_placeholder": "m@example.com",
         "phone_label": "தொலைபேசி எண்",
@@ -56,7 +56,7 @@
         "login_link": "ஏற்கனவே கணக்கு உள்ளதா? உள்நுழைக",
         "legal_disclaimer": "கணக்கை உருவாக்குவதன் மூலம், எங்கள் விதிமுறைகளை ஏற்கிறீர்கள். சட்டவிரோத செயல்பாடு சட்ட நடவடிக்கைக்கு வழிவகுக்கும்.",
         "role_label": "உங்கள் பாத்திரத்தைத் தேர்வுசெய்க",
-        "role_artisan": "கைவினைஞர்",
+        "role_seller": "விற்பனையாளர்",
         "role_buyer": "வாங்குபவர்"
     },
     "dashboard_layout": {
