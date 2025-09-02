@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Loader2, Wand2, Mic, Sparkles, UploadCloud, IndianRupee, Image as ImageIcon } from 'lucide-react';
+import { Loader2, Wand2, Mic, Sparkles, UploadCloud, IndianRupee, Image as ImageIcon, Video } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 
 const initialState = { status: 'idle', message: '', data: null };
@@ -242,6 +242,16 @@ export default function NewProductPage() {
                 </Button>
             </CardContent>
         </Card>
+        <Card>
+            <CardHeader>
+                <CardTitle>Video Showcase</CardTitle>
+                <CardDescription>Add a video link (e.g., YouTube) to show your product in action.</CardDescription>
+            </CardHeader>
+            <CardContent className="grid gap-2">
+                <Label htmlFor="video-url" className="flex items-center gap-2"><Video/>Video URL</Label>
+                <Input id="video-url" placeholder="https://youtube.com/watch?v=..."/>
+            </CardContent>
+        </Card>
       </div>
 
       <div className="grid gap-8 md:col-span-2">
@@ -264,6 +274,27 @@ export default function NewProductPage() {
               <Input id="tags" placeholder="e.g., handmade, woodcraft, eco-friendly" value={tags} onChange={(e) => setTags(e.target.value)} />
             </div>
           </CardContent>
+        </Card>
+        
+        <Card>
+            <CardHeader>
+                <CardTitle>Specifications</CardTitle>
+                <CardDescription>Provide details about the materials, dimensions, and creation process.</CardDescription>
+            </CardHeader>
+            <CardContent className="grid gap-4">
+                 <div className="grid gap-2">
+                    <Label htmlFor="material">Material</Label>
+                    <Input id="material" placeholder="e.g., Sustainable Mango Wood, Jaipur Blue Pottery"/>
+                </div>
+                 <div className="grid gap-2">
+                    <Label htmlFor="dimensions">Dimensions</Label>
+                    <Input id="dimensions" placeholder="e.g., 12\" x 8\" x 5\""/>
+                </div>
+                 <div className="grid gap-2">
+                    <Label htmlFor="process">Process</Label>
+                    <Textarea id="process" placeholder="Describe how you made this product..." rows={3}/>
+                </div>
+            </CardContent>
         </Card>
 
         <Card>

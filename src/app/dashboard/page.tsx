@@ -110,13 +110,12 @@ const ProductCard = ({ product, userType }: { product: typeof products[0], userT
                     <Button variant="outline" size="sm" asChild>
                         <Link href={`/dashboard/products/${product.id}?userType=${userType}`}>
                             View Details
-                            <ArrowRight className="ml-2" />
                         </Link>
                     </Button>
                     {userType === 'buyer' && (
-                        <Button variant="default" size="sm">
-                            <ShoppingCart className="mr-2" />
-                            Add to Cart
+                        <Button variant="default" size="icon">
+                            <ShoppingCart />
+                            <span className="sr-only">Add to Cart</span>
                         </Button>
                     )}
                 </div>
