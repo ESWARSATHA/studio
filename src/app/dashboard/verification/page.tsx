@@ -6,17 +6,19 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from '@/components/ui/button';
-import { UploadCloud, FileCheck, ShieldCheck } from 'lucide-react';
+import { UploadCloud, FileCheck, ShieldCheck, CreditCard, UserSquare } from 'lucide-react';
 import { useLanguage } from '@/lib/locales/language-context';
 
 export default function VerificationPage() {
-  const [documentFile, setDocumentFile] = useState<File | null>(null);
+  const [aadhaarFile, setAadhaarFile] = useState<File | null>(null);
+  const [panFile, setPanFile] = useState<File | null>(null);
+  const [addressFile, setAddressFile] = useState<File | null>(null);
   const { translations } = useLanguage();
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (setter: React.Dispatch<React.SetStateAction<File | null>>) => (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      setDocumentFile(file);
+      setter(file);
     }
   };
 
@@ -30,19 +32,55 @@ export default function VerificationPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>{translations.verification_page.card_title}</CardTitle>
-          <CardDescription>{translations.verification_page.card_description}</CardDescription>
+          <div className="flex items-center gap-3">
+            <UserSquare className="h-6 w-6 text-primary"/>
+            <CardTitle>{translations.verification_page.aadhaar_title}</CardTitle>
+          </div>
+          <CardDescription>{translations.verification_page.aadhaar_description}</CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-4">
+            <div className="grid gap-2">
+              <Label htmlFor="aadhaar-number">{translations.verification_page.aadhaar_label}</Label>
+              <Input id="aadhaar-number" placeholder={translations.verification_page.aadhaar_placeholder} />
+            </div>
+            <Button type="button" className="w-full">
+              {translations.verification_page.digilocker_button}
+            </Button>
+        </CardContent>
+      </Card>
+
+       <Card>
+        <CardHeader>
+           <div className="flex items-center gap-3">
+            <CreditCard className="h-6 w-6 text-primary"/>
+            <CardTitle>{translations.verification_page.pan_title}</CardTitle>
+          </div>
+          <CardDescription>{translations.verification_page.pan_description}</CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-4">
+             <div className="grid gap-2">
+              <Label htmlFor="pan-number">{translations.verification_page.pan_label}</Label>
+              <Input id="pan-number" placeholder={translations.verification_page.pan_placeholder} />
+            </div>
+            <Button type="button" className="w-full">
+               {translations.verification_page.digilocker_button}
+            </Button>
+        </CardContent>
+      </Card>
+      
+       <Card>
+        <CardHeader>
+          <CardTitle>{translations.verification_page.address_proof_title}</CardTitle>
+          <CardDescription>{translations.verification_page.address_proof_description}</CardDescription>
         </CardHeader>
         <CardContent>
           <form className="grid gap-6">
             <div className="grid gap-2">
-              <Label htmlFor="document-upload">{translations.verification_page.gov_id_label}</Label>
-              <CardDescription className="text-xs">{translations.verification_page.gov_id_description}</CardDescription>
               <div className="w-full rounded-lg border-2 border-dashed border-muted-foreground/30 flex items-center justify-center relative overflow-hidden bg-secondary/50 p-4 h-36">
-                {documentFile ? (
+                {addressFile ? (
                   <div className="text-center text-muted-foreground">
                     <FileCheck className="mx-auto h-8 w-8 mb-2 text-primary" />
-                    <p className="text-sm font-semibold">{documentFile.name}</p>
+                    <p className="text-sm font-semibold">{addressFile.name}</p>
                   </div>
                 ) : (
                   <div className="text-center text-muted-foreground">
@@ -50,10 +88,10 @@ export default function VerificationPage() {
                     <p className="text-sm">{translations.verification_page.upload_prompt}</p>
                   </div>
                 )}
-                <Input id="document-upload" type="file" accept=".pdf,.jpg,.jpeg,.png" onChange={handleFileChange} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+                <Input id="address-upload" type="file" accept=".pdf,.jpg,.jpeg,.png" onChange={handleFileChange(setAddressFile)} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
               </div>
             </div>
-            <Button type="submit" className="w-full" disabled={!documentFile}>
+            <Button type="submit" className="w-full" disabled={!addressFile}>
               {translations.verification_page.submit_button}
             </Button>
           </form>

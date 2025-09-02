@@ -21,12 +21,14 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/icons';
-import { Eye, EyeOff, Globe, KeyRound, User, Loader2 } from 'lucide-react';
+import { Eye, EyeOff, Globe, KeyRound, User, Loader2, Building, Box } from 'lucide-react';
 import { languages, useLanguage } from '@/lib/locales/language-context';
 import { handleCreateAccount } from './actions';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 
 const initialState = { status: 'idle', message: '' };
 
@@ -41,6 +43,7 @@ export default function SignupPage() {
   const { language, setLanguage, translations } = useLanguage();
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
+  const [role, setRole] = useState('');
 
 
   const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -147,7 +150,7 @@ export default function SignupPage() {
               </div>
               <div className="grid gap-2">
                 <Label>{translations.signup_page.role_label}</Label>
-                <RadioGroup name="role" required className="flex gap-4">
+                <RadioGroup name="role" required className="flex gap-4" onValueChange={setRole}>
                     <div className="flex items-center space-x-2">
                         <RadioGroupItem value="artisan" id="artisan" />
                         <Label htmlFor="artisan">{translations.signup_page.role_seller}</Label>
@@ -158,6 +161,38 @@ export default function SignupPage() {
                     </div>
                 </RadioGroup>
               </div>
+
+              {role === 'artisan' && (
+                <>
+                   <div className="grid gap-2">
+                    <Label htmlFor="productCategory">{translations.signup_page.product_category_label}</Label>
+                     <Select name="productCategory" required>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder={translations.signup_page.product_category_placeholder} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="paintings">{translations.signup_page.category_paintings}</SelectItem>
+                        <SelectItem value="pottery">{translations.signup_page.category_pottery}</SelectItem>
+                        <SelectItem value="textiles">{translations.signup_page.category_textiles}</SelectItem>
+                        <SelectItem value="jewelry">{translations.signup_page.category_jewelry}</SelectItem>
+                        <SelectItem value="woodcraft">{translations.signup_page.category_woodcraft}</SelectItem>
+                        <SelectItem value="other">{translations.signup_page.category_other}</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                   <div className="grid gap-2">
+                    <Label htmlFor="address">{translations.signup_page.address_label}</Label>
+                    <Textarea
+                      id="address"
+                      name="address"
+                      placeholder={translations.signup_page.address_placeholder}
+                      required
+                      rows={3}
+                    />
+                  </div>
+                </>
+              )}
+
               <div className="grid gap-2">
                 <Label htmlFor="username">{translations.signup_page.username_label}</Label>
                 <Input
@@ -188,6 +223,20 @@ export default function SignupPage() {
                   required
                 />
               </div>
+
+               {role === 'artisan' && (
+                <div className="grid gap-2">
+                  <Label htmlFor="phone2">{translations.signup_page.phone2_label}</Label>
+                  <Input
+                    id="phone2"
+                    name="phone2"
+                    type="tel"
+                    placeholder={translations.signup_page.phone2_placeholder}
+                    required
+                  />
+                </div>
+              )}
+
               <div className="grid gap-2">
                 <div className="flex justify-between items-center">
                   <Label htmlFor="password">{translations.signup_page.create_password_label}</Label>
