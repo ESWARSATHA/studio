@@ -30,6 +30,7 @@ import {
   Bell,
   Lightbulb,
   ShoppingCart,
+  Search,
 } from "lucide-react";
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
@@ -43,6 +44,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { languages, useLanguage } from "@/lib/locales/language-context";
+import { Input } from "@/components/ui/input";
 
 export default function DashboardLayout({
   children,
@@ -97,10 +99,18 @@ export default function DashboardLayout({
         <div className="flex flex-col min-h-screen">
           <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 backdrop-blur-sm px-4 md:px-6">
             <SidebarTrigger className="md:hidden" />
-            <div className="flex-1">
-              <h1 className="text-lg font-semibold md:text-2xl">
+            <div className="flex-1 flex gap-4 items-center">
+              <h1 className="text-lg font-semibold md:text-2xl hidden sm:block">
                 {menuItems.find(item => pathname.startsWith(item.href))?.label || "Dashboard"}
               </h1>
+               <div className="relative flex-1 max-w-md">
+                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Input
+                  type="search"
+                  placeholder="Search products..."
+                  className="pl-8 sm:w-full"
+                />
+              </div>
             </div>
              <DropdownMenu>
                 <DropdownMenuTrigger asChild>
