@@ -11,6 +11,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from '@/components/ui/card';
 import {
   DropdownMenu,
@@ -23,6 +24,7 @@ import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/icons';
 import { Eye, EyeOff, Globe, Users, ShoppingBag } from 'lucide-react';
 import { languages, useLanguage } from '@/lib/locales/language-context';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -129,6 +131,24 @@ export default function LoginPage() {
             </Link>
           </div>
         </CardContent>
+         <CardFooter className="flex-col items-start gap-2 pt-4 border-t">
+          <Label className="text-xs text-muted-foreground">Select Language</Label>
+          <ScrollArea className="w-full h-24">
+            <div className="grid grid-cols-3 gap-2">
+              {languages.map((lang) => (
+                <Button
+                  key={lang.code}
+                  variant={language === lang.code ? 'default' : 'outline'}
+                  size="sm"
+                  className="w-full justify-start text-xs"
+                  onClick={() => setLanguage(lang.code)}
+                >
+                  {lang.name}
+                </Button>
+              ))}
+            </div>
+          </ScrollArea>
+        </CardFooter>
       </Card>
     </div>
   );
