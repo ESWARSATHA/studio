@@ -49,8 +49,7 @@ const products = [
 ];
 
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
-  const { id } = params;
-  const product = products.find(p => p.id === parseInt(id));
+  const product = products.find(p => p.id === parseInt(params.id));
 
   if (!product) {
     return <div>Product not found</div>;
