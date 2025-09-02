@@ -64,19 +64,16 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     const savedLanguage = localStorage.getItem('language');
     if (savedLanguage && translations[savedLanguage]) {
       setLanguage(savedLanguage);
-      setCurrentTranslations(translations[savedLanguage]);
     }
   }, []);
 
   const handleSetLanguage = (lang: string) => {
     if (translations[lang]) {
       setLanguage(lang);
-      setCurrentTranslations(translations[lang]);
       localStorage.setItem('language', lang);
     } else {
         // Fallback to English if the selected language is not fully supported
         setLanguage('en');
-        setCurrentTranslations(translations.en);
         localStorage.setItem('language', 'en');
     }
   };
