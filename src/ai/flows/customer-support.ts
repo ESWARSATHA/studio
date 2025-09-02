@@ -10,6 +10,8 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
+import {generateMarketingCopy} from './generate-marketing-copy';
+import {suggestPrice} from './suggest-price';
 
 const CustomerSupportInputSchema = z.object({
   query: z.string().describe("The user's question about the Artisan platform."),
@@ -25,10 +27,37 @@ export async function answerQuery(input: CustomerSupportInput): Promise<Customer
   return customerSupportFlow(input);
 }
 
+const suggestPriceTool = ai.defineTool(
+  {
+    name: 'suggestPrice',
+    description: 'Suggest a price for a product based on its name and description.',
+    inputSchema: z.object({
+        productName: z.string(),
+        productDescription: z.string(),
+    }),
+    outputSchema: z.any(),
+  },
+  async (input) => suggestPrice(input)
+);
+
+const generateMarketingCopyTool = ai.defineTool(
+  {
+      name: 'generateMarketingCopy',
+      description: 'Generate marketing copy for a product.',
+      inputSchema: z.object({
+          productName: z.string(),
+          productDescription: z.string(),
+      }),
+      outputSchema: z.any(),
+  },
+  async (input) => generateMarketingCopy(input)
+);
+
 const prompt = ai.definePrompt({
   name: 'customerSupportPrompt',
   input: {schema: CustomerSupportInputSchema},
   output: {schema: CustomerSupportOutputSchema},
+  tools: [suggestPriceTool, generateMarketingCopyTool],
   config: {
     safetySettings: [
       {
@@ -64,6 +93,8 @@ When answering, please consider the following information about the Artisan plat
     - **Payments:** Secure and flexible payments via all major UPI methods and credit/debit cards.
 - **Support:** For complex issues, users can always reach out to our human support team via email at help@artisan.com.
 
+If the user asks for a price suggestion or marketing copy, use the available tools to provide the information.
+
 User's Query: {{{query}}}
 
 Based on this, please provide a helpful answer. If the query is complex, ambiguous, or outside the scope of your knowledge, politely advise the user to contact our support team via email.`,
@@ -80,5 +111,3 @@ const customerSupportFlow = ai.defineFlow(
     return output!;
   }
 );
-
-    
