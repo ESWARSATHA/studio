@@ -21,7 +21,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/icons';
-import { Eye, EyeOff, Globe } from 'lucide-react';
+import { Eye, EyeOff, Globe, Users, ShoppingBag } from 'lucide-react';
 import { languages, useLanguage } from '@/lib/locales/language-context';
 
 export default function LoginPage() {
@@ -107,9 +107,20 @@ export default function LoginPage() {
                 </button>
               </div>
             </div>
-            <Button type="submit" className="w-full">
-              {translations.login_page.login_button}
-            </Button>
+            <div className="grid grid-cols-2 gap-4">
+                <Button asChild>
+                    <Link href="/dashboard?userType=artisan">
+                        <Users className="mr-2"/>
+                        {translations.login_page.login_artisan_button}
+                    </Link>
+                </Button>
+                 <Button asChild variant="secondary">
+                    <Link href="/dashboard?userType=buyer">
+                        <ShoppingBag className="mr-2"/>
+                        {translations.login_page.login_buyer_button}
+                    </Link>
+                </Button>
+            </div>
           </div>
           <div className="mt-4 text-center text-sm">
             {translations.login_page.signup_link.split('?')[0]}?{' '}

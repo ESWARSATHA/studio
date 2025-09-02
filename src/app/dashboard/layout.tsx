@@ -77,6 +77,8 @@ export default function DashboardLayout({
   };
 
   const menuItems = userType === 'buyer' ? allMenuItems.buyer : allMenuItems.artisan;
+  const pageTitle = menuItems.find(item => pathname === item.href)?.label || "Dashboard";
+
 
   const getMenuItemHref = (href: string) => {
     const params = new URLSearchParams(searchParams);
@@ -117,7 +119,7 @@ export default function DashboardLayout({
             <SidebarTrigger className="md:hidden" />
             <div className="flex-1 flex gap-4 items-center">
               <h1 className="text-lg font-semibold md:text-2xl hidden sm:block">
-                {menuItems.find(item => pathname.startsWith(item.href))?.label || "Dashboard"}
+                {pageTitle}
               </h1>
                <div className="relative flex-1 max-w-md">
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />

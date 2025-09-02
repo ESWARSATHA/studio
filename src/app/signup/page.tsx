@@ -26,6 +26,7 @@ import { languages, useLanguage } from '@/lib/locales/language-context';
 import { handleCreateAccount } from './actions';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 const initialState = { status: 'idle', message: '' };
 
@@ -143,6 +144,19 @@ export default function SignupPage() {
                   <Label htmlFor="avatar-upload" className="cursor-pointer text-sm font-medium text-muted-foreground hover:text-primary">
                       {translations.signup_page.avatar_label}
                   </Label>
+              </div>
+              <div className="grid gap-2">
+                <Label>{translations.signup_page.role_label}</Label>
+                <RadioGroup name="role" required className="flex gap-4">
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="artisan" id="artisan" />
+                        <Label htmlFor="artisan">{translations.signup_page.role_artisan}</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="buyer" id="buyer" />
+                        <Label htmlFor="buyer">{translations.signup_page.role_buyer}</Label>
+                    </div>
+                </RadioGroup>
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="username">{translations.signup_page.username_label}</Label>

@@ -9,6 +9,7 @@ const signupSchema = z.object({
   phone: z.string().min(10, 'Please enter a valid phone number.'),
   password: z.string().min(8, 'Password must be at least 8 characters.'),
   confirmPassword: z.string().min(8, 'Password must be at least 8 characters.'),
+  role: z.enum(['artisan', 'buyer'], { required_error: 'Please select a role.' }),
 }).refine(data => data.password === data.confirmPassword, {
     message: "Passwords don't match",
     path: ["confirmPassword"],
@@ -22,6 +23,7 @@ export async function handleCreateAccount(prevState: any, formData: FormData) {
       phone: formData.get('phone'),
       password: formData.get('password'),
       confirmPassword: formData.get('confirmPassword'),
+      role: formData.get('role'),
     });
 
     if (!validatedFields.success) {

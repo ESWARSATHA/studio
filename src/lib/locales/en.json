@@ -36,7 +36,8 @@
         "form_placeholder": "artisan_priya / m@example.com / 9876543210",
         "password_label": "Password",
         "forgot_password": "Forgot your password?",
-        "login_button": "Login",
+        "login_artisan_button": "Login as Artisan",
+        "login_buyer_button": "Login as Buyer",
         "signup_link": "Don't have an account? Sign up"
     },
     "signup_page": {
@@ -53,7 +54,10 @@
         "confirm_password_label": "Confirm Password",
         "create_account_button": "Create Account",
         "login_link": "Already have an account? Login",
-        "legal_disclaimer": "By creating an account, you agree to our terms. Illegal activity may lead to legal action."
+        "legal_disclaimer": "By creating an account, you agree to our terms. Illegal activity may lead to legal action.",
+        "role_label": "Choose your role",
+        "role_artisan": "Artisan",
+        "role_buyer": "Buyer"
     },
     "dashboard_layout": {
         "menu_dashboard": "Dashboard",
