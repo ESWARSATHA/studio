@@ -11,7 +11,6 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-  CardFooter,
 } from '@/components/ui/card';
 import {
   DropdownMenu,
@@ -24,7 +23,6 @@ import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/icons';
 import { Eye, EyeOff, Globe, Users, ShoppingBag } from 'lucide-react';
 import { languages, useLanguage } from '@/lib/locales/language-context';
-import { ScrollArea } from '@/components/ui/scroll-area';
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -46,7 +44,7 @@ export default function LoginPage() {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             {languages.map((lang) => (
-              <DropdownMenuItem key={lang.code} onSelect={() => setLanguage(lang.code)}>
+              <DropdownMenuItem key={lang.code} onSelect={() => setLanguage(lang.code)} role="button">
                 {lang.name}
               </DropdownMenuItem>
             ))}
@@ -111,7 +109,7 @@ export default function LoginPage() {
             </div>
             <div className="grid grid-cols-2 gap-4">
                 <Button asChild>
-                    <Link href="/dashboard?userType=seller">
+                    <Link href="/dashboard?userType=artisan">
                         <Users className="mr-2"/>
                         {translations.login_page.login_seller_button}
                     </Link>
@@ -130,25 +128,10 @@ export default function LoginPage() {
               {translations.login_page.signup_link.split('?')[1]}
             </Link>
           </div>
+           <div className="mt-4 text-center text-xs text-muted-foreground px-2">
+            By logging in, you agree to our Terms of Service and Privacy Policy.
+          </div>
         </CardContent>
-         <CardFooter className="flex-col items-start gap-2 pt-4 border-t">
-          <Label className="text-xs text-muted-foreground">Select Language</Label>
-          <ScrollArea className="w-full h-24">
-            <div className="grid grid-cols-3 gap-2">
-              {languages.map((lang) => (
-                <Button
-                  key={lang.code}
-                  variant={language === lang.code ? 'default' : 'outline'}
-                  size="sm"
-                  className="w-full justify-start text-xs"
-                  onClick={() => setLanguage(lang.code)}
-                >
-                  {lang.name}
-                </Button>
-              ))}
-            </div>
-          </ScrollArea>
-        </CardFooter>
       </Card>
     </div>
   );
