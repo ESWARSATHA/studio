@@ -31,6 +31,7 @@ import {
   Lightbulb,
   ShoppingCart,
   Search,
+  GraduationCap,
 } from "lucide-react";
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
@@ -64,6 +65,7 @@ export default function DashboardLayout({
       { href: "/dashboard/marketing", label: translations.dashboard_layout.menu_marketing, icon: Megaphone },
       { href: "/dashboard/community", label: translations.dashboard_layout.menu_community, icon: Users },
       { href: "/dashboard/requests", label: translations.dashboard_layout.menu_requests, icon: Bell },
+      { href: "/dashboard/academy", label: translations.dashboard_layout.menu_academy, icon: GraduationCap },
       { href: "/dashboard/livestudio", label: translations.dashboard_layout.menu_live_studio, icon: Radio },
       { href: "/dashboard/suggestions", label: "Suggestions", icon: Lightbulb },
       { href: "/dashboard/support", label: translations.dashboard_layout.menu_support, icon: LifeBuoy },
@@ -77,7 +79,7 @@ export default function DashboardLayout({
   };
 
   const menuItems = userType === 'buyer' ? allMenuItems.buyer : allMenuItems.artisan;
-  const pageTitle = menuItems.find(item => pathname === item.href)?.label || "Dashboard";
+  const pageTitle = menuItems.find(item => pathname.startsWith(item.href))?.label || "Dashboard";
 
 
   const getMenuItemHref = (href: string) => {
@@ -104,7 +106,7 @@ export default function DashboardLayout({
               <SidebarMenuItem key={item.href}>
                 <SidebarMenuButton
                   asChild
-                  isActive={pathname === item.href}
+                  isActive={pathname.startsWith(item.href)}
                   tooltip={{ children: item.label }}
                 >
                   <Link href={getMenuItemHref(item.href)}>

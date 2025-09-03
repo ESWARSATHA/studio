@@ -90,6 +90,7 @@
         "menu_marketing": "Marketing Hub",
         "menu_community": "Community Hub",
         "menu_support": "Support",
+        "menu_academy": "Artisan Academy",
         "menu_live_studio": "Live Studio",
         "menu_requests": "Follow Requests",
         "menu_cart": "Shopping Cart",
@@ -231,7 +232,11 @@
         "shipping": "Shipping",
         "total": "Total",
         "checkout_button": "Proceed to Checkout"
+    },
+    "academy_page": {
+        "title": "Artisan Academy",
+        "description": "Sharpen your skills and grow your business with our expert-led tutorials.",
+        "card_title": "Video Library",
+        "card_description": "Explore our collection of tutorials designed to help you succeed."
     }
 }
-
-    
