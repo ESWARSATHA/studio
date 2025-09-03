@@ -12,7 +12,6 @@ const signupSchema = z.object({
   productCategory: z.string().min(1, 'Please select a product category.'),
   password: z.string().min(8, 'Password must be at least 8 characters.'),
   confirmPassword: z.string().min(8, 'Password must be at least 8 characters.'),
-  role: z.enum(['artisan', 'buyer'], { required_error: 'Please select a role.' }),
 }).refine(data => data.password === data.confirmPassword, {
     message: "Passwords don't match",
     path: ["confirmPassword"],
@@ -29,7 +28,6 @@ export async function handleCreateAccount(prevState: any, formData: FormData) {
       productCategory: formData.get('productCategory'),
       password: formData.get('password'),
       confirmPassword: formData.get('confirmPassword'),
-      role: formData.get('role'),
     });
 
     if (!validatedFields.success) {

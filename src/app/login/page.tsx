@@ -107,20 +107,12 @@ export default function LoginPage() {
                 </button>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-                <Button asChild>
-                    <Link href="/dashboard?userType=artisan">
-                        <Users className="mr-2"/>
-                        {translations.login_page.login_seller_button}
-                    </Link>
-                </Button>
-                 <Button asChild variant="secondary">
-                    <Link href="/dashboard?userType=buyer">
-                        <ShoppingBag className="mr-2"/>
-                        {translations.login_page.login_buyer_button}
-                    </Link>
-                </Button>
-            </div>
+            <Button asChild className="w-full">
+                <Link href="/dashboard?userType=artisan">
+                    <Users className="mr-2"/>
+                    {translations.login_page.login_seller_button}
+                </Link>
+            </Button>
           </div>
           <div className="mt-4 text-center text-sm">
             {translations.login_page.signup_link.split('?')[0]}?{' '}
