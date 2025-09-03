@@ -21,6 +21,9 @@ const GenerateMarketingCopyOutputSchema = z.object({
   targetAudience: z.string().describe("A description of the ideal target audience for this product."),
   socialMediaPost: z.string().describe("A short, engaging social media post to promote the product."),
   emailCopy: z.string().describe("A draft for a promotional email to send to a mailing list."),
+  headline: z.string().describe("A catchy headline for a social media ad."),
+  body: z.string().describe("The main body text for a social media ad."),
+  cta: z.string().describe("A call-to-action for the ad (e.g., 'Shop Now')."),
   platformRecommendations: z.array(z.object({
     platformName: z.string().describe("The name of the recommended online platform (e.g., Amazon Karigar, Etsy India)."),
     marketingTip: z.string().describe("A specific marketing tip for selling this product on the recommended platform."),
@@ -66,7 +69,11 @@ Based on this, please generate the following:
 1.  **Target Audience:** Who is the ideal customer for this product? Be specific.
 2.  **Social Media Post:** Write a short, exciting post for platforms like Instagram or Facebook. Include relevant hashtags.
 3.  **Email Copy:** Draft a promotional email. It should have a catchy subject line and a compelling body that encourages clicks.
-4.  **Platform Recommendations:** Suggest 2-3 specific Indian online marketplaces or platforms (e.g., Amazon Karigar, Flipkart Samarth, Etsy India, Okhai, Jaypore) where this product would sell well. For each platform, provide one concrete marketing tip tailored to that platform (e.g., 'On Amazon Karigar, use high-quality lifestyle photos to stand out.').
+4.  **Social Media Ad:**
+    - **Headline:** A short, catchy headline (under 40 characters).
+    - **Body:** Compelling ad copy (around 125 characters).
+    - **CTA:** A direct call to action (e.g., 'Shop Now', 'Discover More').
+5.  **Platform Recommendations:** Suggest 2-3 specific Indian online marketplaces or platforms (e.g., Amazon Karigar, Flipkart Samarth, Etsy India, Okhai, Jaypore) where this product would sell well. For each platform, provide one concrete marketing tip tailored to that platform (e.g., 'On Amazon Karigar, use high-quality lifestyle photos to stand out.').
 
 Keep the tone enthusiastic, authentic, and focused on the art and the artisan.`,
 });
