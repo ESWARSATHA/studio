@@ -298,24 +298,6 @@ export default function SignupPage() {
             {translations.signup_page.legal_disclaimer}
           </div>
         </CardContent>
-        <CardFooter className="flex-col items-start gap-2 pt-4 border-t">
-          <Label className="text-xs text-muted-foreground">Select Language</Label>
-          <ScrollArea className="w-full h-24">
-            <div className="grid grid-cols-3 gap-2">
-              {languages.map((lang) => (
-                <Button
-                  key={lang.code}
-                  variant={language === lang.code ? 'default' : 'outline'}
-                  size="sm"
-                  className="w-full justify-start text-xs"
-                  onClick={() => setLanguage(lang.code)}
-                >
-                  {lang.name}
-                </Button>
-              ))}
-            </div>
-          </ScrollArea>
-        </CardFooter>
       </Card>
     </div>
   );
