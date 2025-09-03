@@ -14,3 +14,5 @@ import './flows/generate-product-description';
 import './flows/refine-product-story';
 import './flows/suggest-price';
 import './flows/generate-product-image';
+import './flows/generate-product-suggestions';
+

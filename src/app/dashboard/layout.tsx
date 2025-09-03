@@ -145,7 +145,7 @@ export default function DashboardLayout({
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   {languages.map(lang => (
-                    <DropdownMenuItem key={lang.code} onSelect={() => setLanguage(lang.code)}>
+                    <DropdownMenuItem key={lang.code} onSelect={() => setLanguage(lang.code)} role="button">
                       {lang.name}
                     </DropdownMenuItem>
                   ))}
