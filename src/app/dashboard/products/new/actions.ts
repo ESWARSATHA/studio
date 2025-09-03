@@ -91,13 +91,13 @@ export async function handleGenerateImage(prevState: any, formData: FormData) {
         });
 
         if (!validatedFields.success) {
-            return { status: 'error', message: 'Invalid input.', errors: validatedFields.error.flatten().fieldErrors };
+            return { status: 'error', message: 'A description is required to generate an image.', errors: validatedFields.error.flatten().fieldErrors };
         }
         
         const result = await generateProductImage(validatedFields.data);
         return { status: 'success', data: result };
     } catch (error) {
         console.error(error);
-        return { status: 'error', message: 'Failed to generate image. Please try again.' };
+        return { status: 'error', message: 'Failed to generate image. Please try again later.' };
     }
 }
