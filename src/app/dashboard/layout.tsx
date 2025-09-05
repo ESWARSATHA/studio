@@ -66,7 +66,7 @@ export default function DashboardLayout({
     { href: "/dashboard/requests", label: translations.dashboard_layout.menu_requests, icon: Bell },
     { href: "/dashboard/academy", label: translations.dashboard_layout.menu_academy, icon: GraduationCap },
     { href: "/dashboard/livestudio", label: translations.dashboard_layout.menu_live_studio, icon: Radio },
-    { href: "/dashboard/suggestions", label: "Suggestions", icon: Lightbulb },
+    { href: "/dashboard/suggestions", label: translations.dashboard_layout.menu_suggestions, icon: Lightbulb },
     { href: "/dashboard/support", label: translations.dashboard_layout.menu_support, icon: LifeBuoy },
   ];
 
@@ -84,7 +84,11 @@ export default function DashboardLayout({
       if (pathname.includes('/dashboard/support')) return 'Support';
       return 'Explore Art';
     }
-    return menuItems.find(item => pathname.startsWith(item.href))?.label || "Dashboard";
+    // Match dynamic routes like /dashboard/products/[id] to a menu item label
+    const activeItem = menuItems.find(item => pathname.startsWith(item.href) && item.href !== '/dashboard');
+    if (activeItem) return activeItem.label;
+    if (pathname.startsWith('/dashboard/products/')) return translations.dashboard_layout.menu_add_product;
+    return translations.dashboard_layout.menu_dashboard;
   }
   
   const pageTitle = getPageTitle();
@@ -104,7 +108,7 @@ export default function DashboardLayout({
               <SidebarMenuItem key={item.href}>
                 <SidebarMenuButton
                   asChild
-                  isActive={pathname === item.href || (item.href !== '/dashboard' && pathname.startsWith(item.href))}
+                  isActive={pathname === item.href}
                   tooltip={{ children: item.label }}
                 >
                   <Link href={item.href}>
