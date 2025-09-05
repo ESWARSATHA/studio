@@ -2,6 +2,7 @@
 "use client";
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -43,8 +44,10 @@ export default function VerificationPage() {
               <Label htmlFor="aadhaar-number">{translations.verification_page.aadhaar_label}</Label>
               <Input id="aadhaar-number" placeholder={translations.verification_page.aadhaar_placeholder} />
             </div>
-            <Button type="button" className="w-full">
-              {translations.verification_page.digilocker_button}
+            <Button asChild className="w-full">
+              <Link href="https://www.digilocker.gov.in/" target="_blank" rel="noopener noreferrer">
+                {translations.verification_page.digilocker_button}
+              </Link>
             </Button>
         </CardContent>
       </Card>
@@ -62,8 +65,10 @@ export default function VerificationPage() {
               <Label htmlFor="pan-number">{translations.verification_page.pan_label}</Label>
               <Input id="pan-number" placeholder={translations.verification_page.pan_placeholder} />
             </div>
-            <Button type="button" className="w-full">
-               {translations.verification_page.digilocker_button}
+            <Button asChild className="w-full">
+               <Link href="https://www.digilocker.gov.in/" target="_blank" rel="noopener noreferrer">
+                {translations.verification_page.digilocker_button}
+              </Link>
             </Button>
         </CardContent>
       </Card>
