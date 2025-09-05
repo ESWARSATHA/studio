@@ -80,7 +80,7 @@ export default function Home() {
             </p>
             <div className="mt-8 flex justify-center">
               <Button asChild size="lg">
-                <Link href="/signup">
+                <Link href="/dashboard">
                   {homeTranslations.artisans_button} <ArrowRight className="ml-2" />
                 </Link>
               </Button>
