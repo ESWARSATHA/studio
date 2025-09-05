@@ -279,6 +279,32 @@ export default function Home() {
             </div>
         </section>
 
+        <section className="py-20 md:py-24">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+            <div className="flex justify-center">
+              <Image
+                src="https://picsum.photos/600/600?random=5"
+                alt="An illustration representing government support and growth for entrepreneurs."
+                width={500}
+                height={500}
+                className="rounded-lg shadow-lg"
+                data-ai-hint="government support entrepreneur"
+              />
+            </div>
+            <div className="max-w-md">
+              <h2 className="text-3xl font-bold">{homeTranslations.gov_support_title}</h2>
+              <p className="mt-4 text-muted-foreground">{homeTranslations.gov_support_subtitle}</p>
+              <div className="mt-8 flex">
+                <Button asChild size="lg">
+                  <Link href="https://www.startupindia.gov.in/" target="_blank" rel="noopener noreferrer">
+                    {homeTranslations.gov_support_button} <ArrowRight className="ml-2" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
       </main>
 
       <footer className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-muted-foreground">
