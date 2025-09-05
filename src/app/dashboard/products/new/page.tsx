@@ -13,7 +13,8 @@ import { Loader2, Wand2, Mic, Sparkles, UploadCloud, IndianRupee, Image as Image
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from '@/lib/locales/language-context';
 
-const initialState = { status: 'idle', message: '', data: null, errors: null };
+const initialState = { status: 'idle' as const, message: '', data: null, errors: null };
+
 
 export default function NewProductPage() {
   const { toast } = useToast();
@@ -197,6 +198,7 @@ export default function NewProductPage() {
       </div>
       <form onSubmit={handleFormSubmit}>
         <div className="grid gap-8 md:grid-cols-3">
+          {/* Left Column for Media */}
           <div className="md:col-span-1 grid gap-8 content-start">
             <Card>
               <CardHeader>
@@ -247,18 +249,9 @@ export default function NewProductPage() {
                 </Button>
               </CardContent>
             </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>{pageTranslations.video_card_title}</CardTitle>
-                <CardDescription>{pageTranslations.video_card_description}</CardDescription>
-              </CardHeader>
-              <CardContent className="grid gap-2">
-                <Label htmlFor="video-url" className="flex items-center gap-2"><Video />Video URL</Label>
-                <Input id="video-url" placeholder="https://youtube.com/watch?v=..." />
-              </CardContent>
-            </Card>
           </div>
 
+          {/* Right Column for Details */}
           <div className="grid gap-8 md:col-span-2 content-start">
             <Card>
               <CardHeader>
@@ -272,7 +265,7 @@ export default function NewProductPage() {
                 </div>
                 <div className="grid gap-2">
                   <Label htmlFor="description">Description</Label>
-                  <Textarea id="description" placeholder="A detailed description of your product..." value={description} onChange={(e) => setDescription(e.target.value)} rows={5} />
+                  <Textarea id="description" placeholder="AI-generated description will appear here..." value={description} onChange={(e) => setDescription(e.target.value)} rows={5} />
                 </div>
                 <div className="grid gap-2">
                   <Label htmlFor="tags">Tags</Label>
@@ -298,6 +291,33 @@ export default function NewProductPage() {
                 <div className="grid gap-2">
                   <Label htmlFor="process" className="flex items-center gap-2"><Paintbrush />Process</Label>
                   <Textarea id="process" placeholder="Describe how you made this product..." rows={3} />
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <CardTitle>{pageTranslations.story_card_title}</CardTitle>
+                <CardDescription>{pageTranslations.story_card_description}</CardDescription>
+              </CardHeader>
+              <CardContent className="grid gap-4">
+                <div className="grid gap-2">
+                  <Label htmlFor="story" className="flex items-center">
+                    <Mic className="mr-2 h-4 w-4" />
+                    Your Story (Dictate or Type)
+                  </Label>
+                  <Textarea id="story" placeholder="e.g., This elephant was carved from a fallen mango tree in my village..." value={story} onChange={(e) => setStory(e.target.value)} rows={8} />
+                </div>
+                 <Button type="button" size="sm" onClick={onRefineStory} disabled={!story || isRefiningStory} className="justify-self-end">
+                  {isRefiningStory ? <Loader2 className="mr-2 animate-spin" /> : <Sparkles className="mr-2" />}
+                  {pageTranslations.story_button}
+                </Button>
+                <div className="grid gap-2">
+                  <Label htmlFor="refined-story" className="flex items-center">
+                    <Wand2 className="mr-2 h-4 w-4 text-primary" />
+                    AI-Refined Story
+                  </Label>
+                  <Textarea id="refined-story" placeholder="AI-polished version will appear here..." value={refinedStory} onChange={(e) => setRefinedStory(e.target.value)} rows={8} className="bg-primary/5 focus:bg-background" />
                 </div>
               </CardContent>
             </Card>
@@ -339,31 +359,15 @@ export default function NewProductPage() {
                 )}
               </CardContent>
             </Card>
-
+            
             <Card>
               <CardHeader>
-                <CardTitle>{pageTranslations.story_card_title}</CardTitle>
-                <CardDescription>{pageTranslations.story_card_description}</CardDescription>
+                <CardTitle>{pageTranslations.video_card_title}</CardTitle>
+                <CardDescription>{pageTranslations.video_card_description}</CardDescription>
               </CardHeader>
-              <CardContent className="grid gap-4">
-                <div className="grid gap-2">
-                  <Label htmlFor="story" className="flex items-center">
-                    <Mic className="mr-2 h-4 w-4" />
-                    Your Story (Dictate or Type)
-                  </Label>
-                  <Textarea id="story" placeholder="e.g., This elephant was carved from a fallen mango tree in my village..." value={story} onChange={(e) => setStory(e.target.value)} rows={8} />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="refined-story" className="flex items-center">
-                    <Wand2 className="mr-2 h-4 w-4 text-primary" />
-                    AI-Refined Story
-                  </Label>
-                  <Textarea id="refined-story" placeholder="AI-polished version will appear here..." value={refinedStory} onChange={(e) => setRefinedStory(e.target.value)} rows={8} className="bg-primary/5 focus:bg-background" />
-                </div>
-                <Button type="button" size="sm" onClick={onRefineStory} disabled={!story || isRefiningStory} className="justify-self-end">
-                  {isRefiningStory ? <Loader2 className="mr-2 animate-spin" /> : <Sparkles className="mr-2" />}
-                  {pageTranslations.story_button}
-                </Button>
+              <CardContent className="grid gap-2">
+                <Label htmlFor="video-url" className="flex items-center gap-2"><Video />Video URL</Label>
+                <Input id="video-url" placeholder="https://youtube.com/watch?v=..." />
               </CardContent>
             </Card>
 
@@ -376,3 +380,4 @@ export default function NewProductPage() {
     </div>
   );
 }
+
