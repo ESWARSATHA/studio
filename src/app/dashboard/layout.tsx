@@ -88,7 +88,7 @@ export default function DashboardLayout({
     const activeItem = menuItems.find(item => pathname.startsWith(item.href) && item.href !== '/dashboard');
     if (activeItem) return activeItem.label;
     if (pathname.startsWith('/dashboard/products/')) return translations.dashboard_layout.menu_add_product;
-    if (pathname.startsWith('/dashboard/profile')) return translations.dashboard_layout.account_menu_profile;
+    if (pathname.startsWith('/dashboard/settings')) return translations.dashboard_layout.account_menu_settings;
     return translations.dashboard_layout.menu_dashboard;
   }
   
@@ -166,24 +166,8 @@ export default function DashboardLayout({
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>{translations.dashboard_layout.account_menu_label}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                {userType === 'artisan' && (
-                    <>
-                        <DropdownMenuItem>
-                        <Link href="/dashboard/verification" className="flex items-center">
-                            <ShieldCheck className="mr-2" />
-                            {translations.dashboard_layout.account_menu_verify}
-                        </Link>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                         <Link href="/dashboard/profile" className="flex items-center">
-                            <User className="mr-2" />
-                            {translations.dashboard_layout.account_menu_profile}
-                        </Link>
-                        </DropdownMenuItem>
-                    </>
-                )}
                 <DropdownMenuItem>
-                   <Link href={userType === 'buyer' ? "/dashboard/settings/payment?userType=buyer" : "/dashboard/settings/payment"} className="flex items-center">
+                   <Link href={"/dashboard/settings"} className="flex items-center">
                     <Settings className="mr-2" />
                     {translations.dashboard_layout.account_menu_settings}
                   </Link>
