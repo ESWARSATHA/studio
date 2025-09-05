@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Lightbulb, Wand2, Package, DraftingCompass, Users, CheckCircle } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { useLanguage } from "@/lib/locales/language-context";
 
 const products = [
   {
@@ -37,6 +38,9 @@ const initialState = { status: 'idle', message: '', data: null, errors: null };
 
 export default function SuggestionsPage() {
   const { toast } = useToast();
+  const { translations } = useLanguage();
+  const pageTranslations = translations.suggestions_page || {};
+
   const [state, formAction] = useActionState(handleGenerateSuggestions, initialState);
   const [selectedProduct, setSelectedProduct] = useState<typeof products[0] | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -79,14 +83,14 @@ export default function SuggestionsPage() {
     <div className="grid gap-8">
        <div className="text-center">
         <Lightbulb className="mx-auto h-12 w-12 text-primary" />
-        <h1 className="mt-4 text-3xl font-bold tracking-tight">AI Idea Hub</h1>
-        <p className="mt-2 text-muted-foreground">Generate creative suggestions to innovate your products and expand your reach.</p>
+        <h1 className="mt-4 text-3xl font-bold tracking-tight">{pageTranslations.title}</h1>
+        <p className="mt-2 text-muted-foreground">{pageTranslations.description}</p>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Select Your Product</CardTitle>
-          <CardDescription>Choose one of your products to get AI-powered suggestions for.</CardDescription>
+          <CardTitle>{pageTranslations.select_card_title}</CardTitle>
+          <CardDescription>{pageTranslations.select_card_description}</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
@@ -102,7 +106,7 @@ export default function SuggestionsPage() {
             </Select>
             <Button type="submit" disabled={!selectedProduct || isGenerating} className="w-full sm:w-auto">
               {isGenerating ? <Loader2 className="mr-2 animate-spin" /> : <Wand2 className="mr-2" />}
-              Generate Suggestions
+              {pageTranslations.generate_button}
             </Button>
           </form>
         </CardContent>
@@ -114,9 +118,9 @@ export default function SuggestionsPage() {
                 <CardHeader>
                     <div className="flex items-center gap-3">
                         <div className="p-3 bg-primary/10 rounded-full"><Package className="h-6 w-6 text-primary" /></div>
-                        <CardTitle>Modern Product Variations</CardTitle>
+                        <CardTitle>{pageTranslations.variations_card_title}</CardTitle>
                     </div>
-                     <CardDescription>Adapt your traditional skills to new, contemporary products.</CardDescription>
+                     <CardDescription>{pageTranslations.variations_card_description}</CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-4">
                     {isGenerating && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> : 
@@ -132,9 +136,9 @@ export default function SuggestionsPage() {
                 <CardHeader>
                     <div className="flex items-center gap-3">
                         <div className="p-3 bg-primary/10 rounded-full"><DraftingCompass className="h-6 w-6 text-primary" /></div>
-                        <CardTitle>New Design Concepts</CardTitle>
+                        <CardTitle>{pageTranslations.concepts_card_title}</CardTitle>
                     </div>
-                     <CardDescription>Fresh ideas to blend heritage with modern aesthetics.</CardDescription>
+                     <CardDescription>{pageTranslations.concepts_card_description}</CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-4">
                      {isGenerating && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> :
@@ -150,9 +154,9 @@ export default function SuggestionsPage() {
                 <CardHeader>
                     <div className="flex items-center gap-3">
                         <div className="p-3 bg-primary/10 rounded-full"><Users className="h-6 w-6 text-primary" /></div>
-                        <CardTitle>Target Audience Expansion</CardTitle>
+                        <CardTitle>{pageTranslations.expansion_card_title}</CardTitle>
                     </div>
-                    <CardDescription>Reach new customer segments with tailored strategies.</CardDescription>
+                    <CardDescription>{pageTranslations.expansion_card_description}</CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-4">
                 {isGenerating && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> :

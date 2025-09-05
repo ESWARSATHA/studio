@@ -9,14 +9,18 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Loader2, Wand2, Mic, Sparkles, UploadCloud, IndianRupee, Image as ImageIcon, Video, Box, Paintbrush, Scissors } from 'lucide-react';
+import { Loader2, Wand2, Mic, Sparkles, UploadCloud, IndianRupee, Image as ImageIcon, Video, Box, Paintbrush, Scissors, PlusCircle } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from '@/lib/locales/language-context';
 
 const initialState = { status: 'idle', message: '', data: null };
 const initialImageState = { status: 'idle', message: '', data: null, errors: null };
 
 export default function NewProductPage() {
   const { toast } = useToast();
+  const { translations } = useLanguage();
+  const pageTranslations = translations.new_product_page || {};
+
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [imageDataUri, setImageDataUri] = useState<string | null>(null);
 
@@ -191,12 +195,18 @@ export default function NewProductPage() {
   }, [imageState, toast]);
 
   return (
-    <form className="grid gap-8 md:grid-cols-3">
-      <div className="md:col-span-1 grid gap-8">
+    <form className="grid gap-8">
+        <div className="text-center">
+            <PlusCircle className="mx-auto h-12 w-12 text-primary" />
+            <h1 className="mt-4 text-3xl font-bold tracking-tight">{translations.dashboard_layout.menu_add_product}</h1>
+            <p className="mt-2 text-muted-foreground">This is your workshop. Practice creating compelling product showcases to attract customers.</p>
+        </div>
+        <div className="grid gap-8 md:grid-cols-3">
+      <div className="md:col-span-1 grid gap-8 content-start">
         <Card>
           <CardHeader>
-            <CardTitle>Product Image</CardTitle>
-            <CardDescription>Upload a clear photo of your creation or generate one with AI.</CardDescription>
+            <CardTitle>{pageTranslations.image_card_title}</CardTitle>
+            <CardDescription>{pageTranslations.image_card_description}</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
              <div className="grid gap-2">
@@ -220,14 +230,14 @@ export default function NewProductPage() {
             </div>
             <Button type="button" className="w-full" onClick={onGenerateDescription} disabled={!imagePreview || isGeneratingDesc}>
               {isGeneratingDesc ? <Loader2 className="mr-2 animate-spin" /> : <Wand2 className="mr-2" />}
-              Generate Description & Tags
+              {pageTranslations.generate_desc_button}
             </Button>
           </CardContent>
         </Card>
         <Card>
             <CardHeader>
-                <CardTitle>AI Image Generator</CardTitle>
-                <CardDescription>Describe the image you want to create.</CardDescription>
+                <CardTitle>{pageTranslations.image_gen_card_title}</CardTitle>
+                <CardDescription>{pageTranslations.image_gen_card_description}</CardDescription>
             </CardHeader>
             <CardContent className="grid gap-4">
                 <Textarea 
@@ -238,14 +248,14 @@ export default function NewProductPage() {
                 />
                 <Button type="button" className="w-full" onClick={onGenerateImage} disabled={isGeneratingImage}>
                     {isGeneratingImage ? <Loader2 className="mr-2 animate-spin" /> : <ImageIcon className="mr-2" />}
-                    Generate Image
+                    {pageTranslations.image_gen_button}
                 </Button>
             </CardContent>
         </Card>
         <Card>
             <CardHeader>
-                <CardTitle>Video Showcase</CardTitle>
-                <CardDescription>Add a video link (e.g., YouTube) to show your product in action.</CardDescription>
+                <CardTitle>{pageTranslations.video_card_title}</CardTitle>
+                <CardDescription>{pageTranslations.video_card_description}</CardDescription>
             </CardHeader>
             <CardContent className="grid gap-2">
                 <Label htmlFor="video-url" className="flex items-center gap-2"><Video/>Video URL</Label>
@@ -254,11 +264,11 @@ export default function NewProductPage() {
         </Card>
       </div>
 
-      <div className="grid gap-8 md:col-span-2">
+      <div className="grid gap-8 md:col-span-2 content-start">
         <Card>
           <CardHeader>
-            <CardTitle>Product Details</CardTitle>
-            <CardDescription>AI-generated content will appear here. You can edit it before saving.</CardDescription>
+            <CardTitle>{pageTranslations.details_card_title}</CardTitle>
+            <CardDescription>{pageTranslations.details_card_description}</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
             <div className="grid gap-2">
@@ -278,8 +288,8 @@ export default function NewProductPage() {
         
         <Card>
             <CardHeader>
-                <CardTitle>Specifications</CardTitle>
-                <CardDescription>Provide details about the materials, dimensions, and creation process.</CardDescription>
+                <CardTitle>{pageTranslations.specs_card_title}</CardTitle>
+                <CardDescription>{pageTranslations.specs_card_description}</CardDescription>
             </CardHeader>
             <CardContent className="grid gap-4">
                  <div className="grid gap-2">
@@ -299,8 +309,8 @@ export default function NewProductPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Pricing</CardTitle>
-            <CardDescription>Set a price for your product. Get an AI suggestion based on market data.</CardDescription>
+            <CardTitle>{pageTranslations.pricing_card_title}</CardTitle>
+            <CardDescription>{pageTranslations.pricing_card_description}</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-6">
              <div className="grid gap-2 sm:grid-cols-3 sm:items-end">
@@ -310,7 +320,7 @@ export default function NewProductPage() {
                 </div>
                 <Button type="button" variant="outline" onClick={onSuggestPrice} disabled={isSuggestingPrice}>
                     {isSuggestingPrice ? <Loader2 className="mr-2 animate-spin" /> : <IndianRupee className="mr-2" />}
-                    Suggest Price
+                    {pageTranslations.price_button}
                 </Button>
              </div>
              {(isSuggestingPrice || priceState.data) && (
@@ -337,8 +347,8 @@ export default function NewProductPage() {
 
         <Card>
            <CardHeader>
-              <CardTitle>AI Storyteller</CardTitle>
-              <CardDescription>Tell us the story behind your product, and our AI will polish it into a captivating narrative.</CardDescription>
+              <CardTitle>{pageTranslations.story_card_title}</CardTitle>
+              <CardDescription>{pageTranslations.story_card_description}</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
             <div className="grid gap-2">
@@ -357,14 +367,15 @@ export default function NewProductPage() {
             </div>
              <Button type="button" size="sm" onClick={onRefineStory} disabled={!story || isRefiningStory} className="justify-self-end">
                 {isRefiningStory ? <Loader2 className="mr-2 animate-spin" /> : <Sparkles className="mr-2" />}
-                Refine with AI
+                {pageTranslations.story_button}
             </Button>
           </CardContent>
         </Card>
         
         <div className="flex justify-end">
-            <Button size="lg" type="submit">Save Product</Button>
+            <Button size="lg" type="submit">{pageTranslations.save_button}</Button>
         </div>
+      </div>
       </div>
     </form>
   );

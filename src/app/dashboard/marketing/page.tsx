@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Megaphone, Wand2, Users, Mail, MessageSquare, ShoppingBag, Lightbulb } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { useLanguage } from "@/lib/locales/language-context";
 
 const products = [
   {
@@ -43,6 +44,9 @@ const initialState = { status: 'idle', message: '', data: null, errors: null };
 
 export default function MarketingPage() {
   const { toast } = useToast();
+  const { translations } = useLanguage();
+  const pageTranslations = translations.marketing_page || {};
+
   const [state, formAction] = useActionState(handleGenerateMarketingCopy, initialState);
   const [selectedProduct, setSelectedProduct] = useState<(typeof products)[0] | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -84,14 +88,14 @@ export default function MarketingPage() {
     <div className="grid gap-8">
        <div className="text-center">
         <Megaphone className="mx-auto h-12 w-12 text-primary" />
-        <h1 className="mt-4 text-3xl font-bold tracking-tight">AI Marketing Hub</h1>
-        <p className="mt-2 text-muted-foreground">Generate marketing materials, ad copy, and a sales strategy for your products.</p>
+        <h1 className="mt-4 text-3xl font-bold tracking-tight">{pageTranslations.title}</h1>
+        <p className="mt-2 text-muted-foreground">{pageTranslations.description}</p>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Select a Product</CardTitle>
-          <CardDescription>Choose one of your products to create a marketing plan for.</CardDescription>
+          <CardTitle>{pageTranslations.select_card_title}</CardTitle>
+          <CardDescription>{pageTranslations.select_card_description}</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
@@ -107,7 +111,7 @@ export default function MarketingPage() {
             </Select>
             <Button type="submit" disabled={!selectedProduct || isGenerating} className="w-full sm:w-auto">
               {isGenerating ? <Loader2 className="mr-2 animate-spin" /> : <Wand2 className="mr-2" />}
-              Generate Marketing Plan
+              {pageTranslations.generate_button}
             </Button>
           </form>
         </CardContent>
@@ -120,7 +124,7 @@ export default function MarketingPage() {
                     <CardHeader>
                     <div className="flex items-center gap-3">
                         <div className="p-3 bg-primary/10 rounded-full"><Users className="h-6 w-6 text-primary" /></div>
-                        <CardTitle>Target Audience</CardTitle>
+                        <CardTitle>{pageTranslations.audience_card_title}</CardTitle>
                     </div>
                     </CardHeader>
                     <CardContent>
@@ -131,7 +135,7 @@ export default function MarketingPage() {
                     <CardHeader>
                     <div className="flex items-center gap-3">
                         <div className="p-3 bg-primary/10 rounded-full"><Wand2 className="h-6 w-6 text-primary" /></div>
-                        <CardTitle>Social Media Ad Preview</CardTitle>
+                        <CardTitle>{pageTranslations.ad_preview_card_title}</CardTitle>
                     </div>
                     </CardHeader>
                     <CardContent>
@@ -161,7 +165,7 @@ export default function MarketingPage() {
                     <CardHeader>
                     <div className="flex items-center gap-3">
                         <div className="p-3 bg-primary/10 rounded-full"><MessageSquare className="h-6 w-6 text-primary" /></div>
-                        <CardTitle>Social Media Post</CardTitle>
+                        <CardTitle>{pageTranslations.post_card_title}</CardTitle>
                     </div>
                     </CardHeader>
                     <CardContent>
@@ -172,7 +176,7 @@ export default function MarketingPage() {
                     <CardHeader>
                     <div className="flex items-center gap-3">
                         <div className="p-3 bg-primary/10 rounded-full"><Mail className="h-6 w-6 text-primary" /></div>
-                        <CardTitle>Promotional Email</CardTitle>
+                        <CardTitle>{pageTranslations.email_card_title}</CardTitle>
                     </div>
                     </CardHeader>
                     <CardContent>
@@ -184,9 +188,9 @@ export default function MarketingPage() {
                 <CardHeader>
                 <div className="flex items-center gap-3">
                     <div className="p-3 bg-primary/10 rounded-full"><ShoppingBag className="h-6 w-6 text-primary" /></div>
-                    <CardTitle>Platform Recommendations</CardTitle>
-                    <CardDescription>Where to sell your product online in India.</CardDescription>
+                    <CardTitle>{pageTranslations.platform_card_title}</CardTitle>
                 </div>
+                <CardDescription>{pageTranslations.platform_card_description}</CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-6">
                 {isGenerating && !state.data ? (

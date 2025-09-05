@@ -9,6 +9,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
+  CardDescription,
 } from '@/components/ui/card';
 import {
   DropdownMenu,
@@ -97,7 +98,7 @@ export default function Home() {
             </div>
             <div className="mt-12 grid gap-8 md:grid-cols-4">
               <Card>
-                <CardHeader className="items-center">
+                <CardHeader className="items-center text-center">
                   <div className="p-4 bg-primary/10 rounded-full">
                     <ImageIcon className="h-8 w-8 text-primary" />
                   </div>
@@ -112,7 +113,7 @@ export default function Home() {
                 </CardContent>
               </Card>
               <Card>
-                <CardHeader className="items-center">
+                <CardHeader className="items-center text-center">
                   <div className="p-4 bg-primary/10 rounded-full">
                     <Mic className="h-8 w-8 text-primary" />
                   </div>
@@ -127,7 +128,7 @@ export default function Home() {
                 </CardContent>
               </Card>
               <Card>
-                <CardHeader className="items-center">
+                <CardHeader className="items-center text-center">
                   <div className="p-4 bg-primary/10 rounded-full">
                     <Bot className="h-8 w-8 text-primary" />
                   </div>
@@ -142,7 +143,7 @@ export default function Home() {
                 </CardContent>
               </Card>
               <Card>
-                <CardHeader className="items-center">
+                <CardHeader className="items-center text-center">
                   <div className="p-4 bg-primary/10 rounded-full">
                     <Sparkles className="h-8 w-8 text-primary" />
                   </div>
@@ -235,100 +236,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-secondary py-20 md:py-24">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="text-center md:text-left">
-                <h2 className="text-3xl font-bold">
-                  {translations.homepage.payments_title}
-                </h2>
-                <p className="mt-4 text-muted-foreground">
-                  {translations.homepage.payments_subtitle}
-                </p>
-                 <p className="mt-4 text-muted-foreground text-sm">
-                  {translations.homepage.payments_extra}
-                </p>
-                <div className="mt-6 flex flex-col gap-4">
-                    <div className="flex items-center gap-4">
-                        <div className="p-3 bg-primary/10 rounded-full">
-                            <Wallet className="h-6 w-6 text-primary" />
-                        </div>
-                        <div>
-                            <h4 className="font-semibold">{translations.homepage.payments_feature_1_title}</h4>
-                            <p className="text-sm text-muted-foreground">{translations.homepage.payments_feature_1_desc}</p>
-                        </div>
-                    </div>
-                     <div className="flex items-center gap-4">
-                        <div className="p-3 bg-primary/10 rounded-full">
-                            <IndianRupee className="h-6 w-6 text-primary" />
-                        </div>
-                        <div>
-                            <h4 className="font-semibold">{translations.homepage.payments_feature_2_title}</h4>
-                            <p className="text-sm text-muted-foreground">{translations.homepage.payments_feature_2_desc}</p>
-                        </div>
-                    </div>
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <Image
-                    src="https://picsum.photos/400/400?random=1"
-                    alt="A person using a smartphone to make an online payment for an art piece."
-                    width={400}
-                    height={400}
-                    className="w-full h-auto rounded-lg shadow-md object-cover aspect-square"
-                    data-ai-hint="online payment art"
-                />
-                 <Image
-                    src="https://picsum.photos/400/400?random=2"
-                    alt="An artisan looking at a notification on their phone confirming a payment received."
-                    width={400}
-                    height={400}
-                    className="w-full h-auto rounded-lg shadow-md object-cover aspect-square"
-                    data-ai-hint="artisan receiving payment"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-20 md:py-24">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center max-w-2xl mx-auto">
-                    <h2 className="text-3xl font-bold">{translations.homepage.overview_buyer_title}</h2>
-                    <p className="mt-4 text-muted-foreground">{translations.homepage.overview_buyer_subtitle}</p>
-                </div>
-                <div className="mt-12 grid gap-8 md:grid-cols-3">
-                    <Card>
-                        <CardHeader className="items-center">
-                            <div className="p-4 bg-primary/10 rounded-full"><ShoppingBag className="h-8 w-8 text-primary" /></div>
-                            <CardTitle className="mt-4">{translations.homepage.overview_buyer_1_title}</CardTitle>
-                        </CardHeader>
-                        <CardContent className="text-center">
-                            <p className="text-muted-foreground">{translations.homepage.overview_buyer_1_desc}</p>
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader className="items-center">
-                            <div className="p-4 bg-primary/10 rounded-full"><Users className="h-8 w-8 text-primary" /></div>
-                            <CardTitle className="mt-4">{translations.homepage.overview_buyer_2_title}</CardTitle>
-                        </CardHeader>
-                        <CardContent className="text-center">
-                            <p className="text-muted-foreground">{translations.homepage.overview_buyer_2_desc}</p>
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader className="items-center">
-                            <div className="p-4 bg-primary/10 rounded-full"><Wallet className="h-8 w-8 text-primary" /></div>
-                            <CardTitle className="mt-4">{translations.homepage.overview_buyer_3_title}</CardTitle>
-                        </CardHeader>
-                        <CardContent className="text-center">
-                            <p className="text-muted-foreground">{translations.homepage.overview_buyer_3_desc}</p>
-                        </CardContent>
-                    </Card>
-                </div>
-            </div>
-        </section>
-
       </main>
 
       <footer className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-muted-foreground">
@@ -337,5 +244,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
