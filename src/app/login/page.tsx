@@ -21,7 +21,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/icons';
-import { Eye, EyeOff, Globe, LogIn, ShoppingCart } from 'lucide-react';
+import { Eye, EyeOff, Globe, LogIn } from 'lucide-react';
 import { languages, useLanguage } from '@/lib/locales/language-context';
 
 export default function LoginPage() {
@@ -114,22 +114,16 @@ export default function LoginPage() {
                         {translations.login_page.login_seller_button}
                     </Link>
                 </Button>
-                <Button asChild variant="secondary" className="w-full">
-                    <Link href="/dashboard?userType=buyer">
-                        <ShoppingCart className="mr-2"/>
-                        Login as Buyer
-                    </Link>
-                </Button>
             </div>
           </div>
           <div className="mt-4 text-center text-sm">
-            {translations.signup_page.login_link.split('?')[0]}?{' '}
+            {translations.login_page.signup_link.split('?')[0]}?{' '}
             <Link href="/signup" className="underline">
-              {translations.signup_page.login_link.split('?')[1]}
+              {translations.login_page.signup_link.split('?')[1]}
             </Link>
           </div>
            <div className="mt-4 text-center text-xs text-muted-foreground px-2">
-            By logging in, you agree to our Terms of Service and Privacy Policy.
+            {translations.login_page.legal_disclaimer}
           </div>
         </CardContent>
       </Card>
