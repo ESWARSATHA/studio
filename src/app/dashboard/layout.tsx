@@ -88,6 +88,7 @@ export default function DashboardLayout({
     const activeItem = menuItems.find(item => pathname.startsWith(item.href) && item.href !== '/dashboard');
     if (activeItem) return activeItem.label;
     if (pathname.startsWith('/dashboard/products/')) return translations.dashboard_layout.menu_add_product;
+    if (pathname.startsWith('/dashboard/profile')) return translations.dashboard_layout.account_menu_profile;
     return translations.dashboard_layout.menu_dashboard;
   }
   
@@ -174,8 +175,10 @@ export default function DashboardLayout({
                         </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                        <User className="mr-2" />
-                        {translations.dashboard_layout.account_menu_profile}
+                         <Link href="/dashboard/profile" className="flex items-center">
+                            <User className="mr-2" />
+                            {translations.dashboard_layout.account_menu_profile}
+                        </Link>
                         </DropdownMenuItem>
                     </>
                 )}
