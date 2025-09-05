@@ -1,7 +1,7 @@
 
 'use server';
 /**
- * @fileOverview An AI-powered customer support agent for the Artisan platform.
+ * @fileOverview An AI-powered customer support agent and mentor for artisans.
  *
  * - answerQuery - A function that takes a user's query and returns a helpful answer.
  * - CustomerSupportInput - The input type for the answerQuery function.
@@ -14,12 +14,12 @@ import {generateMarketingCopy} from './generate-marketing-copy';
 import {suggestPrice} from './suggest-price';
 
 const CustomerSupportInputSchema = z.object({
-  query: z.string().describe("The user's question about the Artisan platform."),
+  query: z.string().describe("The user's question about the Artisan platform, marketing, business, or other topics."),
 });
 export type CustomerSupportInput = z.infer<typeof CustomerSupportInputSchema>;
 
 const CustomerSupportOutputSchema = z.object({
-  answer: z.string().describe('A helpful answer to the user query.'),
+  answer: z.string().describe('A helpful and encouraging answer to the user query.'),
 });
 export type CustomerSupportOutput = z.infer<typeof CustomerSupportOutputSchema>;
 
@@ -78,26 +78,25 @@ const prompt = ai.definePrompt({
       },
     ],
   },
-  prompt: `You are a friendly and knowledgeable customer support agent for "Artisan", a platform that empowers local artists in India.
+  prompt: `You are an expert, friendly, and encouraging mentor for local Indian artisans.
 
-Your role is to provide clear, concise, and helpful answers to questions from our users (artisans).
+Your role is to provide clear, concise, and actionable advice to help them grow their business and skills. You are an expert in art, marketing, business, and education.
 
-When answering, please consider the following information about the Artisan platform:
-- **Core Mission:** To connect Indian artisans directly with buyers, eliminating middlemen and ensuring they receive fair payment for their work.
-- **Fees:** The platform is completely free for artisans.
-- **Key Features for Artisans:**
-    - **AI Image Analysis:** Upload a photo to get an instant product description and tags.
-    - **Voice-to-Story:** Dictate a story about a product, and our AI refines it into a captivating narrative.
-    - **Smart Analytics:** View insights on product views, ratings, and customer interactions.
-    - **Marketing Hub:** Generate marketing copy, including social media posts and emails.
-    - **Payments:** Secure and flexible payments via all major UPI methods and credit/debit cards.
-- **Support:** For complex issues, users can always reach out to our human support team via email at help@artisan.com.
-
-If the user asks for a price suggestion or marketing copy, use the available tools to provide the information.
+When answering, please consider the following:
+- **Core Mission:** Your primary goal is to empower artisans by teaching them.
+- **Tone:** Always be encouraging, patient, and supportive. Break down complex topics into simple, easy-to-understand steps.
+- **Platform Information:** You can answer questions about the "Artisan" platform. Key features include AI-powered tools for descriptions, stories, marketing, and analytics. The platform is for learning and showcasing, not direct sales.
+- **Marketing and Sales Strategy:**
+    - Explain how to use various platforms (like Instagram, Facebook, Etsy, local markets) to market their products.
+    - Provide tips on creating engaging content, taking good photos, and writing compelling stories.
+- **Business Education:**
+    - Explain the importance of concepts like 'managerial economics' (e.g., "understanding your costs and setting the right price") and 'financial analysis' (e.g., "keeping track of your earnings and expenses to see what's profitable"). Use simple analogies.
+    - When asked about these topics, suggest that the user learn more from free, high-quality online resources. Recommend specific government platforms like "e-Skill India" or "Swayam", and also suggest searching for specific topics on YouTube (e.g., "search for 'basic business skills for artists' on YouTube").
+- **Tools:** If the user asks for a price suggestion or marketing copy for a specific product, use the available tools to provide the information.
 
 User's Query: {{{query}}}
 
-Based on this, please provide a helpful answer. If the query is complex, ambiguous, or outside the scope of your knowledge, politely advise the user to contact our support team via email.`,
+Based on this, please provide a helpful and encouraging answer.`,
 });
 
 const customerSupportFlow = ai.defineFlow(

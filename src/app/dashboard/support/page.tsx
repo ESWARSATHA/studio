@@ -56,7 +56,28 @@ export default function SupportPage() {
     setIsSubmitting(false);
   }, [state, toast, translations]);
   
-  const faqItems = translations.support_page.faq.items;
+  const faqItems = [
+    {
+      question: "How do the AI tools work?",
+      answer: "Our AI tools are designed to be simple. For example, to generate a description, just upload a product image and click 'Generate'. The AI analyzes the image and creates a description and tags for you. You can then edit the text as you wish."
+    },
+    {
+        question: "How can I market my products effectively?",
+        answer: "You can ask the AI assistant for marketing strategies! Try asking questions like 'How do I sell my pottery on Instagram?' or 'What's the best way to market hand-painted sarees?'"
+    },
+    {
+        question: "How can I learn more about business and finance?",
+        answer: "The AI assistant can explain concepts like managerial economics and suggest free courses. Try asking, 'Explain financial analysis for my art business' or 'Where can I learn about pricing my products?'"
+    },
+    {
+        question: "Can I interact with other artists?",
+        answer: "Yes! The 'Community Hub' is a place for you to connect with other artisans on the platform, share ideas, and collaborate."
+    },
+    {
+        question: "Why do I need to verify my account to go live?",
+        answer: "We require verification for live streaming to ensure a safe and trusted environment for all users, including artists and learners. It helps prevent misuse and maintains the integrity of the platform."
+    }
+];
 
   return (
     <div className="grid gap-8 max-w-3xl mx-auto">
