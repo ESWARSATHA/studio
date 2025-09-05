@@ -1,12 +1,11 @@
 
 'use client';
 
-import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Star, IndianRupee, Flame, ShoppingCart, Tag, Zap } from "lucide-react";
+import { Star, IndianRupee, Flame } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const trendingProducts = [
@@ -80,7 +79,7 @@ const products = [
   },
 ];
 
-const ProductCard = ({ product, userType }: { product: typeof products[0], userType: string }) => (
+const ProductCard = ({ product }: { product: typeof products[0] }) => (
     <Card className="flex flex-col overflow-hidden">
         <div className="relative">
             <Image
@@ -108,22 +107,10 @@ const ProductCard = ({ product, userType }: { product: typeof products[0], userT
                 </div>
                 <div className="flex gap-2">
                     <Button variant="outline" size="sm" asChild>
-                        <Link href={`/dashboard/products/${product.id}?userType=${userType}`}>
+                        <Link href={`/dashboard/products/${product.id}`}>
                             View Details
                         </Link>
                     </Button>
-                    {userType === 'buyer' && (
-                        <>
-                            <Button variant="outline" size="icon">
-                                <ShoppingCart />
-                                <span className="sr-only">Add to Cart</span>
-                            </Button>
-                             <Button variant="default" size="icon">
-                                <Zap />
-                                <span className="sr-only">Buy Now</span>
-                            </Button>
-                        </>
-                    )}
                 </div>
             </div>
         </CardContent>
@@ -177,49 +164,13 @@ const ArtisanDashboard = () => (
 
        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 -mt-6">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} userType="artisan" />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </div>
 );
 
-const BuyerDashboard = () => (
-    <div className="grid gap-12">
-        <div>
-            <div className="flex items-center gap-2">
-                <Star className="h-7 w-7 text-primary" />
-                <h1 className="text-3xl font-bold tracking-tight">Featured Products</h1>
-            </div>
-            <p className="text-muted-foreground">Handpicked selections from our best artisans.</p>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
-                {products.slice(0, 4).map((product) => (
-                    <ProductCard key={product.id} product={product} userType="buyer" />
-                ))}
-            </div>
-        </div>
-        <div>
-            <div className="flex items-center gap-2">
-                <Tag className="h-7 w-7 text-primary" />
-                <h1 className="text-3xl font-bold tracking-tight">New Arrivals</h1>
-            </div>
-            <p className="text-muted-foreground">Discover the latest creations from our talented community.</p>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
-                {products.slice().reverse().map((product) => (
-                     <ProductCard key={product.id} product={product} userType="buyer" />
-                ))}
-            </div>
-        </div>
-    </div>
-);
-
 
 export default function DashboardPage() {
-    const searchParams = useSearchParams();
-    const userType = searchParams.get('userType') || 'artisan';
-
-    if (userType === 'buyer') {
-        return <BuyerDashboard />;
-    }
-
     return <ArtisanDashboard />;
 }

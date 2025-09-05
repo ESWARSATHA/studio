@@ -2,50 +2,43 @@
 {
     "homepage": {
         "title": "Empower Your Craft with AI",
-        "subtitle": "Artisan provides intelligent tools to help you describe, narrate, and sell your unique creations. Focus on your art, we'll handle the words. The platform is completely free for artisans.",
+        "subtitle": "Artisan is an educational platform providing intelligent tools to help you describe, narrate, and market your unique creations. Focus on your art, we'll help you master the business.",
         "artisans_button": "Start your journey",
         "login": "Login",
         "signup": "Sign Up",
         "features_title": "Features for the Modern Artisan",
-        "features_subtitle": "From image to story, our AI is trained to showcase the soul of your work.",
-        "feature_1_title": "AI Image Analysis",
-        "feature_1_desc": "Upload a photo and get a compelling description and tags instantly.",
-        "feature_2_title": "Voice-to-Story",
+        "features_subtitle": "From image to story, our AI is trained to help you showcase the soul of your work.",
+        "feature_1_title": "AI Content Generation",
+        "feature_1_desc": "Upload a photo and get a compelling description and tags to use for marketing.",
+        "feature_2_title": "AI Storyteller",
         "feature_2_desc": "Tell your story, and our AI will refine it into a captivating narrative.",
-        "feature_3_title": "Smart Analytics",
-        "feature_3_desc": "Get insights on how customers are interacting with your products.",
-        "feature_4_title": "Marketing Hub",
-        "feature_4_desc": "Generate promotional materials and understand market demand for your art.",
-        "art_title": "A Platform to Grow",
-        "art_subtitle": "Everything you need to manage your art business and reach a wider audience.",
-        "overview_seller_1_title": "Manage Your Creations",
-        "overview_seller_1_desc": "Easily upload, categorize, and manage all your artwork from a single, intuitive dashboard.",
+        "feature_3_title": "AI Business Mentor",
+        "feature_3_desc": "Get expert advice on marketing, pricing, and business strategy.",
+        "feature_4_title": "AI Idea Hub",
+        "feature_4_desc": "Generate creative suggestions to innovate your products and expand your reach.",
+        "art_title": "A Platform to Learn and Grow",
+        "art_subtitle": "Everything you need to master your art business and reach a wider audience.",
+        "overview_seller_1_title": "Showcase Your Creations",
+        "overview_seller_1_desc": "Easily upload, categorize, and create beautiful showcases for all your artwork from a single, intuitive dashboard.",
         "overview_seller_2_title": "Gain Valuable Insights",
-        "overview_seller_2_desc": "Understand how customers interact with your art with our smart analytics and AI-powered feedback.",
-        "overview_seller_3_title": "Connect with Peers",
+        "overview_seller_2_desc": "Understand market trends and get feedback with our smart analytics and AI-powered insights.",
+        "overview_seller_3_title": "Connect with a Community",
         "overview_seller_3_desc": "Join a vibrant community of fellow artisans to share ideas, collaborate, and grow together.",
-        "payments_title": "Flexible & Secure Payments For You",
-        "payments_subtitle": "We support a wide range of payment methods to make receiving payments for your art seamless. All transactions are secure and compliant with Indian regulations.",
-        "payments_extra": "...and many more UPI, credit, and debit card options.",
-        "payments_feature_1_title": "Simplified Payments For You",
-        "payments_feature_1_desc": "When a customer buys your art, they can pay easily with UPI. You get the payment instantly. Simple, fast, and fair.",
-        "payments_feature_2_title": "Direct & Transparent",
-        "payments_feature_2_desc": "No hidden charges. No delays. Your hard-earned money reaches you directly, empowering you to grow your business.",
         "footer": "© {year} Artisan. All rights reserved."
     },
     "login_page": {
         "title": "Welcome Back",
-        "description": "Log in to your Artisan account to continue",
-        "form_label": "Username, Email, or Phone",
-        "form_placeholder": "artisan_priya / m@example.com / 9876543210",
+        "description": "Log in to your Artisan account to continue your learning journey.",
+        "form_label": "Email or Username",
+        "form_placeholder": "m@example.com",
         "password_label": "Password",
         "forgot_password": "Forgot your password?",
-        "login_seller_button": "Login as Artisan",
+        "login_seller_button": "Login",
         "signup_link": "Don't have an account? Sign up"
     },
     "signup_page": {
         "title": "Create an Artisan Account",
-        "description": "Join Artisan to start your creative journey.",
+        "description": "Join our community to start your creative and business journey.",
         "avatar_label": "Upload a Profile Picture",
         "username_label": "Username",
         "username_placeholder": "e.g., PriyaKumar",
@@ -57,8 +50,8 @@
         "phone2_placeholder": "Enter an alternate phone number",
         "address_label": "Address",
         "address_placeholder": "Enter your full address",
-        "product_category_label": "Product Category",
-        "product_category_placeholder": "Select your product category",
+        "product_category_label": "Primary Art Form",
+        "product_category_placeholder": "Select your main craft",
         "category_paintings": "Paintings",
         "category_pottery": "Pottery",
         "category_textiles": "Textiles",
@@ -69,7 +62,7 @@
         "confirm_password_label": "Confirm Password",
         "create_account_button": "Create Account",
         "login_link": "Already have an account? Login",
-        "legal_disclaimer": "By creating an account, you agree to our terms. Illegal activity may lead to legal action."
+        "legal_disclaimer": "By creating an account, you agree to our Terms of Service and Privacy Policy."
     },
     "dashboard_layout": {
         "menu_dashboard": "Dashboard",
@@ -84,12 +77,12 @@
         "account_menu_label": "My Account",
         "account_menu_verify": "Verify Account",
         "account_menu_profile": "Profile",
-        "account_menu_settings": "Payment Settings",
+        "account_menu_settings": "Settings",
         "account_menu_logout": "Log out"
     },
     "verification_page": {
         "title": "Account Verification",
-        "description": "To sell your products and receive payments, please verify your identity.",
+        "description": "To use features like the Live Studio, please verify your identity.",
         "aadhaar_title": "Aadhaar Verification",
         "aadhaar_description": "To verify your identity, please provide your Aadhaar details.",
         "aadhaar_label": "Aadhaar Number",
@@ -106,7 +99,7 @@
     },
     "payment_settings_page": {
         "title": "Payment Settings",
-        "description": "Configure how you receive payments for your sales.",
+        "description": "Configure how you would receive payments if you were selling on an e-commerce platform.",
         "card_title": "Payout Method",
         "card_description": "Select your preferred method for receiving funds. Your information is encrypted and stored securely.",
         "upi_label": "UPI ID (VPA)",
@@ -126,8 +119,8 @@
         "card_cvv_label": "CVV",
         "card_cvv_placeholder": "CVV",
         "save_button": "Save Payment Settings",
-        "payout_notice_title": "Payout Schedule",
-        "payout_notice_description": "Please note: Funds from your sales will be transferred to your selected account after a holding period of 8 days. This is to ensure transaction security."
+        "payout_notice_title": "Payout Information",
+        "payout_notice_description": "This is a simulation. On a real sales platform, funds from your sales would be transferred to your selected account after a holding period for security."
     },
     "community_page": {
         "title": "Community Hub",
@@ -208,17 +201,6 @@
                 }
             ]
         }
-    },
-     "cart_page": {
-        "title": "Your Shopping Cart",
-        "empty_title": "Your cart is empty",
-        "empty_description": "Looks like you haven't added any items yet. Start exploring to find something you love!",
-        "summary_title": "Order Summary",
-        "summary_description": "Review your order before checking out.",
-        "subtotal": "Subtotal",
-        "shipping": "Shipping",
-        "total": "Total",
-        "checkout_button": "Proceed to Checkout"
     },
     "academy_page": {
         "title": "Artisan Academy",
