@@ -34,6 +34,8 @@ import { languages, useLanguage } from '@/lib/locales/language-context';
 
 export default function Home() {
   const { language, setLanguage, translations } = useLanguage();
+  const homeTranslations = translations.homepage || {};
+
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -59,10 +61,10 @@ export default function Home() {
             </DropdownMenuContent>
           </DropdownMenu>
           <Button asChild variant="ghost">
-            <Link href="/login">{translations.homepage.login}</Link>
+            <Link href="/login">{homeTranslations.login}</Link>
           </Button>
           <Button asChild>
-            <Link href="/signup">{translations.homepage.signup}</Link>
+            <Link href="/signup">{homeTranslations.signup}</Link>
           </Button>
         </nav>
       </header>
@@ -71,15 +73,15 @@ export default function Home() {
         <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 text-center">
           <div className="max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground">
-              {translations.homepage.title}
+              {homeTranslations.title}
             </h1>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground">
-              {translations.homepage.subtitle}
+              {homeTranslations.subtitle}
             </p>
             <div className="mt-8 flex justify-center">
               <Button asChild size="lg">
                 <Link href="/signup">
-                  {translations.homepage.artisans_button} <ArrowRight className="ml-2" />
+                  {homeTranslations.artisans_button} <ArrowRight className="ml-2" />
                 </Link>
               </Button>
             </div>
@@ -90,10 +92,10 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto">
               <h2 className="text-3xl font-bold">
-                {translations.homepage.features_title}
+                {homeTranslations.features_title}
               </h2>
               <p className="mt-4 text-muted-foreground">
-                {translations.homepage.features_subtitle}
+                {homeTranslations.features_subtitle}
               </p>
             </div>
             <div className="mt-12 grid gap-8 md:grid-cols-4">
@@ -103,12 +105,12 @@ export default function Home() {
                     <ImageIcon className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="mt-4">
-                    {translations.homepage.feature_1_title}
+                    {homeTranslations.feature_1_title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-muted-foreground">
-                    {translations.homepage.feature_1_desc}
+                    {homeTranslations.feature_1_desc}
                   </p>
                 </CardContent>
               </Card>
@@ -118,12 +120,12 @@ export default function Home() {
                     <Mic className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="mt-4">
-                    {translations.homepage.feature_2_title}
+                    {homeTranslations.feature_2_title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-muted-foreground">
-                    {translations.homepage.feature_2_desc}
+                    {homeTranslations.feature_2_desc}
                   </p>
                 </CardContent>
               </Card>
@@ -133,12 +135,12 @@ export default function Home() {
                     <Bot className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="mt-4">
-                    {translations.homepage.feature_3_title}
+                    {homeTranslations.feature_3_title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-muted-foreground">
-                    {translations.homepage.feature_3_desc}
+                    {homeTranslations.feature_3_desc}
                   </p>
                 </CardContent>
               </Card>
@@ -148,12 +150,12 @@ export default function Home() {
                     <Sparkles className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="mt-4">
-                    {translations.homepage.feature_4_title}
+                    {homeTranslations.feature_4_title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-muted-foreground">
-                    {translations.homepage.feature_4_desc}
+                    {homeTranslations.feature_4_desc}
                   </p>
                 </CardContent>
               </Card>
@@ -165,10 +167,10 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto">
               <h2 className="text-3xl font-bold">
-                {translations.homepage.art_title}
+                {homeTranslations.art_title}
               </h2>
               <p className="mt-4 text-muted-foreground">
-                {translations.homepage.art_subtitle}
+                {homeTranslations.art_subtitle}
               </p>
             </div>
             <div className="mt-12 grid gap-8 md:grid-cols-3">
@@ -183,12 +185,12 @@ export default function Home() {
                 />
                 <CardHeader>
                   <CardTitle>
-                    {translations.homepage.overview_seller_1_title}
+                    {homeTranslations.overview_seller_1_title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    {translations.homepage.overview_seller_1_desc}
+                    {homeTranslations.overview_seller_1_desc}
                   </p>
                 </CardContent>
               </Card>
@@ -203,12 +205,12 @@ export default function Home() {
                 />
                 <CardHeader>
                   <CardTitle>
-                    {translations.homepage.overview_seller_2_title}
+                    {homeTranslations.overview_seller_2_title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    {translations.homepage.overview_seller_2_desc}
+                    {homeTranslations.overview_seller_2_desc}
                   </p>
                 </CardContent>
               </Card>
@@ -223,12 +225,12 @@ export default function Home() {
                 />
                 <CardHeader>
                   <CardTitle>
-                    {translations.homepage.overview_seller_3_title}
+                    {homeTranslations.overview_seller_3_title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    {translations.homepage.overview_seller_3_desc}
+                    {homeTranslations.overview_seller_3_desc}
                   </p>
                 </CardContent>
               </Card>
@@ -236,10 +238,51 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="bg-secondary py-20 md:py-24">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+                <div className="max-w-md">
+                     <h2 className="text-3xl font-bold">
+                        {homeTranslations.payments_title}
+                    </h2>
+                    <p className="mt-4 text-muted-foreground">
+                        {homeTranslations.payments_subtitle}
+                    </p>
+                    <div className="mt-8 grid gap-6">
+                        <Card>
+                            <CardHeader>
+                                <CardTitle className="text-lg flex items-center gap-2"><IndianRupee /> {homeTranslations.payments_feature_1_title}</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-muted-foreground">{homeTranslations.payments_feature_1_desc}</p>
+                            </CardContent>
+                        </Card>
+                         <Card>
+                            <CardHeader>
+                                <CardTitle className="text-lg flex items-center gap-2"><Wallet /> {homeTranslations.payments_feature_2_title}</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-muted-foreground">{homeTranslations.payments_feature_2_desc}</p>
+                            </CardContent>
+                        </Card>
+                    </div>
+                </div>
+                 <div className="flex justify-center">
+                    <Image
+                    src="https://picsum.photos/600/600"
+                    alt="An abstract representation of seamless digital payments in India."
+                    width={500}
+                    height={500}
+                    className="rounded-lg shadow-lg"
+                    data-ai-hint="digital payments illustration"
+                    />
+                </div>
+            </div>
+        </section>
+
       </main>
 
       <footer className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-muted-foreground">
-        <p>{translations.homepage.footer?.replace('{year}', new Date().getFullYear().toString())}</p>
+        <p>{homeTranslations.footer?.replace('{year}', new Date().getFullYear().toString())}</p>
       </footer>
     </div>
   );

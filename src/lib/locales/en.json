@@ -24,6 +24,12 @@
         "overview_seller_2_desc": "Learn what sells. Understand market trends and get feedback with our smart analytics and AI-powered insights.",
         "overview_seller_3_title": "Connect with a Community",
         "overview_seller_3_desc": "You're not alone. Join a vibrant community of fellow artisans to share ideas, collaborate, and grow together.",
+        "payments_title": "Learn About Secure Payments",
+        "payments_subtitle": "Understand how to get paid for your art. This platform simulates how modern payment systems work to ensure you're prepared for e-commerce.",
+        "payments_feature_1_title": "Simplified Payouts",
+        "payments_feature_1_desc": "Learn how customers can pay easily with methods like UPI. In a real store, this means you get paid instantly. Simple, fast, and fair.",
+        "payments_feature_2_title": "Direct & Transparent",
+        "payments_feature_2_desc": "No hidden charges. No delays. On a real platform, your hard-earned money should reach you directly, empowering you to grow your business.",
         "footer": "© {year} Artisan. All rights reserved."
     },
     "login_page": {
@@ -33,7 +39,7 @@
         "form_placeholder": "m@example.com",
         "password_label": "Password",
         "forgot_password": "Forgot your password?",
-        "login_seller_button": "Login as Artisan",
+        "login_seller_button": "Login",
         "signup_link": "Don't have an account? Sign up",
         "legal_disclaimer": "By logging in, you agree to our Terms of Service and Privacy Policy."
     },
