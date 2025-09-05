@@ -31,6 +31,14 @@
         "payments_feature_1_desc": "When a customer buys your art, they can pay easily with UPI. You get the payment instantly. Simple, fast, and fair.",
         "payments_feature_2_title": "Direct & Transparent",
         "payments_feature_2_desc": "No hidden charges. No delays. Your hard-earned money reaches you directly, empowering you to grow your business.",
+        "overview_buyer_title": "For Art Lovers: Discover & Connect",
+        "overview_buyer_subtitle": "Explore a world of unique, handcrafted art and connect directly with the artisans who create it.",
+        "overview_buyer_1_title": "Discover Unique Art",
+        "overview_buyer_1_desc": "Browse our curated collection of authentic Indian art, from traditional paintings to contemporary crafts.",
+        "overview_buyer_2_title": "Connect with Artisans",
+        "overview_buyer_2_desc": "Follow your favorite artists, learn about their process, and engage with the stories behind their work.",
+        "overview_buyer_3_title": "Support Local Crafts",
+        "overview_buyer_3_desc": "Every purchase you make directly supports Indian artisans and helps preserve our rich cultural heritage.",
         "footer": "© {year} Artisan. All rights reserved."
     },
     "login_page": {
@@ -41,11 +49,15 @@
         "password_label": "Password",
         "forgot_password": "Forgot your password?",
         "login_seller_button": "Login as Artisan",
+        "login_buyer_button": "Login as Buyer",
         "signup_link": "Don't have an account? Sign up"
     },
     "signup_page": {
-        "title": "Create an Artisan Account",
-        "description": "Join Artisan to start your creative journey.",
+        "title": "Join Artisan",
+        "description": "Create an account to start your journey.",
+        "role_label": "I am a...",
+        "role_seller": "Seller / Artisan",
+        "role_buyer": "Buyer / Art Lover",
         "avatar_label": "Upload a Profile Picture",
         "username_label": "Username",
         "username_placeholder": "e.g., PriyaKumar",
@@ -81,6 +93,7 @@
         "menu_academy": "Artisan Academy",
         "menu_live_studio": "Live Studio",
         "menu_requests": "Follow Requests",
+        "menu_cart": "Cart",
         "account_menu_label": "My Account",
         "account_menu_verify": "Verify Account",
         "account_menu_profile": "Profile",
@@ -187,12 +200,12 @@
             "description": "Find quick answers to common questions.",
             "items": [
                 {
-                    "question": "Is the Artisan platform free to use?",
-                    "answer": "Yes, the platform is completely free for artisans. We do not charge any commission or fees on your sales."
+                    "question": "Is the Artisan platform free to use for educational purposes?",
+                    "answer": "Yes, the Artisan platform is completely free for artisans to use as a learning and showcasing tool. There are no fees for using the AI features or listing your creations."
                 },
                 {
-                    "question": "How do I get paid for my sales?",
-                    "answer": "You can set up your payment preferences in the 'Payment Settings' section of your dashboard. We support payouts via UPI and direct bank transfer."
+                    "question": "Can I actually sell products here?",
+                    "answer": "This version of the platform is designed for learning and showcasing your work. It helps you prepare for selling on other e-commerce sites but does not handle real transactions."
                 },
                 {
                     "question": "How do the AI tools work?",

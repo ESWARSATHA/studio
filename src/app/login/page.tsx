@@ -21,7 +21,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/icons';
-import { Eye, EyeOff, Globe, Users } from 'lucide-react';
+import { Eye, EyeOff, Globe, Users, ShoppingCart } from 'lucide-react';
 import { languages, useLanguage } from '@/lib/locales/language-context';
 
 export default function LoginPage() {
@@ -107,17 +107,25 @@ export default function LoginPage() {
                 </button>
               </div>
             </div>
-            <Button asChild className="w-full">
-                <Link href="/dashboard?userType=artisan">
-                    <Users className="mr-2"/>
-                    {translations.login_page.login_seller_button}
-                </Link>
-            </Button>
+             <div className="grid gap-2">
+                <Button asChild className="w-full">
+                    <Link href="/dashboard?userType=artisan">
+                        <Users className="mr-2"/>
+                        {translations.login_page.login_seller_button}
+                    </Link>
+                </Button>
+                 <Button asChild className="w-full" variant="secondary">
+                    <Link href="/dashboard?userType=buyer">
+                        <ShoppingCart className="mr-2"/>
+                        Login as Buyer
+                    </Link>
+                </Button>
+            </div>
           </div>
           <div className="mt-4 text-center text-sm">
-            {translations.login_page.signup_link.split('?')[0]}?{' '}
+            {translations.signup_page.login_link.split('?')[0]}?{' '}
             <Link href="/signup" className="underline">
-              {translations.login_page.signup_link.split('?')[1]}
+              {translations.signup_page.login_link.split('?')[1]}
             </Link>
           </div>
            <div className="mt-4 text-center text-xs text-muted-foreground px-2">
