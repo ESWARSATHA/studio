@@ -69,8 +69,7 @@ const products = [
   },
 ];
 
-export default function ProductDetailPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default function ProductDetailPage({ params: { id } }: { params: { id: string } }) {
   const product = products.find(p => p.id === parseInt(id));
 
   if (!product) {
