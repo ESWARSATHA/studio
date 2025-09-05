@@ -3,9 +3,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useSearchParams } from 'next/navigation';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Star, IndianRupee, Flame, LayoutGrid } from "lucide-react";
+import { Star, IndianRupee, Flame, LayoutGrid, ShoppingCart } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useLanguage } from '@/lib/locales/language-context';
 
@@ -80,7 +81,7 @@ const products = [
   },
 ];
 
-const ProductCard = ({ product }: { product: typeof products[0] }) => (
+const ProductCard = ({ product, userType }: { product: typeof products[0], userType: string }) => (
     <Card className="flex flex-col overflow-hidden">
         <div className="relative">
             <Image
@@ -108,16 +109,21 @@ const ProductCard = ({ product }: { product: typeof products[0] }) => (
                 </div>
                 <div className="flex gap-2">
                     <Button variant="outline" size="sm" asChild>
-                        <Link href={`/dashboard/products/${product.id}`}>
+                        <Link href={`/dashboard/products/${product.id}?userType=${userType}`}>
                             View Details
                         </Link>
                     </Button>
+                     {userType === 'buyer' && (
+                        <Button size="sm">
+                            <ShoppingCart className="mr-2"/>
+                            Add to Cart
+                        </Button>
+                    )}
                 </div>
             </div>
         </CardContent>
     </Card>
 );
-
 
 const ArtisanDashboard = () => {
     const { translations } = useLanguage();
@@ -174,13 +180,38 @@ const ArtisanDashboard = () => {
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 -mt-6">
                 {products.map((product) => (
-                  <ProductCard key={product.id} product={product} />
+                  <ProductCard key={product.id} product={product} userType="artisan"/>
                 ))}
             </div>
         </div>
     );
 }
 
+const BuyerDashboard = () => {
+  return (
+    <div className="grid gap-12">
+      <div className="text-center">
+          <LayoutGrid className="mx-auto h-12 w-12 text-primary" />
+          <h1 className="mt-4 text-3xl font-bold tracking-tight">Explore Artisan Creations</h1>
+          <p className="mt-2 text-muted-foreground">Discover unique, handcrafted products from talented Indian artisans.</p>
+      </div>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} userType="buyer" />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+
 export default function DashboardPage() {
+    const searchParams = useSearchParams();
+    const userType = searchParams.get('userType');
+
+    if (userType === 'buyer') {
+        return <BuyerDashboard />;
+    }
+
     return <ArtisanDashboard />;
 }

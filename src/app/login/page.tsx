@@ -21,7 +21,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/icons';
-import { Eye, EyeOff, Globe, LogIn } from 'lucide-react';
+import { Eye, EyeOff, Globe, LogIn, ShoppingCart } from 'lucide-react';
 import { languages, useLanguage } from '@/lib/locales/language-context';
 
 export default function LoginPage() {
@@ -111,7 +111,13 @@ export default function LoginPage() {
                 <Button asChild className="w-full">
                     <Link href="/dashboard">
                         <LogIn className="mr-2"/>
-                        {translations.homepage.login}
+                        {translations.login_page.login_seller_button}
+                    </Link>
+                </Button>
+                <Button asChild variant="secondary" className="w-full">
+                    <Link href="/dashboard?userType=buyer">
+                        <ShoppingCart className="mr-2"/>
+                        Login as Buyer
                     </Link>
                 </Button>
             </div>

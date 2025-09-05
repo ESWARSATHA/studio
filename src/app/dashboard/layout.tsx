@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import {
   SidebarProvider,
   Sidebar,
@@ -30,6 +30,7 @@ import {
   Bell,
   Lightbulb,
   GraduationCap,
+  ShoppingCart,
 } from "lucide-react";
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
@@ -52,9 +53,11 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const userType = searchParams.get('userType') || 'artisan';
   const { language, setLanguage, translations } = useLanguage();
 
-  const menuItems = [
+  const artisanMenuItems = [
     { href: "/dashboard", label: translations.dashboard_layout.menu_dashboard, icon: LayoutGrid },
     { href: "/dashboard/products/new", label: translations.dashboard_layout.menu_add_product, icon: PlusCircle },
     { href: "/dashboard/analytics", label: translations.dashboard_layout.menu_analytics, icon: BarChart2 },
@@ -66,9 +69,25 @@ export default function DashboardLayout({
     { href: "/dashboard/suggestions", label: "Suggestions", icon: Lightbulb },
     { href: "/dashboard/support", label: translations.dashboard_layout.menu_support, icon: LifeBuoy },
   ];
-  
-  const pageTitle = menuItems.find(item => pathname.startsWith(item.href))?.label || "Dashboard";
 
+  const buyerMenuItems = [
+     { href: "/dashboard?userType=buyer", label: "Explore", icon: LayoutGrid },
+     { href: "/dashboard/cart", label: "Cart", icon: ShoppingCart },
+     { href: "/dashboard/support?userType=buyer", label: "Support", icon: LifeBuoy },
+  ];
+  
+  const menuItems = userType === 'buyer' ? buyerMenuItems : artisanMenuItems;
+  
+  const getPageTitle = () => {
+    if (userType === 'buyer') {
+      if (pathname.includes('/dashboard/cart')) return 'Shopping Cart';
+      if (pathname.includes('/dashboard/support')) return 'Support';
+      return 'Explore Art';
+    }
+    return menuItems.find(item => pathname.startsWith(item.href))?.label || "Dashboard";
+  }
+  
+  const pageTitle = getPageTitle();
 
   return (
     <SidebarProvider>
@@ -85,7 +104,7 @@ export default function DashboardLayout({
               <SidebarMenuItem key={item.href}>
                 <SidebarMenuButton
                   asChild
-                  isActive={pathname.startsWith(item.href)}
+                  isActive={pathname === item.href || (item.href !== '/dashboard' && pathname.startsWith(item.href))}
                   tooltip={{ children: item.label }}
                 >
                   <Link href={item.href}>
@@ -134,26 +153,30 @@ export default function DashboardLayout({
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="rounded-full">
                   <Avatar>
-                    <AvatarImage src="https://picsum.photos/40/40" alt="Artisan" data-ai-hint="artisan portrait" />
-                    <AvatarFallback>A</AvatarFallback>
+                    <AvatarImage src="https://picsum.photos/40/40" alt="User" data-ai-hint="person portrait" />
+                    <AvatarFallback>{userType === 'buyer' ? 'B' : 'A'}</AvatarFallback>
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>{translations.dashboard_layout.account_menu_label}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
+                {userType === 'artisan' && (
+                    <>
+                        <DropdownMenuItem>
+                        <Link href="/dashboard/verification" className="flex items-center">
+                            <ShieldCheck className="mr-2" />
+                            {translations.dashboard_layout.account_menu_verify}
+                        </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                        <User className="mr-2" />
+                        {translations.dashboard_layout.account_menu_profile}
+                        </DropdownMenuItem>
+                    </>
+                )}
                 <DropdownMenuItem>
-                  <Link href="/dashboard/verification" className="flex items-center">
-                    <ShieldCheck className="mr-2" />
-                    {translations.dashboard_layout.account_menu_verify}
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <User className="mr-2" />
-                  {translations.dashboard_layout.account_menu_profile}
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                   <Link href="/dashboard/settings/payment" className="flex items-center">
+                   <Link href={userType === 'buyer' ? "/dashboard/settings/payment?userType=buyer" : "/dashboard/settings/payment"} className="flex items-center">
                     <Settings className="mr-2" />
                     {translations.dashboard_layout.account_menu_settings}
                   </Link>
