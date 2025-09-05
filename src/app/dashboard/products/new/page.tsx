@@ -110,7 +110,8 @@ export default function NewProductPage() {
     priceAction(formData);
   };
 
-  const onGenerateImage = () => {
+  const onGenerateImage = (event: React.FormEvent) => {
+    event.preventDefault();
     if (!imageGenDescription) {
       toast({
         variant: "destructive",
@@ -194,8 +195,18 @@ export default function NewProductPage() {
     setIsGeneratingImage(false);
   }, [imageState, toast]);
 
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    // This is where you would normally handle the final form submission.
+    // For this prototype, we'll just show a success message.
+    toast({
+      title: "Showcase Saved!",
+      description: "Your product showcase has been successfully saved as a draft.",
+    });
+  };
+
   return (
-    <form className="grid gap-8">
+    <form onSubmit={handleFormSubmit} className="grid gap-8">
         <div className="text-center">
             <PlusCircle className="mx-auto h-12 w-12 text-primary" />
             <h1 className="mt-4 text-3xl font-bold tracking-tight">{translations.dashboard_layout.menu_add_product}</h1>
