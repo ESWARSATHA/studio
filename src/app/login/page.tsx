@@ -21,7 +21,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/icons';
-import { Eye, EyeOff, Globe, Users, ShoppingBag } from 'lucide-react';
+import { Eye, EyeOff, Globe, Users } from 'lucide-react';
 import { languages, useLanguage } from '@/lib/locales/language-context';
 
 export default function LoginPage() {

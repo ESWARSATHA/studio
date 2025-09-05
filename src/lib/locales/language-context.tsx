@@ -9,6 +9,23 @@ import te from './te.json';
 import mr from './mr.json';
 import ta from './ta.json';
 import ur from './ur.json';
+import as from './as.json';
+import brx from './brx.json';
+import doi from './doi.json';
+import gu from './gu.json';
+import kn from './kn.json';
+import ks from './ks.json';
+import kok from './kok.json';
+import mai from './mai.json';
+import ml from './ml.json';
+import mni from './mni.json';
+import ne from './ne.json';
+import or from './or.json';
+import pa from './pa.json';
+import sa from './sa.json';
+import sat from './sat.json';
+import sd from './sd.json';
+
 
 export const languages = [
   { code: 'en', name: 'English' },
@@ -44,6 +61,22 @@ const translations: Record<string, any> = {
   mr,
   ta,
   ur,
+  as,
+  brx,
+  doi,
+  gu,
+  kn,
+  ks,
+  kok,
+  mai,
+  ml,
+  mni,
+  ne,
+  or,
+  pa,
+  sa,
+  sat,
+  sd,
 };
 
 interface LanguageContextType {
@@ -56,8 +89,10 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState('en');
+  const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
+    setHydrated(true);
     const savedLanguage = localStorage.getItem('language');
     if (savedLanguage && translations[savedLanguage]) {
       setLanguage(savedLanguage);
@@ -73,8 +108,12 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
         localStorage.setItem('language', 'en');
     }
   };
-
+  
   const currentTranslations = translations[language] || translations.en;
+  
+  if (!hydrated) {
+    return null;
+  }
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, translations: currentTranslations }}>
