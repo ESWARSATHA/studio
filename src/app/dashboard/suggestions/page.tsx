@@ -8,8 +8,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Lightbulb, Wand2, Package, DraftingCompass, Users, CheckCircle } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
 import { useLanguage } from "@/lib/locales/language-context";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
 const products = [
   {
@@ -32,6 +34,16 @@ const products = [
     description: "A rustic terracotta horse from Panchmura, Bengal, representing a timeless tradition of village pottery.",
     category: "Pottery",
   },
+   {
+    name: "Kalamkari Textile Wall Hanging",
+    description: "A beautiful wall hanging featuring intricate Kalamkari art, hand-painted using a traditional pen with natural dyes.",
+    category: "Textiles",
+  },
+  {
+    name: "Dokra Brass Human Figurine",
+    description: "A unique human figurine crafted using the ancient Dokra metal casting technique, which is over 4,000 years old.",
+    category: "Metalwork",
+  }
 ];
 
 const initialState = { status: 'idle', message: '', data: null, errors: null };
@@ -42,23 +54,33 @@ export default function SuggestionsPage() {
   const pageTranslations = translations.suggestions_page || {};
 
   const [state, formAction] = useActionState(handleGenerateSuggestions, initialState);
-  const [selectedProduct, setSelectedProduct] = useState<typeof products[0] | null>(null);
+  
+  const [productName, setProductName] = useState('');
+  const [productDescription, setProductDescription] = useState('');
+  const [productCategory, setProductCategory] = useState('');
+  
   const [isGenerating, setIsGenerating] = useState(false);
+
+  const handleProductSelect = (value: string) => {
+    const product = products.find(p => p.name === value);
+    if (product) {
+      setProductName(product.name);
+      setProductDescription(product.description);
+      setProductCategory(product.category);
+    }
+  };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!selectedProduct) {
+    if (!productName || !productDescription || !productCategory) {
       toast({
         variant: "destructive",
-        title: "No Product Selected",
-        description: "Please choose a product to get suggestions for.",
+        title: "Missing Information",
+        description: "Please provide a product name, description, and category.",
       });
       return;
     }
-    const formData = new FormData();
-    formData.append('productName', selectedProduct.name);
-    formData.append('productDescription', selectedProduct.description);
-    formData.append('productCategory', selectedProduct.category);
+    const formData = new FormData(event.currentTarget);
     setIsGenerating(true);
     formAction(formData);
   };
@@ -93,18 +115,59 @@ export default function SuggestionsPage() {
           <CardDescription>{pageTranslations.select_card_description}</CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
-             <Select onValueChange={(value) => setSelectedProduct(products.find(p => p.name === value) || null)}>
-              <SelectTrigger>
-                <SelectValue placeholder="Select a product..." />
-              </SelectTrigger>
-              <SelectContent>
-                {products.map(product => (
-                  <SelectItem key={product.name} value={product.name}>{product.name}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Button type="submit" disabled={!selectedProduct || isGenerating} className="w-full sm:w-auto">
+           <form onSubmit={handleSubmit} className="grid gap-6">
+             <div className="grid gap-2">
+                <Label htmlFor="product-select">Select a Product (Optional)</Label>
+                <Select onValueChange={handleProductSelect}>
+                <SelectTrigger id="product-select">
+                    <SelectValue placeholder="Or start from a sample..." />
+                </SelectTrigger>
+                <SelectContent>
+                    {products.map(product => (
+                    <SelectItem key={product.name} value={product.name}>{product.name}</SelectItem>
+                    ))}
+                </SelectContent>
+                </Select>
+            </div>
+
+            <div className="grid gap-2">
+              <Label htmlFor="productName">Product Name</Label>
+              <Input
+                id="productName"
+                name="productName"
+                placeholder="e.g., Hand-carved Wooden Elephant"
+                value={productName}
+                onChange={(e) => setProductName(e.target.value)}
+                required
+              />
+            </div>
+            
+            <div className="grid gap-2">
+              <Label htmlFor="productDescription">Product Description</Label>
+              <Textarea
+                id="productDescription"
+                name="productDescription"
+                placeholder="Describe your product's key features and unique qualities."
+                value={productDescription}
+                onChange={(e) => setProductDescription(e.target.value)}
+                required
+                rows={3}
+              />
+            </div>
+
+             <div className="grid gap-2">
+              <Label htmlFor="productCategory">Product Category</Label>
+              <Input
+                id="productCategory"
+                name="productCategory"
+                placeholder="e.g., Woodcraft, Pottery, Textiles"
+                value={productCategory}
+                onChange={(e) => setProductCategory(e.target.value)}
+                required
+              />
+            </div>
+
+            <Button type="submit" disabled={isGenerating} className="w-full sm:w-auto justify-self-end">
               {isGenerating ? <Loader2 className="mr-2 animate-spin" /> : <Wand2 className="mr-2" />}
               {pageTranslations.generate_button}
             </Button>
