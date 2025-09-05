@@ -12,6 +12,8 @@ import { useToast } from "@/hooks/use-toast";
 import { Loader2, Megaphone, Wand2, Users, Mail, MessageSquare, ShoppingBag, Lightbulb } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useLanguage } from "@/lib/locales/language-context";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const products = [
   {
@@ -38,6 +40,18 @@ const products = [
     image: "https://picsum.photos/400/500?random=4",
     imageHint: "terracotta horse",
   },
+  {
+    name: "Kalamkari Textile Wall Hanging",
+    description: "A beautiful wall hanging featuring intricate Kalamkari art, hand-painted using a traditional pen with natural dyes.",
+     image: "https://picsum.photos/400/500?random=5",
+    imageHint: "kalamkari textile",
+  },
+  {
+    name: "Dokra Brass Human Figurine",
+    description: "A unique human figurine crafted using the ancient Dokra metal casting technique, which is over 4,000 years old.",
+    image: "https://picsum.photos/400/500?random=6",
+    imageHint: "dokra brass figurine",
+  }
 ];
 
 const initialState = { status: 'idle', message: '', data: null, errors: null };
@@ -48,22 +62,36 @@ export default function MarketingPage() {
   const pageTranslations = translations.marketing_page || {};
 
   const [state, formAction] = useActionState(handleGenerateMarketingCopy, initialState);
-  const [selectedProduct, setSelectedProduct] = useState<(typeof products)[0] | null>(null);
+  const [selectedProductName, setSelectedProductName] = useState('');
+  const [productName, setProductName] = useState('');
+  const [productDescription, setProductDescription] = useState('');
+  const [productImage, setProductImage] = useState('');
+  const [productImageHint, setProductImageHint] = useState('');
+
   const [isGenerating, setIsGenerating] = useState(false);
+
+  const handleProductSelect = (value: string) => {
+    const product = products.find(p => p.name === value);
+    if (product) {
+      setSelectedProductName(product.name);
+      setProductName(product.name);
+      setProductDescription(product.description);
+      setProductImage(product.image);
+      setProductImageHint(product.imageHint);
+    }
+  };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!selectedProduct) {
+    if (!productName || !productDescription) {
       toast({
         variant: "destructive",
-        title: "No Product Selected",
-        description: "Please choose a product to generate marketing copy.",
+        title: "Missing Information",
+        description: "Please provide both a product name and description.",
       });
       return;
     }
-    const formData = new FormData();
-    formData.append('productName', selectedProduct.name);
-    formData.append('productDescription', selectedProduct.description);
+    const formData = new FormData(event.currentTarget);
     setIsGenerating(true);
     formAction(formData);
   };
@@ -98,18 +126,47 @@ export default function MarketingPage() {
           <CardDescription>{pageTranslations.select_card_description}</CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
-             <Select onValueChange={(value) => setSelectedProduct(products.find(p => p.name === value) || null)}>
-              <SelectTrigger>
-                <SelectValue placeholder="Select a product..." />
-              </SelectTrigger>
-              <SelectContent>
-                {products.map(product => (
-                  <SelectItem key={product.name} value={product.name}>{product.name}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Button type="submit" disabled={!selectedProduct || isGenerating} className="w-full sm:w-auto">
+          <form onSubmit={handleSubmit} className="grid gap-6">
+            <div className="grid gap-2">
+                <Label htmlFor="product-select">Select a Product (Optional)</Label>
+                <Select onValueChange={handleProductSelect}>
+                <SelectTrigger id="product-select">
+                    <SelectValue placeholder="Or start from a sample..." />
+                </SelectTrigger>
+                <SelectContent>
+                    {products.map(product => (
+                    <SelectItem key={product.name} value={product.name}>{product.name}</SelectItem>
+                    ))}
+                </SelectContent>
+                </Select>
+            </div>
+            
+            <div className="grid gap-2">
+                <Label htmlFor="productName">Product Name</Label>
+                <Input
+                id="productName"
+                name="productName"
+                placeholder="e.g., Hand-carved Wooden Elephant"
+                value={productName}
+                onChange={(e) => setProductName(e.target.value)}
+                required
+                />
+            </div>
+            
+            <div className="grid gap-2">
+                <Label htmlFor="productDescription">Product Description</Label>
+                <Textarea
+                id="productDescription"
+                name="productDescription"
+                placeholder="Describe your product's key features and unique qualities."
+                value={productDescription}
+                onChange={(e) => setProductDescription(e.target.value)}
+                required
+                rows={4}
+                />
+            </div>
+
+            <Button type="submit" disabled={isGenerating} className="w-full sm:w-auto justify-self-end">
               {isGenerating ? <Loader2 className="mr-2 animate-spin" /> : <Wand2 className="mr-2" />}
               {pageTranslations.generate_button}
             </Button>
@@ -142,12 +199,12 @@ export default function MarketingPage() {
                         {isGenerating && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> : (
                             <div className="flex flex-col sm:flex-row gap-4 rounded-lg border bg-secondary/30 p-4">
                                 <Image 
-                                    src={selectedProduct?.image || ''}
-                                    alt={selectedProduct?.name || 'Product Image'}
+                                    src={productImage || 'https://picsum.photos/400/500'}
+                                    alt={productName || 'Product Image'}
                                     width={150}
                                     height={150}
                                     className="rounded-md object-cover w-full sm:w-36 sm:h-36"
-                                    data-ai-hint={selectedProduct?.imageHint}
+                                    data-ai-hint={productImageHint || 'custom product'}
                                 />
                                 <div className="flex-1 space-y-2">
                                     <h4 className="font-bold text-lg">{state.data?.headline}</h4>
@@ -213,3 +270,5 @@ export default function MarketingPage() {
     </div>
   );
 }
+
+    
