@@ -2,9 +2,8 @@
 "use client";
 
 import Image from "next/image";
-import { useSearchParams } from 'next/navigation';
 import { Button } from "@/components/ui/button";
-import { IndianRupee, Star, Video, Scissors, Paintbrush, Heart, Box, ShoppingCart } from "lucide-react";
+import { IndianRupee, Star, Video, Scissors, Paintbrush, Heart, Box } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const products = [
@@ -73,8 +72,6 @@ const products = [
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
   const { id } = params;
   const product = products.find(p => p.id === parseInt(id));
-  const searchParams = useSearchParams();
-  const userType = searchParams.get('userType');
 
   if (!product) {
     return <div>Product not found</div>;
@@ -129,12 +126,6 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                     <IndianRupee />
                     <span>{product.price.toLocaleString()}</span>
                 </div>
-                {userType === 'buyer' && (
-                    <div className="flex flex-col gap-2">
-                        <Button size="lg"><ShoppingCart className="mr-2"/> Add to Cart</Button>
-                        <Button size="lg" variant="outline">Buy Now</Button>
-                    </div>
-                )}
             </CardContent>
         </Card>
         
