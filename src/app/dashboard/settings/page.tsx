@@ -283,11 +283,12 @@ const PaymentTab = () => {
 
 
 export default function SettingsPage() {
+    const { translations } = useLanguage();
     return (
         <div className="grid gap-8 max-w-4xl mx-auto">
             <Tabs defaultValue="profile">
                 <TabsList className="grid w-full grid-cols-3">
-                    <TabsTrigger value="profile">Profile</TabsTrigger>
+                    <TabsTrigger value="profile">{translations.dashboard_layout.account_menu_profile}</TabsTrigger>
                     <TabsTrigger value="payment">Payment</TabsTrigger>
                     <TabsTrigger value="verification">Verification</TabsTrigger>
                 </TabsList>
