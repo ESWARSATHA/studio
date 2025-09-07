@@ -92,11 +92,11 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    setHydrated(true);
     const savedLanguage = localStorage.getItem('language');
     if (savedLanguage && translations[savedLanguage]) {
       setLanguage(savedLanguage);
     }
+    setHydrated(true);
   }, []);
 
   const handleSetLanguage = (lang: string) => {
@@ -112,6 +112,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const currentTranslations = translations[language] || translations.en;
   
   if (!hydrated) {
+    // Return null on the server to avoid hydration mismatch
     return null;
   }
 
