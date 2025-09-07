@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect, useActionState } from 'react';
+import { useState, useEffect, useActionState, useTransition } from 'react';
 import Image from 'next/image';
 import { handleGenerateDescription, handleRefineStory, handleSuggestPrice, handleGenerateImage } from './actions';
 import { Button } from '@/components/ui/button';
@@ -17,7 +17,7 @@ const initialState = { status: 'idle' as const, message: '', data: null, errors:
 
 
 export default function NewProductPage() {
-  const { toast } = useToast();
+  const { toast } = useLanguage();
   const { translations } = useLanguage();
   const pageTranslations = translations.new_product_page || {};
 
@@ -380,4 +380,3 @@ export default function NewProductPage() {
     </div>
   );
 }
-
