@@ -19,16 +19,8 @@ export default function SupportPage() {
   const [state, formAction] = useActionState(handleAnswerQuery, initialState);
   const [query, setQuery] = useState('');
   const [answer, setAnswer] = useState('');
-
+  const { translations } = useLanguage();
   const [isPending, startTransition] = useTransition();
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    startTransition(() => {
-        formAction(formData);
-    });
-  };
 
   useEffect(() => {
     if (state.status === 'success') {
@@ -48,7 +40,6 @@ export default function SupportPage() {
     }
   }, [state, toast, translations]);
   
-  const { translations } = useLanguage();
   const pageTranslations = translations.support_page || {};
   const faqItems = pageTranslations.faq?.items || [];
 
