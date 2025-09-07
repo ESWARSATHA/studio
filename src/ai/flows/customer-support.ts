@@ -9,10 +9,9 @@
  */
 
 import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
+import {z, run} from 'genkit';
 import {generateMarketingCopy} from './generate-marketing-copy';
 import {suggestPrice} from './suggest-price';
-import {run} from '@genkit-ai/tools';
 
 const CustomerSupportInputSchema = z.object({
   query: z.string().describe("The user's question about the Artisan platform, marketing, business, or other topics."),
@@ -108,6 +107,10 @@ const customerSupportFlow = ai.defineFlow(
   },
   async (input) => {
     const response = await run(prompt, async (p) => p(input));
-    return response.output()!;
+    const output = response.output();
+    if (!output) {
+      throw new Error("The model did not return an answer.");
+    }
+    return output;
   }
 );
