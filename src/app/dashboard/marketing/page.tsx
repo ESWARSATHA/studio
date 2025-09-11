@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useActionState, useEffect, useState } from "react";
+import { useActionState, useEffect, useState, useTransition } from "react";
 import Image from "next/image";
 import { handleGenerateMarketingCopy } from "./actions";
 import { Button } from "@/components/ui/button";
@@ -18,7 +18,7 @@ import placeholderImages from '@/lib/placeholder-images.json';
 
 const { products } = placeholderImages.marketing;
 
-const initialState = { status: 'idle', message: '', data: null, errors: null };
+const initialState = { status: 'idle' as const, message: '', data: null, errors: null };
 
 export default function MarketingPage() {
   const { toast } = useToast();
@@ -31,8 +31,8 @@ export default function MarketingPage() {
   const [productDescription, setProductDescription] = useState('');
   const [productImage, setProductImage] = useState('');
   const [productImageHint, setProductImageHint] = useState('');
+  const [isPending, startTransition] = useTransition();
 
-  const [isGenerating, setIsGenerating] = useState(false);
 
   const handleProductSelect = (value: string) => {
     const product = products.find(p => p.name === value);
@@ -43,21 +43,6 @@ export default function MarketingPage() {
       setProductImage(product.image);
       setProductImageHint(product.imageHint);
     }
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!productName || !productDescription) {
-      toast({
-        variant: "destructive",
-        title: "Missing Information",
-        description: "Please provide both a product name and description.",
-      });
-      return;
-    }
-    const formData = new FormData(event.currentTarget);
-    setIsGenerating(true);
-    formAction(formData);
   };
   
   useEffect(() => {
@@ -73,7 +58,6 @@ export default function MarketingPage() {
         description: state.message,
       });
     }
-    setIsGenerating(false);
   }, [state, toast]);
 
   return (
@@ -90,7 +74,13 @@ export default function MarketingPage() {
           <CardDescription>{pageTranslations.select_card_description}</CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="grid gap-6">
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            const formData = new FormData(e.currentTarget);
+            startTransition(() => {
+              formAction(formData);
+            })
+          }} className="grid gap-6">
             <div className="grid gap-2">
                 <Label htmlFor="product-select">Select a Product (Optional)</Label>
                 <Select onValueChange={handleProductSelect}>
@@ -130,15 +120,15 @@ export default function MarketingPage() {
                 />
             </div>
 
-            <Button type="submit" disabled={isGenerating} className="w-full sm:w-auto justify-self-end">
-              {isGenerating ? <Loader2 className="mr-2 animate-spin" /> : <Wand2 className="mr-2" />}
+            <Button type="submit" disabled={isPending} className="w-full sm:w-auto justify-self-end">
+              {isPending ? <Loader2 className="mr-2 animate-spin" /> : <Wand2 className="mr-2" />}
               {pageTranslations.generate_button}
             </Button>
           </form>
         </CardContent>
       </Card>
       
-      {(isGenerating || state.data) && (
+      {(isPending || state.data) && (
         <div className="grid gap-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <Card className="lg:col-span-1">
@@ -149,7 +139,7 @@ export default function MarketingPage() {
                     </div>
                     </CardHeader>
                     <CardContent>
-                        {isGenerating && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> : <p className="text-sm text-muted-foreground">{state.data?.targetAudience}</p>}
+                        {isPending && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> : <p className="text-sm text-muted-foreground">{state.data?.targetAudience}</p>}
                     </CardContent>
                 </Card>
                 <Card className="lg:col-span-2">
@@ -160,7 +150,7 @@ export default function MarketingPage() {
                     </div>
                     </CardHeader>
                     <CardContent>
-                        {isGenerating && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> : (
+                        {isPending && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> : (
                             <div className="flex flex-col sm:flex-row gap-4 rounded-lg border bg-secondary/30 p-4">
                                 <Image 
                                     src={productImage || 'https://picsum.photos/seed/placeholder/400/300'}
@@ -190,7 +180,7 @@ export default function MarketingPage() {
                     </div>
                     </CardHeader>
                     <CardContent>
-                        {isGenerating && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> : <Textarea readOnly value={state.data?.socialMediaPost} rows={6} className="bg-secondary/50"/>}
+                        {isPending && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> : <Textarea readOnly value={state.data?.socialMediaPost} rows={6} className="bg-secondary/50"/>}
                     </CardContent>
                 </Card>
                 <Card>
@@ -201,7 +191,7 @@ export default function MarketingPage() {
                     </div>
                     </CardHeader>
                     <CardContent>
-                    {isGenerating && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> : <Textarea readOnly value={state.data?.emailCopy} rows={6} className="bg-secondary/50"/>}
+                    {isPending && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> : <Textarea readOnly value={state.data?.emailCopy} rows={6} className="bg-secondary/50"/>}
                     </CardContent>
                 </Card>
             </div>
@@ -214,7 +204,7 @@ export default function MarketingPage() {
                 <CardDescription>{pageTranslations.platform_card_description}</CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-6">
-                {isGenerating && !state.data ? (
+                {isPending && !state.data ? (
                      <Loader2 className="animate-spin text-muted-foreground" />
                 ) : state.data?.platformRecommendations?.map((rec: any, index: number) => (
                     <div key={index}>

@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useActionState, useEffect } from 'react';
+import { useState, useActionState, useEffect, useTransition } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -29,12 +29,12 @@ import { useRouter } from 'next/navigation';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 
-const initialState = { status: 'idle', message: '' };
+const initialState = { status: 'idle' as const, message: '' };
 
 export default function SignupPage() {
   const { toast } = useToast();
   const router = useRouter();
-  const [state, formAction, isPending] = useActionState(handleCreateAccount, initialState);
+  const [state, formAction] = useActionState(handleCreateAccount, initialState);
   
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -42,6 +42,7 @@ export default function SignupPage() {
   const { language, setLanguage, translations } = useLanguage();
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
+  const [isPending, startTransition] = useTransition();
 
 
   const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -129,7 +130,13 @@ export default function SignupPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form action={formAction}>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            const formData = new FormData(e.currentTarget);
+            startTransition(() => {
+              formAction(formData);
+            })
+          }}>
             <div className="grid gap-4">
               <div className="grid gap-2 items-center text-center">
                   <Label htmlFor="avatar-upload" className="cursor-pointer">

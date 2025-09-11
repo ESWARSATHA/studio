@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useActionState, useEffect, useState } from "react";
+import { useActionState, useEffect, useState, useTransition } from "react";
 import { handleGenerateSuggestions } from "./actions";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,7 +16,7 @@ import placeholderImages from '@/lib/placeholder-images.json';
 
 const { products } = placeholderImages.suggestions;
 
-const initialState = { status: 'idle', message: '', data: null, errors: null };
+const initialState = { status: 'idle' as const, message: '', data: null, errors: null };
 
 export default function SuggestionsPage() {
   const { toast } = useToast();
@@ -29,7 +29,7 @@ export default function SuggestionsPage() {
   const [productDescription, setProductDescription] = useState('');
   const [productCategory, setProductCategory] = useState('');
   
-  const [isGenerating, setIsGenerating] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   const handleProductSelect = (value: string) => {
     const product = products.find(p => p.name === value);
@@ -38,21 +38,6 @@ export default function SuggestionsPage() {
       setProductDescription(product.description);
       setProductCategory(product.category);
     }
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!productName || !productDescription || !productCategory) {
-      toast({
-        variant: "destructive",
-        title: "Missing Information",
-        description: "Please provide a product name, description, and category.",
-      });
-      return;
-    }
-    const formData = new FormData(event.currentTarget);
-    setIsGenerating(true);
-    formAction(formData);
   };
   
   useEffect(() => {
@@ -68,7 +53,6 @@ export default function SuggestionsPage() {
         description: state.message,
       });
     }
-    setIsGenerating(false);
   }, [state, toast]);
 
   return (
@@ -85,7 +69,13 @@ export default function SuggestionsPage() {
           <CardDescription>{pageTranslations.select_card_description}</CardDescription>
         </CardHeader>
         <CardContent>
-           <form onSubmit={handleSubmit} className="grid gap-6">
+           <form onSubmit={(e) => {
+             e.preventDefault();
+             const formData = new FormData(e.currentTarget);
+             startTransition(() => {
+                formAction(formData);
+             })
+           }} className="grid gap-6">
              <div className="grid gap-2">
                 <Label htmlFor="product-select">Select a Product (Optional)</Label>
                 <Select onValueChange={handleProductSelect}>
@@ -137,15 +127,15 @@ export default function SuggestionsPage() {
               />
             </div>
 
-            <Button type="submit" disabled={isGenerating} className="w-full sm:w-auto justify-self-end">
-              {isGenerating ? <Loader2 className="mr-2 animate-spin" /> : <Wand2 className="mr-2" />}
+            <Button type="submit" disabled={isPending} className="w-full sm:w-auto justify-self-end">
+              {isPending ? <Loader2 className="mr-2 animate-spin" /> : <Wand2 className="mr-2" />}
               {pageTranslations.generate_button}
             </Button>
           </form>
         </CardContent>
       </Card>
       
-      {(isGenerating || state.data) && (
+      {(isPending || state.data) && (
         <div className="grid gap-8">
             <Card>
                 <CardHeader>
@@ -156,7 +146,7 @@ export default function SuggestionsPage() {
                      <CardDescription>{pageTranslations.variations_card_description}</CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-4">
-                    {isGenerating && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> : 
+                    {isPending && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> : 
                     state.data?.productVariations?.map((suggestion: string, index: number) => (
                         <div key={index} className="flex items-start gap-3">
                             <CheckCircle className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
@@ -174,7 +164,7 @@ export default function SuggestionsPage() {
                      <CardDescription>{pageTranslations.concepts_card_description}</CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-4">
-                     {isGenerating && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> :
+                     {isPending && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> :
                      state.data?.newDesignConcepts?.map((suggestion: string, index: number) => (
                         <div key={index} className="flex items-start gap-3">
                            <CheckCircle className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
@@ -192,7 +182,7 @@ export default function SuggestionsPage() {
                     <CardDescription>{pageTranslations.expansion_card_description}</CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-4">
-                {isGenerating && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> :
+                {isPending && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> :
                  state.data?.targetAudienceExpansion?.map((suggestion: string, index: number) => (
                     <div key={index} className="flex items-start gap-3">
                         <CheckCircle className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
