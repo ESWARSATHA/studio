@@ -14,28 +14,16 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { UploadCloud, FileCheck } from 'lucide-react';
+import placeholderImages from '@/lib/placeholder-images.json';
 
-const profileData = {
-    name: "Priya Kumar",
-    avatar: "https://picsum.photos/100/100?random=1",
-    specialty: "Madhubani Painting",
-    email: "priya.k@example.com",
-    phone: "+91 98765 43210",
-    address: "123, Kalakriti Lane, Madhubani, Bihar - 847211",
-    loginHistory: [
-        { time: "2024-07-29 10:30 AM", ip: "103.22.201.15" },
-        { time: "2024-07-28 08:00 PM", ip: "103.22.201.15" },
-        { time: "2024-07-27 11:15 AM", ip: "103.22.201.15" },
-        { time: "2024-07-25 09:45 PM", ip: "103.22.201.15" },
-    ]
-};
+const { profile: profileData } = placeholderImages.settings;
 
 const ProfileTab = () => {
     return (
         <div className="grid gap-8">
             <div className="flex flex-col items-center gap-4 text-center">
                 <Avatar className="h-28 w-28 border-4 border-primary">
-                    <AvatarImage src={profileData.avatar} alt={profileData.name} data-ai-hint="artisan portrait" />
+                    <AvatarImage src={profileData.avatar} alt={profileData.name} data-ai-hint={profileData.imageHint} />
                     <AvatarFallback>{profileData.name.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <div>

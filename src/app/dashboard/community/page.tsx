@@ -7,51 +7,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useLanguage } from '@/lib/locales/language-context';
 import { Users, UserPlus } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import placeholderImages from '@/lib/placeholder-images.json';
 
-const artisans = [
-  {
-    name: "Priya Kumar",
-    avatar: "https://picsum.photos/100/100",
-    specialty: "Madhubani Painting",
-    followers: 1500,
-    following: 200,
-  },
-  {
-    name: "Rohan Das",
-    avatar: "https://picsum.photos/100/100",
-    specialty: "Terracotta Pottery",
-    followers: 120,
-    following: 75,
-  },
-  {
-    name: "Ananya Sharma",
-    avatar: "https://picsum.photos/100/100",
-    specialty: "Pattachitra Scrolls",
-    followers: 850,
-    following: 150,
-  },
-  {
-    name: "Vikram Singh",
-    avatar: "https://picsum.photos/100/100",
-    specialty: "Wooden Toys",
-    followers: 450,
-    following: 90,
-  },
-    {
-    name: "Meera Iyer",
-    avatar: "https://picsum.photos/100/100",
-    specialty: "Kalamkari Textiles",
-    followers: 250,
-    following: 110,
-  },
-  {
-    name: "Arjun Mehta",
-    avatar: "https://picsum.photos/100/100",
-    specialty: "Blue Pottery",
-    followers: 600,
-    following: 180,
-  }
-];
+const { artisans } = placeholderImages.community;
 
 
 export default function CommunityPage() {
@@ -71,7 +29,7 @@ export default function CommunityPage() {
                 <CardContent className="pt-6">
                     <div className="flex items-center gap-4">
                         <Avatar className="h-16 w-16">
-                            <AvatarImage src={`${artisan.avatar}?random=${index}`} alt={artisan.name} data-ai-hint="artisan portrait" />
+                            <AvatarImage src={artisan.avatar} alt={artisan.name} data-ai-hint={artisan.imageHint} />
                             <AvatarFallback>{artisan.name.charAt(0)}</AvatarFallback>
                         </Avatar>
                         <div className="flex-1">

@@ -8,25 +8,9 @@ import { Input } from '@/components/ui/input';
 import { useLanguage } from '@/lib/locales/language-context';
 import { ShoppingCart, Trash2, ArrowRight } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
+import placeholderImages from '@/lib/placeholder-images.json';
 
-const cartItems = [
-  {
-    id: 1,
-    name: "Hand-carved Wooden Elephant",
-    price: 2499,
-    image: "https://picsum.photos/400/500?random=1",
-    imageHint: "wooden elephant carving",
-    quantity: 1,
-  },
-  {
-    id: 2,
-    name: "Blue Pottery Vase",
-    price: 1899,
-    image: "https://picsum.photos/400/500?random=2",
-    imageHint: "blue pottery vase",
-    quantity: 1,
-  },
-];
+const { items: cartItems } = placeholderImages.cart;
 
 
 export default function CartPage() {

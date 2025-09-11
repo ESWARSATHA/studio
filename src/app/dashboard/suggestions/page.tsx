@@ -12,39 +12,9 @@ import { useLanguage } from "@/lib/locales/language-context";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import placeholderImages from '@/lib/placeholder-images.json';
 
-const products = [
-  {
-    name: "Hand-carved Wooden Elephant",
-    description: "A magnificent elephant, hand-carved from a single block of sustainable mango wood, showcasing intricate details.",
-    category: "Woodcraft",
-  },
-  {
-    name: "Blue Pottery Vase",
-    description: "A vibrant blue pottery vase from Jaipur, featuring traditional floral motifs hand-painted by skilled artisans.",
-    category: "Pottery",
-  },
-  {
-    name: "Pattachitra Scroll Painting",
-    description: "A stunning Pattachitra scroll from Odisha, depicting a tale from the Ramayana with natural pigments on cloth.",
-    category: "Paintings",
-  },
-  {
-    name: "Terracotta Horse",
-    description: "A rustic terracotta horse from Panchmura, Bengal, representing a timeless tradition of village pottery.",
-    category: "Pottery",
-  },
-   {
-    name: "Kalamkari Textile Wall Hanging",
-    description: "A beautiful wall hanging featuring intricate Kalamkari art, hand-painted using a traditional pen with natural dyes.",
-    category: "Textiles",
-  },
-  {
-    name: "Dokra Brass Human Figurine",
-    description: "A unique human figurine crafted using the ancient Dokra metal casting technique, which is over 4,000 years old.",
-    category: "Metalwork",
-  }
-];
+const { products } = placeholderImages.suggestions;
 
 const initialState = { status: 'idle', message: '', data: null, errors: null };
 

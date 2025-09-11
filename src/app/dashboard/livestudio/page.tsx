@@ -12,6 +12,9 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Send, Video, VideoOff, ShieldCheck } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useLanguage } from '@/lib/locales/language-context';
+import placeholderImages from '@/lib/placeholder-images.json';
+
+const { chat: chatUsers } = placeholderImages.livestudio;
 
 export default function LiveStudioPage() {
   const { toast } = useToast();
@@ -165,7 +168,7 @@ export default function LiveStudioPage() {
                 <CardContent className="flex-1 flex flex-col gap-4 overflow-y-auto px-4">
                     <div className="flex items-start gap-3">
                         <Avatar className="h-8 w-8">
-                            <AvatarImage src="https://picsum.photos/40/40?random=1" alt="User" data-ai-hint="person portrait" />
+                            <AvatarImage src={chatUsers[0].avatar} alt="User" data-ai-hint={chatUsers[0].imageHint} />
                             <AvatarFallback>A</AvatarFallback>
                         </Avatar>
                         <div className="flex-1 bg-secondary rounded-lg px-3 py-2 text-sm">
@@ -175,7 +178,7 @@ export default function LiveStudioPage() {
                     </div>
                      <div className="flex items-start gap-3">
                         <Avatar className="h-8 w-8">
-                             <AvatarImage src="https://picsum.photos/40/40?random=2" alt="User" data-ai-hint="person portrait" />
+                             <AvatarImage src={chatUsers[1].avatar} alt="User" data-ai-hint={chatUsers[1].imageHint} />
                             <AvatarFallback>R</AvatarFallback>
                         </Avatar>
                         <div className="flex-1 bg-secondary rounded-lg px-3 py-2 text-sm">
@@ -185,7 +188,7 @@ export default function LiveStudioPage() {
                     </div>
                      <div className="flex items-start gap-3">
                         <Avatar className="h-8 w-8">
-                             <AvatarImage src="https://picsum.photos/40/40?random=3" alt="User" data-ai-hint="person portrait" />
+                             <AvatarImage src={chatUsers[2].avatar} alt="User" data-ai-hint={chatUsers[2].imageHint} />
                             <AvatarFallback>V</AvatarFallback>
                         </Avatar>
                         <div className="flex-1 bg-secondary rounded-lg px-3 py-2 text-sm">

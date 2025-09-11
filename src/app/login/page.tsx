@@ -23,6 +23,9 @@ import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/icons';
 import { Eye, EyeOff, Globe, LogIn } from 'lucide-react';
 import { languages, useLanguage } from '@/lib/locales/language-context';
+import placeholderImages from '@/lib/placeholder-images.json';
+
+const { loginBackground } = placeholderImages.misc;
 
 const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -68,12 +71,12 @@ export default function LoginPage() {
       </header>
 
       <Image
-        src="https://picsum.photos/1920/1080"
+        src={loginBackground.image}
         alt="A vibrant and intricate background pattern inspired by Indian art and textiles."
         fill
         style={{objectFit: "cover"}}
         className="absolute inset-0 w-full h-full z-0"
-        data-ai-hint="indian art pattern"
+        data-ai-hint={loginBackground.imageHint}
       />
       <div className="absolute inset-0 bg-black/50 z-10" />
       <Card className="mx-auto max-w-sm w-full z-20 bg-card/80 backdrop-blur-sm">

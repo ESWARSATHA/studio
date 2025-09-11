@@ -5,69 +5,9 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { IndianRupee, Star, Video, Scissors, Paintbrush, Heart, Box } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import placeholderImages from '@/lib/placeholder-images.json';
 
-const products = [
-  {
-    id: 1,
-    name: "Hand-carved Wooden Elephant",
-    price: 2499,
-    description: "A magnificent elephant, hand-carved from a single block of sustainable mango wood, showcasing intricate details. This piece is a testament to the artisan's skill, passed down through generations.",
-    image: "https://picsum.photos/800/800?random=1",
-    imageHint: "wooden elephant carving",
-    rating: 4.8,
-    reviews: 24,
-    material: "Sustainable Mango Wood",
-    dimensions: '12" x 8" x 5"',
-    process: "Hand-carved by master artisans in Rajasthan using traditional tools and techniques.",
-    story: "This elephant was carved from a fallen mango tree in my village. It represents strength, wisdom, and good fortune, and I pour my heart into every detail to bring those qualities to life.",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
-  },
-  {
-    id: 2,
-    name: "Blue Pottery Vase",
-    price: 1899,
-    description: "A vibrant blue pottery vase from Jaipur, featuring traditional floral motifs hand-painted by skilled artisans. The striking cobalt blue is derived from a special mixture of quartz stone powder, powdered glass, and other natural ingredients, making each vase a unique work of art.",
-    image: "https://picsum.photos/800/800?random=2",
-    imageHint: "blue pottery vase",
-    rating: 4.9,
-    reviews: 18,
-    material: "Jaipur Blue Pottery (Quartz-based clay)",
-    dimensions: '10" height, 5" diameter',
-    process: "Hand-thrown on the potter's wheel, hand-painted with natural pigments, and low-fired.",
-    story: "The motifs on this vase are inspired by the gardens of the Amer Fort. Each brushstroke is a memory of the vibrant flowers I saw there as a child. It's a piece of my history.",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
-  },
-    {
-    id: 3,
-    name: "Pattachitra Scroll Painting",
-    price: 3999,
-    description: "A stunning Pattachitra scroll from Odisha, depicting a tale from the Ramayana with natural pigments on cloth. The intricate details and vibrant colors are achieved through a meticulous process of painting with fine brushes made from squirrel hair.",
-    image: "https://picsum.photos/800/800?random=3",
-    imageHint: "pattachitra scroll",
-    rating: 5.0,
-    reviews: 12,
-    material: "Tussar silk cloth, natural mineral and plant-based pigments.",
-    dimensions: '36" x 18"',
-    process: "The canvas is prepared with tamarind seed paste. The painting is done with fine brushes and natural colors, followed by a lacquer finish for longevity.",
-    story: "This scroll tells the story of Sita's abduction, a powerful moment in the Ramayana. I chose this scene to capture the emotion and drama of our epic tales for a new generation.",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
-  },
-   {
-    id: 4,
-    name: "Terracotta Horse",
-    price: 1299,
-    description: "A rustic terracotta horse from Panchmura, Bengal, representing a timeless tradition of village pottery. These horses are known for their unique, elongated necks and are traditionally offered to local deities. Each piece is handcrafted and fired in a traditional kiln.",
-    image: "https://picsum.photos/800/800?random=4",
-    imageHint: "terracotta horse",
-    rating: 4.7,
-    reviews: 31,
-    material: "Riverbed Clay (Terracotta)",
-    dimensions: '15" height',
-    process: "Shaped by hand and with simple tools, sun-dried, and then fired in a traditional kiln, giving it its characteristic earthy color.",
-    story: "The Bankura horse is a symbol of devotion in my community. We have been making them for centuries as offerings. This horse carries the prayers and hopes of my ancestors.",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
-  },
-];
+const { products } = placeholderImages.productDetail;
 
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
   const product = products.find(p => p.id === parseInt(params.id));
@@ -84,7 +24,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
           alt={product.name}
           width={800}
           height={800}
-          className="rounded-lg shadow-lg object-cover w-full aspect-video"
+          className="rounded-lg shadow-lg object-cover w-full aspect-square"
           data-ai-hint={product.imageHint}
         />
          <Card>
@@ -115,7 +55,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                 <h1 className="text-3xl font-bold tracking-tight">{product.name}</h1>
                 <div className="flex items-center gap-2">
                     <div className="flex items-center gap-1 text-primary">
-                        <Star className="w-5 h-5 fill-primary" />
+                        <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                         <span className="font-bold">{product.rating}</span>
                     </div>
                     <span className="text-muted-foreground">({product.reviews} reviews)</span>
@@ -125,6 +65,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                     <IndianRupee />
                     <span>{product.price.toLocaleString()}</span>
                 </div>
+                 <Button size="lg">Add to Cart</Button>
             </CardContent>
         </Card>
         

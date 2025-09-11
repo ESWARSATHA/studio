@@ -32,6 +32,9 @@ import {
 } from 'lucide-react';
 import { Logo } from '@/components/icons';
 import { languages, useLanguage } from '@/lib/locales/language-context';
+import placeholderImages from '@/lib/placeholder-images.json';
+
+const { homepage, loginBackground, userAvatar } = placeholderImages.misc;
 
 export default function Home() {
   const { language, setLanguage, translations } = useLanguage();
@@ -182,12 +185,12 @@ export default function Home() {
             <div className="mt-12 grid gap-8 md:grid-cols-3">
               <Card className="overflow-hidden">
                 <Image
-                  src="https://picsum.photos/800/600?random=1"
+                  src={homepage.art1.image}
                   alt="A screenshot of the Artisan dashboard showing listed products."
                   width={800}
                   height={600}
                   className="w-full h-64 object-cover object-top"
-                  data-ai-hint="artisan dashboard products"
+                  data-ai-hint={homepage.art1.imageHint}
                 />
                 <CardHeader>
                   <CardTitle>
@@ -202,12 +205,12 @@ export default function Home() {
               </Card>
               <Card className="overflow-hidden">
                 <Image
-                  src="https://picsum.photos/800/600?random=2"
+                  src={homepage.art2.image}
                   alt="A screenshot of the analytics page showing charts and insights."
                   width={800}
                   height={600}
                   className="w-full h-64 object-cover object-top"
-                  data-ai-hint="artisan analytics charts"
+                  data-ai-hint={homepage.art2.imageHint}
                 />
                 <CardHeader>
                   <CardTitle>
@@ -222,12 +225,12 @@ export default function Home() {
               </Card>
               <Card className="overflow-hidden">
                 <Image
-                  src="https://picsum.photos/800/600?random=3"
+                  src={homepage.art3.image}
                   alt="A screenshot of the community hub where artisans can connect."
                   width={800}
                   height={600}
                   className="w-full h-64 object-cover object-top"
-                  data-ai-hint="artisan community hub"
+                  data-ai-hint={homepage.art3.imageHint}
                 />
                 <CardHeader>
                   <CardTitle>
@@ -274,12 +277,12 @@ export default function Home() {
                 </div>
                  <div className="flex justify-center">
                     <Image
-                    src="https://picsum.photos/600/600"
+                    src={homepage.payments.image}
                     alt="An abstract representation of seamless digital payments in India."
                     width={500}
                     height={500}
                     className="rounded-lg shadow-lg"
-                    data-ai-hint="digital payments illustration"
+                    data-ai-hint={homepage.payments.imageHint}
                     />
                 </div>
             </div>
@@ -289,12 +292,12 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
             <div className="flex justify-center">
               <Image
-                src="https://picsum.photos/600/600?random=5"
+                src={homepage.govSupport.image}
                 alt="An illustration representing government support and growth for entrepreneurs."
                 width={500}
                 height={500}
                 className="rounded-lg shadow-lg"
-                data-ai-hint="government support entrepreneur"
+                data-ai-hint={homepage.govSupport.imageHint}
               />
             </div>
             <div className="max-w-md">

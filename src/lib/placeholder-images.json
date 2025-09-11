@@ -1,0 +1,346 @@
+
+{
+  "dashboard": {
+    "trendingProducts": [
+      {
+        "name": "Jaipuri Block-Print Quilt",
+        "image": "https://picsum.photos/seed/trend1/400/300",
+        "imageHint": "jaipuri quilt"
+      },
+      {
+        "name": "Hand-Painted Pattachitra Saree",
+        "image": "https://picsum.photos/seed/trend2/400/300",
+        "imageHint": "pattachitra saree"
+      },
+      {
+        "name": "Kutch Embroidered Jacket",
+        "image": "https://picsum.photos/seed/trend3/400/300",
+        "imageHint": "kutch jacket"
+      },
+      {
+        "name": "Chikankari Kurta Set",
+        "image": "https://picsum.photos/seed/trend4/400/300",
+        "imageHint": "chikankari kurta"
+      },
+      {
+        "name": "Silver Filigree Earrings",
+        "image": "https://picsum.photos/seed/trend5/400/300",
+        "imageHint": "silver earrings"
+      }
+    ],
+    "userCreations": [
+      {
+        "id": 1,
+        "name": "Hand-carved Wooden Elephant",
+        "price": 2499,
+        "description": "A magnificent elephant, hand-carved from a single block of sustainable mango wood, showcasing intricate details.",
+        "image": "https://picsum.photos/seed/creation1/400/300",
+        "imageHint": "wooden elephant carving",
+        "rating": 4.8,
+        "reviews": 24
+      },
+      {
+        "id": 2,
+        "name": "Blue Pottery Vase",
+        "price": 1899,
+        "description": "A vibrant blue pottery vase from Jaipur, featuring traditional floral motifs hand-painted by skilled artisans.",
+        "image": "https://picsum.photos/seed/creation2/400/300",
+        "imageHint": "blue pottery vase",
+        "rating": 4.9,
+        "reviews": 18
+      },
+      {
+        "id": 3,
+        "name": "Pattachitra Scroll Painting",
+        "price": 3999,
+        "description": "A stunning Pattachitra scroll from Odisha, depicting a tale from the Ramayana with natural pigments on cloth.",
+        "image": "https://picsum.photos/seed/creation3/400/300",
+        "imageHint": "pattachitra scroll",
+        "rating": 5.0,
+        "reviews": 12
+      },
+      {
+        "id": 4,
+        "name": "Terracotta Horse",
+        "price": 1299,
+        "description": "A rustic terracotta horse from Panchmura, Bengal, representing a timeless tradition of village pottery.",
+        "image": "https://picsum.photos/seed/creation4/400/300",
+        "imageHint": "terracotta horse",
+        "rating": 4.7,
+        "reviews": 31
+      }
+    ],
+    "featuredArt": {
+        "id": 3,
+        "title": "The Art of Pattachitra",
+        "description": "Discover the ancient art of scroll painting from Odisha, where every brushstroke tells a story from mythology.",
+        "image": "https://picsum.photos/seed/featured1/600/400",
+        "imageHint": "pattachitra scroll painting"
+    }
+  },
+  "productDetail": {
+    "products": [
+       {
+        "id": 1,
+        "name": "Hand-carved Wooden Elephant",
+        "price": 2499,
+        "description": "A magnificent elephant, hand-carved from a single block of sustainable mango wood, showcasing intricate details. This piece is a testament to the artisan's skill, passed down through generations.",
+        "image": "https://picsum.photos/seed/pd1/800/800",
+        "imageHint": "wooden elephant carving",
+        "rating": 4.8,
+        "reviews": 24,
+        "material": "Sustainable Mango Wood",
+        "dimensions": "12\" x 8\" x 5\"",
+        "process": "Hand-carved by master artisans in Rajasthan using traditional tools and techniques.",
+        "story": "This elephant was carved from a fallen mango tree in my village. It represents strength, wisdom, and good fortune, and I pour my heart into every detail to bring those qualities to life.",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      },
+      {
+        "id": 2,
+        "name": "Blue Pottery Vase",
+        "price": 1899,
+        "description": "A vibrant blue pottery vase from Jaipur, featuring traditional floral motifs hand-painted by skilled artisans. The striking cobalt blue is derived from a special mixture of quartz stone powder, powdered glass, and other natural ingredients, making each vase a unique work of art.",
+        "image": "https://picsum.photos/seed/pd2/800/800",
+        "imageHint": "blue pottery vase",
+        "rating": 4.9,
+        "reviews": 18,
+        "material": "Jaipur Blue Pottery (Quartz-based clay)",
+        "dimensions": "10\" height, 5\" diameter",
+        "process": "Hand-thrown on the potter's wheel, hand-painted with natural pigments, and low-fired.",
+        "story": "The motifs on this vase are inspired by the gardens of the Amer Fort. Each brushstroke is a memory of the vibrant flowers I saw there as a child. It's a piece of my history.",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      },
+        {
+        "id": 3,
+        "name": "Pattachitra Scroll Painting",
+        "price": 3999,
+        "description": "A stunning Pattachitra scroll from Odisha, depicting a tale from the Ramayana with natural pigments on cloth. The intricate details and vibrant colors are achieved through a meticulous process of painting with fine brushes made from squirrel hair.",
+        "image": "https://picsum.photos/seed/pd3/800/800",
+        "imageHint": "pattachitra scroll",
+        "rating": 5.0,
+        "reviews": 12,
+        "material": "Tussar silk cloth, natural mineral and plant-based pigments.",
+        "dimensions": "36\" x 18\"",
+        "process": "The canvas is prepared with tamarind seed paste. The painting is done with fine brushes and natural colors, followed by a lacquer finish for longevity.",
+        "story": "This scroll tells the story of Sita's abduction, a powerful moment in the Ramayana. I chose this scene to capture the emotion and drama of our epic tales for a new generation.",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      },
+       {
+        "id": 4,
+        "name": "Terracotta Horse",
+        "price": 1299,
+        "description": "A rustic terracotta horse from Panchmura, Bengal, representing a timeless tradition of village pottery. These horses are known for their unique, elongated necks and are traditionally offered to local deities. Each piece is handcrafted and fired in a traditional kiln.",
+        "image": "https://picsum.photos/seed/pd4/800/800",
+        "imageHint": "terracotta horse",
+        "rating": 4.7,
+        "reviews": 31,
+        "material": "Riverbed Clay (Terracotta)",
+        "dimensions": "15\" height",
+        "process": "Shaped by hand and with simple tools, sun-dried, and then fired in a traditional kiln, giving it its characteristic earthy color.",
+        "story": "The Bankura horse is a symbol of devotion in my community. We have been making them for centuries as offerings. This horse carries the prayers and hopes of my ancestors.",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      }
+    ]
+  },
+   "marketing": {
+    "products": [
+        {
+            "name": "Hand-carved Wooden Elephant",
+            "description": "A magnificent elephant, hand-carved from a single block of sustainable mango wood, showcasing intricate details.",
+            "image": "https://picsum.photos/seed/market1/400/300",
+            "imageHint": "wooden elephant carving"
+        },
+        {
+            "name": "Blue Pottery Vase",
+            "description": "A vibrant blue pottery vase from Jaipur, featuring traditional floral motifs hand-painted by skilled artisans.",
+            "image": "https://picsum.photos/seed/market2/400/300",
+            "imageHint": "blue pottery vase"
+        },
+        {
+            "name": "Pattachitra Scroll Painting",
+            "description": "A stunning Pattachitra scroll from Odisha, depicting a tale from the Ramayana with natural pigments on cloth.",
+            "image": "https://picsum.photos/seed/market3/400/300",
+            "imageHint": "pattachitra scroll"
+        },
+        {
+            "name": "Terracotta Horse",
+            "description": "A rustic terracotta horse from Panchmura, Bengal, representing a timeless tradition of village pottery.",
+            "image": "https://picsum.photos/seed/market4/400/300",
+            "imageHint": "terracotta horse"
+        },
+        {
+            "name": "Kalamkari Textile Wall Hanging",
+            "description": "A beautiful wall hanging featuring intricate Kalamkari art, hand-painted using a traditional pen with natural dyes.",
+            "image": "https://picsum.photos/seed/market5/400/300",
+            "imageHint": "kalamkari textile"
+        },
+        {
+            "name": "Dokra Brass Human Figurine",
+            "description": "A unique human figurine crafted using the ancient Dokra metal casting technique, which is over 4,000 years old.",
+            "image": "https://picsum.photos/seed/market6/400/300",
+            "imageHint": "dokra brass figurine"
+        }
+    ]
+  },
+  "suggestions": {
+    "products": [
+      {
+        "name": "Hand-carved Wooden Elephant",
+        "description": "A magnificent elephant, hand-carved from a single block of sustainable mango wood, showcasing intricate details.",
+        "category": "Woodcraft"
+      },
+      {
+        "name": "Blue Pottery Vase",
+        "description": "A vibrant blue pottery vase from Jaipur, featuring traditional floral motifs hand-painted by skilled artisans.",
+        "category": "Pottery"
+      },
+      {
+        "name": "Pattachitra Scroll Painting",
+        "description": "A stunning Pattachitra scroll from Odisha, depicting a tale from the Ramayana with natural pigments on cloth.",
+        "category": "Paintings"
+      },
+      {
+        "name": "Terracotta Horse",
+        "description": "A rustic terracotta horse from Panchmura, Bengal, representing a timeless tradition of village pottery.",
+        "category": "Pottery"
+      },
+       {
+        "name": "Kalamkari Textile Wall Hanging",
+        "description": "A beautiful wall hanging featuring intricate Kalamkari art, hand-painted using a traditional pen with natural dyes.",
+        "category": "Textiles"
+      },
+      {
+        "name": "Dokra Brass Human Figurine",
+        "description": "A unique human figurine crafted using the ancient Dokra metal casting technique, which is over 4,000 years old.",
+        "category": "Metalwork"
+      }
+    ]
+  },
+  "cart": {
+    "items": [
+      {
+        "id": 1,
+        "name": "Hand-carved Wooden Elephant",
+        "price": 2499,
+        "image": "https://picsum.photos/seed/cart1/120/120",
+        "imageHint": "wooden elephant carving",
+        "quantity": 1
+      },
+      {
+        "id": 2,
+        "name": "Blue Pottery Vase",
+        "price": 1899,
+        "image": "https://picsum.photos/seed/cart2/120/120",
+        "imageHint": "blue pottery vase",
+        "quantity": 1
+      }
+    ]
+  },
+  "community": {
+    "artisans": [
+       {
+        "name": "Priya Kumar",
+        "avatar": "https://picsum.photos/seed/artisan1/100/100",
+        "specialty": "Madhubani Painting",
+        "followers": 1500,
+        "following": 200,
+        "imageHint": "artisan portrait"
+      },
+      {
+        "name": "Rohan Das",
+        "avatar": "https://picsum.photos/seed/artisan2/100/100",
+        "specialty": "Terracotta Pottery",
+        "followers": 120,
+        "following": 75,
+        "imageHint": "artisan portrait"
+      },
+      {
+        "name": "Ananya Sharma",
+        "avatar": "https://picsum.photos/seed/artisan3/100/100",
+        "specialty": "Pattachitra Scrolls",
+        "followers": 850,
+        "following": 150,
+        "imageHint": "artisan portrait"
+      },
+      {
+        "name": "Vikram Singh",
+        "avatar": "https://picsum.photos/seed/artisan4/100/100",
+        "specialty": "Wooden Toys",
+        "followers": 450,
+        "following": 90,
+        "imageHint": "artisan portrait"
+      },
+      {
+        "name": "Meera Iyer",
+        "avatar": "https://picsum.photos/seed/artisan5/100/100",
+        "specialty": "Kalamkari Textiles",
+        "followers": 250,
+        "following": 110,
+        "imageHint": "artisan portrait"
+      },
+      {
+        "name": "Arjun Mehta",
+        "avatar": "https://picsum.photos/seed/artisan6/100/100",
+        "specialty": "Blue Pottery",
+        "followers": 600,
+        "following": 180,
+        "imageHint": "artisan portrait"
+      }
+    ]
+  },
+  "requests": {
+     "users": [
+        {
+            "name": "Rohan Das",
+            "avatar": "https://picsum.photos/seed/request1/100/100",
+            "specialty": "Terracotta Pottery",
+            "followers": 120,
+            "following": 75,
+            "imageHint": "artisan portrait"
+        },
+        {
+            "name": "Meera Iyer",
+            "avatar": "https://picsum.photos/seed/request2/100/100",
+            "specialty": "Kalamkari Textiles",
+            "followers": 250,
+            "following": 110,
+            "imageHint": "artisan portrait"
+        }
+    ]
+  },
+  "settings": {
+      "profile": {
+        "name": "Priya Kumar",
+        "avatar": "https://picsum.photos/seed/profile1/100/100",
+        "specialty": "Madhubani Painting",
+        "email": "priya.k@example.com",
+        "phone": "+91 98765 43210",
+        "address": "123, Kalakriti Lane, Madhubani, Bihar - 847211",
+        "loginHistory": [
+            { "time": "2024-07-29 10:30 AM", "ip": "103.22.201.15" },
+            { "time": "2024-07-28 08:00 PM", "ip": "103.22.201.15" },
+            { "time": "2024-07-27 11:15 AM", "ip": "103.22.201.15" },
+            { "time": "2024-07-25 09:45 PM", "ip": "103.22.201.15" }
+        ],
+        "imageHint": "artisan portrait"
+      }
+  },
+  "livestudio": {
+    "chat": [
+      { "avatar": "https://picsum.photos/seed/chat1/40/40", "imageHint": "person portrait" },
+      { "avatar": "https://picsum.photos/seed/chat2/40/40", "imageHint": "person portrait" },
+      { "avatar": "https://picsum.photos/seed/chat3/40/40", "imageHint": "person portrait" }
+    ]
+  },
+  "misc": {
+    "loginBackground": { "image": "https://picsum.photos/seed/loginbg/1920/1080", "imageHint": "indian art pattern" },
+    "userAvatar": { "image": "https://picsum.photos/seed/useravatar/40/40", "imageHint": "person portrait" },
+    "homepage": {
+        "art1": { "image": "https://picsum.photos/seed/home1/800/600", "imageHint": "artisan dashboard products" },
+        "art2": { "image": "https://picsum.photos/seed/home2/800/600", "imageHint": "artisan analytics charts" },
+        "art3": { "image": "https://picsum.photos/seed/home3/800/600", "imageHint": "artisan community hub" },
+        "payments": { "image": "https://picsum.photos/seed/home4/600/600", "imageHint": "digital payments illustration" },
+        "govSupport": { "image": "https://picsum.photos/seed/home5/600/600", "imageHint": "government support entrepreneur" }
+    }
+  }
+}

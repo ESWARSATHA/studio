@@ -47,6 +47,9 @@ import { languages, useLanguage } from "@/lib/locales/language-context";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import placeholderImages from '@/lib/placeholder-images.json';
+
+const { userAvatar } = placeholderImages.misc;
 
 export default function DashboardLayout({
   children,
@@ -73,7 +76,7 @@ export default function DashboardLayout({
 
   const buyerMenuItems = [
      { href: "/dashboard?userType=buyer", label: "Explore", icon: LayoutGrid },
-     { href: "/dashboard/cart", label: "Cart", icon: ShoppingCart },
+     { href: "/dashboard/cart?userType=buyer", label: "Cart", icon: ShoppingCart },
      { href: "/dashboard/support?userType=buyer", label: "Support", icon: LifeBuoy },
   ];
   
@@ -159,7 +162,7 @@ export default function DashboardLayout({
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="rounded-full">
                   <Avatar>
-                    <AvatarImage src="https://picsum.photos/40/40" alt="User" data-ai-hint="person portrait" />
+                    <AvatarImage src={userAvatar.image} alt="User" data-ai-hint={userAvatar.imageHint} />
                     <AvatarFallback>{userType === 'buyer' ? 'B' : 'A'}</AvatarFallback>
                   </Avatar>
                 </Button>

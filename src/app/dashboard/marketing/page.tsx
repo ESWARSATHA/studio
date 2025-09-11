@@ -14,45 +14,9 @@ import { Separator } from "@/components/ui/separator";
 import { useLanguage } from "@/lib/locales/language-context";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import placeholderImages from '@/lib/placeholder-images.json';
 
-const products = [
-  {
-    name: "Hand-carved Wooden Elephant",
-    description: "A magnificent elephant, hand-carved from a single block of sustainable mango wood, showcasing intricate details.",
-    image: "https://picsum.photos/400/500?random=1",
-    imageHint: "wooden elephant carving",
-  },
-  {
-    name: "Blue Pottery Vase",
-    description: "A vibrant blue pottery vase from Jaipur, featuring traditional floral motifs hand-painted by skilled artisans.",
-    image: "https://picsum.photos/400/500?random=2",
-    imageHint: "blue pottery vase",
-  },
-  {
-    name: "Pattachitra Scroll Painting",
-    description: "A stunning Pattachitra scroll from Odisha, depicting a tale from the Ramayana with natural pigments on cloth.",
-    image: "https://picsum.photos/400/500?random=3",
-    imageHint: "pattachitra scroll",
-  },
-  {
-    name: "Terracotta Horse",
-    description: "A rustic terracotta horse from Panchmura, Bengal, representing a timeless tradition of village pottery.",
-    image: "https://picsum.photos/400/500?random=4",
-    imageHint: "terracotta horse",
-  },
-  {
-    name: "Kalamkari Textile Wall Hanging",
-    description: "A beautiful wall hanging featuring intricate Kalamkari art, hand-painted using a traditional pen with natural dyes.",
-     image: "https://picsum.photos/400/500?random=5",
-    imageHint: "kalamkari textile",
-  },
-  {
-    name: "Dokra Brass Human Figurine",
-    description: "A unique human figurine crafted using the ancient Dokra metal casting technique, which is over 4,000 years old.",
-    image: "https://picsum.photos/400/500?random=6",
-    imageHint: "dokra brass figurine",
-  }
-];
+const { products } = placeholderImages.marketing;
 
 const initialState = { status: 'idle', message: '', data: null, errors: null };
 
@@ -199,7 +163,7 @@ export default function MarketingPage() {
                         {isGenerating && !state.data ? <Loader2 className="animate-spin text-muted-foreground" /> : (
                             <div className="flex flex-col sm:flex-row gap-4 rounded-lg border bg-secondary/30 p-4">
                                 <Image 
-                                    src={productImage || 'https://picsum.photos/400/500'}
+                                    src={productImage || 'https://picsum.photos/seed/placeholder/400/300'}
                                     alt={productName || 'Product Image'}
                                     width={150}
                                     height={150}
@@ -270,5 +234,3 @@ export default function MarketingPage() {
     </div>
   );
 }
-
-    

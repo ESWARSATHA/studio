@@ -6,23 +6,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useLanguage } from '@/lib/locales/language-context';
 import { Bell, Check, X } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import placeholderImages from '@/lib/placeholder-images.json';
 
-const requests = [
-  {
-    name: "Rohan Das",
-    avatar: "https://picsum.photos/100/100?random=1",
-    specialty: "Terracotta Pottery",
-    followers: 120,
-    following: 75,
-  },
-  {
-    name: "Meera Iyer",
-    avatar: "https://picsum.photos/100/100?random=2",
-    specialty: "Kalamkari Textiles",
-    followers: 250,
-    following: 110,
-  },
-];
+const { users: requests } = placeholderImages.requests;
 
 
 export default function RequestsPage() {
@@ -47,7 +33,7 @@ export default function RequestsPage() {
                 <div key={request.name} className="flex items-center justify-between p-3 rounded-lg bg-secondary/50">
                     <div className="flex items-center gap-4">
                         <Avatar className="h-12 w-12">
-                            <AvatarImage src={request.avatar} alt={request.name} data-ai-hint="artisan portrait" />
+                            <AvatarImage src={request.avatar} alt={request.name} data-ai-hint={request.imageHint} />
                             <AvatarFallback>{request.name.charAt(0)}</AvatarFallback>
                         </Avatar>
                         <div>
@@ -79,4 +65,3 @@ export default function RequestsPage() {
     </div>
   );
 }
-
