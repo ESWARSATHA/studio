@@ -17,7 +17,7 @@ const initialState = { status: 'idle' as const, message: '', data: null, errors:
 
 
 export default function NewProductPage() {
-  const { toast } = useLanguage();
+  const { toast } = useToast();
   const { translations } = useLanguage();
   const pageTranslations = translations.new_product_page || {};
 
@@ -35,6 +35,8 @@ export default function NewProductPage() {
   const [story, setStory] = useState('');
   const [refinedStory, setRefinedStory] = useState('');
   const [imageGenDescription, setImageGenDescription] = useState('');
+  const [isPending, startTransition] = useTransition();
+
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -60,7 +62,9 @@ export default function NewProductPage() {
     }
     const formData = new FormData();
     formData.append('photoDataUri', imageDataUri);
-    descriptionAction(formData);
+    startTransition(() => {
+        descriptionAction(formData);
+    });
   };
 
   const onRefineStory = () => {
@@ -84,7 +88,9 @@ export default function NewProductPage() {
     formData.append('productName', productName);
     formData.append('productDescription', description);
     formData.append('story', story);
-    storyAction(formData);
+    startTransition(() => {
+        storyAction(formData);
+    });
   };
 
   const onSuggestPrice = () => {
@@ -99,7 +105,9 @@ export default function NewProductPage() {
     const formData = new FormData();
     formData.append('productName', productName);
     formData.append('productDescription', description);
-    priceAction(formData);
+    startTransition(() => {
+        priceAction(formData);
+    });
   };
 
   const onGenerateImage = () => {
@@ -113,7 +121,9 @@ export default function NewProductPage() {
     }
     const formData = new FormData();
     formData.append('description', imageGenDescription);
-    imageAction(formData);
+    startTransition(() => {
+        imageAction(formData);
+    });
   };
   
   useEffect(() => {

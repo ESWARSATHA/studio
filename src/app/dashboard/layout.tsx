@@ -46,6 +46,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { languages, useLanguage } from "@/lib/locales/language-context";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function DashboardLayout({
   children,
@@ -123,7 +124,7 @@ export default function DashboardLayout({
         </SidebarContent>
       </Sidebar>
       <SidebarInset>
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col h-screen">
           <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 backdrop-blur-sm px-4 md:px-6">
             <SidebarTrigger className="md:hidden" />
             <div className="flex-1 flex gap-4 items-center">
@@ -182,7 +183,13 @@ export default function DashboardLayout({
               </DropdownMenuContent>
             </DropdownMenu>
           </header>
-          <main className="flex-1 p-4 md:p-6 lg:p-8">{children}</main>
+          <main className="flex-1 overflow-hidden">
+            <ScrollArea className="h-full">
+              <div className="p-4 md:p-6 lg:p-8">
+                {children}
+              </div>
+            </ScrollArea>
+          </main>
         </div>
       </SidebarInset>
     </SidebarProvider>
