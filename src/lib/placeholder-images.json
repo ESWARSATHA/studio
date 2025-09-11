@@ -93,7 +93,13 @@
         "dimensions": "12\" x 8\" x 5\"",
         "process": "Hand-carved by master artisans in Rajasthan using traditional tools and techniques.",
         "story": "This elephant was carved from a fallen mango tree in my village. It represents strength, wisdom, and good fortune, and I pour my heart into every detail to bring those qualities to life.",
-        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "artisan": {
+            "name": "Vikram Singh",
+            "avatar": "https://picsum.photos/seed/artisan4/40/40",
+            "specialty": "Wooden Toys",
+            "imageHint": "artisan portrait"
+        }
       },
       {
         "id": 2,
@@ -108,7 +114,13 @@
         "dimensions": "10\" height, 5\" diameter",
         "process": "Hand-thrown on the potter's wheel, hand-painted with natural pigments, and low-fired.",
         "story": "The motifs on this vase are inspired by the gardens of the Amer Fort. Each brushstroke is a memory of the vibrant flowers I saw there as a child. It's a piece of my history.",
-        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+         "artisan": {
+            "name": "Arjun Mehta",
+            "avatar": "https://picsum.photos/seed/artisan6/40/40",
+            "specialty": "Blue Pottery",
+            "imageHint": "artisan portrait"
+        }
       },
         {
         "id": 3,
@@ -123,7 +135,13 @@
         "dimensions": "36\" x 18\"",
         "process": "The canvas is prepared with tamarind seed paste. The painting is done with fine brushes and natural colors, followed by a lacquer finish for longevity.",
         "story": "This scroll tells the story of Sita's abduction, a powerful moment in the Ramayana. I chose this scene to capture the emotion and drama of our epic tales for a new generation.",
-        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "artisan": {
+            "name": "Ananya Sharma",
+            "avatar": "https://picsum.photos/seed/artisan3/40/40",
+            "specialty": "Pattachitra Scrolls",
+            "imageHint": "artisan portrait"
+        }
       },
        {
         "id": 4,
@@ -138,8 +156,37 @@
         "dimensions": "15\" height",
         "process": "Shaped by hand and with simple tools, sun-dried, and then fired in a traditional kiln, giving it its characteristic earthy color.",
         "story": "The Bankura horse is a symbol of devotion in my community. We have been making them for centuries as offerings. This horse carries the prayers and hopes of my ancestors.",
-        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "artisan": {
+            "name": "Rohan Das",
+            "avatar": "https://picsum.photos/seed/artisan2/40/40",
+            "specialty": "Terracotta Pottery",
+            "imageHint": "artisan portrait"
+        }
       }
+    ],
+    "reviews": [
+        {
+            "name": "Aarav Sharma",
+            "avatar": "https://picsum.photos/seed/review1/40/40",
+            "rating": 5,
+            "comment": "Absolutely stunning craftsmanship. The details are even more incredible in person. A true masterpiece!",
+            "imageHint": "customer portrait"
+        },
+        {
+            "name": "Saanvi Patel",
+            "avatar": "https://picsum.photos/seed/review2/40/40",
+            "rating": 4,
+            "comment": "Beautiful piece, but the shipping took a bit longer than expected. The art itself is worth the wait though.",
+            "imageHint": "customer portrait"
+        },
+        {
+            "name": "Vivaan Gupta",
+            "avatar": "https://picsum.photos/seed/review3/40/40",
+            "rating": 5,
+            "comment": "I bought this as a gift and it was a huge hit. The story behind the piece makes it so special. Highly recommend!",
+            "imageHint": "customer portrait"
+        }
     ]
   },
    "marketing": {

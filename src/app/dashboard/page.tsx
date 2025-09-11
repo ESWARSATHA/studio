@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useSearchParams } from 'next/navigation';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Star, IndianRupee, Flame, LayoutGrid, ShoppingCart, ArrowRight } from "lucide-react";
+import { Star, IndianRupee, Flame, LayoutGrid, ArrowRight } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useLanguage } from '@/lib/locales/language-context';
 import placeholderImages from '@/lib/placeholder-images.json';
@@ -61,7 +61,7 @@ const BuyerDashboard = () => {
                         <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-primary-foreground">{featuredArt.title}</h1>
                         <p className="mt-4 text-lg text-primary-foreground/80">{featuredArt.description}</p>
                         <Button asChild size="lg" className="mt-6">
-                            <Link href={`/dashboard/products/${featuredArt.id}`}>
+                            <Link href={`/dashboard/products/${featuredArt.id}?userType=buyer`}>
                                 Discover Now <ArrowRight className="ml-2" />
                             </Link>
                         </Button>
@@ -94,17 +94,19 @@ const BuyerDashboard = () => {
                     {trendingProducts.map((product, index) => (
                       <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                          <Card className="overflow-hidden">
-                            <Image
-                              src={product.image}
-                              alt={product.name}
-                              width={400}
-                              height={300}
-                              className="w-full h-48 object-cover"
-                              data-ai-hint={product.imageHint}
-                            />
-                            <CardHeader className="p-3">
-                              <CardTitle className="text-base font-semibold truncate">{product.name}</CardTitle>
-                            </CardHeader>
+                            <Link href={`/dashboard/products/1?userType=buyer`}>
+                                <Image
+                                src={product.image}
+                                alt={product.name}
+                                width={400}
+                                height={300}
+                                className="w-full h-48 object-cover"
+                                data-ai-hint={product.imageHint}
+                                />
+                                <CardHeader className="p-3">
+                                <CardTitle className="text-base font-semibold truncate">{product.name}</CardTitle>
+                                </CardHeader>
+                            </Link>
                           </Card>
                       </CarouselItem>
                     ))}
@@ -120,7 +122,11 @@ const BuyerDashboard = () => {
                         <h2 className="text-2xl font-bold tracking-tight">Discover Handcrafted Art</h2>
                         <p className="text-muted-foreground">Explore unique creations from talented artisans across India.</p>
                     </div>
-                    <Button variant="link">View All <ArrowRight className="ml-2"/></Button>
+                    <Button variant="link" asChild>
+                        <Link href="/dashboard/products?userType=buyer">
+                            View All <ArrowRight className="ml-2"/>
+                        </Link>
+                    </Button>
                 </div>
                  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
                     {userCreations.map((product) => (
@@ -144,7 +150,7 @@ const ArtisanDashboard = () => {
                 <p className="mt-2 text-muted-foreground">{dashboardTranslations.description}</p>
             </div>
             <div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
                     <Flame className="h-7 w-7 text-primary" />
                     <h2 className="text-2xl font-bold tracking-tight">{dashboardTranslations.trending_title}</h2>
                 </div>
@@ -160,17 +166,19 @@ const ArtisanDashboard = () => {
                     {trendingProducts.map((product, index) => (
                       <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                          <Card className="overflow-hidden">
-                            <Image
-                              src={product.image}
-                              alt={product.name}
-                              width={400}
-                              height={300}
-                              className="w-full h-48 object-cover"
-                              data-ai-hint={product.imageHint}
-                            />
-                            <CardHeader className="p-3">
-                              <CardTitle className="text-base font-semibold truncate">{product.name}</CardTitle>
-                            </CardHeader>
+                             <Link href={`/dashboard/products/1`}>
+                                <Image
+                                src={product.image}
+                                alt={product.name}
+                                width={400}
+                                height={300}
+                                className="w-full h-48 object-cover"
+                                data-ai-hint={product.imageHint}
+                                />
+                                <CardHeader className="p-3">
+                                <CardTitle className="text-base font-semibold truncate">{product.name}</CardTitle>
+                                </CardHeader>
+                            </Link>
                           </Card>
                       </CarouselItem>
                     ))}
@@ -181,11 +189,20 @@ const ArtisanDashboard = () => {
             </div>
 
             <div>
-                <h2 className="text-3xl font-bold tracking-tight">{dashboardTranslations.creations_title}</h2>
-                <p className="text-muted-foreground">{dashboardTranslations.creations_description}</p>
+                <div className="flex justify-between items-center">
+                    <div>
+                        <h2 className="text-2xl font-bold tracking-tight">{dashboardTranslations.creations_title}</h2>
+                        <p className="text-muted-foreground">{dashboardTranslations.creations_description}</p>
+                    </div>
+                     <Button variant="link" asChild>
+                        <Link href="/dashboard/products">
+                            View All <ArrowRight className="ml-2"/>
+                        </Link>
+                    </Button>
+                </div>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 -mt-6">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
                 {userCreations.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
