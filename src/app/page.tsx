@@ -28,6 +28,7 @@ import {
   IndianRupee,
   Users,
   ShoppingBag,
+  User,
 } from 'lucide-react';
 import { Logo } from '@/components/icons';
 import { languages, useLanguage } from '@/lib/locales/language-context';
@@ -60,6 +61,11 @@ export default function Home() {
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
+          <Button asChild variant="ghost" size="icon">
+            <Link href="/login" aria-label="Login">
+              <User />
+            </Link>
+          </Button>
           <Button asChild variant="ghost">
             <Link href="/login">{homeTranslations.login}</Link>
           </Button>
