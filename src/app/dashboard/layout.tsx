@@ -31,6 +31,7 @@ import {
   Lightbulb,
   GraduationCap,
   ShoppingCart,
+  MoreVertical,
 } from "lucide-react";
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
@@ -41,6 +42,10 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuPortal,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { languages, useLanguage } from "@/lib/locales/language-context";
@@ -145,19 +150,44 @@ export default function DashboardLayout({
             </div>
              <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="gap-2">
-                    <Globe className="h-4 w-4"/>
-                    <span>{languages.find(lang => lang.code === language)?.name}</span>
-                  </Button>
+                    <Button variant="ghost" size="icon">
+                        <Settings/>
+                    </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  {languages.map(lang => (
-                    <DropdownMenuItem key={lang.code} onSelect={() => setLanguage(lang.code)} role="button">
-                      {lang.name}
+                    <DropdownMenuLabel>{translations.dashboard_layout.account_menu_label}</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem>
+                       <Link href={"/dashboard/settings"} className="flex items-center">
+                        <User className="mr-2" />
+                        {translations.dashboard_layout.account_menu_profile}
+                      </Link>
                     </DropdownMenuItem>
-                  ))}
+                    <DropdownMenuSub>
+                        <DropdownMenuSubTrigger>
+                            <Globe className="mr-2"/>
+                            <span>{languages.find(lang => lang.code === language)?.name}</span>
+                        </DropdownMenuSubTrigger>
+                        <DropdownMenuPortal>
+                             <DropdownMenuSubContent>
+                                {languages.map(lang => (
+                                    <DropdownMenuItem key={lang.code} onSelect={() => setLanguage(lang.code)} role="button">
+                                    {lang.name}
+                                    </DropdownMenuItem>
+                                ))}
+                            </DropdownMenuSubContent>
+                        </DropdownMenuPortal>
+                    </DropdownMenuSub>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem>
+                      <Link href="/login" className="flex items-center">
+                        <LogOut className="mr-2" />
+                        {translations.dashboard_layout.account_menu_logout}
+                      </Link>
+                    </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
+
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="rounded-full">
@@ -174,6 +204,12 @@ export default function DashboardLayout({
                    <Link href={"/dashboard/settings"} className="flex items-center">
                     <Settings className="mr-2" />
                     {translations.dashboard_layout.account_menu_settings}
+                  </Link>
+                </DropdownMenuItem>
+                 <DropdownMenuItem>
+                   <Link href={"/dashboard/settings"} className="flex items-center">
+                    <User className="mr-2" />
+                    {translations.dashboard_layout.account_menu_profile}
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
@@ -198,3 +234,5 @@ export default function DashboardLayout({
     </SidebarProvider>
   );
 }
+
+    
