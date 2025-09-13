@@ -151,7 +151,7 @@ export default function DashboardLayout({
              <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <Button variant="ghost" size="icon">
-                        <MoreVertical/>
+                        <Settings/>
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">

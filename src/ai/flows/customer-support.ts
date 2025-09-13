@@ -106,8 +106,8 @@ const customerSupportFlow = ai.defineFlow(
     outputSchema: CustomerSupportOutputSchema,
   },
   async (input) => {
-    const response = await run(prompt, async (p) => p(input));
-    const output = response.output();
+    const response = await ai.run(prompt, {input});
+    const output = response.output;
     if (!output) {
       throw new Error("The model did not return an answer.");
     }

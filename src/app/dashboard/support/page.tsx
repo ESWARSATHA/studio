@@ -22,26 +22,27 @@ export default function SupportPage() {
   const { translations } = useLanguage();
   const [isPending, startTransition] = useTransition();
 
+  const pageTranslations = translations.support_page || {};
+  const faqItems = pageTranslations.faq?.items || [];
+  
   useEffect(() => {
     if (state.status === 'success') {
       setAnswer(state.data?.answer || '');
       setQuery(''); // Clear input on success
       toast({
-        title: translations.support_page.answer_ready_title,
-        description: translations.support_page.answer_ready_desc,
+        title: pageTranslations.answer_ready_title,
+        description: pageTranslations.answer_ready_desc,
       });
     } else if (state.status === 'error') {
       toast({
         variant: "destructive",
-        title: translations.support_page.request_failed_title,
+        title: pageTranslations.request_failed_title,
         description: state.message,
       });
       setAnswer('');
     }
-  }, [state, toast, translations]);
+  }, [state, toast, pageTranslations]);
   
-  const pageTranslations = translations.support_page || {};
-  const faqItems = pageTranslations.faq?.items || [];
 
   return (
     <div className="grid gap-8 max-w-3xl mx-auto">
