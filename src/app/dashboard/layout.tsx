@@ -151,7 +151,7 @@ export default function DashboardLayout({
              <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <Button variant="ghost" size="icon">
-                        <Settings/>
+                        <MoreVertical/>
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
@@ -234,5 +234,3 @@ export default function DashboardLayout({
     </SidebarProvider>
   );
 }
-
-    
