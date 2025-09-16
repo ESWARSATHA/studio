@@ -53,6 +53,7 @@ import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import placeholderImages from '@/lib/placeholder-images.json';
+import { BottomNavBar } from "@/components/BottomNavBar";
 
 const { userAvatar } = placeholderImages.misc;
 
@@ -222,7 +223,7 @@ export default function DashboardLayout({
               </DropdownMenuContent>
             </DropdownMenu>
           </header>
-          <main className="flex-1 overflow-hidden">
+          <main className="flex-1 overflow-hidden pb-16 md:pb-0">
             <ScrollArea className="h-full">
               <div className="p-4 md:p-6 lg:p-8">
                 {children}
@@ -230,6 +231,7 @@ export default function DashboardLayout({
             </ScrollArea>
           </main>
         </div>
+        <BottomNavBar />
       </SidebarInset>
     </SidebarProvider>
   );
