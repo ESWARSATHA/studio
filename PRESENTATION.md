@@ -42,29 +42,41 @@ Our platform is built on a modern, robust, and scalable tech stack:
 
 **Location:** `/dashboard/products/new`
 
-This is a hands-on workshop where artisans practice creating product listings from scratch.
+This is a hands-on workshop where artisans practice creating product listings from scratch. Each feature is a lesson in digital commerce.
 
-*   **AI Description & Tags:** Upload a product photo to get an AI-generated description and relevant search tags. Teaches artisans what makes a good description.
-*   **AI Storyteller:** Dictate or type a product's story, and the AI refines it into a captivating narrative. Teaches the importance of storytelling in marketing.
-*   **AI Price Suggestions:** Get data-driven price suggestions based on a product's details to understand market value.
-*   **AI Image Generation:** Describe a product, and the AI generates a professional-quality studio photograph, teaching the importance of high-quality visuals.
+*   **AI Description & Tags:**
+    *   **Backend:** Uses the `generateProductDescription` flow, which analyzes a product image to create a keyword-rich description and relevant tags.
+    *   **Significance:** Teaches artisans what makes a good product description, improving discoverability in online searches.
+
+*   **AI Storyteller:**
+    *   **Backend:** Uses the `refineProductStory` flow to polish an artisan's raw, dictated story into an engaging narrative.
+    *   **Significance:** Teaches the importance of storytelling in marketing to build an emotional connection with buyers.
+
+*   **AI Price Suggestions:**
+    *   **Backend:** The `suggestPrice` flow analyzes the product details to suggest a fair market price range.
+    *   **Significance:** Helps artisans understand market value, competitive pricing, and how to value their own work.
+
+*   **AI Image Generation:**
+    *   **Backend:** The `generateProductImage` flow creates a studio-quality image from a text description.
+    *   **Significance:** Demonstrates the critical importance of high-quality visuals for attracting customers and making sales online.
 
 ---
 
 ## Slide 5: Key Feature: AI-Driven Business Strategy
 
+These tools act as a free business consultant, teaching artisans to think strategically.
+
 *   **AI Marketing Hub (`/dashboard/marketing`):**
-    *   Generates a complete marketing plan for a selected product.
-    *   Includes target audience profiles, social media ads, email copy, and platform-specific selling tips.
-    *   Teaches artisans how to think like a marketer.
+    *   **Backend:** Powered by the `generateMarketingCopy` flow, which creates a full marketing plan for a product.
+    *   **Significance:** Generates target audience profiles, social media ads, and email copy, teaching artisans how to think like a marketer and plan a promotional campaign.
 
 *   **AI Idea Hub (`/dashboard/suggestions`):**
-    *   Sparks innovation by generating suggestions for product variations, new design concepts, and strategies to reach new audiences.
-    *   Helps artisans blend tradition with modern trends.
+    *   **Backend:** The `generateProductSuggestions` flow sparks innovation by generating new ideas based on an existing product.
+    *   **Significance:** Provides suggestions for product variations, new design concepts, and strategies to reach new audiences, helping artisans blend tradition with modern trends.
 
 *   **AI Mentor (`/dashboard/support`):**
-    *   An interactive chatbot that provides expert advice on business, marketing, and using the platform's tools.
-    *   Acts as a free, 24/7 business coach.
+    *   **Backend:** Uses the `customerSupport` flow, an interactive chatbot that provides expert advice.
+    *   **Significance:** Acts as a free, 24/7 business coach, answering questions on business, marketing, and using the platform's tools, making expert knowledge accessible.
 
 ---
 
