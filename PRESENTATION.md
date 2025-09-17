@@ -1,171 +1,84 @@
-# Artisan AI Platform: Presentation
+
+# Artisan AI Platform: 3-Minute Video Script
 
 ---
 
-## Slide 1: Title
+### **Scene 1: The Heart of the Problem**
 
-**Artisan AI Platform**
+**(Time: 0:00 - 0:30)**
 
-*Empowering Indian Artisans with Generative AI*
+**Visuals:**
+*   (0:00-0:10) Start with beautiful, close-up shots of Indian artisans at work: a potter's hands shaping clay, a weaver at a loom, a painter adding fine details to a Madhubani painting. The mood is respectful and highlights their incredible skill.
+*   (0:10-0:20) Show a craftsperson looking overwhelmed while trying to use a smartphone, perhaps struggling with an e-commerce app or social media. Juxtapose their amazing craft with the challenge of the digital world.
+*   (0:20-0:30) A shot of a beautiful, finished product sitting unsold in a local market stall. The artisan looks hopeful but discouraged.
 
----
-
-## Slide 2: Project Vision & Mission
-
-**Our Mission:** To create an educational web application that empowers Indian artisans with the skills and tools needed to succeed in the digital marketplace.
-
-**The Problem:** Many traditional artisans lack the digital literacy, marketing skills, and business knowledge to sell their products effectively online.
-
-**Our Solution:** A safe, simulated e-commerce environment where artisans can learn and practice:
-*   Creating compelling product listings.
-*   Developing effective marketing strategies.
-*   Understanding business analytics and pricing.
-
-All powered by intuitive, generative AI tools.
+**Narration:**
+"India is home to millions of incredibly talented artisans. Their hands create magic, preserving centuries of tradition and culture. But in today's digital world, immense talent is often not enough. Many artisans face a significant challenge: the digital divide. They lack the marketing knowledge, business skills, and technical confidence to sell their beautiful creations online and reach a global audience. Their art deserves to be seen, but they are often left behind."
 
 ---
 
-## Slide 3: Technology Stack
+### **Scene 2: Introducing the Solution: Artisan AI**
 
-Our platform is built on a modern, robust, and scalable tech stack:
+**(Time: 0:30 - 0:55)**
 
-*   **Framework:** **Next.js 15** (App Router) for a fast, server-rendered React application.
-*   **UI Library:** **React** with **TypeScript** for building interactive and type-safe components.
-*   **Styling:** **Tailwind CSS** for a utility-first approach to styling.
-*   **UI Components:** **ShadCN UI** for a set of beautifully designed, accessible components.
-*   **Generative AI:** **Google's Genkit (v1.x)** for creating powerful AI flows and agents.
-*   **Internationalization (i18n):** JSON-based localization for multi-language support.
+**Visuals:**
+*   (0:30-0:40) A smooth, uplifting transition to the Artisan AI application's clean, welcoming homepage on a tablet or laptop. The logo appears clearly with the tagline: "Empower Your Craft with AI."
+*   (0:40-0:55) Quick, animated cuts showing the app's main dashboard, highlighting the different feature cards like "Create Showcase," "AI Mentor," and "Marketing Hub." The interface looks friendly and easy to use.
 
----
-
-## Slide 4: Key Feature: AI-Powered Content Creation
-
-**Location:** `/dashboard/products/new`
-
-This is a hands-on workshop where artisans practice creating product listings from scratch. Each feature is a lesson in digital commerce.
-
-*   **AI Description & Tags:**
-    *   **Backend:** Uses the `generateProductDescription` flow, which analyzes a product image to create a keyword-rich description and relevant tags.
-    *   **Significance:** Teaches artisans what makes a good product description, improving discoverability in online searches.
-
-*   **AI Storyteller:**
-    *   **Backend:** Uses the `refineProductStory` flow to polish an artisan's raw, dictated story into an engaging narrative.
-    *   **Significance:** Teaches the importance of storytelling in marketing to build an emotional connection with buyers.
-
-*   **AI Price Suggestions:**
-    *   **Backend:** The `suggestPrice` flow analyzes the product details to suggest a fair market price range.
-    *   **Significance:** Helps artisans understand market value, competitive pricing, and how to value their own work.
-
-*   **AI Image Generation:**
-    *   **Backend:** The `generateProductImage` flow creates a studio-quality image from a text description.
-    *   **Significance:** Demonstrates the critical importance of high-quality visuals for attracting customers and making sales online.
+**Narration:**
+"What if we could bridge this gap? Introducing **Artisan AI**, a free educational platform designed to empower Indian artisans. It's not another marketplace; it's a safe, simulated environment—a learning playground—where craftspeople can practice and master the skills needed to succeed in the digital economy, all with the help of intuitive, generative AI."
 
 ---
 
-## Slide 5: Key Feature: AI-Driven Business Strategy
+### **Scene 3: Learning by Doing: The AI Showcase**
 
-These tools act as a free business consultant, teaching artisans to think strategically.
+**(Time: 0:55 - 1:40)**
 
-*   **AI Marketing Hub (`/dashboard/marketing`):**
-    *   **Backend:** Powered by the `generateMarketingCopy` flow, which creates a full marketing plan for a product.
-    *   **Significance:** Generates target audience profiles, social media ads, and email copy, teaching artisans how to think like a marketer and plan a promotional campaign.
+**Visuals:**
+*   (0:55-1:10) Show a user on the **'Create Showcase'** page. They upload a photo of a wooden elephant. Text on screen highlights the first lesson: **"High-Quality Images are Key."**
+*   (1:10-1:20) The user clicks the **'Generate Description & Tags'** button. The AI analyzes the photo and instantly produces a compelling, keyword-rich description. The screen highlights the AI's output and the lesson: **"Learn What Makes a Great Product Description."**
+*   (1:20-1:30) The user then moves to the **'AI Storyteller'** section, typing a simple story. They click **'Refine with AI,'** and the text transforms into an engaging narrative. The lesson on screen: **"Master the Art of Storytelling to Connect with Buyers."**
+*   (1:30-1:40) Finally, the user clicks **'Suggest Price,'** and the AI provides a price range with clear reasoning. The lesson: **"Understand Your Product's Market Value."**
 
-*   **AI Idea Hub (`/dashboard/suggestions`):**
-    *   **Backend:** The `generateProductSuggestions` flow sparks innovation by generating new ideas based on an existing product.
-    *   **Significance:** Provides suggestions for product variations, new design concepts, and strategies to reach new audiences, helping artisans blend tradition with modern trends.
+**Narration:**
+"The journey begins in the **AI Showcase**. Here, artisans learn by doing. They upload a photo of their product, and with a single click, our AI generates a professional product description and relevant tags. This isn't just about saving time; it teaches them what keywords and details attract online buyers.
 
-*   **AI Mentor (`/dashboard/support`):**
-    *   **Backend:** Uses the `customerSupport` flow, an interactive chatbot that provides expert advice.
-    *   **Significance:** Acts as a free, 24/7 business coach, answering questions on business, marketing, and using the platform's tools, making expert knowledge accessible.
+Next, they use the **AI Storyteller**. They can share the inspiration behind their work in their own words, and the AI helps them polish it into a captivating story that builds an emotional connection with customers.
 
----
-
-## Slide 6: Key Feature: Analytics, Community & Learning
-
-*   **Analytics Dashboard (`/dashboard/analytics`):** A simulated analytics page that shows how to track product views, ratings, and AI-powered insights. Teaches data literacy.
-*   **Community Hub (`/dashboard/community`):** A page to connect with other artisans, fostering a sense of community and shared learning.
-*   **Live Studio (`/dashboard/livestudio`):** A feature for verified artisans to host live-streaming sessions to demonstrate their craft and engage with a virtual audience.
-*   **Artisan Academy (`/dashboard/academy`):** A library of video tutorials covering advanced craft techniques, business negotiation, and digital marketing.
+To understand pricing, the **AI Price Suggestion** tool analyzes the product and provides a data-driven price range, explaining the reasoning. This helps artisans learn how to value their work competitively."
 
 ---
 
-## Slide 7: AI Agents (Genkit Flows)
+### **Scene 4: Mastering Strategy with AI Tools**
 
-Our AI capabilities are powered by a suite of specialized agents built with Genkit.
+**(Time: 1:40 - 2:25)**
 
-| Agent                             | File Path                               | Purpose                                                                                |
-| --------------------------------- | --------------------------------------- | -------------------------------------------------------------------------------------- |
-| **`generateProductDescription`**  | `generate-product-description.ts`       | Analyzes a product image to create a description and tags.                               |
-| **`refineProductStory`**          | `refine-product-story.ts`               | Polishes a raw, dictated story into an engaging narrative.                             |
-| **`suggestPrice`**                | `suggest-price.ts`                      | Suggests a fair market price range based on product details.                           |
-| **`generateProductImage`**        | `generate-product-image.ts`             | Generates a studio-quality product image from a text description.                      |
-| **`generateMarketingCopy`**       | `generate-marketing-copy.ts`            | Creates a full marketing plan, including ad copy, emails, and target audience.         |
-| **`generateProductSuggestions`**  | `generate-product-suggestions.ts`       | Provides innovative ideas for product variations and new designs.                      |
-| **`customerSupport` (`AI Mentor`)**| `customer-support.ts`                   | Answers user questions on business and marketing, acting as an expert mentor.          |
-| **`analyzeFeedback`**             | `analyze-feedback.ts`                   | (Not yet implemented in UI) Analyzes customer feedback for sentiment and categorization. |
+**Visuals:**
+*   (1:40-1:55) Transition to the **'AI Marketing Hub.'** A user selects a product, and the AI generates a full marketing plan: target audience profiles, social media ad copy, and promotional emails. The screen shows these different outputs clearly.
+*   (1:55-2:10) Move to the **'AI Idea Hub.'** The AI generates suggestions for product variations (e.g., "Apply this pattern to coasters") and new design concepts, showing a blend of traditional and modern styles.
+*   (2:10-2:25) Show the **'AI Mentor'** chatbot interface. A user types a question: "How do I sell my art on Instagram?" The AI provides a friendly, step-by-step, actionable answer.
 
----
+**Narration:**
+"But it's not just about one product. It's about building a business. The **AI Marketing Hub** acts as a free marketing consultant, generating a complete promotional plan for any product. This teaches artisans how to think like a marketer.
 
-## Slide 8: Package Deep-Dive: Core Dependencies
+The **AI Idea Hub** sparks innovation, providing suggestions on how to blend traditional skills with modern trends to reach new customers.
 
-*   **`next`**: The core framework for building the application.
-*   **`react` & `react-dom`**: The UI library for building components.
-*   **`typescript`**: Provides static typing for improved code quality and developer experience.
-*   **`tailwindcss`**: A utility-first CSS framework for styling.
-*   **`firebase`**: The client-side SDK for interacting with Firebase services like Auth and Firestore.
+And whenever they have a question, the **AI Mentor** is there. It's a 24/7 business coach, providing expert advice on everything from financial basics to social media strategy, making expert knowledge accessible to all."
 
 ---
 
-## Slide 9: Package Deep-Dive: AI & Forms
+### **Scene 5: Empowering the Future**
 
-*   **`genkit` & `@genkit-ai/googleai`**: The core packages for creating and running AI flows with Google's generative models.
-*   **`zod`**: Used extensively in Genkit flows to define structured input and output schemas, ensuring AI-generated data is predictable and type-safe.
-*   **`react-hook-form` & `@hookform/resolvers`**: Manages all form state and validation, integrating with `zod` schemas for robust error handling.
+**(Time: 2:25 - 3:00)**
 
----
+**Visuals:**
+*   (2:25-2:35) A montage of other features: the Analytics dashboard with its charts, the Community Hub with artisan profiles, and the Artisan Academy with video tutorials.
+*   (2:35-2:45) Return to the shots of the artisans from the beginning. Now they look confident and optimistic, successfully using a tablet or phone to manage their digital showcase.
+*   (2:45-3:00) End with a powerful shot of a smiling artisan holding their craft, with the Artisan AI logo and a final call to action on the screen: **"Artisan AI: Preserving Tradition. Empowering Futures. Join us on our mission."**
 
-## Slide 10: Package Deep-Dive: UI Components & Utilities
+**Narration:**
+"From simulated analytics that teach data literacy to a community hub that fosters collaboration, Artisan AI is a comprehensive educational ecosystem. By harnessing the power of generative AI, we're not just creating tools; we're building confidence, nurturing entrepreneurship, and ensuring that the rich artistic heritage of India thrives in the digital age.
 
-*   **`lucide-react`**: Provides a beautiful and extensive library of icons.
-*   **`shadcn-ui` (various `@radix-ui/*` packages)**: The foundation for our UI components (Buttons, Cards, Forms, etc.). These are highly accessible and customizable.
-*   **`class-variance-authority` & `clsx`**: Utilities for creating dynamic and conditional class names for components.
-*   **`tailwind-merge`**: Prevents conflicting Tailwind CSS classes.
-*   **`recharts`**: A composable charting library used for the Analytics dashboard.
-*   **`embla-carousel-react`**: Powers the carousels on the dashboard.
+Artisan AI: Preserving Tradition. Empowering Futures."
 
 ---
-
-## Slide 11: Project Structure Overview
-
-```
-.
-├── src/
-│   ├── app/            # Main application routes (Next.js App Router)
-│   │   ├── dashboard/  # All authenticated user-facing pages
-│   │   └── ...
-│   │
-│   ├── ai/             # Genkit configuration and flows
-│   │   ├── flows/      # All Genkit AI agents are defined here
-│   │   └── genkit.ts   # Genkit initialization
-│   │
-│   ├── components/     # Reusable React components
-│   │   └── ui/         # ShadCN UI components
-│   │
-│   ├── hooks/          # Custom React hooks (e.g., use-toast)
-│   │
-│   └── lib/            # Shared libraries and utilities
-│       ├── locales/    # JSON files for internationalization
-│       └── firebase.ts # Firebase client configuration
-│
-├── public/             # Static assets (images, fonts)
-│
-└── package.json        # Project dependencies
-```
-
----
-
-## Slide 12: Q&A / Thank You
-
-**Thank You!**
-
-Any Questions?
