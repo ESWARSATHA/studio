@@ -73,7 +73,7 @@ const translations: Record<string, any> = {
   mni,
   ne,
   or,
-  pa,
+pa,
   sa,
   sat,
   sd,
@@ -89,14 +89,12 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState('en');
-  const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language');
     if (savedLanguage && translations[savedLanguage]) {
       setLanguage(savedLanguage);
     }
-    setHydrated(true);
   }, []);
 
   const handleSetLanguage = (lang: string) => {
@@ -110,11 +108,6 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   };
   
   const currentTranslations = translations[language] || translations.en;
-  
-  if (!hydrated) {
-    // Return null on the server to avoid hydration mismatch
-    return null;
-  }
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, translations: currentTranslations }}>
