@@ -56,7 +56,7 @@
         "email_placeholder": "m@example.com",
         "phone_label": "Phone Number",
         "phone_placeholder": "e.g., 9876543210",
-        "phone2_label": "Second Phone Number (Mandatory)",
+        "phone2_label": "Second Phone Number (Optional)",
         "phone2_placeholder": "Enter an alternate phone number",
         "address_label": "Address",
         "address_placeholder": "Enter your full address",

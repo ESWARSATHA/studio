@@ -218,7 +218,6 @@ export default function SignupPage() {
                   name="phone2"
                   type="tel"
                   placeholder={translations.signup_page.phone2_placeholder}
-                  required
                 />
               </div>
 

@@ -53,7 +53,7 @@
         "email_placeholder": "m@example.com",
         "phone_label": "ఫోను నంబరు",
         "phone_placeholder": "ఉదా., 9876543210",
-        "phone2_label": "రెండవ ఫోన్ నంబర్ (తప్పనిసరి)",
+        "phone2_label": "రెండవ ఫోన్ నంబర్ (ఐచ్ఛికం)",
         "phone2_placeholder": "ఒక ప్రత్యామ్నాయ ఫోన్ నంబర్‌ను నమోదు చేయండి",
         "address_label": "చిరునామా",
         "address_placeholder": "మీ పూర్తి చిరునామాను నమోదు చేయండి",

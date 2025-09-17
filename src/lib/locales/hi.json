@@ -53,7 +53,7 @@
         "email_placeholder": "m@example.com",
         "phone_label": "फ़ोन नंबर",
         "phone_placeholder": "उदा., 9876543210",
-        "phone2_label": "दूसरा फ़ोन नंबर (अनिवार्य)",
+        "phone2_label": "दूसरा फ़ोन नंबर (वैकल्पिक)",
         "phone2_placeholder": "एक वैकल्पिक फ़ोन नंबर दर्ज करें",
         "address_label": "पता",
         "address_placeholder": "अपना पूरा पता दर्ज करें",

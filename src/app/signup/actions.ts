@@ -7,7 +7,7 @@ const signupSchema = z.object({
   username: z.string().min(3, 'Username must be at least 3 characters.'),
   email: z.string().email('Invalid email address.'),
   phone: z.string().min(10, 'Please enter a valid phone number.'),
-  phone2: z.string().min(10, 'Please enter a valid second phone number.'),
+  phone2: z.string().optional(),
   address: z.string().min(10, 'Please enter a valid address.'),
   productCategory: z.string().min(1, 'Please select a product category.'),
   password: z.string().min(8, 'Password must be at least 8 characters.'),

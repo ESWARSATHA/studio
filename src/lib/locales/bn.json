@@ -53,7 +53,7 @@
         "email_placeholder": "m@example.com",
         "phone_label": "ফোন নম্বর",
         "phone_placeholder": "যেমন, 9876543210",
-        "phone2_label": "দ্বিতীয় ফোন নম্বর (বাধ্যতামূলক)",
+        "phone2_label": "দ্বিতীয় ফোন নম্বর (ঐচ্ছিক)",
         "phone2_placeholder": "একটি বিকল্প ফোন নম্বর লিখুন",
         "address_label": "ঠিকানা",
         "address_placeholder": "আপনার সম্পূর্ণ ঠিকানা লিখুন",
@@ -73,7 +73,7 @@
     },
     "dashboard_layout": {
         "menu_dashboard": "ড্যাশবোর্ড",
-        "menu_add_product": "শোকেস তৈরি করুন",
+        "menu_add_product": "شوকেস তৈরি করুন",
         "menu_analytics": "বিশ্লেষণ",
         "menu_marketing": "বিপণন হাব",
         "menu_community": "কমিউনিটি হাব",
