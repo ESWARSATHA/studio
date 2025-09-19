@@ -3,10 +3,11 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useLanguage } from "@/lib/locales/language-context";
-import { User, Mail, Phone, Home, Clock, Edit, ShieldCheck, CreditCard, UserSquare, DollarSign, Info } from 'lucide-react';
+import { User, Mail, Phone, Home, Clock, Edit, ShieldCheck, CreditCard, UserSquare, DollarSign, Info, Save, X, Camera } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,25 +16,92 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { UploadCloud, FileCheck } from 'lucide-react';
 import placeholderImages from '@/lib/placeholder-images.json';
+import { useToast } from '@/hooks/use-toast';
 
-const { profile: profileData } = placeholderImages.settings;
+const { profile: initialProfileData } = placeholderImages.settings;
 
 const ProfileTab = () => {
+    const { toast } = useToast();
+    const [isEditing, setIsEditing] = useState(false);
+    const [profileData, setProfileData] = useState(initialProfileData);
+    const [avatarPreview, setAvatarPreview] = useState<string | null>(profileData.avatar);
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setProfileData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setAvatarPreview(reader.result as string);
+                // In a real app, you would also prepare the file for upload
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+    
+    const handleSave = () => {
+        setIsEditing(false);
+        // Here you would typically send the updated profileData to your backend
+        toast({
+            title: "Profile Updated",
+            description: "Your changes have been saved successfully.",
+        });
+    };
+    
+    const handleCancel = () => {
+        setProfileData(initialProfileData);
+        setAvatarPreview(initialProfileData.avatar);
+        setIsEditing(false);
+    };
+
     return (
         <div className="grid gap-8">
             <div className="flex flex-col items-center gap-4 text-center">
-                <Avatar className="h-28 w-28 border-4 border-primary">
-                    <AvatarImage src={profileData.avatar} alt={profileData.name} data-ai-hint={profileData.imageHint} />
-                    <AvatarFallback>{profileData.name.charAt(0)}</AvatarFallback>
-                </Avatar>
-                <div>
-                    <h1 className="text-3xl font-bold">{profileData.name}</h1>
-                    <p className="text-muted-foreground">{profileData.specialty}</p>
+                <div className="relative">
+                    <Avatar className="h-28 w-28 border-4 border-primary">
+                        <AvatarImage src={avatarPreview || undefined} alt={profileData.name} data-ai-hint={profileData.imageHint} />
+                        <AvatarFallback>{profileData.name.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                     {isEditing && (
+                        <Label htmlFor="avatar-upload" className="absolute -bottom-2 -right-2 bg-primary text-primary-foreground rounded-full p-2 cursor-pointer hover:bg-primary/90 transition-colors">
+                            <Camera className="h-4 w-4" />
+                            <Input id="avatar-upload" type="file" accept="image/*" className="hidden" onChange={handleAvatarChange} />
+                        </Label>
+                    )}
                 </div>
-                 <Button variant="outline">
-                    <Edit className="mr-2" />
-                    Edit Profile
-                </Button>
+                <div>
+                     {isEditing ? (
+                        <Input name="name" value={profileData.name} onChange={handleInputChange} className="text-3xl font-bold text-center h-auto p-0 border-0 shadow-none focus-visible:ring-0"/>
+                    ) : (
+                        <h1 className="text-3xl font-bold">{profileData.name}</h1>
+                    )}
+                     {isEditing ? (
+                        <Input name="specialty" value={profileData.specialty} onChange={handleInputChange} className="text-muted-foreground text-center mt-1 h-auto p-0 border-0 shadow-none focus-visible:ring-0"/>
+                    ) : (
+                        <p className="text-muted-foreground">{profileData.specialty}</p>
+                    )}
+                </div>
+                {isEditing ? (
+                     <div className="flex gap-2">
+                        <Button onClick={handleSave}>
+                            <Save className="mr-2" />
+                            Save Changes
+                        </Button>
+                        <Button variant="outline" onClick={handleCancel}>
+                            <X className="mr-2" />
+                            Cancel
+                        </Button>
+                    </div>
+                ) : (
+                    <Button variant="outline" onClick={() => setIsEditing(true)}>
+                        <Edit className="mr-2" />
+                        Edit Profile
+                    </Button>
+                )}
             </div>
             
             <Card>
@@ -45,25 +113,37 @@ const ProfileTab = () => {
                     <CardDescription>Your personal and contact details.</CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-6">
-                    <div className="flex items-start gap-4">
+                     <div className="flex items-start gap-4">
                         <Mail className="h-5 w-5 text-muted-foreground mt-1"/>
                         <div>
                             <h4 className="font-semibold">Email Address</h4>
-                            <p className="text-muted-foreground">{profileData.email}</p>
+                            {isEditing ? (
+                                <Input name="email" value={profileData.email} onChange={handleInputChange} />
+                            ) : (
+                                <p className="text-muted-foreground">{profileData.email}</p>
+                            )}
                         </div>
                     </div>
-                    <div className="flex items-start gap-4">
+                     <div className="flex items-start gap-4">
                         <Phone className="h-5 w-5 text-muted-foreground mt-1"/>
                         <div>
                             <h4 className="font-semibold">Phone Number</h4>
-                            <p className="text-muted-foreground">{profileData.phone}</p>
+                             {isEditing ? (
+                                <Input name="phone" value={profileData.phone} onChange={handleInputChange} />
+                            ) : (
+                                <p className="text-muted-foreground">{profileData.phone}</p>
+                            )}
                         </div>
                     </div>
                     <div className="flex items-start gap-4">
                         <Home className="h-5 w-5 text-muted-foreground mt-1"/>
                         <div>
                             <h4 className="font-semibold">Address</h4>
-                            <p className="text-muted-foreground">{profileData.address}</p>
+                             {isEditing ? (
+                                <Input name="address" value={profileData.address} onChange={handleInputChange} />
+                            ) : (
+                                <p className="text-muted-foreground">{profileData.address}</p>
+                            )}
                         </div>
                     </div>
                 </CardContent>
