@@ -56,7 +56,7 @@
         "description": "A stunning Pattachitra scroll from Odisha, depicting a tale from the Ramayana with natural pigments on cloth.",
         "image": "https://picsum.photos/seed/creation3/400/300",
         "imageHint": "pattachitra scroll",
-        "rating": 5.0,
+        "rating": 5,
         "reviews": 12
       },
       {
@@ -68,6 +68,46 @@
         "imageHint": "terracotta horse",
         "rating": 4.7,
         "reviews": 31
+      },
+      {
+        "id": 5,
+        "name": "Kalamkari Textile Wall Hanging",
+        "price": 3200,
+        "description": "A beautiful wall hanging featuring intricate Kalamkari art, hand-painted using a traditional pen with natural dyes.",
+        "image": "https://picsum.photos/seed/creation5/400/300",
+        "imageHint": "kalamkari textile",
+        "rating": 4.9,
+        "reviews": 19
+      },
+      {
+        "id": 6,
+        "name": "Dokra Brass Human Figurine",
+        "price": 1500,
+        "description": "A unique human figurine crafted using the ancient Dokra metal casting technique, which is over 4,000 years old.",
+        "image": "https://picsum.photos/seed/creation6/400/300",
+        "imageHint": "dokra brass figurine",
+        "rating": 4.8,
+        "reviews": 22
+      },
+      {
+        "id": 7,
+        "name": "Madhubani Painted Coasters",
+        "price": 999,
+        "description": "Set of 4 coasters, hand-painted with vibrant Madhubani art, depicting themes of nature and harmony.",
+        "image": "https://picsum.photos/seed/creation7/400/300",
+        "imageHint": "madhubani coasters",
+        "rating": 4.6,
+        "reviews": 45
+      },
+      {
+        "id": 8,
+        "name": "Bandhani Silk Scarf",
+        "price": 2100,
+        "description": "A luxurious silk scarf from Gujarat, adorned with intricate Bandhani tie-dye patterns in rich, vibrant colors.",
+        "image": "https://picsum.photos/seed/creation8/400/300",
+        "imageHint": "bandhani silk scarf",
+        "rating": 4.9,
+        "reviews": 33
       }
     ],
     "featuredArt": {

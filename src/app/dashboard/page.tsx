@@ -1,6 +1,7 @@
 
 'use client';
 
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from 'next/navigation';
@@ -11,11 +12,14 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { useLanguage } from '@/lib/locales/language-context';
 import placeholderImages from '@/lib/placeholder-images.json';
 
-const { trendingProducts, userCreations, featuredArt } = placeholderImages.dashboard;
+const { trendingProducts, featuredArt } = placeholderImages.dashboard;
+const allProducts = placeholderImages.dashboard.userCreations;
 
-const ProductCard = ({ product }: { product: typeof userCreations[0] }) => (
+type Product = typeof allProducts[0];
+
+const ProductCard = ({ product, userType }: { product: Product, userType: string }) => (
     <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-        <Link href={`/dashboard/products/${product.id}`} className="flex flex-col h-full">
+        <Link href={`/dashboard/products/${product.id}${userType === 'buyer' ? '?userType=buyer' : ''}`} className="flex flex-col h-full">
             <div className="relative">
                 <Image
                     src={product.image}
@@ -49,9 +53,13 @@ const ProductCard = ({ product }: { product: typeof userCreations[0] }) => (
     </Card>
 );
 
-const BuyerDashboard = () => {
+const BuyerDashboard = ({ searchQuery }: { searchQuery: string }) => {
     const { translations } = useLanguage();
     const dashboardTranslations = translations.dashboard_page || {};
+
+    const filteredProducts = allProducts.filter(product =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     return (
         <div className="grid gap-12">
@@ -129,8 +137,8 @@ const BuyerDashboard = () => {
                     </Button>
                 </div>
                  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
-                    {userCreations.map((product) => (
-                      <ProductCard key={product.id} product={product} />
+                    {filteredProducts.map((product) => (
+                      <ProductCard key={product.id} product={product} userType="buyer" />
                     ))}
                 </div>
             </section>
@@ -138,9 +146,13 @@ const BuyerDashboard = () => {
     );
 };
 
-const ArtisanDashboard = () => {
+const ArtisanDashboard = ({ searchQuery }: { searchQuery: string }) => {
     const { translations } = useLanguage();
     const dashboardTranslations = translations.dashboard_page || {};
+
+    const filteredProducts = allProducts.filter(product =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     return (
         <div className="grid gap-12">
@@ -203,20 +215,20 @@ const ArtisanDashboard = () => {
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
-                {userCreations.map((product) => (
-                  <ProductCard key={product.id} product={product} />
+                {filteredProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} userType="artisan" />
                 ))}
             </div>
         </div>
     );
 }
 
-export default function DashboardPage() {
+export default function DashboardPage({ searchQuery }: { searchQuery: string }) {
     const searchParams = useSearchParams();
     const userType = searchParams.get('userType') || 'artisan';
 
     if (userType === 'buyer') {
-        return <BuyerDashboard />;
+        return <BuyerDashboard searchQuery={searchQuery} />;
     }
-    return <ArtisanDashboard />;
+    return <ArtisanDashboard searchQuery={searchQuery} />;
 }
