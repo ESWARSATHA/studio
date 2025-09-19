@@ -9,7 +9,7 @@
  */
 
 import {ai} from '@/ai/genkit';
-import {z, run} from 'genkit';
+import {z} from 'genkit';
 import {generateMarketingCopy} from './generate-marketing-copy';
 import {suggestPrice} from './suggest-price';
 
@@ -106,7 +106,7 @@ const customerSupportFlow = ai.defineFlow(
     outputSchema: CustomerSupportOutputSchema,
   },
   async (input) => {
-    const response = await ai.run(prompt, {input});
+    const response = await prompt(input);
     const output = response.output;
     if (!output) {
       throw new Error("The model did not return an answer.");
