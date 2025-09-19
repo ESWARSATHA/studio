@@ -2,6 +2,7 @@
 "use client";
 
 import Link from "next/link";
+import React, { useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import {
   SidebarProvider,
@@ -54,7 +55,7 @@ import placeholderImages from '@/lib/placeholder-images.json';
 import { BottomNavBar } from "@/components/BottomNavBar";
 import type { DashboardHeaderProps } from "@/components/DashboardHeader";
 import { DashboardHeader } from "@/components/DashboardHeader";
-import { useState } from "react";
+
 
 const { userAvatar } = placeholderImages.misc;
 
