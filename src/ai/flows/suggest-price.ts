@@ -27,7 +27,11 @@ const SuggestPriceOutputSchema = z.object({
 export type SuggestPriceOutput = z.infer<typeof SuggestPriceOutputSchema>;
 
 export async function suggestPrice(input: SuggestPriceInput): Promise<SuggestPriceOutput> {
-  return suggestPriceFlow(input);
+  const {output} = await suggestPriceFlow(input);
+  if (!output) {
+    throw new Error('The AI model failed to suggest a price. Please try again later.');
+  }
+  return output;
 }
 
 const prompt = ai.definePrompt({
@@ -75,7 +79,6 @@ const suggestPriceFlow = ai.defineFlow(
     outputSchema: SuggestPriceOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
-    return output!;
+    return await prompt(input);
   }
 );

@@ -27,77 +27,77 @@ const generateImageSchema = z.object({
 });
 
 export async function handleGenerateDescription(prevState: any, formData: FormData) {
+  const validatedFields = generateDescriptionSchema.safeParse({
+    photoDataUri: formData.get('photoDataUri'),
+  });
+
+  if (!validatedFields.success) {
+    return { status: 'error', message: 'Invalid input.', errors: validatedFields.error.flatten().fieldErrors, type: 'description' };
+  }
+
   try {
-    const validatedFields = generateDescriptionSchema.safeParse({
-      photoDataUri: formData.get('photoDataUri'),
-    });
-
-    if (!validatedFields.success) {
-      return { status: 'error', message: 'Invalid input.', errors: validatedFields.error.flatten().fieldErrors };
-    }
-
     const result = await generateProductDescription(validatedFields.data);
     return { status: 'success', data: result, type: 'description' };
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
-    return { status: 'error', message: 'Failed to generate description. Please try again.', type: 'description' };
+    return { status: 'error', message: error.message || 'Failed to generate description. Please try again.', type: 'description' };
   }
 }
 
 export async function handleRefineStory(prevState: any, formData: FormData) {
+  const validatedFields = refineStorySchema.safeParse({
+    productName: formData.get('productName'),
+    productDescription: formData.get('productDescription'),
+    story: formData.get('story'),
+  });
+
+  if (!validatedFields.success) {
+    return { status: 'error', message: 'Invalid input.', errors: validatedFields.error.flatten().fieldErrors, type: 'story' };
+  }
+  
   try {
-    const validatedFields = refineStorySchema.safeParse({
-      productName: formData.get('productName'),
-      productDescription: formData.get('productDescription'),
-      story: formData.get('story'),
-    });
-
-     if (!validatedFields.success) {
-      return { status: 'error', message: 'Invalid input.', errors: validatedFields.error.flatten().fieldErrors, type: 'story' };
-    }
-
     const { productName, productDescription, story } = validatedFields.data;
     const result = await refineProductStory({ productName, productDescription, voiceInput: story });
     return { status: 'success', data: result, type: 'story' };
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
-    return { status: 'error', message: 'Failed to refine story. Please try again.', type: 'story' };
+    return { status: 'error', message: error.message || 'Failed to refine story. Please try again.', type: 'story' };
   }
 }
 
 export async function handleSuggestPrice(prevState: any, formData: FormData) {
+  const validatedFields = suggestPriceSchema.safeParse({
+    productName: formData.get('productName'),
+    productDescription: formData.get('productDescription'),
+  });
+
+  if (!validatedFields.success) {
+    return { status: 'error', message: 'Invalid input.', errors: validatedFields.error.flatten().fieldErrors, type: 'price' };
+  }
+
   try {
-    const validatedFields = suggestPriceSchema.safeParse({
-      productName: formData.get('productName'),
-      productDescription: formData.get('productDescription'),
-    });
-
-    if (!validatedFields.success) {
-      return { status: 'error', message: 'Invalid input.', errors: validatedFields.error.flatten().fieldErrors, type: 'price' };
-    }
-
     const result = await suggestPrice(validatedFields.data);
     return { status: 'success', data: result, type: 'price' };
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
-    return { status: 'error', message: 'Failed to suggest price. Please try again.', type: 'price' };
+    return { status: 'error', message: error.message || 'Failed to suggest price. Please try again.', type: 'price' };
   }
 }
 
 export async function handleGenerateImage(prevState: any, formData: FormData) {
-    try {
-        const validatedFields = generateImageSchema.safeParse({
-            description: formData.get('description'),
-        });
+    const validatedFields = generateImageSchema.safeParse({
+        description: formData.get('description'),
+    });
 
-        if (!validatedFields.success) {
-            return { status: 'error', message: 'A description is required to generate an image.', errors: validatedFields.error.flatten().fieldErrors, type: 'image' };
-        }
-        
+    if (!validatedFields.success) {
+        return { status: 'error', message: 'A description is required to generate an image.', errors: validatedFields.error.flatten().fieldErrors, type: 'image' };
+    }
+    
+    try {
         const result = await generateProductImage(validatedFields.data);
         return { status: 'success', data: result, type: 'image' };
-    } catch (error) {
+    } catch (error: any) {
         console.error(error);
-        return { status: 'error', message: 'Failed to generate image. Please try again later.', type: 'image' };
+        return { status: 'error', message: error.message || 'Failed to generate image. Please try again later.', type: 'image' };
     }
 }

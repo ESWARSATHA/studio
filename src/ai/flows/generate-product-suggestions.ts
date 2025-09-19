@@ -26,7 +26,11 @@ const GenerateProductSuggestionsOutputSchema = z.object({
 export type GenerateProductSuggestionsOutput = z.infer<typeof GenerateProductSuggestionsOutputSchema>;
 
 export async function generateProductSuggestions(input: GenerateProductSuggestionsInput): Promise<GenerateProductSuggestionsOutput> {
-  return generateProductSuggestionsFlow(input);
+  const {output} = await generateProductSuggestionsFlow(input);
+  if (!output) {
+    throw new Error('The AI model failed to generate suggestions. Please try again later.');
+  }
+  return output;
 }
 
 const prompt = ai.definePrompt({
@@ -88,7 +92,6 @@ const generateProductSuggestionsFlow = ai.defineFlow(
     outputSchema: GenerateProductSuggestionsOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
-    return output!;
+    return await prompt(input);
   }
 );

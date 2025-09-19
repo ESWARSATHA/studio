@@ -30,7 +30,11 @@ export type GenerateProductDescriptionOutput = z.infer<typeof GenerateProductDes
 export async function generateProductDescription(
   input: GenerateProductDescriptionInput
 ): Promise<GenerateProductDescriptionOutput> {
-  return generateProductDescriptionFlow(input);
+  const {output} = await generateProductDescriptionFlow(input);
+  if (!output) {
+    throw new Error('The AI model failed to generate a description. Please try again later.');
+  }
+  return output;
 }
 
 const prompt = ai.definePrompt({
@@ -73,7 +77,6 @@ const generateProductDescriptionFlow = ai.defineFlow(
     outputSchema: GenerateProductDescriptionOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
-    return output!;
+    return await prompt(input);
   }
 );

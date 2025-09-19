@@ -24,7 +24,11 @@ const AnalyzeFeedbackOutputSchema = z.object({
 export type AnalyzeFeedbackOutput = z.infer<typeof AnalyzeFeedbackOutputSchema>;
 
 export async function analyzeFeedback(input: AnalyzeFeedbackInput): Promise<AnalyzeFeedbackOutput> {
-  return analyzeFeedbackFlow(input);
+  const {output} = await analyzeFeedbackFlow(input);
+  if (!output) {
+    throw new Error('The AI model failed to analyze the feedback. Please try again later.');
+  }
+  return output;
 }
 
 const prompt = ai.definePrompt({
@@ -70,7 +74,6 @@ const analyzeFeedbackFlow = ai.defineFlow(
     outputSchema: AnalyzeFeedbackOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
-    return output!;
+    return await prompt(input);
   }
 );

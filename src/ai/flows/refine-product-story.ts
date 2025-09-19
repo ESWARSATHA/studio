@@ -24,7 +24,11 @@ const RefineProductStoryOutputSchema = z.object({
 export type RefineProductStoryOutput = z.infer<typeof RefineProductStoryOutputSchema>;
 
 export async function refineProductStory(input: RefineProductStoryInput): Promise<RefineProductStoryOutput> {
-  return refineProductStoryFlow(input);
+  const {output} = await refineProductStoryFlow(input);
+  if (!output) {
+    throw new Error('The AI model failed to refine the story. Please try again later.');
+  }
+  return output;
 }
 
 const prompt = ai.definePrompt({
@@ -67,7 +71,6 @@ const refineProductStoryFlow = ai.defineFlow(
     outputSchema: RefineProductStoryOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
-    return output!;
+    return await prompt(input);
   }
 );
