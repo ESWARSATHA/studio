@@ -110,7 +110,7 @@ export default function DashboardLayout({
   const childrenWithProps = React.Children.map(children, child => {
     if (React.isValidElement(child)) {
       // @ts-ignore
-      return React.cloneElement(child, { searchQuery, setSearchQuery });
+      return React.cloneElement(child, { searchQuery });
     }
     return child;
   });
