@@ -58,7 +58,7 @@ const BuyerDashboard = ({ searchQuery }: { searchQuery: string }) => {
     const dashboardTranslations = translations.dashboard_page || {};
 
     const filteredProducts = allProducts.filter(product =>
-        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+        product.name.toLowerCase().includes((searchQuery || '').toLowerCase())
     );
 
     return (
@@ -151,7 +151,7 @@ const ArtisanDashboard = ({ searchQuery }: { searchQuery: string }) => {
     const dashboardTranslations = translations.dashboard_page || {};
 
     const filteredProducts = allProducts.filter(product =>
-        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+        product.name.toLowerCase().includes((searchQuery || '').toLowerCase())
     );
 
     return (
