@@ -67,20 +67,42 @@ export default function LiveStudioPage() {
 
     if (isStreaming) {
       // Logic to stop the stream
+      if (videoRef.current && videoRef.current.srcObject) {
+        const stream = videoRef.current.srcObject as MediaStream;
+        stream.getTracks().forEach(track => track.stop());
+        videoRef.current.srcObject = null;
+      }
       setIsStreaming(false);
+      setHasCameraPermission(null); // Reset permission to allow re-requesting
       toast({ title: 'Stream Ended', description: 'Your live session has concluded.' });
     } else {
       // Logic to start the stream
       if (!hasCameraPermission) {
-        toast({
-          variant: 'destructive',
-          title: 'Cannot Start Stream',
-          description: 'Camera access is required to go live.',
-        });
-        return;
+        const getCameraPermission = async () => {
+          try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            setHasCameraPermission(true);
+
+            if (videoRef.current) {
+              videoRef.current.srcObject = stream;
+            }
+            setIsStreaming(true);
+            toast({ title: 'You are Live!', description: 'Your stream has started successfully.' });
+          } catch (error) {
+            console.error('Error accessing camera:', error);
+            setHasCameraPermission(false);
+            toast({
+              variant: 'destructive',
+              title: 'Cannot Start Stream',
+              description: 'Camera access is required to go live.',
+            });
+          }
+        };
+        getCameraPermission();
+      } else {
+         setIsStreaming(true);
+         toast({ title: 'You are Live!', description: 'Your stream has started successfully.' });
       }
-      setIsStreaming(true);
-      toast({ title: 'You are Live!', description: 'Your stream has started successfully.' });
     }
   };
   
@@ -95,7 +117,7 @@ export default function LiveStudioPage() {
           <CardContent className="flex-1 flex flex-col items-center justify-center bg-secondary/30 rounded-b-lg">
             <div className="w-full aspect-video bg-black rounded-md overflow-hidden relative">
               <video ref={videoRef} className="w-full h-full object-cover" autoPlay muted playsInline />
-              {!hasCameraPermission && (
+              {!hasCameraPermission && !isStreaming && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/50 text-white p-4">
                   <VideoOff className="h-16 w-16 mb-4" />
                   <h3 className="text-xl font-bold">{translations.live_studio_page.camera_access_denied}</h3>
@@ -147,7 +169,7 @@ export default function LiveStudioPage() {
                         <Label htmlFor="stream-title">{translations.live_studio_page.stream_title_label}</Label>
                         <Input id="stream-title" placeholder={translations.live_studio_page.stream_title_placeholder} />
                     </div>
-                    <Button size="lg" onClick={handleStreamToggle} disabled={hasCameraPermission === null || !isVerified}>
+                    <Button size="lg" onClick={handleStreamToggle} disabled={isVerified === false}>
                     {isStreaming ? (
                         <>
                         <VideoOff className="mr-2" /> {translations.live_studio_page.end_stream_button}
@@ -209,3 +231,5 @@ export default function LiveStudioPage() {
     </div>
   );
 }
+
+    
