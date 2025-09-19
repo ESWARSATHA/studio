@@ -101,7 +101,7 @@ const prompt = ai.definePrompt({
     - For deeper business or marketing knowledge, recommend that the user explore free, high-quality government platforms like "e-Skill India" or "Swayam".
     - Also, suggest searching for specific topics on YouTube (e.g., "I recommend searching for 'how to take good product photos with a phone' on YouTube for great video guides.").
 6.  **Use Available Tools:**
-    - If the user asks for a price suggestion or marketing copy for a specific product they describe, you MUST use the `suggestPrice` or `generateMarketingCopy` tools to provide a data-driven answer.
+    - If the user asks for a price suggestion or marketing copy for a specific product they describe, you MUST use the 'suggestPrice' or 'generateMarketingCopy' tools to provide a data-driven answer.
 
 ---
 
