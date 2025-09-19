@@ -108,6 +108,86 @@
         "imageHint": "bandhani silk scarf",
         "rating": 4.9,
         "reviews": 33
+      },
+      {
+        "id": 9,
+        "name": "Banarasi Silk Saree",
+        "price": 7500,
+        "description": "An exquisite saree woven from fine silk with intricate gold and silver brocade or zari, from Varanasi.",
+        "image": "https://picsum.photos/seed/creation9/400/300",
+        "imageHint": "banarasi silk saree",
+        "rating": 5.0,
+        "reviews": 40
+      },
+      {
+        "id": 10,
+        "name": "Pashmina Shawl",
+        "price": 12500,
+        "description": "An incredibly soft and warm shawl, hand-spun from the fleece of the Changthangi goat in Kashmir.",
+        "image": "https://picsum.photos/seed/creation10/400/300",
+        "imageHint": "pashmina shawl",
+        "rating": 4.9,
+        "reviews": 28
+      },
+      {
+        "id": 11,
+        "name": "Meenakari Enamel Necklace",
+        "price": 4800,
+        "description": "A vibrant necklace featuring Meenakari enameling, a technique of decorating metal with brilliant colors.",
+        "image": "https://picsum.photos/seed/creation11/400/300",
+        "imageHint": "meenakari necklace",
+        "rating": 4.8,
+        "reviews": 15
+      },
+      {
+        "id": 12,
+        "name": "Channapatna Wooden Toys",
+        "price": 899,
+        "description": "A set of safe, eco-friendly wooden toys from Channapatna, colored with natural, non-toxic dyes.",
+        "image": "https://picsum.photos/seed/creation12/400/300",
+        "imageHint": "channapatna wooden toys",
+        "rating": 4.7,
+        "reviews": 50
+      },
+      {
+        "id": 13,
+        "name": "Kashmiri Hand-knotted Rug",
+        "price": 25000,
+        "description": "A luxurious, hand-knotted silk rug from Kashmir, known for its intricate designs and soft texture.",
+        "image": "https://picsum.photos/seed/creation13/400/300",
+        "imageHint": "kashmiri rug",
+        "rating": 5.0,
+        "reviews": 10
+      },
+      {
+        "id": 14,
+        "name": "Marble Dust Sculpture",
+        "price": 3200,
+        "description": "A detailed sculpture of a deity, crafted from marble dust and resin, finished to resemble pure marble.",
+        "image": "https://picsum.photos/seed/creation14/400/300",
+        "imageHint": "marble sculpture",
+        "rating": 4.8,
+        "reviews": 18
+      },
+      {
+        "id": 15,
+        "name": "Tanjore Painting",
+        "price": 18000,
+        "description": "A classical South Indian painting style from Thanjavur, characterized by rich colors, gold foil, and glass bead inlays.",
+        "image": "https://picsum.photos/seed/creation15/400/300",
+        "imageHint": "tanjore painting",
+        "rating": 4.9,
+        "reviews": 25
+      },
+      {
+        "id": 16,
+        "name": "Leather Mojari Shoes",
+        "price": 1600,
+        "description": "Handcrafted leather footwear from Rajasthan, embroidered with intricate thread work.",
+        "image": "https://picsum.photos/seed/creation16/400/300",
+        "imageHint": "leather mojari",
+        "rating": 4.6,
+        "reviews": 35
       }
     ],
     "featuredArt": {
