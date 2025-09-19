@@ -87,7 +87,7 @@ const generateMarketingCopyFlow = ai.defineFlow(
   async input => {
     const {output} = await prompt(input);
     if (!output) {
-      throw new Error("The model did not return an answer.");
+      throw new Error("The AI model failed to generate marketing copy. It may be temporarily unavailable or the request could not be fulfilled. Please try again later.");
     }
     return output;
   }

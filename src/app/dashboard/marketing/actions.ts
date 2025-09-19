@@ -10,20 +10,35 @@ const generateCopySchema = z.object({
 });
 
 export async function handleGenerateMarketingCopy(prevState: any, formData: FormData) {
+  const validatedFields = generateCopySchema.safeParse({
+    productName: formData.get('productName'),
+    productDescription: formData.get('productDescription'),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      status: 'error' as const,
+      message: 'Invalid input.',
+      errors: validatedFields.error.flatten().fieldErrors,
+      data: null,
+    };
+  }
+
   try {
-    const validatedFields = generateCopySchema.safeParse({
-      productName: formData.get('productName'),
-      productDescription: formData.get('productDescription'),
-    });
-
-    if (!validatedFields.success) {
-      return { status: 'error', message: 'Invalid input.', errors: validatedFields.error.flatten().fieldErrors };
-    }
-
     const result = await generateMarketingCopy(validatedFields.data);
-    return { status: 'success', data: result };
+    return {
+      status: 'success' as const,
+      message: 'Marketing copy generated successfully.',
+      data: result,
+      errors: null,
+    };
   } catch (error) {
-    console.error(error);
-    return { status: 'error', message: 'Failed to generate marketing copy. Please try again.' };
+    console.error('Error generating marketing copy:', error);
+    return {
+      status: 'error' as const,
+      message: 'Failed to generate marketing copy. The AI model may be temporarily unavailable. Please try again later.',
+      data: null,
+      errors: null,
+    };
   }
 }
