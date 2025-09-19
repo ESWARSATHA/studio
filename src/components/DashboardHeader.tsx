@@ -59,52 +59,6 @@ export function DashboardHeader({ pageTitle, searchQuery, onSearchChange, userTy
       </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="icon">
-            <Settings />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuLabel>
-            {translations.dashboard_layout.account_menu_label}
-          </DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <Link href={"/dashboard/settings"} className="flex items-center">
-              <User className="mr-2" />
-              {translations.dashboard_layout.account_menu_profile}
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>
-              <Globe className="mr-2" />
-              <span>{languages.find((lang) => lang.code === language)?.name}</span>
-            </DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                {languages.map((lang) => (
-                  <DropdownMenuItem
-                    key={lang.code}
-                    onSelect={() => setLanguage(lang.code)}
-                    role="button"
-                  >
-                    {lang.name}
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <Link href="/login" className="flex items-center">
-              <LogOut className="mr-2" />
-              {translations.dashboard_layout.account_menu_logout}
-            </Link>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon" className="rounded-full">
             <Avatar>
               <AvatarImage src={userAvatar.image} alt="User" data-ai-hint={userAvatar.imageHint} />
@@ -129,6 +83,25 @@ export function DashboardHeader({ pageTitle, searchQuery, onSearchChange, userTy
               {translations.dashboard_layout.account_menu_profile}
             </Link>
           </DropdownMenuItem>
+           <DropdownMenuSub>
+            <DropdownMenuSubTrigger>
+              <Globe className="mr-2" />
+              <span>{languages.find((lang) => lang.code === language)?.name}</span>
+            </DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent>
+                {languages.map((lang) => (
+                  <DropdownMenuItem
+                    key={lang.code}
+                    onSelect={() => setLanguage(lang.code)}
+                    role="button"
+                  >
+                    {lang.name}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             <Link href="/login" className="flex items-center">
