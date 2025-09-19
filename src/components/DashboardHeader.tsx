@@ -18,7 +18,6 @@ import {
   Globe,
   LogOut,
   Search,
-  Settings,
   User,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
@@ -71,17 +70,11 @@ export function DashboardHeader({ pageTitle, searchQuery, onSearchChange, userTy
             {translations.dashboard_layout.account_menu_label}
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <Link href={"/dashboard/settings"} className="flex items-center">
-              <Settings className="mr-2" />
-              {translations.dashboard_layout.account_menu_settings}
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href={"/dashboard/settings"} className="flex items-center">
-              <User className="mr-2" />
-              {translations.dashboard_layout.account_menu_profile}
-            </Link>
+           <DropdownMenuItem asChild>
+              <Link href={"/dashboard/settings"} className="flex items-center w-full">
+                  <User className="mr-2" />
+                  {translations.dashboard_layout.account_menu_profile}
+              </Link>
           </DropdownMenuItem>
            <DropdownMenuSub>
             <DropdownMenuSubTrigger>
@@ -103,8 +96,8 @@ export function DashboardHeader({ pageTitle, searchQuery, onSearchChange, userTy
             </DropdownMenuPortal>
           </DropdownMenuSub>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <Link href="/login" className="flex items-center">
+          <DropdownMenuItem asChild>
+            <Link href="/login" className="flex items-center w-full">
               <LogOut className="mr-2" />
               {translations.dashboard_layout.account_menu_logout}
             </Link>

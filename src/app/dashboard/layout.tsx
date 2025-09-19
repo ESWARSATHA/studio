@@ -33,6 +33,7 @@ import {
   GraduationCap,
   ShoppingCart,
   MoreVertical,
+  Search,
 } from "lucide-react";
 import { Logo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
@@ -53,8 +54,7 @@ import { languages, useLanguage } from "@/lib/locales/language-context";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import placeholderImages from '@/lib/placeholder-images.json';
 import { BottomNavBar } from "@/components/BottomNavBar";
-import type { DashboardHeaderProps } from "@/components/DashboardHeader";
-import { DashboardHeader } from "@/components/DashboardHeader";
+import { Input } from "@/components/ui/input";
 
 
 const { userAvatar } = placeholderImages.misc;
@@ -145,12 +145,72 @@ export default function DashboardLayout({
       </Sidebar>
       <SidebarInset>
         <div className="flex flex-col h-screen">
-          <DashboardHeader 
-            pageTitle={pageTitle} 
-            searchQuery={searchQuery}
-            onSearchChange={(e) => setSearchQuery(e.target.value)}
-            userType={userType}
-          />
+            <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 backdrop-blur-sm px-4 md:px-6">
+                <SidebarTrigger className="md:hidden" />
+                <div className="flex-1 flex gap-4 items-center">
+                    <h1 className="text-lg font-semibold md:text-2xl hidden sm:block">
+                    {pageTitle}
+                    </h1>
+                    <div className="relative flex-1 max-w-md">
+                    <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                    <Input
+                        type="search"
+                        placeholder="Search products..."
+                        className="pl-8 sm:w-full"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                    </div>
+                </div>
+                <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon" className="rounded-full">
+                        <Avatar>
+                        <AvatarImage src={userAvatar.image} alt="User" data-ai-hint={userAvatar.imageHint} />
+                        <AvatarFallback>{userType === 'buyer' ? 'B' : 'A'}</AvatarFallback>
+                        </Avatar>
+                    </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                    <DropdownMenuLabel>
+                        {translations.dashboard_layout.account_menu_label}
+                    </DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                     <DropdownMenuItem asChild>
+                        <Link href={"/dashboard/settings"} className="flex items-center w-full">
+                            <User className="mr-2" />
+                            {translations.dashboard_layout.account_menu_profile}
+                        </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuSub>
+                        <DropdownMenuSubTrigger>
+                        <Globe className="mr-2" />
+                        <span>{languages.find((lang) => lang.code === language)?.name}</span>
+                        </DropdownMenuSubTrigger>
+                        <DropdownMenuPortal>
+                        <DropdownMenuSubContent>
+                            {languages.map((lang) => (
+                            <DropdownMenuItem
+                                key={lang.code}
+                                onSelect={() => setLanguage(lang.code)}
+                                role="button"
+                            >
+                                {lang.name}
+                            </DropdownMenuItem>
+                            ))}
+                        </DropdownMenuSubContent>
+                        </DropdownMenuPortal>
+                    </DropdownMenuSub>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild>
+                        <Link href="/login" className="flex items-center w-full">
+                        <LogOut className="mr-2" />
+                        {translations.dashboard_layout.account_menu_logout}
+                        </Link>
+                    </DropdownMenuItem>
+                    </DropdownMenuContent>
+                </DropdownMenu>
+            </header>
           <main className="flex-1 overflow-hidden pb-16 md:pb-0">
             <ScrollArea className="h-full">
               <div className="p-4 md:p-6 lg:p-8">
