@@ -121,9 +121,17 @@ const customerSupportFlow = ai.defineFlow(
   async (input) => {
     const response = await prompt(input);
     const output = response.output;
-    if (!output) {
-      throw new Error("The model did not return an answer.");
+
+    if (output) {
+        return output;
     }
-    return output;
+    
+    // If there is no structured output, return the text content.
+    const text = response.text;
+    if (text) {
+        return { answer: text };
+    }
+
+    throw new Error("The model did not return a valid answer.");
   }
 );
