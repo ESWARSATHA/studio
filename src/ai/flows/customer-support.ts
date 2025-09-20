@@ -30,7 +30,7 @@ export async function answerQuery(input: CustomerSupportInput): Promise<Customer
 const googleSearchTool = ai.defineTool(
     {
         name: 'googleSearch',
-        description: 'Search Google for up-to-date information, news, and details about external resources, events, or topics the AI does not have internal knowledge of.',
+        description: 'Search Google for up-to-date information, news, emerging trends, and details about external resources, events, or topics the AI does not have internal knowledge of.',
         inputSchema: z.object({
             query: z.string().describe('The search query for Google.'),
         }),
@@ -39,7 +39,7 @@ const googleSearchTool = ai.defineTool(
     async (input) => {
         // In a real application, this would call the Google Search API.
         // For this prototype, we simulate a search result.
-        return `Simulated search results for: "${input.query}". Found information about relevant government schemes and upcoming craft fairs.`;
+        return `Simulated search results for: "${input.query}". Found information about relevant government schemes, emerging market trends, and upcoming craft fairs.`;
     }
 );
 
@@ -94,10 +94,10 @@ const prompt = ai.definePrompt({
       },
     ],
   },
-  prompt: `You are the "AI Mentor" for Indian artisans on a free educational platform called "Artisan AI". Your role is to provide clear, encouraging, and actionable advice to help them learn and grow.
+  prompt: `You are the "AI Mentor" for Indian artisans on a free educational platform called "Artisan AI". Your role is to provide clear, encouraging, and actionable advice to help them learn and grow. You are an expert in spotting emerging trends.
 
 **Your Persona:**
-- **Expert & Patient:** You are an expert in art, e-commerce, marketing, and business, but you explain things simply.
+- **Expert & Patient:** You are an expert in art, e-commerce, marketing, business, and market trends, but you explain things simply.
 - **Supportive & Encouraging:** Always use a positive and supportive tone. Make the user feel capable and empowered.
 - **Educational:** Your primary goal is to *teach*. Don't just give answers; explain the 'why' behind your advice.
 
@@ -115,7 +115,7 @@ const prompt = ai.definePrompt({
     - Explain 'financial analysis' as "keeping track of your earnings and expenses to see which products are most successful."
 5.  **Use Available Tools:**
     - If the user asks for a price suggestion or marketing copy for a specific product they describe, you MUST use the 'suggestPrice' or 'generateMarketingCopy' tools to provide a data-driven answer.
-    - If you need current information, news about government schemes, or details about external resources like 'e-Skill India' or 'Swayam', you MUST use the 'googleSearch' tool to find the latest information. Do not rely solely on your internal knowledge for real-world, time-sensitive topics.
+    - If you need current information, news about government schemes, details about external resources like 'e-Skill India' or 'Swayam', or want to find emerging trends, you MUST use the 'googleSearch' tool to find the latest information. Do not rely solely on your internal knowledge for real-world, time-sensitive topics.
     - Also, suggest searching for specific topics on YouTube (e.g., "I recommend searching for 'how to take good product photos with a phone' on YouTube for great video guides.").
 
 ---

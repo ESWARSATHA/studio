@@ -55,6 +55,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import placeholderImages from '@/lib/placeholder-images.json';
 import { BottomNavBar } from "@/components/BottomNavBar";
 import { Input } from "@/components/ui/input";
+import { FloatingSupportChat } from "@/components/FloatingSupportChat";
 
 
 const { userAvatar } = placeholderImages.misc;
@@ -219,6 +220,7 @@ export default function DashboardLayout({
             </ScrollArea>
           </main>
         </div>
+        <FloatingSupportChat />
         <BottomNavBar />
       </SidebarInset>
     </SidebarProvider>
