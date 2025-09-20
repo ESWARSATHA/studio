@@ -13,8 +13,7 @@ import { Separator } from "@/components/ui/separator";
 
 const { products, reviews } = placeholderImages.productDetail;
 
-export default function ProductDetailPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default function ProductDetailPage({ params: { id } }: { params: { id: string } }) {
   const product = products.find(p => p.id === parseInt(id));
   const searchParams = useSearchParams();
   const userType = searchParams.get('userType') || 'artisan';
