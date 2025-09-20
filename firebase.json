@@ -1,14 +1,18 @@
-
 {
-  "firestore": {
-    "rules": "firestore.rules"
-  },
   "hosting": {
     "source": ".",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "appHosting": {
+          "backendId": "artisan-ai"
+        }
+      }
     ]
   }
 }
