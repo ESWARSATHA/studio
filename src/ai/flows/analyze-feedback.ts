@@ -74,6 +74,10 @@ const analyzeFeedbackFlow = ai.defineFlow(
     outputSchema: AnalyzeFeedbackOutputSchema,
   },
   async input => {
-    return await prompt(input);
+    const {output} = await prompt(input);
+    if (!output) {
+      throw new Error('The AI model failed to analyze the feedback.');
+    }
+    return output;
   }
 );
