@@ -135,18 +135,19 @@ const customerSupportFlow = ai.defineFlow(
   },
   async (input) => {
     const response = await prompt(input);
-    const output = response.output;
 
-    if (output) {
-        return output;
+    // Prioritize the structured output if it exists.
+    if (response.output) {
+        return response.output;
     }
     
-    // If there is no structured output, return the text content.
+    // Fallback to the raw text content if no structured output is available.
     const text = response.text;
     if (text) {
         return { answer: text };
     }
 
-    throw new Error("The model did not return a valid answer.");
+    // If neither is available, the model failed to generate a valid response.
+    throw new Error("The AI model failed to return a valid answer. Please try rephrasing your question.");
   }
 );
