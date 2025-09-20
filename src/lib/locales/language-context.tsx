@@ -3,29 +3,6 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import en from './en.json';
-import hi from './hi.json';
-import bn from './bn.json';
-import te from './te.json';
-import mr from './mr.json';
-import ta from './ta.json';
-import ur from './ur.json';
-import as from './as.json';
-import brx from './brx.json';
-import doi from './doi.json';
-import gu from './gu.json';
-import kn from './kn.json';
-import ks from './ks.json';
-import kok from './kok.json';
-import mai from './mai.json';
-import ml from './ml.json';
-import mni from './mni.json';
-import ne from './ne.json';
-import or from './or.json';
-import pa from './pa.json';
-import sa from './sa.json';
-import sat from './sat.json';
-import sd from './sd.json';
-
 
 export const languages = [
   { code: 'en', name: 'English' },
@@ -53,31 +30,7 @@ export const languages = [
   { code: 'ur', name: 'اردو' },
 ];
 
-const translations: Record<string, any> = {
-  en,
-  hi,
-  bn,
-  te,
-  mr,
-  ta,
-  ur,
-  as,
-  brx,
-  doi,
-  gu,
-  kn,
-  ks,
-  kok,
-  mai,
-  ml,
-  mni,
-  ne,
-  or,
-pa,
-  sa,
-  sat,
-  sd,
-};
+const availableLanguages = languages.map(l => l.code);
 
 interface LanguageContextType {
   language: string;
@@ -89,16 +42,34 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState('en');
+  const [translations, setTranslations] = useState(en);
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language');
-    if (savedLanguage && translations[savedLanguage]) {
+    if (savedLanguage && availableLanguages.includes(savedLanguage)) {
       setLanguage(savedLanguage);
     }
   }, []);
 
+  useEffect(() => {
+    const loadTranslations = async () => {
+      if (language === 'en') {
+        setTranslations(en);
+        return;
+      }
+      try {
+        const newTranslations = await import(`./${language}.json`);
+        setTranslations(newTranslations.default);
+      } catch (error) {
+        console.error(`Could not load translations for ${language}, falling back to English.`, error);
+        setTranslations(en);
+      }
+    };
+    loadTranslations();
+  }, [language]);
+
   const handleSetLanguage = (lang: string) => {
-    if (translations[lang]) {
+    if (availableLanguages.includes(lang)) {
       setLanguage(lang);
       localStorage.setItem('language', lang);
     } else {
@@ -106,11 +77,9 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
         localStorage.setItem('language', 'en');
     }
   };
-  
-  const currentTranslations = translations[language] || translations.en;
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, translations: currentTranslations }}>
+    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, translations }}>
       {children}
     </LanguageContext.Provider>
   );
