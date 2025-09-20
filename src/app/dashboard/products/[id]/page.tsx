@@ -3,7 +3,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useParams } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import { IndianRupee, Star, Video, Scissors, Paintbrush, Heart, Box, MessageSquare, Send } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -14,7 +14,9 @@ import { Separator } from "@/components/ui/separator";
 
 const { products, reviews } = placeholderImages.productDetail;
 
-export default function ProductDetailPage({ params: { id } }: { params: { id: string } }) {
+export default function ProductDetailPage() {
+  const params = useParams();
+  const id = params.id as string;
   const product = products.find(p => p.id === parseInt(id));
   const searchParams = useSearchParams();
   const userType = searchParams.get('userType') || 'artisan';
